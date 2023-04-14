@@ -1,0 +1,58 @@
+\begin{thebibliography}{10}
+
+\bibitem{test}
+on-line at: \url{ https://istqb-main-web-prod.s3.amazonaws.com/media/documents/
+  ISTQB-CTFL_Syllabus_2018_v3.1.1.pdf.}
+
+\bibitem{msnr-portal}
+Adresa sa implementacijom portala msnr.
+\newblock on-line at:
+  \url{https://github.com/NemanjaSubotic/master-rad/tree/master/portal}.
+
+\bibitem{exunit}
+{ExUnit}.
+\newblock on-line at: \url{https://hexdocs.pm/ex_unit/ExUnit.html}.
+
+\bibitem{func}
+{Functional programming paradigm}.
+\newblock on-line at:
+  \url{https://www.geeksforgeeks.org/functional-programming-paradigm/}.
+
+\bibitem{ecto}
+Zvanična dokumentacija biblioteke ecto.
+\newblock on-line at: \url{https://hexdocs.pm/ecto/Ecto.html}.
+
+\bibitem{elix}
+{Zvanična stranica programskog jezika Elixir}.
+\newblock on-line at: \url{https://elixir-lang.org/}.
+
+\bibitem{phoenix}
+Zvanična stranica razvojnog okruženja phoenix.
+\newblock on-line at: \url{https://www.phoenixframework.org}.
+
+\bibitem{cohn}
+M.~Cohn.
+\newblock {\em Succeeding with Agile: Software Development Using Scrum}.
+\newblock A Mike Cohen signature book. Addison-Wesley, 2010.
+
+\bibitem{turing}
+Liesbeth De~Mol.
+\newblock {Turing Machines}.
+\newblock In Edward~N. Zalta, editor, {\em The {Stanford} Encyclopedia of
+  Philosophy}. Metaphysics Research Lab, Stanford University, {W}inter 2021
+  edition, 2021.
+
+\bibitem{testingelixir}
+Andrea Leopardi and Jeffrey Matthias.
+\newblock {\em Testing Elixir - Effective and Robust Testing for Elixir and its
+  Ecosystem}.
+\newblock Pragmatic Bookshelf, 2021.
+
+\bibitem{rad}
+{Nemanja Subotić}.
+\newblock Programski jezici elm i elixir u razvoju studentskog veb portala,
+  2022.
+\newblock on-line at:
+  \url{http://elibrary.matf.bg.ac.rs/bitstream/handle/123456789/5482/MasterRadNemanjaSubotic.pdf?sequence=1}.
+
+\end{thebibliography}

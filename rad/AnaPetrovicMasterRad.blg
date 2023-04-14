@@ -1,0 +1,56 @@
+This is BibTeX, Version 0.99d
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: AnaPetrovicMasterRad.aux
+Reallocating 'name_of_file' (item size: 1) to 18 items.
+Reallocating 'name_of_file' (item size: 1) to 6 items.
+The style file: plain.bst
+Database file #1: matfmaster-primer.bib
+Warning--to sort, need author or key in func
+Warning--to sort, need author or key in test
+Warning--to sort, need author or key in msnr-portal
+Warning--to sort, need author or key in elix
+Warning--to sort, need author or key in exunit
+Warning--to sort, need author or key in ecto
+Warning--to sort, need author or key in phoenix
+You've used 11 entries,
+            2118 wiz_defined-function locations,
+            541 strings with 5451 characters,
+and the built_in function-call counts, 2076 in all, are:
+= -- 186
+> -- 45
+< -- 0
++ -- 22
+- -- 11
+* -- 79
+:= -- 290
+add.period$ -- 27
+call.type$ -- 11
+change.case$ -- 36
+chr.to.int$ -- 0
+cite$ -- 18
+duplicate$ -- 95
+empty$ -- 257
+format.name$ -- 11
+if$ -- 481
+int.to.chr$ -- 0
+int.to.str$ -- 11
+missing$ -- 5
+newline$ -- 50
+num.names$ -- 10
+pop$ -- 109
+preamble$ -- 1
+purify$ -- 27
+quote$ -- 0
+skip$ -- 67
+stack$ -- 0
+substring$ -- 55
+swap$ -- 11
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 40
+warning$ -- 7
+while$ -- 9
+width$ -- 13
+write$ -- 92
+(There were 7 warnings)
