@@ -48,6 +48,11 @@ Andrea Leopardi and Jeffrey Matthias.
   Ecosystem}.
 \newblock Pragmatic Bookshelf, 2021.
 
+\bibitem{4phase}
+Gerard Meszaros.
+\newblock {\em xUnit Test Patterns: Refactoring Test Code}.
+\newblock Addison-Wesley, 2007.
+
 \bibitem{rad}
 {Nemanja Subotić}.
 \newblock Programski jezici elm i elixir u razvoju studentskog veb portala,

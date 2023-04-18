@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 23.1) (preloaded format=pdflatex 2023.4.5)  14 APR 2023 22:03
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 23.1) (preloaded format=pdflatex 2023.4.5)  18 APR 2023 23:23
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1024,7 +1024,7 @@ LaTeX Font Warning: Font shape `T1/fos/m/n' undefined
 LaTeX Font Warning: Font shape `T1/fos/m/n' in size <16> not available
 (Font)              size <17.28> substituted on input line 104.
 
-<matf.png, id=55, 346.29375pt x 409.53pt>
+<matf.png, id=59, 346.29375pt x 409.53pt>
 File: matf.png Graphic file (type png)
 <use matf.png>
 Package pdftex.def Info: matf.png  used on input line 104.
@@ -1080,52 +1080,42 @@ File: T1DejaVuSansMono-TLF.fd 2011/06/01 Font definitions for T1/DejaVuSansMono
 )
 LaTeX Font Info:    Font shape `T1/DejaVuSansMono-TLF/m/n' will be
 (Font)              scaled to size 10.79993pt on input line 144.
- [3]
+
+Overfull \hbox (12.46794pt too wide) in paragraph at lines 158--160
+[]\T1/cmr/m/n/12 U funk-ci-o-nal-nim pro-gra-mi-ma, funk-ci-je se sma-tra-ju gr
+a-ža-ni-ma pr-vog re-da (eng.\T1/cmr/m/it/12 First
+ []
+
+[3]
 LaTeX Font Info:    Font shape `T1/DejaVuSansMono-TLF/m/n' will be
 (Font)              scaled to size 9.85492pt on input line 170.
  [4]
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 187.
+(Font)              <7> on input line 186.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 187.
-<piramida.png, id=145, 649.67719pt x 406.51875pt>
-File: piramida.png Graphic file (type png)
-<use piramida.png>
-Package pdftex.def Info: piramida.png  used on input line 193.
-(pdftex.def)             Requested size: 340.8013pt x 213.25185pt.
- [5] [6 <./piramida.png>] [7]
-<dep1.png, id=179, 1445.4pt x 813.0375pt>
-File: dep1.png Graphic file (type png)
-<use dep1.png>
-Package pdftex.def Info: dep1.png  used on input line 214.
-(pdftex.def)             Requested size: 255.6026pt x 143.7724pt.
-<dep2.png, id=180, 1445.4pt x 813.0375pt>
-File: dep2.png Graphic file (type png)
-<use dep2.png>
-Package pdftex.def Info: dep2.png  used on input line 221.
-(pdftex.def)             Requested size: 255.6026pt x 143.7724pt.
- [8 <./dep1.png> <./dep2.png>]
-[9] [10
+(Font)              <5> on input line 186.
+ [5]
+<piramidanova.png, id=158, 531.48563pt x 297.36093pt>
+File: piramidanova.png Graphic file (type png)
+<use piramidanova.png>
+Package pdftex.def Info: piramidanova.png  used on input line 192.
+(pdftex.def)             Requested size: 340.8013pt x 190.67787pt.
+ [6 <./piramidanova.png>] [7] [8] [9] [10]
+<dep.png, id=234, 557.08125pt x 286.82156pt>
+File: dep.png Graphic file (type png)
+<use dep.png>
+Package pdftex.def Info: dep.png  used on input line 267.
+(pdftex.def)             Requested size: 383.3974pt x 197.40378pt.
+ [11 <./dep.png>] [12]
+[13
 
-] [11
+] [14
 
-] [12]
-<box1.png, id=229, 245.91875pt x 134.00063pt>
-File: box1.png Graphic file (type png)
-<use box1.png>
-Package pdftex.def Info: box1.png  used on input line 272.
-(pdftex.def)             Requested size: 170.3974pt x 92.85309pt.
-<box2.png, id=230, 246.9225pt x 125.46875pt>
-File: box2.png Graphic file (type png)
-<use box2.png>
-Package pdftex.def Info: box2.png  used on input line 279.
-(pdftex.def)             Requested size: 170.3974pt x 86.58308pt.
- [13 <./box1.png> <./box2.png>] [14] [15] [16] [17
+] [15] [16] [17
 
 ] [18
 
-]
-[19
+] [19
 
 ] (AnaPetrovicMasterRad.bbl [20
 
@@ -1149,9 +1139,9 @@ Underfull \hbox (badness 4060) in paragraph at lines 26--28
 t: []$\T1/DejaVuSansMono-TLF/m/n/12 https : / /
  []
 
-) [21
+[21
 
-]
+]) [22]
 \tf@toc=\write5
 \openout5 = `AnaPetrovicMasterRad.toc'.
 
@@ -1164,16 +1154,16 @@ LaTeX Font Warning: Size substitutions with differences
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
 Package rerunfilecheck Info: File `AnaPetrovicMasterRad.out' has not changed.
-(rerunfilecheck)             Checksum: B3D85E358CC76177F37645AD5C06CBB8;2357.
+(rerunfilecheck)             Checksum: 00777DACA982CEDC04A7E357627FEF15;2608.
  ) 
 Here is how much of TeX's memory you used:
- 18349 strings out of 476334
- 285033 string characters out of 5787972
- 1914382 words of memory out of 5000000
- 38421 multiletter control sequences out of 15000+600000
+ 18368 strings out of 476334
+ 285378 string characters out of 5787972
+ 1921382 words of memory out of 5000000
+ 38418 multiletter control sequences out of 15000+600000
  528940 words of font info for 63 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 90i,12n,90p,1831b,1250s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 90i,12n,90p,1955b,1250s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\panap\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecti
 1000.pk> <C:\Users\panap\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi60
 0\ecrm1000.pk> <C:\Users\panap\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec
@@ -1193,10 +1183,11 @@ x1440.pk> <C:\Users\panap\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi6
 c/dpi600\ecrm2074.pk> <C:\Users\panap\AppData\Local\MiKTeX\fonts/pk/ljfour/jkna
 ppen/ec/dpi600\ecrm1728.pk><C:/Users/panap/AppData/Local/Programs/MiKTeX/fonts/
 type1/public/dejavu/DejaVuSansMono.pfb><C:/Users/panap/AppData/Local/Programs/M
-iKTeX/fonts/type1/public/amsfonts/cm/cmmi12.pfb>
-Output written on AnaPetrovicMasterRad.pdf (25 pages, 511370 bytes).
+iKTeX/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Users/panap/AppData/Local/P
+rograms/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb>
+Output written on AnaPetrovicMasterRad.pdf (26 pages, 392675 bytes).
 PDF statistics:
- 821 PDF objects out of 1000 (max. 8388607)
- 101 named destinations out of 1000 (max. 500000)
- 135 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 874 PDF objects out of 1000 (max. 8388607)
+ 126 named destinations out of 1000 (max. 500000)
+ 128 words of extra memory for PDF output out of 10000 (max. 10000000)
 
