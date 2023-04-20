@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 23.1) (preloaded format=pdflatex 2023.4.5)  20 APR 2023 11:05
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 23.1) (preloaded format=pdflatex 2023.4.5)  20 APR 2023 22:04
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1064,7 +1064,7 @@ LaTeX Font Warning: Font shape `T1/fos/m/n' undefined
 LaTeX Font Warning: Font shape `T1/fos/m/n' in size <16> not available
 (Font)              size <17.28> substituted on input line 104.
 
-<matf.png, id=59, 346.29375pt x 409.53pt>
+<matf.png, id=71, 346.29375pt x 409.53pt>
 File: matf.png Graphic file (type png)
 <use matf.png>
 Package pdftex.def Info: matf.png  used on input line 104.
@@ -1130,24 +1130,15 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 ] [1
 
 
-]
-
-LaTeX Warning: Citation `func' on page 2 undefined on input line 129.
-
-
-LaTeX Warning: Citation `turing' on page 2 undefined on input line 130.
-
-[2
+] [2
 
 ]
 LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 1
 38.
- (C:\Users\panap\AppData\Local\Programs\MiKTeX\tex/latex/lm\ts1lmr.fd
+
+(C:\Users\panap\AppData\Local\Programs\MiKTeX\tex/latex/lm\ts1lmr.fd
 File: ts1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
-
-LaTeX Warning: Reference `lst:pure' on page 3 undefined on input line 142.
-
 Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on i
 nput line 144.
 LaTeX Font Info:    Trying to load font information for T1+DejaVuSansMono-TLF o
@@ -1167,92 +1158,48 @@ a-ža-ni-ma pr-vog re-da (eng.\T1/lmr/m/it/12 First
  []
 
 [3]
-
-LaTeX Warning: Reference `lst:high' on page 4 undefined on input line 168.
-
 LaTeX Font Info:    Font shape `T1/DejaVuSansMono-TLF/m/n' will be
 (Font)              scaled to size 9.85492pt on input line 170.
-[4]
-
-LaTeX Warning: Citation `test' on page 5 undefined on input line 182.
-
-
-LaTeX Warning: Reference `chp:msnr' on page 5 undefined on input line 183.
-
-
-LaTeX Warning: Reference `fig:piramida' on page 5 undefined on input line 186.
-
-
-LaTeX Warning: Citation `cohn' on page 5 undefined on input line 186.
-
+ [4]
 LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <10> on input line 186.
 LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <7> on input line 186.
 LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <5> on input line 186.
-[5]
-<piramidanova.png, id=143, 531.48563pt x 297.36093pt>
+ [5]
+<piramidanova.png, id=170, 531.48563pt x 297.36093pt>
 File: piramidanova.png Graphic file (type png)
 <use piramidanova.png>
 Package pdftex.def Info: piramidanova.png  used on input line 192.
 (pdftex.def)             Requested size: 340.8013pt x 190.67787pt.
- [6 <./piramidanova.png>]
-
-LaTeX Warning: Citation `4phase' on page 7 undefined on input line 207.
-
-
-LaTeX Warning: Reference `lst:4ph' on page 7 undefined on input line 215.
-
-[7] [8] [9]
-
-LaTeX Warning: Citation `testingelixir' on page 10 undefined on input line 257.
-
-
-
-LaTeX Warning: Reference `fig:dep' on page 10 undefined on input line 261.
-
-[10]
-<dep.png, id=213, 557.08125pt x 286.82156pt>
+ [6 <./piramidanova.png>] [7] [8] [9] [10]
+<dep.png, id=246, 557.08125pt x 286.82156pt>
 File: dep.png Graphic file (type png)
 <use dep.png>
 Package pdftex.def Info: dep.png  used on input line 267.
 (pdftex.def)             Requested size: 383.3974pt x 197.40378pt.
  [11 <./dep.png>] [12]
-
-LaTeX Warning: Citation `msnr-portal' on page 13 undefined on input line 287.
-
-
-LaTeX Warning: Citation `rad' on page 13 undefined on input line 287.
-
 [13
 
 ]
+<msnr-arch.png, id=271, 714.16812pt x 287.57437pt>
+File: msnr-arch.png Graphic file (type png)
+<use msnr-arch.png>
+Package pdftex.def Info: msnr-arch.png  used on input line 311.
+(pdftex.def)             Requested size: 383.3974pt x 154.38391pt.
+ [14] [15 <./msnr-arch.png>] [16
 
-LaTeX Warning: Citation `elix' on page 14 undefined on input line 294.
+] [17] [18] [19
 
+] [20
 
-LaTeX Warning: Citation `exunit' on page 14 undefined on input line 297.
+] [21
 
-
-LaTeX Warning: Citation `ecto' on page 14 undefined on input line 297.
-
-
-LaTeX Warning: Citation `phoenix' on page 14 undefined on input line 297.
-
-[14
+] [22
 
 ]
-
-LaTeX Warning: Reference `lst:desc' on page 15 undefined on input line 305.
-
-[15] [16] [17
-
-] [18
-
-] [19
-
-] (AnaPetrovicMasterRad.bbl [20
+(AnaPetrovicMasterRad.bbl [23
 
 ]
 bibitemlist
@@ -1269,14 +1216,14 @@ uSansMono-TLF/m/n/12 https : / / www .
  []
 
 
-Underfull \hbox (badness 3907) in paragraph at lines 26--28
+Underfull \hbox (badness 3907) in paragraph at lines 35--37
 []\T1/lmr/m/n/12 Zvani£na stra-ni-ca pro-gram-skog je-zi-ka Eli-xir.  on-line a
 t: []$\T1/DejaVuSansMono-TLF/m/n/12 https : / /
  []
 
-[21
+[24
 
-]) [22]
+]) [25]
 \tf@toc=\write5
 \openout5 = `AnaPetrovicMasterRad.toc'.
 
@@ -1289,20 +1236,17 @@ LaTeX Font Warning: Size substitutions with differences
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
 
-LaTeX Warning: There were undefined references.
-
-
 LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
 Package rerunfilecheck Info: File `AnaPetrovicMasterRad.out' has not changed.
-(rerunfilecheck)             Checksum: 00777DACA982CEDC04A7E357627FEF15;2608.
+(rerunfilecheck)             Checksum: 25B94257686B890E65AE42A7015D9FA5;3198.
  ) 
 Here is how much of TeX's memory you used:
- 18540 strings out of 476334
- 289779 string characters out of 5787972
+ 18568 strings out of 476334
+ 290112 string characters out of 5787972
  1921382 words of memory out of 5000000
- 38560 multiletter control sequences out of 15000+600000
- 592668 words of font info for 79 fonts, out of 8000000 for 9000
+ 38576 multiletter control sequences out of 15000+600000
+ 596932 words of font info for 80 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  90i,11n,90p,1955b,1250s stack positions out of 10000i,1000n,20000p,200000b,200000s
 {C:/Users/panap/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ec.enc}{C
@@ -1323,10 +1267,11 @@ X/fonts/type1/public/lm/lmr12.pfb><C:/Users/panap/AppData/Local/Programs/MiKTeX
 /fonts/type1/public/lm/lmr7.pfb><C:/Users/panap/AppData/Local/Programs/MiKTeX/f
 onts/type1/public/lm/lmr8.pfb><C:/Users/panap/AppData/Local/Programs/MiKTeX/fon
 ts/type1/public/lm/lmri10.pfb><C:/Users/panap/AppData/Local/Programs/MiKTeX/fon
-ts/type1/public/lm/lmri12.pfb>
-Output written on AnaPetrovicMasterRad.pdf (26 pages, 432489 bytes).
+ts/type1/public/lm/lmri12.pfb><C:/Users/panap/AppData/Local/Programs/MiKTeX/fon
+ts/type1/public/lm/lmri8.pfb>
+Output written on AnaPetrovicMasterRad.pdf (29 pages, 594481 bytes).
 PDF statistics:
- 455 PDF objects out of 1000 (max. 8388607)
- 126 named destinations out of 1000 (max. 500000)
- 128 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 527 PDF objects out of 1000 (max. 8388607)
+ 136 named destinations out of 1000 (max. 500000)
+ 157 words of extra memory for PDF output out of 10000 (max. 10000000)
 

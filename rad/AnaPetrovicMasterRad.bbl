@@ -18,15 +18,24 @@ Adresa sa implementacijom portala msnr.
 \newblock on-line at:
   \url{https://www.geeksforgeeks.org/functional-programming-paradigm/}.
 
+\bibitem{rest}
+Rest architectural style.
+\newblock on-line at:
+  \url{https://www.ics.uci.edu/~fielding/pubs/dissertation/rest_arch_style.htm}.
+
 \bibitem{ecto}
 Zvanična dokumentacija biblioteke ecto.
 \newblock on-line at: \url{https://hexdocs.pm/ecto/Ecto.html}.
+
+\bibitem{postgre}
+Zvanična stranica baze podataka postgresql.
+\newblock on-line at: \url{https://www.postgresql.org}.
 
 \bibitem{elix}
 {Zvanična stranica programskog jezika Elixir}.
 \newblock on-line at: \url{https://elixir-lang.org/}.
 
-\bibitem{phoenix}
+\bibitem{phx}
 Zvanična stranica razvojnog okruženja phoenix.
 \newblock on-line at: \url{https://www.phoenixframework.org}.
 

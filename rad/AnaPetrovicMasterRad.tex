@@ -283,20 +283,50 @@ Programming Interface} )} obezbeđuje čist kod i jednostavne i kontrolisane jed
 \chapter{Portal MSNR}
 \label{chp:msnr}
 
-%TODO 
-\par Aplikacija koja   \cite{msnr-portal} \cite{rad}
+\par K$\hat{o}$d aplikacije pod nazivom \emph{portal MSNR} koja će biti testirana javno je dostupan na \emph{GitHub-u} \cite{msnr-portal}. Portal MSNR je veb aplikacija namenjena praćenju i upravljanju aktivnostima kursa \emph{Metodologija stručnog i naučnog rada} \cite{rad}. Studenti na ovom kursu treba da steknu različite veštine koje se tiču pravilnog pisanja i recenziranja naučnih radova, pisanja CV-a, držanja prezentacija, i komunikacije u radu na timskim projektima. 
 
-\par Testiranje različitih slojeva aplikacije MSNR portal će u nastavku rada biti sprovedeno u narednim koracima. Za početak će se testirati individualne funkcije i upravljači koji barataju zahtevima i odgovorima u okviru koda za serverski deo aplikacije napisanog u Elixir programskom jeziku pomoću razvojnog okvira Phoenix. Nakon toga, potrebno je testirati integraciju aplikacionog interfejsa sa bazom podataka --- integracioni testovi koji simuliraju zahteve API-ju i verifikuju odgovore od baze. TODO jos ovde o tome .... 
+\section{Funkcionalnosti i osnovni entiteti portala}
+\par Različite aktivnosti na kursu \emph{Metodologija stručnog i naučnog rada} implementirane su kao funkcionalnosti aplikacije. Korisnik portala može imati jednu od dve uloge: \emph{student} ili \emph{profesor}. Student na početku mora da podnese zahtev za registraciju, koju nakon toga odobrava profesor, i zatim student ima mogućnost da se prijavi na portal. Jedna od obaveza studenata ne kursu jeste pisanje seminarskog rada --- profesor vrši odabir tema za tekuću godinu, a studenti treba da prijave svoju grupu za izradu seminarskog rada. Student ima i opciju da se prijavi za recenziranje radova drugih studenata, ukoliko to želi. Drugi zadatak koji se očekuje od studenata jeste pisanje CV-a. U okviru portala, student može priložiti tri različite vrste dokumenata --- prvu verziju seminarskog rada, recenzije, i svoju prvu verziju CV-a. Profesor, pored toga što vrši pregled zahteva za registraciju i odabir tema, ima mogućnost dodavanja svih aktivnosti tokom godine, i na kraju --- njihovo ocenjivanje.
+
+\subsection{Entiteti}
+\par Osnovni entiteti aplikacije predstavljeni su tabelama u bazi podataka i relacijama između njih. Svaki od entiteta će detaljnije biti objašnjen kasnije, pri njihovom pojedinačnom testiranju, a njihovi nazivi dati su sledećom listom: 
+\begin{itemize}
+\item \textbf{Zahtev za registraciju studenata} --- tabela \emph{student{\textunderscore}registrations}
+\item \textbf{Korisnik} --- tabela \emph{users}
+\item \textbf{Semestar} --- tabela \emph{semester}
+\item \textbf{Student} --- tabele \emph{students} i \emph{student{\textunderscore}semester}
+\item \textbf{Grupa}  --- tabela \emph{groups} 
+\item \textbf{Tema seminarskog rada} --- tabela \emph{topics}
+\item \textbf{Aktivnost i tip aktivnosti} --- tabele \emph{activities} i \emph{activity{\textunderscore}types}
+\item \textbf{Dodeljene aktivnosti} --- tabela \emph{assignments}
+\item \textbf{Dokument} --- tabele \emph{documents} i \emph{assignments{\textunderscore}documents}
+\end{itemize}
+
+\section{Arhitektura portala}
+\par MSNR portal je primer klijent/server aplikacije koja se sastoji od tri sloja. Klijentski sloj implementiran je u programskom jeziku \emph{Elm}, kao jednostranična aplikacija (eng. \emph{Single Page Application --- SPA}) koja predstavlja korisnički interfejs. U sredini se nalazi aplikacioni veb interfejs koji je implementiran u \emph{Elixir} programskom jeziku pomoću razvojnog okvira \emph{Phoenix}, u stilu arhitekture \emph{REST} (eng. \emph{Representational State Transfer}) \cite{rest}. Treći sloj predstavlja relaciona baza podataka, i sistem za upravljanje bazom \emph{PostgreSQL} \cite{postgre}. Slika \ref{fig:msnr-arch} prikazuje navedenu arhitekturu. 
+
+\begin{figure}[!ht]
+  \centering
+  \label{fig:msnr-arch}
+  \includegraphics[width=0.9\textwidth]{msnr-arch.png}
+  \caption{Arhitektura portala MSNR\newline \tiny{\emph{slika preuzeta iz: \href{http://poincare.matf.bg.ac.rs/~milena/masteri/2022_NemanjaSubotic/MasterRadNemanjaSubotic.pdf}{MasterRadNemanjaSubotic.pdf}}}}
+\end{figure}
+
+\par Testiranje različitih slojeva aplikacije MSNR portal će biti sprovedeno u narednim poglavljima. Na početku će se testirati individualne funkcije i upravljači koji barataju zahtevima i odgovorima u okviru koda za serverski deo aplikacije. Jedinični testovi koji će to raditi prikazani su u delu \ref{sec:elixunit}. Nakon toga, potrebno je testirati komunikaciju aplikacionog interfejsa sa bazom podataka --- u sekciji \ref{sec:elixint} prikazani su integracioni testovi koji simuliraju zahteve API-ju i verifikuju odgovore od baze. Poglavlje \ref{chp:elm} se odnosi na testove Elm koda, koji se fokusiraju na pojedinačne komponente i funkcije korisničkog interfejsa. Sledeća vrsta testova, prikazana u poglavlju \ref{chp:elmelixir}, su integracioni testovi koji proveraju kako korisnički interfejs funkcioniše zajedno sa API-jem. U poglavlju \ref{chp:e2e} testira se celokupan sistem. Testovi proveravaju da li sve komponente, od korisničkog interfejsa do baze podataka, funkcionišu na ispravan način. Na samom kraju, testirane su perfomanse sistema. Testiranje opterećenja (eng. \emph{Load testing}) --- provera kako API podnosi velike količine korisnika i zahteva, prikazano je u poglavlju \ref{chp:load}.
 
 \chapter{Testiranje serverskog dela aplikacije}
 \label{chp:elixir}
 
-Serverski deo aplikacije MSNR portal napisan je na programskom jeziku Elixir. Elixir je vrlo specifičan jezik, sa konceptima koji mogu biti komplikovani za testiranje. Nije čist funkcionalni jezik, i dinamički je tipiziran. Konkurentost i imutabilnost kao osobine su prisutne i u drugim jezicima, ali na primer rezilijentnost ili OTP (eng. {Open Telecom Platform}) razvojni okvir su vrlo jedinstveni za Elixir (i Erlang). Elixir se prevodi na isti bajtkod kao i Erlang, i pokreće se na Erlang virtuelnoj mašini, poznatoj pod nazivom BEAM.. . jos o elixiru ... Referenca na zvaničnu stranicu \cite{elix} TODO %TODO REF. 
-U većini slučajeva, kod napisan u Elixir-u zavisi od nekoliko Erlang biblioteka. Međutim, kada je testiranje koda u pitanju, alati i biblioteke koji se koriste su jedinstveni za svaki od ova dva jezika. Ovde će se govoriti o testiranju isključivo Elixir koda. 
+\par Razvojni okvir \emph{Phoenix} koristi se za razvoj veb aplikacija u programskom jeziku Elixir \cite{phx}. Zasnovan je na obrascu \emph{model-pogled-upravljač} (eng. \emph{Model-View-Controller pattern, MVC}). Serverski deo aplikacija MSNR portal implementiran je kao \emph{Phoenix} projekat. Preciznije, projekat je u osnovi \emph{Mix} projekat, sa \emph{Phoenix} proširenjima. Pored konfiguracione datoteke \emph{mix.exs}, i direktorijuma \emph{lib} koji sadrži osnovni k$\hat{o}$d aplikacije, kreira se i direktorijum \emph{test}. Unutar ovog direktorijuma će biti smešteni svi testovi vezani za serversku stranu aplikacije. 
 
-Zajedno sa ovim jezikom dolazi njegov razvojni okvir za testiranje, ExUnit \cite{exunit}. U ovom poglavlju biće predstavljeni različiti koncepti testiranja u programskom jeziku Elixir, kroz pisanje testova za serverski deo aplikacije MSNR portal. Na primeru ove aplikacije, objašnjeni su načini pisanja testova za funkcionalni kod. U narednim sekcijama, prikazano je testiranje važnih osobina Elixir programskog jezika, kao što su tipovi podataka, OTP razvojni okvir, Ecto \cite{ecto}, Phoenix razvojno okruženje\cite{phoenix}.
+\par  TODO...
+
+\par K$\hat{o}$d napisan u Elixir-u zavisi od nekoliko Erlang biblioteka. Međutim, kada je testiranje koda u pitanju, alati i biblioteke koji se koriste su jedinstveni za svaki od ova dva jezika. Ovde će se govoriti o testiranju isključivo Elixir koda. 
+
+\par Zajedno sa ovim jezikom dolazi njegov razvojni okvir za testiranje, ExUnit \cite{exunit}. U ovom poglavlju biće predstavljeni različiti koncepti testiranja u programskom jeziku Elixir, kroz pisanje testova za serverski deo aplikacije MSNR portal. Na primeru ove aplikacije, objašnjeni su načini pisanja testova za funkcionalni kod. U narednim sekcijama, prikazano je testiranje v
 
 \section{Testiranje jedinica koda}
+\label{sec:elixunit}
 
 \textit{ExUnit} je Elixir-ov ugrađeni razvojni okvir koji ima sve što je neophodno za iscrpno testiranje koda i biće osnova za sve testove kroz ovo poglavlje. S obzirom na to da je Elixir funkcionalni jezik, može se diskutovati o tome šta se smatra "jedinicom". Uobičajeno je da se jedinični testovi fokusiraju na pojedinačnu funkciju i njenu logiku, kako bi se opseg testa održavao što užim, radi bržeg pronalaženja grešaka. Međutim, nekada ima smisla da se u opseg testa uključi više modula ili procesa, i time se proširi definicija jedinice koda. Znati kada treba proširiti taj opseg može mnogo uticati na smanjivanje kompleksnosti i održavanje samih testova. 
 
@@ -326,6 +356,7 @@ end
 
 
 \section{Integraciono testiranje}
+\label{sec:elixint}
 \par Nakon dobro istestiranih pojedinačnih funkcija i modula, potrebno je proveriti da li komponente funkcionišu ispravno kao celina. U ovom poglavlju biće prikazani testovi koji proveravaju da li različiti delovi sistema koji komuniciraju međusobno, kao i sa nekim eksternim sistemima, rade to na ispravan način.
 
 \subsection{Test dubleri}
@@ -343,6 +374,9 @@ U aplikaciji MSNR portal --- TODO konkretni primeri ...
 
 \chapter{Testiranje celokupnog sistema --- End to End}
 \label{chp:e2e}
+
+\chapter{Testiranje opterećenja}
+\label{chp:load}
 
 % ------------------------------------------------------------------------------
 \chapter{Zaključak}
