@@ -2,33 +2,37 @@
 \contentsline {chapter}{\chapternumberline {1}Uvod}{1}{chapter.1}%
 \contentsline {chapter}{\chapternumberline {2}Funkcionalna paradigma}{2}{chapter.2}%
 \contentsline {section}{\numberline {2.1}Karakteristike funkcionalnih jezika}{2}{section.2.1}%
-\contentsline {subsection}{Čista funkcija}{3}{section*.2}%
-\contentsline {subsection}{Rekurzija}{3}{section*.3}%
-\contentsline {subsection}{Funkcije kao građani prvog reda}{3}{section*.4}%
-\contentsline {subsection}{Funkcije višeg reda}{4}{section*.5}%
-\contentsline {subsection}{Transparentnost referenci}{4}{section*.6}%
+\contentsline {subsection}{Odsustvo promenljivih}{3}{section*.2}%
+\contentsline {subsection}{Transparentnost referenci}{3}{section*.3}%
+\contentsline {subsection}{Čista funkcija}{3}{section*.4}%
+\contentsline {subsection}{Rekurzija}{4}{section*.5}%
+\contentsline {subsection}{Funkcije kao građani prvog reda}{4}{section*.6}%
+\contentsline {subsection}{Funkcije višeg reda}{4}{section*.7}%
 \contentsline {section}{\numberline {2.2}Testiranje uopšteno (smisliti naslov)}{5}{section.2.2}%
-\contentsline {subsection}{Organizacija testova}{5}{section*.7}%
-\contentsline {subsubsection}{Testovi jedinica koda}{7}{section*.8}%
-\contentsline {subsubsection}{Anatomija jediničnih testova}{7}{section*.9}%
-\contentsline {subsubsection}{Integracioni testovi}{8}{section*.10}%
-\contentsline {section}{\numberline {2.3}Testiranje funkcionalnih programa}{10}{section.2.3}%
-\contentsline {subsection}{Testiranje čistih funkcija}{10}{section*.11}%
-\contentsline {subsubsection}{Refaktorisanje ka čistim funkcijama}{10}{section*.12}%
-\contentsline {subsection}{Izolovanje koda}{11}{section*.13}%
-\contentsline {chapter}{\chapternumberline {3}Portal MSNR}{13}{chapter.3}%
-\contentsline {section}{\numberline {3.1}Funkcionalnosti i osnovni entiteti portala}{13}{section.3.1}%
-\contentsline {subsection}{Entiteti}{14}{section*.14}%
-\contentsline {section}{\numberline {3.2}Arhitektura portala}{14}{section.3.2}%
-\contentsline {chapter}{\chapternumberline {4}Testiranje serverskog dela aplikacije}{16}{chapter.4}%
-\contentsline {section}{\numberline {4.1}Testiranje jedinica koda}{16}{section.4.1}%
-\contentsline {subsection}{Pisanje ExUnit testova}{18}{section*.15}%
-\contentsline {section}{\numberline {4.2}Integraciono testiranje}{18}{section.4.2}%
-\contentsline {subsection}{Test dubleri}{18}{section*.16}%
-\contentsline {subsection}{Neki podnaslov}{18}{section*.17}%
-\contentsline {chapter}{\chapternumberline {5}Testiranje klijentskog dela aplikacije}{19}{chapter.5}%
-\contentsline {chapter}{\chapternumberline {6}Integracija klijentske i serverske strane}{20}{chapter.6}%
-\contentsline {chapter}{\chapternumberline {7}Testiranje celokupnog sistema --- End to End}{21}{chapter.7}%
-\contentsline {chapter}{\chapternumberline {8}Testiranje opterećenja}{22}{chapter.8}%
-\contentsline {chapter}{\chapternumberline {9}Zaključak}{23}{chapter.9}%
-\contentsline {chapter}{Bibliografija}{24}{chapter*.18}%
+\contentsline {subsection}{Organizacija testova}{6}{section*.8}%
+\contentsline {subsubsection}{Testovi jedinica koda}{6}{section*.9}%
+\contentsline {subsubsection}{Anatomija jediničnih testova}{7}{section*.10}%
+\contentsline {subsubsection}{Integracioni testovi}{9}{section*.11}%
+\contentsline {subsubsection}{Sistemski testovi}{10}{section*.12}%
+\contentsline {section}{\numberline {2.3}Testiranje funkcionalnih programa}{11}{section.2.3}%
+\contentsline {subsection}{Testiranje čistih funkcija}{11}{section*.13}%
+\contentsline {subsubsection}{Refaktorisanje ka čistim funkcijama}{11}{section*.14}%
+\contentsline {subsection}{Izolovanje koda}{12}{section*.15}%
+\contentsline {chapter}{\chapternumberline {3}Portal MSNR}{14}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Funkcionalnosti i osnovni entiteti portala}{14}{section.3.1}%
+\contentsline {subsection}{Entiteti}{15}{section*.16}%
+\contentsline {section}{\numberline {3.2}Arhitektura portala}{15}{section.3.2}%
+\contentsline {chapter}{\chapternumberline {4}Testiranje serverskog dela aplikacije}{17}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Testiranje jedinica koda}{17}{section.4.1}%
+\contentsline {subsection}{Testiranje komunikacije sa bazom podataka}{20}{section*.17}%
+\contentsline {subsubsection}{Testiranje polja i tipova}{21}{section*.18}%
+\contentsline {subsubsection}{Testiranje skupa promena}{22}{section*.19}%
+\contentsline {section}{\numberline {4.2}Integraciono testiranje}{22}{section.4.2}%
+\contentsline {subsection}{Test dubleri}{23}{section*.20}%
+\contentsline {subsection}{Neki podnaslov}{23}{section*.21}%
+\contentsline {chapter}{\chapternumberline {5}Testiranje klijentskog dela aplikacije}{24}{chapter.5}%
+\contentsline {chapter}{\chapternumberline {6}Integracija klijentske i serverske strane}{25}{chapter.6}%
+\contentsline {chapter}{\chapternumberline {7}Testiranje celokupnog sistema --- End to End}{26}{chapter.7}%
+\contentsline {chapter}{\chapternumberline {8}Testiranje opterećenja}{27}{chapter.8}%
+\contentsline {chapter}{\chapternumberline {9}Zaključak}{28}{chapter.9}%
+\contentsline {chapter}{Bibliografija}{29}{chapter*.22}%
