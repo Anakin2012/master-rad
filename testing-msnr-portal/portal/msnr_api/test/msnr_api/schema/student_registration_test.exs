@@ -1,6 +1,15 @@
 defmodule MsnrApi.Schema.StudentRegistrationTest do
   use ExUnit.Case
+  alias Ecto.Changeset
   alias MsnrApi.StudentRegistrations.StudentRegistration
+
+  @required_fields [
+    :status
+  ]
+
+  @optional_fields [
+    :id, :email, :first_name, :index_number, :last_name, :semester_id, :inserted_at, :updated_at
+  ]
 
   @expected_fields_with_types [
     {:id, :id},
@@ -50,4 +59,44 @@ defmodule MsnrApi.Schema.StudentRegistrationTest do
     end
   end
 
+  describe "changeset/2" do
+
+    test "success: returns a valid changeset when given valid arguments" do
+      valid_params = %{
+        "status" => :accepted
+      }
+      changeset = StudentRegistration.changeset(%StudentRegistration{}, valid_params)
+
+      assert %Changeset{valid?: true, changes: changes} = changeset
+
+      for field <- @required_fields do
+        actual = Map.get(changes, field)
+        expected = valid_params[Atom.to_string(field)]
+        assert actual == expected,
+          "Values did not match for: #{field}\nexpected: #{inspect(expected)}\nactual: #{inspect(actual)}"
+      end
+    end
+
+    test "error: returns an invalid changeset when given uncastable values" do
+      invalid_params = %{
+        "status" => NaiveDateTime.local_now()
+      }
+
+      assert %Changeset{valid?: false, errors: errors} = StudentRegistration.changeset(%StudentRegistration{}, invalid_params)
+
+      assert errors[:status], "the field :status is misssing from errors."
+      {_, meta} = errors[:status]
+      assert meta[:validation] == :cast,
+      "The validation type #{meta[:validaiton]} is incorrect."
+    end
+
+    test "error: returns an error changeset when default fields are missing" do
+      params = %{}
+
+      assert %Changeset{valid?: true, changes: changes} = StudentRegistration.changeset(%StudentRegistration{}, params)
+
+      refute changes[:status], "The default field :status is not default when it should be."
+    end
+
+  end
 end

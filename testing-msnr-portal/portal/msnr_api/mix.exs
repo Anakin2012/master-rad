@@ -44,7 +44,8 @@ defmodule MsnrApi.MixProject do
       {:jason, "~> 1.2"},
       {:plug_cowboy, "~> 2.5"},
       {:pbkdf2_elixir, "~> 1.4"},
-      {:cors_plug, "~> 3.0"}
+      {:cors_plug, "~> 3.0"},
+      {:faker, "~> 0.17", only: :test}
     ]
   end
 

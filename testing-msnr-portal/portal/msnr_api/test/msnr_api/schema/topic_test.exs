@@ -1,6 +1,15 @@
 defmodule MsnrApi.Schema.TopicTest do
-  use ExUnit.Case
+  use MsnrApi.Support.SchemaCase
   alias MsnrApi.Topics.Topic
+
+  @required_fields [
+    {:title, :string},
+    {:semester_id, :id}
+  ]
+
+  @optional_fields [
+    :id, :number, :inserted_at, :updated_at
+  ]
 
   @expected_fields_with_types [
     {:id, :id},

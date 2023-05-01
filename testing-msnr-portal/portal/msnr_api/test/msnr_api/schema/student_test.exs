@@ -1,6 +1,16 @@
 defmodule MsnrApi.Schema.StudentTest do
-  use ExUnit.Case
+  use MsnrApi.Support.SchemaCase
   alias MsnrApi.Students.Student
+  alias MsnrApi.Accounts.User
+  alias MsnrApi.Semesters.Semester
+
+  @required_fields [
+    {:index_number, :string}
+  ]
+
+  @optional_fields [
+    :user_id, :inserted_at, :updated_at
+  ]
 
   @expected_fields_with_types [
     {:user_id, :integer},
@@ -21,4 +31,8 @@ defmodule MsnrApi.Schema.StudentTest do
     end
   end
 
+  describe "changeset/2" do
+
+
+  end
 end
