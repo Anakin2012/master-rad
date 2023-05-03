@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 23.1) (preloaded format=pdflatex 2023.4.5)  1 MAY 2023 22:05
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 23.1) (preloaded format=pdflatex 2023.4.5)  3 MAY 2023 16:02
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1064,7 +1064,7 @@ LaTeX Font Warning: Font shape `T1/fos/m/n' undefined
 LaTeX Font Warning: Font shape `T1/fos/m/n' in size <16> not available
 (Font)              size <17.28> substituted on input line 111.
 
-<matf.png, id=71, 346.29375pt x 409.53pt>
+<matf.png, id=75, 346.29375pt x 409.53pt>
 File: matf.png Graphic file (type png)
 <use matf.png>
 Package pdftex.def Info: matf.png  used on input line 111.
@@ -1161,13 +1161,13 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <7> on input line 202.
 LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <5> on input line 202.
-<piramidanova.png, id=170, 531.48563pt x 297.36093pt>
+<piramidanova.png, id=175, 531.48563pt x 297.36093pt>
 File: piramidanova.png Graphic file (type png)
 <use piramidanova.png>
 Package pdftex.def Info: piramidanova.png  used on input line 208.
 (pdftex.def)             Requested size: 340.8013pt x 190.67787pt.
  [6] [7 <./piramidanova.png>] [8] [9] [10] [11]
-<dep.png, id=250, 557.08125pt x 286.82156pt>
+<dep.png, id=255, 557.08125pt x 286.82156pt>
 File: dep.png Graphic file (type png)
 <use dep.png>
 Package pdftex.def Info: dep.png  used on input line 296.
@@ -1175,16 +1175,16 @@ Package pdftex.def Info: dep.png  used on input line 296.
  [12 <./dep.png>] [13] [14
 
 ] [15]
-<msnr-arch.png, id=284, 714.16812pt x 287.57437pt>
+<msnr-arch.png, id=289, 714.16812pt x 287.57437pt>
 File: msnr-arch.png Graphic file (type png)
 <use msnr-arch.png>
-Package pdftex.def Info: msnr-arch.png  used on input line 351.
+Package pdftex.def Info: msnr-arch.png  used on input line 350.
 (pdftex.def)             Requested size: 383.3974pt x 154.38391pt.
  [16 <./msnr-arch.png>] [17
 
 ]
 LaTeX Font Info:    Font shape `T1/DejaVuSansMono-TLF/m/n' will be
-(Font)              scaled to size 8.09995pt on input line 378.
+(Font)              scaled to size 8.09995pt on input line 377.
  [18] [19] [20] [21] [22]
 [23] [24
 
@@ -1227,13 +1227,13 @@ LaTeX Font Warning: Size substitutions with differences
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
 Package rerunfilecheck Info: File `AnaPetrovicMasterRad.out' has not changed.
-(rerunfilecheck)             Checksum: 0597AB4B0109B35935F38529051B16D8;3220.
+(rerunfilecheck)             Checksum: 0EC1EF8E5801229139E4F4BBD1BBFF0F;3644.
  ) 
 Here is how much of TeX's memory you used:
- 18734 strings out of 476334
- 292255 string characters out of 5787972
+ 18735 strings out of 476334
+ 292268 string characters out of 5787972
  1966382 words of memory out of 5000000
- 38662 multiletter control sequences out of 15000+600000
+ 38663 multiletter control sequences out of 15000+600000
  600548 words of font info for 83 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  90i,12n,90p,1624b,2168s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -1257,9 +1257,9 @@ X/fonts/type1/public/lm/lmr7.pfb><C:/Users/panap/AppData/Local/Programs/MiKTeX/
 fonts/type1/public/lm/lmr8.pfb><C:/Users/panap/AppData/Local/Programs/MiKTeX/fo
 nts/type1/public/lm/lmri10.pfb><C:/Users/panap/AppData/Local/Programs/MiKTeX/fo
 nts/type1/public/lm/lmri12.pfb>
-Output written on AnaPetrovicMasterRad.pdf (32 pages, 618344 bytes).
+Output written on AnaPetrovicMasterRad.pdf (32 pages, 619445 bytes).
 PDF statistics:
- 633 PDF objects out of 1000 (max. 8388607)
+ 637 PDF objects out of 1000 (max. 8388607)
  214 named destinations out of 1000 (max. 500000)
- 157 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 165 words of extra memory for PDF output out of 10000 (max. 10000000)
 

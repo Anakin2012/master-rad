@@ -23,16 +23,16 @@
 \contentsline {subsection}{Entiteti}{15}{section*.16}%
 \contentsline {section}{\numberline {3.2}Arhitektura portala}{16}{section.3.2}%
 \contentsline {chapter}{\chapternumberline {4}Testiranje serverskog dela aplikacije}{17}{chapter.4}%
-\contentsline {section}{\numberline {4.1}Testiranje jedinica koda}{17}{section.4.1}%
-\contentsline {subsection}{Testiranje komunikacije sa bazom podataka}{20}{section*.17}%
-\contentsline {subsubsection}{Testiranje polja i tipova}{21}{section*.18}%
-\contentsline {subsubsection}{Testiranje skupa promena}{22}{section*.19}%
-\contentsline {section}{\numberline {4.2}Integraciono testiranje}{22}{section.4.2}%
-\contentsline {subsection}{Test dubleri}{23}{section*.20}%
-\contentsline {subsection}{Neki podnaslov}{23}{section*.21}%
+\contentsline {section}{\numberline {4.1}Testiranje jedinica koda u programskom jeziku Elixir}{17}{section.4.1}%
+\contentsline {section}{\numberline {4.2}Testiranje komunikacije sa bazom podataka}{20}{section.4.2}%
+\contentsline {subsection}{Testiranje polja i tipova}{21}{section*.17}%
+\contentsline {subsection}{Testiranje skupa promena}{22}{section*.18}%
+\contentsline {section}{\numberline {4.3}Integraciono testiranje}{22}{section.4.3}%
+\contentsline {subsection}{Test dubleri}{23}{section*.19}%
+\contentsline {subsection}{Neki podnaslov}{23}{section*.20}%
 \contentsline {chapter}{\chapternumberline {5}Testiranje klijentskog dela aplikacije}{24}{chapter.5}%
 \contentsline {chapter}{\chapternumberline {6}Testiranje celokupnog sistema --- End to End}{25}{chapter.6}%
 \contentsline {section}{\numberline {6.1}Integracija klijentske i serverske strane}{25}{section.6.1}%
 \contentsline {section}{\numberline {6.2}Testiranje opterećenja}{25}{section.6.2}%
 \contentsline {chapter}{\chapternumberline {7}Zaključak}{26}{chapter.7}%
-\contentsline {chapter}{Bibliografija}{27}{chapter*.22}%
+\contentsline {chapter}{Bibliografija}{27}{chapter*.21}%
