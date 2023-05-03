@@ -27,7 +27,7 @@
 \contentsline {section}{\numberline {4.2}Testiranje komunikacije sa bazom podataka}{20}{section.4.2}%
 \contentsline {subsection}{Testiranje polja i tipova}{21}{section*.17}%
 \contentsline {subsection}{Testiranje skupa promena}{22}{section*.18}%
-\contentsline {section}{\numberline {4.3}Integraciono testiranje}{22}{section.4.3}%
+\contentsline {section}{\numberline {4.3}Integraciono testiranje}{23}{section.4.3}%
 \contentsline {subsection}{Test dubleri}{23}{section*.19}%
 \contentsline {subsection}{Neki podnaslov}{23}{section*.20}%
 \contentsline {chapter}{\chapternumberline {5}Testiranje klijentskog dela aplikacije}{24}{chapter.5}%
