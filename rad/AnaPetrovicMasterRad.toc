@@ -27,12 +27,12 @@
 \contentsline {section}{\numberline {4.2}Testiranje komunikacije sa bazom podataka}{20}{section.4.2}%
 \contentsline {subsection}{Testiranje polja i tipova}{21}{section*.17}%
 \contentsline {subsection}{Testiranje skupa promena}{22}{section*.18}%
-\contentsline {section}{\numberline {4.3}Integraciono testiranje}{23}{section.4.3}%
-\contentsline {subsection}{Test dubleri}{23}{section*.19}%
-\contentsline {subsection}{Neki podnaslov}{23}{section*.20}%
-\contentsline {chapter}{\chapternumberline {5}Testiranje klijentskog dela aplikacije}{24}{chapter.5}%
-\contentsline {chapter}{\chapternumberline {6}Testiranje celokupnog sistema --- End to End}{25}{chapter.6}%
-\contentsline {section}{\numberline {6.1}Integracija klijentske i serverske strane}{25}{section.6.1}%
-\contentsline {section}{\numberline {6.2}Testiranje opterećenja}{25}{section.6.2}%
-\contentsline {chapter}{\chapternumberline {7}Zaključak}{26}{chapter.7}%
-\contentsline {chapter}{Bibliografija}{27}{chapter*.21}%
+\contentsline {section}{\numberline {4.3}Integraciono testiranje}{24}{section.4.3}%
+\contentsline {subsection}{Test dubleri}{25}{section*.19}%
+\contentsline {subsection}{Neki podnaslov}{25}{section*.20}%
+\contentsline {chapter}{\chapternumberline {5}Testiranje klijentskog dela aplikacije}{26}{chapter.5}%
+\contentsline {chapter}{\chapternumberline {6}Testiranje celokupnog sistema --- End to End}{27}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Integracija klijentske i serverske strane}{27}{section.6.1}%
+\contentsline {section}{\numberline {6.2}Testiranje opterećenja}{27}{section.6.2}%
+\contentsline {chapter}{\chapternumberline {7}Zaključak}{28}{chapter.7}%
+\contentsline {chapter}{Bibliografija}{29}{chapter*.21}%

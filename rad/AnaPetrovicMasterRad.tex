@@ -35,8 +35,8 @@
         for,if,import,defmodule,defprotocol,%
         nil,defmacrop,defoverridable,defimpl,%
         super,fn,raise,true,try,end,with,field,type%
-        unless, |>, <-, \}, \{,},
-    otherkeywords={->, \%\{, \, (, )},
+        unless, |>, <-, \}, \{, \%},
+    otherkeywords={->},
     sensitive=true,
     morecomment=[l]{\#},
     morecomment=[n]{/*}{*/},
@@ -78,13 +78,13 @@
 % Ime kandidata na srpskom jeziku (u odabranom pismu)
 \autor{Ana Petrović}
 % Naslov teze na srpskom jeziku (u odabranom pismu)
-\naslov{Testiranje funkcionalnih programa u programskim jezicima Elm i Elixir}
+\naslov{Testiranje softvera u funkcionalnim programskim jezicima Elm i Elixir}
 % Godina u kojoj je teza predana komisiji
 \godina{2023}
 % Ime i afilijacija mentora (u odabranom pismu)
-\mentor{dr Ime\textsc{Prezime}, redovan profesor\\ Univerzitet u Beogradu, Matematički fakultet}
+\mentor{dr Milena \textsc{Vujošević Janičić}, redovan profesor\\ Univerzitet u Beogradu, Matematički fakultet}
 % Ime i afilijacija prvog člana komisije (u odabranom pismu)
-\komisijaA{dr Ime \textsc{Prezime}, vanredni profesor\\ University of Disneyland, Nedođija}
+\komisijaA{dr Ime \textsc{Prezime}, vanredni profesor\\ Univerzitet u Beogradu, Matematički fakultet}
 % Ime i afilijacija drugog člana komisije (u odabranom pismu)
 \komisijaB{dr Ime \textsc{Prezime}, docent\\ Univerzitet u Beogradu, Matematički fakultet}
 % Ime i afilijacija trećeg člana komisije (opciono)
@@ -492,12 +492,67 @@ defmodule MsnrApi.Schema.AssignmentTest do
 
 
 \subsection{Testiranje skupa promena}
-\par Funkcija \emph{changeset} obuhvata manipulacije i transformacije podataka, kao i njihovu validaciju pre unosa u bazu podataka. Svrha ove funkcije je da svi podaci koji se unose ili ažuriraju u bazi budu ispravni i u skladu sa zahtevima aplikacije. Funkcija \emph{changeset/2} iz primera koda \ref{lst:schema} kao argumente prihvata strukturu \emph{Assignment} i validira unos podataka u tabelu pod istim nazivom. Unutar funkcije navode se obavezna polja  
+\par Funkcija \emph{changeset} obuhvata različite transformacije podataka, kao i njihovu validaciju pre unosa u bazu podataka. Svrha ove funkcije je da svi podaci koji se unose ili ažuriraju u bazi budu ispravni i u skladu sa zahtevima aplikacije. 
+\par Testovi koji se odnose na ove funkcije implementirani su unutar describe bloka ''changeset/2''. Oni pokrivaju i uspešan scenario, i neke od slučajeva greški. 
+Funkcija \emph{changeset/2} iz primera koda \ref{lst:schema}, koja kao argumente prihvata strukturu \emph{Assignment} i listu atributa, ima ulogu da validira prisustvo dva polja u tabeli \emph{assignments} --- polja \emph{comment} i \emph{grade}. Testovi koji proveravaju ispravnost ove funkcije dati su u primeru koda \ref{lst:changeset}.
 
+\begin{lstlisting}[language=elixir, caption={Testovi za proveru funkcije changeset/2},captionpos=b, label={lst:changeset}]
+describe "changeset/2" do
+  test "success: returns a valid changeset when given valid arguments" do
+      valid_params = valid_params(@required_fields)
+      changeset = Assignment.changeset(%Assignment{}, valid_params)
+
+      assert %Changeset{valid?: true, changes: changes} = changeset
+
+      for {field, _} <- @required_fields do
+        actual = Map.get(changes, field)
+        expected = valid_params[Atom.to_string(field)]
+        assert actual == expected,
+          "Values did not match for: #{field}\nexpected: #{inspect(expected)}\nactual: #{inspect(actual)}"
+      end
+    end 
+    
+   test "error: returns an invalid changeset when given uncastable values" do
+      invalid_params = invalid_params(@required_fields)
+
+      assert %Changeset{valid?: false, errors: errors} = Assignment.changeset(%Assignment{}, invalid_params)
+
+      for {field, _} <- @required_fields do
+        assert errors[field], "the field: #{field} is missing from errors."
+
+        {_, meta} = errors[field]
+        assert meta[:validation] == :cast,
+          "The validation type #{meta[:validaiton]} is incorrect."
+      end
+    end
+
+    test "error: returns an error changeset when required fields are missing" do
+      params = %{}
+
+      assert %Changeset{valid?: false, errors: errors} = Assignment.changeset(%Assignment{}, params)
+
+      for {field, _} <- @required_fields do
+        assert errors[field], "The field #{field} is missing from errors."
+
+        {_, meta} = errors[field]
+
+        assert meta[:validation] == :required,
+        "The validation type #{meta[:validation]} is incorrect."
+      end
+
+      for field <- @optional_fields do
+        refute errors[field], "The optional field #{field} is required when it shouldn't be."
+      end
+    end
+
+end
+\end{lstlisting}
+
+\par 
 
 \section{Integraciono testiranje}
 \label{sec:elixint}
-\par Nakon dobro istestiranih pojedinačnih funkcija i modula, potrebno je proveriti da li komponente funkcionišu ispravno kao celina. U ovom poglavlju biće prikazani testovi koji proveravaju da li različiti delovi sistema koji komuniciraju međusobno, kao i sa nekim eksternim sistemima, rade to na ispravan način.
+\par Nakon dobro istestiranih pojedinačnih funkcija i modula, potrebno je proveriti da li komponente funkcionišu ispravno kao celina. U ovoj sekciji biće prikazani testovi koji proveravaju da li različiti delovi sistema koji komuniciraju međusobno, kao i sa nekim eksternim sistemima, rade to na ispravan način.
 
 \subsection{Test dubleri}
 

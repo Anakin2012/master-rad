@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 23.1) (preloaded format=pdflatex 2023.4.5)  3 MAY 2023 19:28
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 23.1) (preloaded format=pdflatex 2023.4.5)  5 MAY 2023 16:42
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1186,11 +1186,11 @@ Package pdftex.def Info: msnr-arch.png  used on input line 350.
 LaTeX Font Info:    Font shape `T1/DejaVuSansMono-TLF/m/n' will be
 (Font)              scaled to size 8.09995pt on input line 377.
  [18] [19] [20] [21] [22]
-[23] [24
+[23] [24] [25] [26
 
-] [25
+] [27
 
-] (AnaPetrovicMasterRad.bbl [26
+] (AnaPetrovicMasterRad.bbl [28
 
 ]
 bibitemlist
@@ -1212,9 +1212,9 @@ Underfull \hbox (badness 3907) in paragraph at lines 35--37
 t: []$\T1/DejaVuSansMono-TLF/m/n/12 https : / /
  []
 
-[27
+[29
 
-]) [28]
+]) [30]
 \tf@toc=\write5
 \openout5 = `AnaPetrovicMasterRad.toc'.
 
@@ -1226,17 +1226,20 @@ LaTeX Font Warning: Size substitutions with differences
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
 Package rerunfilecheck Info: File `AnaPetrovicMasterRad.out' has not changed.
 (rerunfilecheck)             Checksum: 0EC1EF8E5801229139E4F4BBD1BBFF0F;3644.
  ) 
 Here is how much of TeX's memory you used:
- 18735 strings out of 476334
- 292268 string characters out of 5787972
- 1966382 words of memory out of 5000000
- 38663 multiletter control sequences out of 15000+600000
+ 18824 strings out of 476334
+ 293480 string characters out of 5787972
+ 2073382 words of memory out of 5000000
+ 38700 multiletter control sequences out of 15000+600000
  600548 words of font info for 83 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 90i,12n,90p,1624b,2168s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 90i,12n,90p,1624b,2166s stack positions out of 10000i,1000n,20000p,200000b,200000s
 {C:/Users/panap/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ec.enc}{C
 :/Users/panap/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-rm.enc}{C:/Us
 ers/panap/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/dejavu/dejavumono_t1-ty
@@ -1257,9 +1260,9 @@ X/fonts/type1/public/lm/lmr7.pfb><C:/Users/panap/AppData/Local/Programs/MiKTeX/
 fonts/type1/public/lm/lmr8.pfb><C:/Users/panap/AppData/Local/Programs/MiKTeX/fo
 nts/type1/public/lm/lmri10.pfb><C:/Users/panap/AppData/Local/Programs/MiKTeX/fo
 nts/type1/public/lm/lmri12.pfb>
-Output written on AnaPetrovicMasterRad.pdf (32 pages, 621778 bytes).
+Output written on AnaPetrovicMasterRad.pdf (34 pages, 639259 bytes).
 PDF statistics:
- 641 PDF objects out of 1000 (max. 8388607)
- 214 named destinations out of 1000 (max. 500000)
+ 713 PDF objects out of 1000 (max. 8388607)
+ 266 named destinations out of 1000 (max. 500000)
  165 words of extra memory for PDF output out of 10000 (max. 10000000)
 
