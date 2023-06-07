@@ -27,13 +27,17 @@ Rest architectural style.
 Zvanična dokumentacija biblioteke ecto.
 \newblock on-line at: \url{https://hexdocs.pm/ecto/Ecto.html}.
 
+\bibitem{plug}
+Zvanična dokumentacija biblioteke plug.
+\newblock on-line at: \url{https://hexdocs.pm/plug/readme.html}.
+
+\bibitem{hex}
+Zvanična stranica alata hex.
+\newblock on-line at: \url{https://hex.pm/}.
+
 \bibitem{postgre}
 Zvanična stranica baze podataka postgresql.
 \newblock on-line at: \url{https://www.postgresql.org}.
-
-\bibitem{elix}
-{Zvanična stranica programskog jezika Elixir}.
-\newblock on-line at: \url{https://elixir-lang.org/}.
 
 \bibitem{phx}
 Zvanična stranica razvojnog okruženja phoenix.
@@ -43,13 +47,6 @@ Zvanična stranica razvojnog okruženja phoenix.
 M.~Cohn.
 \newblock {\em Succeeding with Agile: Software Development Using Scrum}.
 \newblock A Mike Cohen signature book. Addison-Wesley, 2010.
-
-\bibitem{turing}
-Liesbeth De~Mol.
-\newblock {Turing Machines}.
-\newblock In Edward~N. Zalta, editor, {\em The {Stanford} Encyclopedia of
-  Philosophy}. Metaphysics Research Lab, Stanford University, {W}inter 2021
-  edition, 2021.
 
 \bibitem{testingelixir}
 Andrea Leopardi and Jeffrey Matthias.

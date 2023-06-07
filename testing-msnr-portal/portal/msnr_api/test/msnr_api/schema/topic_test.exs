@@ -32,4 +32,9 @@ defmodule MsnrApi.Schema.TopicTest do
     end
   end
 
+  describe "changeset/2" do
+
+
+  end
+
 end

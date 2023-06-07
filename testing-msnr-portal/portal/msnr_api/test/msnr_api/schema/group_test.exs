@@ -72,6 +72,8 @@ defmodule MsnrApi.Schema.GroupTest do
         refute errors[field], "The optional field #{field} is required when it shouldn't be."
       end
     end
+
+
   end
 
 end

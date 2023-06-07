@@ -94,6 +94,33 @@ defmodule MsnrApi.Schema.ActivityTypeTest do
       end
     end
 
+    test "error: returns an error changeset when name or code is reused" do
+      Ecto.Adapters.SQL.Sandbox.checkout(MsnrApi.Repo)
+
+      {:ok, existing_activity_type} =
+        %ActivityType{}
+        |> ActivityType.changeset(valid_params(@required_fields))
+        |> MsnrApi.Repo.insert()
+
+      changeset_with_reused_fields =
+        %ActivityType{}
+        |> ActivityType.changeset(valid_params(@required_fields)
+                          |> Map.put("name", existing_activity_type.name)
+                          |> Map.put("code", existing_activity_type.code))
+
+      assert {:error, %Changeset{valid?: false, errors: errors}} =
+        MsnrApi.Repo.insert(changeset_with_reused_fields)
+
+
+      for {field, _} <- [:name, :code] do
+        assert errors[field], "the field: #{field} is missing from errors."
+
+        {_, meta} = errors[field]
+        assert meta[:constraint] == :unique,
+          "The validation type #{meta[:validaiton]} is incorrect."
+      end
+    end
+
   end
 
 end

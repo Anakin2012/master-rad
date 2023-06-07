@@ -20,9 +20,7 @@ defmodule MsnrApi.Support.SchemaCase do
       id: fn -> Enum.random(0..100) end,
       integer: fn -> Enum.random(0..5000) end,
       boolean: fn -> true end,
-      map: fn -> %{
-        files: [{"V1", extension: ".pdf"}]
-      } end
+      map: fn -> %{"files": [%{"name": "CV", "extension": ".pdf"}]} end
     }
 
     for {field, type} <- fields_with_types, into: %{} do

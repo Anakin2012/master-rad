@@ -1,6 +1,7 @@
 defmodule MsnrApi.Schema.UserTest do
   use MsnrApi.Support.SchemaCase
   alias MsnrApi.Accounts.User
+  alias MsnrApi.StudentRegistrations.StudentRegistration
 
   @required_fields [
     {:email, :string},
@@ -11,6 +12,13 @@ defmodule MsnrApi.Schema.UserTest do
 
   @optional_fields [
     :id, :hashed_password, :password_url_path, :refresh_token, :inserted_at, :updated_at
+  ]
+
+  @student_registration_fields [
+    {:email, :string},
+    {:first_name, :string},
+    {:last_name, :string},
+    {:index_number, :string},
   ]
 
   @expected_fields_with_types [
@@ -150,6 +158,62 @@ defmodule MsnrApi.Schema.UserTest do
       "The validation type #{meta[:validation]} is incorrect."
 
     end
+  end
+
+  describe "changeset/2 with given student registration" do
+
+    test "success: returns a valid changeset when given valid arguments" do
+
+      params = valid_params(@student_registration_fields)
+      params = Map.put(params, "status", :accepted)
+
+      student_registration = %StudentRegistration{email: Map.get(params, "email"),
+                                                  first_name: Map.get(params, "first_name"),
+                                                  last_name: Map.get(params, "last_name"),
+                                                  index_number: Map.get(params, "index_number"),
+                                                  status: Map.get(params, "status")}
+
+      changeset = User.changeset(%User{}, student_registration)
+
+      assert %Changeset{valid?: true, changes: changes} = changeset
+
+      for {field, _} <- @student_registration_fields, field not in [:index_number] do
+        actual = Map.get(changes, field)
+        expected = params[Atom.to_string(field)]
+        assert actual == expected,
+          "Values did not match for: #{field}\nexpected: #{inspect(expected)}\nactual: #{inspect(actual)}"
+      end
+
+      role = Map.get(changes, :role)
+      assert role == :student
+    end
+
+    test "error: returns an error changeset when given uncastable values" do
+
+      params = invalid_params(@student_registration_fields)
+      params = Map.put(params, "status", NaiveDateTime.local_now())
+
+      student_registration = %StudentRegistration{email: Map.get(params, "email"),
+                                                  first_name: Map.get(params, "first_name"),
+                                                  last_name: Map.get(params, "last_name"),
+                                                  index_number: Map.get(params, "index_number"),
+                                                  status: Map.get(params, "status")}
+
+      assert %Changeset{valid?: false, errors: errors} = User.changeset(%User{}, student_registration)
+
+      for {field, _} <- @student_registration_fields, field not in [:index_number] do
+        assert errors[field], "the field: #{field} is missing from errors."
+
+        {_, meta} = errors[field]
+        assert meta[:validation] == :cast,
+          "The validation type #{meta[:validaiton]} is incorrect."
+      end
+
+      role = errors[:role]
+      refute role == :student
+    end
+
 
   end
+
 end

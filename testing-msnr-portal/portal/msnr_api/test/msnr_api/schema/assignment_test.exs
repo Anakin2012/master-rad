@@ -85,4 +85,33 @@ defmodule MsnrApi.Schema.AssignmentTest do
     end
 
   end
+
+  describe "signup_changeset/2" do
+    test "success: returns a valid changeset when given valid arguments" do
+      valid_params = valid_params([:completed])
+      changeset = Assignment.signup_changeset(%Assignment{}, valid_params)
+
+      assert %Changeset{valid?: true, changes: changes} = changeset
+
+      actual = Map.get(changes, :completed)
+      expected = valid_params[Atom.to_string(:completed)]
+      assert actual == expected,
+      "Values did not match for: :completed\nexpected: #{inspect(expected)}\nactual: #{inspect(actual)}"
+
+    end
+
+    test "error: returns an invalid changeset when given uncastable values" do
+      invalid_params = invalid_params([{:completed, :boolean}])
+
+      assert %Changeset{valid?: false, errors: errors} = Assignment.signup_changeset(%Assignment{}, invalid_params)
+
+      assert errors[:completed], "the field :completed is missing from errors."
+      {_, meta} = errors[:completed]
+      assert meta[:validation] == :cast,
+        "The validation type #{meta[:validaiton]} is incorrect."
+    end
+
+  end
+
+
 end

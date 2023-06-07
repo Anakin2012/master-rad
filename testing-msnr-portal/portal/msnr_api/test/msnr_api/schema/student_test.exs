@@ -8,6 +8,13 @@ defmodule MsnrApi.Schema.StudentTest do
     {:index_number, :string}
   ]
 
+  @required_user_fields [
+    {:email, :string},
+    {:first_name, :string},
+    {:last_name, :string},
+    {:role, :string}
+  ]
+
   @optional_fields [
     :user_id, :inserted_at, :updated_at
   ]

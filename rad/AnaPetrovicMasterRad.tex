@@ -35,8 +35,8 @@
         for,if,import,defmodule,defprotocol,%
         nil,defmacrop,defoverridable,defimpl,%
         super,fn,raise,true,try,end,with,field,type%
-        unless, |>, <-, \}, \{, \%},
-    otherkeywords={->},
+        unless, |>, <-, \}, \{, \%, ->},
+ %   otherkeywords={->},
     sensitive=true,
     morecomment=[l]{\#},
     morecomment=[n]{/*}{*/},
@@ -84,9 +84,9 @@
 % Ime i afilijacija mentora (u odabranom pismu)
 \mentor{dr Milena \textsc{Vujošević Janičić}, redovan profesor\\ Univerzitet u Beogradu, Matematički fakultet}
 % Ime i afilijacija prvog člana komisije (u odabranom pismu)
-\komisijaA{dr Ime \textsc{Prezime}, vanredni profesor\\ Univerzitet u Beogradu, Matematički fakultet}
+\komisijaA{dr Filip \textsc{Marić}, vanredni profesor\\ Univerzitet u Beogradu, Matematički fakultet}
 % Ime i afilijacija drugog člana komisije (u odabranom pismu)
-\komisijaB{dr Ime \textsc{Prezime}, docent\\ Univerzitet u Beogradu, Matematički fakultet}
+\komisijaB{dr Ivan \textsc{Čukić}, docent\\ Univerzitet u Beogradu, Matematički fakultet}
 % Ime i afilijacija trećeg člana komisije (opciono)
 % \komisijaC{}
 % Ime i afilijacija četvrtog člana komisije (opciono)
@@ -137,38 +137,13 @@ Ovde ide uvod .. ... .....
 \chapter{Funkcionalna paradigma}
 \label{chp:uvodnideo}
 
-\par Funkcionalno programiranje je specifičan pristup programiranju, tj. programska paradigma, koja se zasniva na pojmu matematičke funkcije. Programi se kreiraju pomoću izraza i funkcija, bez izmena stanja i podataka \cite{func}. Iz tog razloga, jednostavniji su za razumevanje i otporniji na greške u odnosu na imperativne programe. U slučaju funkcionalnih programskih jezika, osnovna apstrakcija je \textit{funkcija}. Programski stil je deklarativnog tipa i umesto naredbi koriste se izrazi, tako da se izvršavanje programa svodi na evaluaciju izraza. Vrednost izraza je nezavisna od konteksta u kojem se izraz nalazi. Osnovna osobina čistih funkcionalnih jezika (eng. \textit{pure functional programming language}) jeste transparentnost referenci, što kao posledicu ima nepostojanje propratnih efekata. Sa druge strane, nečisti funkcionalni jezici (eng. \textit{impure functional programming language}) su manje elegantni jer dozvoljavaju propratne efekte, koji mogu izazvati suptilne greške i biti teži za razumevanje. Međutim, praktičniji su za specifične vrste zadataka, kao što je programiranje korisničkog interfejsa ili rad sa bazom podataka. 
-\par Funkcionalni jezici zasnovani su na \textit{lambda računu} (eng. \textit{$\lambda$-calculus}), čija je osnovna svrha da d\a'a  definiciju izračunljivosti. Pored toga što se smatra prvim funkcionalnim jezikom, lambda račun se naziva i najmanjim programskim jezikom na svetu. Sve što se može izračunati lambda računom smatra se izračunljivim. Ekspresivnost funkcionalnih jezika ekvivalentna je ekspresivnosti Tjuringove mašine \cite{turing}. 
+\par Funkcionalno programiranje je specifičan pristup programiranju, tj. programska paradigma, koja se zasniva na pojmu matematičke funkcije. Programi se kreiraju pomoću izraza i funkcija, bez izmena stanja i podataka \cite{func}. Iz tog razloga, jednostavniji su za razumevanje i otporniji na greške u odnosu na imperativne programe. Programski stil je deklarativnog tipa i umesto naredbi koriste se izrazi, tako da se izvršavanje programa svodi na evaluaciju izraza. Vrednost izraza je nezavisna od konteksta u kojem se izraz nalazi, što se naziva \emph{transparentnost referenci} i predstavlja osnovnu osobinu \emph{čistih} funkcionalnih jezika (eng. \textit{pure functional programming language}). Transparentnost referenci kao osnovnu posledicu ima nepostojanje propratnih efekata. Sa druge strane, \emph{nečisti} funkcionalni jezici (eng. \textit{impure functional programming language}) dozvoljavaju propratne efekte, koji mogu izazvati suptilne greške i biti teži za razumevanje. Međutim, praktičniji su za specifične vrste zadataka, kao što je programiranje korisničkog interfejsa ili rad sa bazom podataka. 
+%\par Funkcionalni jezici zasnovani su na \textit{lambda računu} (eng. \textit{$\lambda$-calculus}), čija je osnovna svrha da d\a'a  definiciju izračunljivosti. Pored toga što se smatra prvim %funkcionalnim jezikom, lambda račun se naziva i najmanjim programskim jezikom na svetu. Sve što se može izračunati lambda računom smatra se izračunljivim. Ekspresivnost % funkcionalnih jezika ekvivalentna je ekspresivnosti Tjuringove mašine \cite{turing}. 
+% TODO ako se ovo iybacuje, izbaciti literaturu
+
 
 \section{Karakteristike funkcionalnih jezika}
 U nastavku su objašnjene neke od najvažnijih osobina jezika funkcionalne paradigme. 
-
-\subsection{Odsustvo promenljivih}
-Čisti funkcionalni jezici nemaju stanje koje bi se menjalo tokom izvršavanja programa, pa zbog toga ne podržavaju koncept promenljivih. Da bi postigli mutabilnost, koriste koncepte kao što su lambda izrazi ili rekurzija.  Sa druge strane, nečisti funkcionalni jezici podržavaju i karakteristike drugih programskih paradigmi, te je u okviru njih dozvoljena upotreba promenljivih. Iako su fleksibilniji po tom pitanju, nečisti funkcionalni jezici promovišu imutabilnost kao dobru praksu. 
-
-\subsection{Transparentnost referenci}
-Koncept transparetnosti referenci se odnosi na to da je vrednost izraza jedinstveno određena. Izraz se može zameniti svojom vrednošću na bilo kom mestu u programu, bez promene u ponašanju programa. Definicija se može proširiti i na funkcije: funkcija poseduje transparentnost referenci ako pri pozivu sa istim vrednostima argumenata uvek proizvodi isti rezultat. Ponašanje takve funkcije je određeno njenim ulaznim vrednostima. Kao posledica, redosled naredbi u funkcionalnim programskim jezicima nije važan.
-
-\subsection{Čista funkcija}
-Čista funkcija (eng. \textit{pure function}) ima dve osnovne karakteristike: 
-\begin{itemize}
-\item Transparentnost referenci 
-\item Imutabilnost 
-\end{itemize}
-\par Imutabilnost podrazumeva odsustvo propratnih efekata, tj. da čista funkcija ne vrši nikakve izmene nad argumentima, kao ni nad promenljivima. Jedini rezultat čiste funkcije jeste vrednost koju ona vrati. Kao posledica ovoga, funkcionalni programi su laki za debagovanje. Čiste funkcije takođe olakšavaju paralelizaciju i konkurentnost aplikacija. Na osnovu ovako napisanih programa, kompilator lako može da paralelizuje naredbe, sačeka da evaluira rezultate kada budu potrebni, i na kraju da zapamti rezultat, s obzirom na to da se on neće promeniti sve dok ulaz ostaje isti. Kod \ref{lst:pure} prikazuje primer jedne čiste funkcije u programskom jeziku Elixir. 
-
-\begin{lstlisting}[language=elixir, caption={Primer čiste funkcije},captionpos=b, label={lst:pure}]
-defmodule Math do 
-  def fibonacci(0) do 0 end
-  def fibonacci(1) do 1 end
-  def fibonacci(n) do fibonacci(n-1) + fibonacci(n-2) end
-end
-
-IO.puts Math.fibonacci(9)
-\end{lstlisting}
-
-\subsection{Rekurzija}
-Za razliku od imperativnog programiranja, kod funkcionalno napisanih programa može se primetiti odsustvo petlji. Funkcije se definišu rekurzivno --- pozivaju same sebe i time postižu ponavljanje izvršavanja. U mnogim slučajevima, umesto rekurzije se koriste funkcije višeg reda.
 
 \subsection{Funkcije kao građani prvog reda}
 U funkcionalnim programima, funkcije se smatraju građanima prvog reda (eng. \emph{first class citizen}). To znači da u okviru jezika ne postoje restrikcije po pitanju njihovog kreiranja i korišćenja. Građani prvog reda su entiteti u okviru programskog jezika koji mogu biti:
@@ -180,9 +155,29 @@ U funkcionalnim programima, funkcije se smatraju građanima prvog reda (eng. \em
 \end{itemize}
 Mogućnost prosleđivanja funkcija kao argumenata drugih funkcija je ključna za funkcionalnu paradigmu. 
 
+\subsection{Čista funkcija}
+\par  Čista funkcija (eng. \textit{pure function}) ima dve osnovne karakteristike: 
+\begin{itemize}
+\item Transparentnost referenci 
+\item Imutabilnost 
+\end{itemize}
+\par  Koncept transparetnosti referenci se odnosi na to da je vrednost izraza jedinstveno određena. Izraz se može zameniti svojom vrednošću na bilo kom mestu u programu, bez promene u ponašanju programa. Definicija se može proširiti i na funkcije: funkcija poseduje transparentnost referenci ako pri pozivu sa istim vrednostima argumenata uvek proizvodi isti rezultat. Ponašanje takve funkcije je određeno njenim ulaznim vrednostima. Kao posledica, redosled naredbi u funkcionalnim programskim jezicima nije važan.
+\par Imutabilnost podrazumeva odsustvo propratnih efekata, tj. da čista funkcija ne vrši nikakve izmene nad argumentima, kao ni nad promenljivima. Jedini rezultat čiste funkcije jeste vrednost koju ona vrati. Kao posledica ovoga, funkcionalni programi su laki za debagovanje. Čiste funkcije takođe olakšavaju paralelizaciju i konkurentnost aplikacija. Na osnovu ovako napisanih programa, kompilator lako može da paralelizuje naredbe, sačeka da evaluira rezultate kada budu potrebni, i na kraju da zapamti rezultat, s obzirom na to da se on neće promeniti sve dok ulaz ostaje isti. K$\hat{o}$d \ref{lst:pure} prikazuje primer jedne čiste funkcije u programskom jeziku Elixir. 
+
+\begin{lstlisting}[language=elixir, caption={Primer čiste funkcije},captionpos=b, label={lst:pure}]
+defmodule Math do 
+  def fibonacci(0) do 0 end
+  def fibonacci(1) do 1 end
+  def fibonacci(n) do fibonacci(n-1) + fibonacci(n-2) end
+end
+
+IO.puts Math.fibonacci(9)
+\end{lstlisting}
+
 \subsection{Funkcije višeg reda}
 Funkcija višeg reda je funkcija koja kao argument uzima jednu ili više funkcija i/ili ima funkciju kao svoju povratnu vrednost. U funkcionalnom programiranju se intenzivno koriste ovakve funkcije, a po svojoj važnosti se posebno izdvajaju \textit{map}, \textit{filter} i \textit{reduce (fold)}.  Funkcija \textit{map} kao argumente prima funkciju i listu, i zatim primeni datu funkciju na svaki element liste i kao povratnu vrednost proizvodi novu listu. Upotrebom funkcije \textit{filter} mogu se eliminisati neželjeni elementi neke liste --- na osnovu prosleđene funkcije predikata i date liste, \textit{filter} vraća listu sa elementima koji ispunjavaju dati kriterijum. \textit{Fold} prihvata tri argumenta: funkciju spajanja, početnu vrednost i listu. Iznova primenjuje funkciju spajanja na početnu vrednost i datu listu, sve dok se rezultat ne redukuje na jednu vrednost. 
 \par Prednost korišćenja ovih funkcija je u paralelnom izvršavanju, s obzirom da funkcionalni programi nemaju stanje. Takođe, daju prilično sažet i čist k$\hat{o}$d. Primer koda \ref{lst:high} pokazuje upotrebu funkcija višeg reda u programskom jeziku Elm.
+
 
 \begin{lstlisting}[language=elm, caption={Funkcije višeg reda},captionpos=b, label={lst:high}]
 [1, 2, 3] |> List.map (\number -> number * 2) -- [2, 4, 6]
@@ -190,16 +185,20 @@ Funkcija višeg reda je funkcija koja kao argument uzima jednu ili više funkcij
 [1, 2, 3, 4, 5] |> List.foldl (\item total -> total + item) 0 -- 15
 \end{lstlisting}
 
+\subsection{Odsustvo promenljivih i rekurzija}
+\par Čisti funkcionalni jezici nemaju stanje koje bi se menjalo tokom izvršavanja programa, pa zbog toga ne podržavaju koncept promenljivih. Sa druge strane, nečisti funkcionalni jezici podržavaju i karakteristike drugih programskih paradigmi, te je u okviru njih dozvoljena upotreba promenljivih. Iako su fleksibilniji po tom pitanju, nečisti funkcionalni jezici promovišu imutabilnost kao dobru praksu. 
+\par Za razliku od imperativnog programiranja, kod funkcionalno napisanih programa može se primetiti odsustvo petlji. Funkcije se definišu rekurzivno --- pozivaju same sebe i time postižu ponavljanje izvršavanja. U mnogim slučajevima, umesto rekurzije se koriste funkcije višeg reda.
 
-\section{Testiranje uopšteno (smisliti naslov)}
+\section{Testiranje u razvoju softvera}
 \label{sec:piramid}
 
 \par Testiranje koda je jedan od najvažnijih aspekata u procesu razvoja softvera. Cilj testiranja je pronalaženje grešaka, proverom da li su ispunjeni svi funkcionalni i nefunkcionalni zahtevi \cite{test}.  Softver koji ne radi onako kako je predviđeno može dovesti do različitih problema, kao što su gubitak novca i vremena, ili u najgorim slučajevima --- povrede ili smrti. Testiranjem se osigurava kvalitet softvera i smanjuje rizik od neželjenog ponašanja. Glavna uloga testiranja jeste verifikacija softvera --- provera da li sistem zadovoljava specifikaciju, ali uključuje i validaciju --- proveru da li sistem ispunjava sve potrebe korisnika.  
-\par Razvoj vođen testovima (eng. \emph{Test-Driven Development , TDD}) je praksa u razvoju softvera koja nalaže da se prvo napišu testovi. Ti testovi na početku ne prolaze, s obzirom na to da k$\hat{o}$d još uvek nije implementiran, a zatim se iznova pokreću tokom pisanja samog koda, sve dok ne prođu. Ova tehnika kontinualnog testiranja tokom razvoja se često preporučuje jer se lako i veoma rano uoče greške i time sprečavaju u kasnijim fazama razvoja. Ipak, u ovom radu neće biti primenjen TDD pristup. Kako je tema testiranje, fokus nije na pisanju koda aplikacije, već testova za već napisan projekat. Aplikacija koja će biti testirana služi samo kao primer na kome će biti prikazani značajni koncepti testiranja funkcionalnih programa. Kratak opis testiranog projekta biće preciznije objašnjen u poglavlju \ref{chp:msnr}. 
+
+%\par Razvoj vođen testovima (eng. \emph{Test-Driven Development , TDD}) je praksa u razvoju softvera koja nalaže da se prvo napišu testovi. Ti testovi na početku ne prolaze, s obzirom na to da k$\hat{o}$d još uvek nije implementiran, a zatim se iznova pokreću tokom pisanja samog koda, sve dok ne prođu. Ova tehnika kontinualnog testiranja tokom razvoja se često preporučuje jer se lako i veoma rano uoče greške i time sprečavaju u kasnijim fazama razvoja. Ipak, u ovom radu neće biti primenjen TDD pristup. Kako je tema testiranje, fokus nije na pisanju koda aplikacije, već testova za već napisan projekat. Aplikacija koja će biti testirana služi samo kao primer na kome će biti prikazani značajni koncepti testiranja funkcionalnih programa. Kratak opis testiranog projekta biće preciznije objašnjen u poglavlju \ref{chp:msnr}. 
 
 \subsection{Organizacija testova}
-\par Model piramide testiranja (prikazan na slici \ref{fig:piramida}) je koncept koji pomaže u razmišljanju o tome kako testirati softver \cite{cohn}. Uloga piramide je da vizuelno predstavi logičku organizaciju standarda u testiranju. Sastoji se od tri sloja: bazu piramide predstavljaju jedinični testovi (eng. \emph{unit test}). Njih bi trebalo da bude najviše --- kako su najmanji, samim tim su i najbrži, a izvršavaju se u potpunoj izolaciji. Na sledećem nivou, u sredini piramide, nalaze se integracioni testovi (ili testovi servisa). Integracija podrazumeva način na koji različite komponente sistema rade zajedno. Nisu potrebne interakcije sa korisničkim interfejsom, s obzirom na to da ovi testovi pozivaju k$\hat{o}$d preko interfejsa. Vrh piramide čine sistemski testovi. Oni se ne fokusiraju na individualne komponente, već testiraju čitav sistem kao celinu i time utvrđuju da on radi očekivano i ispunjava sve funkcionalne i nefunkcionalne zahteve. Takvi testovi su prilično skupi, pa je potrebno doneti odluku koliko, i koje od njih se isplati sprovesti.
-\par Jedna vrsta sistemskih testova su takozvani E2E testovi\footnote{E2E je skraćenica za testove sa kraja na kraj (eng. \emph{end-to-end})}, koji simuliraju korisničko iskustvo kako bi osigurali da sistem funkcioniše kako treba, od korisničkog interfejsa pa sve do bekenda. Testovi korisničkog interfejsa (eng. \emph{User Interface tests, UI tests}) se staraju o tome da se korisnički interfejs ponaša na očekivan način. Obično su automatski i simuliraju interakcije pravih korisnika sa aplikacijom, kao što su pritiskanje dugmića, unos teksta i slično. S obzirom na to da oni proveraju da sistem, zajedno sa svojim korisničkim interfejsom, radi kako treba --- mogu se u određenom kontekstu smatrati sistemskim testovima, ali su ipak specifičniji i mogu se testirati nezavisno od celokupnog sistema. 
+\par Model piramide testiranja (prikazan na slici \ref{fig:piramida}) je koncept koji pomaže u razmišljanju o tome kako testirati softver \cite{cohn}. Uloga piramide je da vizuelno predstavi logičku organizaciju standarda u testiranju. Sastoji se od tri sloja: bazu piramide predstavljaju jedinični testovi (eng. \emph{unit test}). Njih bi trebalo da bude najviše --- kako su najmanji, samim tim su i najbrži, a izvršavaju se u potpunoj izolaciji. Na sledećem nivou, u sredini piramide, nalaze se integracioni testovi. Integracija podrazumeva način na koji različite komponente sistema rade zajedno. Nisu potrebne interakcije sa korisničkim interfejsom, s obzirom na to da ovi testovi pozivaju k$\hat{o}$d preko interfejsa. Vrh piramide čine sistemski testovi. Oni se ne fokusiraju na individualne komponente, već testiraju čitav sistem kao celinu i time utvrđuju da on radi očekivano i ispunjava sve funkcionalne i nefunkcionalne zahteve. Takvi testovi su prilično skupi, pa je potrebno doneti odluku koliko, i koje od njih se isplati sprovesti.
+\par Jedna vrsta sistemskih testova su takozvani E2E testovi\footnote{E2E je skraćenica za testove sa kraja na kraj (eng. \emph{end-to-end})}, koji simuliraju korisničko iskustvo kako bi osigurali da sistem funkcioniše kako treba, od korisničkog interfejsa, pa sve do serverske strane i baze podataka. Testovi korisničkog interfejsa (eng. \emph{User Interface tests, UI tests}) se staraju o tome da se korisnički interfejs ponaša na očekivan način. Obično su automatski i simuliraju interakcije pravih korisnika sa aplikacijom, kao što su pritiskanje dugmića, unos teksta i slično. S obzirom na to da oni proveraju da sistem, zajedno sa svojim korisničkim interfejsom, radi kako treba --- mogu se u određenom kontekstu smatrati sistemskim testovima, ali su ipak specifičniji i mogu se sprovoditi i nezavisno od celokupnog sistema. 
 \par U opštem slučaju, testiranje projekta koji se sastoji od više slojeva podrazumeva kombinaciju jediničnih, integracionih i sistemskih testova kako bi se osigurala ukupna funcionalnost, pouzdanost i perfomanse sistema.
 
 \begin{figure}[!ht]
@@ -211,26 +210,21 @@ Funkcija višeg reda je funkcija koja kao argument uzima jednu ili više funkcij
 
 \subsubsection{Testovi jedinica koda}
 \par Jedinica je mala logička celina koda: može biti funkcija, klasa, metod klase, modul i slično. Jedinični test proverava samo da li se data jedinica ponaša prema svojoj specifikaciji. Ovi testovi se mogu pisati u potpunoj izolaciji, i ne zavise ni od jedne druge komponente, servisa, ni korisničkog interfejsa. Dakle, izdvajaju se najmanji testabilni delovi aplikacije i proverava se da li rade ono za šta su namenjeni. Ovi testovi su najjednostavniji za pisanje jer se bave malim delom aplikacije, te je k$\hat{o}$d koji se testira najčešće vrlo jednostavan. 
-\par Pri dizajniranju jediničnih testova, nephodno je razmišljati o sledećim ciljevima: 
-\begin{enumerate}
-\item Dokazati da k$\hat{o}$d radi ono za šta je namenjen
-\item Sprečiti greške --- izmena jednog dela koda može izazvati grešku u nekom drugom delu
-\item Utvrditi lokaciju dela koda koji izaziva grešku
-\item Napisati najmanju moguću količinu koda za testiranje
-\end{enumerate}
+\par Cilj jediničnih testova jeste da spreče greške koje mogu nastati izmenama koda, kao i da omoguće da se lako utvrdi lokacija dela koda koji izaziva grešku. Pri dizajniranju ovih testova, potrebno je proveriti da k$\hat{o}$d radi tačno ono za šta je namenjen, a da se to uradi pisanjem najmanje moguće dodatne količine koda.
 
 \subsubsection{Anatomija jediničnih testova}
 \par Kako bi k$\hat{o}$d jediničnog testa bio čitljiv i jednostavan za razumevanje, obrazac četvorofaznog testa (eng. \emph{four-phase test}) predlaže strukturu testa koja podrazumeva ne više od četiri faze \cite{4phase}. Svaki test jedinice koda se može podeliti na četiri jasno odvojive celine:  
 \begin{enumerate}
-\item Priprema (eng. \emph{setup}) --- sređivanje podataka koji će se prosleđivati pred samu proveru, često nije neophodna u testiranju čisto funkcionalnih programa.
+\item Priprema (eng. \emph{setup}) --- sređivanje podataka koji će se prosleđivati pred samu proveru (uglavnom nije neophodno u testiranju čisto funkcionalnih programa).
 \item Delovanje (eng. \emph{exercise}) --- pozivanje koda koji se testira, ključni deo svakog testa.
-\item Verifikacija (eng. \emph{verify}) --- često deo prethodne faze, u ovom delu testovi proveravaju ponašanje koda. 
+\item Verifikacija (eng. \emph{verify}) --- testovi proveravaju ponašanje koda (često se spaja sa prethodnom fazom). 
 \item Rušenje (eng. \emph{teardown}) --- vraćanje podataka na prvobitno stanje, npr. ako se u prvoj fazi koriste neka deljena stanja, kao što je baza podataka. Ovaj korak se često izvršava implicitno. 
 \end{enumerate}
 
-\par Konkretan primer ovako organizovanog testa u programskom jeziku Elm dat je u primeru \ref{lst:4ph}. Definisan je jednostavan test, koji proverava da li funkcija koja sabira dva broja daje ispravan rezultat. U fazi pripreme brojevima i njihovoj očekivanoj sumi se dodeljuju vrednosti . U fazi delovanja poziva se funkcija \emph{sum}, a pozivanjem funkcije \emph{expect} proverava se da li je rezultat jednak očekivanom u fazi verifikacije. Faza rušenja u ovom slučaju ne treba da uradi ništa, te jednostavno vraća ().
+\par Konkretan primer ovako organizovanog testa u programskom jeziku Elm dat je u primeru \ref{lst:4ph}. Definisan je jednostavan test, koji proverava da li funkcija koja sabira dva broja daje ispravan rezultat. U fazi pripreme brojevima i njihovoj očekivanoj sumi se dodeljuju vrednosti . U fazi delovanja poziva se funkcija \emph{sum}, a pozivanjem funkcije \emph{expect} proverava se da li je rezultat jednak očekivanom u fazi verifikacije. Faza rušenja u ovom slučaju ne treba da uradi ništa.
 
-\begin{lstlisting}[language=elm, caption={Četiri faze jediničnog testa},captionpos=b, label={lst:4ph}]
+\begin{lstlisting}[language=elm, caption={Četiri faze jediničnog testa koji proverava ispravnost
+funkcije sabiranja dva broja},captionpos=b, label={lst:4ph}]
 import Test exposing (..)
 
 sumTest : Test
@@ -283,7 +277,7 @@ sumTest =
 \subsection{Testiranje čistih funkcija}
 
 \par Najjednostavniji k$\hat{o}$d za testiranje jeste čista funkcija. Pri testiranju čiste funkcije, s obzirom da ne postoje propratni efekti, test može da se fokusira samo na dve stvari: ulazne podatke i na sam izlaz funkcije. 
-\par Kada je u pitanju čista funkcija, jedina priprema koja je potrebna jesu podaci koji će se proslediti kao parametri. Drugi korak jeste poziv funkcije, sa prosleđenim argumentima. Faza verfikacije su samo provere nad rezultatom, i samo nad rezultatom. Testovi su veoma jednostavni jer ne moraju da brinu o propratnim efektima i njihovim neželjenim posledicama, i uvek će dobijati  isti odgovor od testiranog koda, ma koliko puta bili pokrenuti. 
+\par Kada je u pitanju čista funkcija, jedina priprema koja je potrebna jesu podaci koji će se proslediti kao parametri. Drugi korak jeste poziv funkcije, sa prosleđenim argumentima. Faza verfikacije podrazumeva samo provere nad rezultatom. Testovi su veoma jednostavni jer ne moraju da brinu o propratnim efektima i njihovim neželjenim posledicama.
 \par Aplikacije se u većini slučajeva neće sastojati od isključivo čistih funkcija, i u vezi sa tim postoje dve strategije \cite{testingelixir}. Prva je izdvojiti logiku u čiste funkcije, a druga dizajnirati funkcije tako da koriste neku od metoda ubrizgavanja zavisnosti (eng. \textit{dependency injection}) \footnote{Ubrizgavanje zavisnosti je obrazac u kom objekat ili funkcija prihvata druge objekte ili funkcije od kojih zavisi. Jedan od oblika inverzije kontrole, za cilj ima da razdvoji konstrukciju i upotrebu objekata i time smanjuje spregnutost programa.}, što omogućava izolaciju koda.
 
 \subsubsection{Refaktorisanje ka čistim funkcijama} 
@@ -342,7 +336,7 @@ programming interface} )} obezbeđuje čist k$\hat{o}$d i jednostavne i kontroli
 \end{table}
 
 \section{Arhitektura portala}
-\par Portal MSNR je primer klijent/server aplikacije koja se sastoji od tri sloja. Klijentski sloj implementiran je u programskom jeziku \emph{Elm}, kao jednostranična aplikacija (eng. \emph{Single Page Application --- SPA}) koja predstavlja korisnički interfejs. U sredini se nalazi aplikacioni veb interfejs koji je implementiran u \emph{Elixir} programskom jeziku pomoću razvojnog okvira \emph{Phoenix}, u stilu arhitekture \emph{REST} (eng. \emph{Representational State Transfer}) \cite{rest}. Treći sloj predstavlja relaciona baza podataka, i sistem za upravljanje bazom \emph{PostgreSQL} \cite{postgre}. Slika \ref{fig:msnr-arch} prikazuje navedenu arhitekturu. 
+\par Portal MSNR je primer klijent/server aplikacije koja se sastoji od tri sloja. Klijentski sloj implementiran je u programskom jeziku \emph{Elm}, kao jednostranična aplikacija (eng. \emph{Single Page Application --- SPA}) koja predstavlja korisnički interfejs. U sredini se nalazi aplikacioni veb interfejs koji je implementiran u programskom jeziku \emph{Elixir} pomoću razvojnog okvira \emph{Phoenix}, u stilu arhitekture \emph{REST} (eng. \emph{Representational State Transfer}) \cite{rest}. Treći sloj predstavlja relaciona baza podataka, i sistem za upravljanje bazom \emph{PostgreSQL} \cite{postgre}. Slika \ref{fig:msnr-arch} prikazuje navedenu arhitekturu. 
 
 \begin{figure}[!ht]
   \centering
@@ -351,19 +345,49 @@ programming interface} )} obezbeđuje čist k$\hat{o}$d i jednostavne i kontroli
   \caption{Arhitektura Portala MSNR \cite{rad}}
 \end{figure}
 
-\par Testiranje ovakve aplikacije podrazumeva podelu na različite vrste testova. Za početak, jedinični testovi koji se odnose na individualne funkcije i upravljače koji barataju zahtevima u okviru serverskog dela aplikacije moraju biti napisani u programskom jeziku Elixir. Na serverskoj strani, potrebno je napisati i testove koji simuliraju zahteve API-ju i verifikuju odgovore od baze. Sa druge strane, jedinični testovi koji se fokusiraju na pojedinačne komponente i funkcije korisničkog interfejsa moraju biti napisani u Elm programskom jeziku. Nakon pojedinačnog testiranja klijentske i serverske aplikacije, slede integracioni testovi koji proveravaju kako korisnički interfejs funkcioniše zajedno sa API-jem. Na kraju je neophodno testirati celokupan sistem, od korisničkog interfejsa do baze podataka, pisanjem sistemskih testova. S obzirom na to da se radi o veb aplikaciji, mogu se sprovesti i testovi opterećenja koji će proveriti kako portal podnosi velike količine zahteva i korisnika.
+\subsubsection{Struktura serverske strane portala}
+\par U programskom jeziku Elixir, za razvoj veb aplikacija koristi se razvojni okvir \emph{Phoenix} \cite{phx}. Zasnovan je na obrascu \emph{model-pogled-upravljač} (eng. \emph{Model-View-Controller pattern, MVC}). Serverski deo aplikacija MSNR portal implementiran je kao \emph{Phoenix} projekat. Preciznije, projekat je u osnovi \emph{Mix} projekat, sa \emph{Phoenix} proširenjima. Mix je osnovni alat ovog jezika koji se koristi za kreiranje, prevođenje i testiranje projekata. Pored ovog alata, potrebno je prethodno instalirati i menadžer paketa za ekosistem \emph{Erlang} pod nazivom \emph{Hex} \cite{hex}. Pri kreiranju Phoenix projekta, dodeljeno mu je ime \emph{msnr{\textunderscore}api}. Na slici \ref{fig:msnr-str} je prikazana struktura projekta nakon uspešnog pokretanja komande za kreiranje. 
+
+\begin{figure}[!ht]
+  \centering
+  \label{fig:msnr-str}
+  \includegraphics[width=0.5\textwidth]{msnr-str.png}
+  \caption{Struktura \emph{Phoenix} projekta \emph{msnr{\textunderscore}api} \cite{rad}}
+\end{figure}
+
+\par U direktorijumu \emph{lib} nalaze se dva konteksta (eng. \emph{context}), tj. dva modula, od kojih svaki grupiše funkcije sa zajedničkom svrhom. Prvi kontekst je \emph{MsnrApi}, unutar koga je enkapsulirana sva domenska i poslovna logika, i definisani svi entiteti i funkcije za rad sa njima. Inicijalno su kreirana tri podmodula ovog konteksta: \emph{MsnrApi.Application}, koji pokreće aplikaciju, \emph{MsnrApi.Repo}, koji je zadužen za komunikaciju sa bazom, i \emph{MsnrApi.Mailer}, koji služi za slanje elektronske pošte. Drugi kontekst ima naziv \emph{MsnrApiWeb}, i on sadrži implementaciju za poglede i upravljače unutar arhitekture MVC. Njegovi podmoduli \emph{MnsrApiWeb.Endpoint} i \emph{MsnrApiWeb.Router} imaju ulogu u pripremi HTTP zahteva i njihovom prosleđivanju odgovarajućim upravljačima. 
+\par Za sve obrade HTTP zahteva koristi se biblioteka \emph{Plug} \cite{plug}. Utikač (eng. \emph{plug}) je funkcija koja ima kao ulaznu i povratnu vrednost strukturu \emph{Plug.Conn} koja sadrži sve informacije o primljenom HTTP zahtevu. Phoenix poziva utikače jedan za drugim, i svaki od njih transformiše ovu strukturu dok se obrada zahteva ne završi, i na kraju odgovor pošalje korisniku. Sa utikačima se povezuje veb server pod nazivom \emph{Cowboy}, a u mix.exs je automatski ubačena zavisnost \emph{plug{\textunderscore}cowboy}.
+\par Kada se kreira novi mix projekat, pored konfiguracione datoteke \emph{mix.exs}, i direktorijuma \emph{lib} koji sadrži osnovni k$\hat{o}$d aplikacije, kreira se i direktorijum \emph{test}. Unutar ovog direktorijuma će biti smešteni svi testovi vezani za serversku stranu aplikacije. 
+
+\subsubsection{Struktura klijentske strane portala}
+\par Klijent aplikacija Portala MSNR predstavlja jedan Elm projekat. Inicijalizacija ovog projekta podrazumeva kreiranje jednog praznog direktorijuma src i datoteke elm.json, a sam korisnik odlučuje o organizaciji datoteka unutar projekta. Na slici \ref{fig:msnr-elm} prikazano je rešenje organizacije Elm datoteka u okviru aplikacije Portal MSNR. 
+
+\begin{figure}[!ht]
+  \centering
+  \label{fig:msnr-elm}
+  \includegraphics[width=0.6\textwidth]{msnr-elm.png}
+  \caption{Struktura \emph{Elm} projekta \emph{msnr{\textunderscore}elm} \cite{rad}}
+\end{figure}
+
+\par U korenu projekta se nalazi osnovna datoteka \emph{Main.elm}, koja sadrži funkciju \emph{main} sa definicijom Elm aplikacije. Ostale datoteke sadrže definicije osnovnih stranica, entiteta, putanja i modula za komunikaciju sa serverom. U posebnim direktorijumima, izdvojene su datoteke za prikazivanje studentskih i profesorskih stranica. 
+\par Korisnički interfejs portala implementiran je pomoću četiri funkcije: \emph{sandbox, element, document, application}. Ove funkcije se nalaze unutar modula \emph{Browser}, koji je deo paketa čija je uloga kreiranje Elm programa u pretraživaču. Funkcija \emph{sandbox} omogućava bazičnu interakciju sa korisnicima, bez komunikacije sa spoljnim svetom. Tu komunikaciju omogućava funkcija \emph{element}, pomoću koncepta komande, supskripcije, portova i oznaka (eng. \emph{flags}). Funkcija \emph{document} proširuje prethodnu funkciju tako što upravlja celim dokumentom i pruža kontrolu nad HTML elementima naslova i tela. Funkcija \emph{application} kreira aplikaciju koja upravlja url promenama. 
+\par Aplikacija je kompajlirana tako da se kreira datoteka \emph{app.js}, koja se uključuje dokument \emph{index.html}. Pokreće se pozivanjem \emph{init} funkcije iz modula \emph{Main} i tada se vrši prosleđivanje putanje ka veb interfejsu preko oznaka. 
+\par Elm aplikacija podeljena je na tri osnovna dela: stranice koje se koriste za prijavljivanje i registraciju korisnika, studentsku stranicu, i profesorske stranice. Pored njih, postoje i stranice koje nisu izdvojene u posebne module --- početna stranica i stranica koja se prikazuje u slučaju pogrešne putanje.
+
+
+\subsection{Testiranje portala}
+\par Testiranje ovakve aplikacije podrazumeva podelu na različite vrste testova. Za početak, jedinični testovi koji se odnose na individualne funkcije i upravljače koji barataju zahtevima u okviru serverskog dela aplikacije moraju biti napisani u programskom jeziku Elixir. Na serverskoj strani, potrebno je napisati i testove koji simuliraju zahteve API-ju i verifikuju odgovore od baze. Sa druge strane, jedinični testovi koji se fokusiraju na pojedinačne komponente i funkcije korisničkog interfejsa moraju biti napisani u programskom jeziku Elm. Nakon pojedinačnog testiranja klijentske i serverske aplikacije, slede integracioni testovi koji proveravaju kako korisnički interfejs funkcioniše zajedno sa API-jem. Na kraju je neophodno testirati celokupan sistem, od korisničkog interfejsa do baze podataka, pisanjem sistemskih testova. S obzirom na to da se radi o veb aplikaciji, mogu se sprovesti i testovi opterećenja koji će proveriti kako portal podnosi velike količine zahteva i korisnika. 
+%U narednim poglavljima biće detaljno prikazano sprovođenje svih ovih testova.
 
 \chapter{Testiranje serverskog dela aplikacije}
 \label{chp:elixir}
 
-\par Razvojni okvir \emph{Phoenix} koristi se za razvoj veb aplikacija u programskom jeziku Elixir \cite{phx}. Zasnovan je na obrascu \emph{model-pogled-upravljač} (eng. \emph{Model-View-Controller pattern, MVC}). Serverski deo aplikacija MSNR portal implementiran je kao \emph{Phoenix} projekat. Preciznije, projekat je u osnovi \emph{Mix} projekat, sa \emph{Phoenix} proširenjima. Pored konfiguracione datoteke \emph{mix.exs}, i direktorijuma \emph{lib} koji sadrži osnovni k$\hat{o}$d aplikacije, kreira se i direktorijum \emph{test}. Unutar ovog direktorijuma će biti smešteni svi testovi vezani za serversku stranu aplikacije. 
-\par K$\hat{o}$d napisan u Elixir-u zavisi od nekoliko Erlang biblioteka. Međutim, kada je testiranje koda u pitanju, alati i biblioteke koji se koriste su jedinstveni za svaki od ova dva jezika. Ovde će se govoriti o testiranju isključivo Elixir koda. 
-\par Zajedno sa ovim jezikom dolazi njegov razvojni okvir za testiranje, \emph{ExUnit} \cite{exunit}. U ovom poglavlju biće predstavljeni različiti koncepti testiranja u programskom jeziku Elixir, kroz pisanje testova za serverski deo aplikacije MSNR portal. 
+\par U ovom poglavlju biće predstavljeni različiti koncepti testiranja u programskom jeziku Elixir, kroz pisanje testova za serverski deo aplikacije Portal MSNR. \textit{ExUnit} je Elixir-ov ugrađeni razvojni okvir koji ima sve što je neophodno za iscrpno testiranje koda i biće osnova za sve testove kroz ovo poglavlje \cite{exunit}.
 
 \section{Testiranje jedinica koda u programskom jeziku Elixir}
 \label{sec:elixunit}
 
-\textit{ExUnit} je Elixir-ov ugrađeni razvojni okvir koji ima sve što je neophodno za iscrpno testiranje koda i biće osnova za sve testove kroz ovo poglavlje. S obzirom na to da je Elixir funkcionalni jezik, može se diskutovati o tome šta se smatra "jedinicom". Uobičajeno je da se jedinični testovi fokusiraju na pojedinačnu funkciju i njenu logiku, kako bi se opseg testa održavao što užim, radi bržeg pronalaženja grešaka. Međutim, nekada ima smisla da se u opseg testa uključi više modula ili procesa, i time se proširi definicija jedinice koda. Znati kada treba proširiti taj opseg može pozitivno uticati na jednostavnost i održavanje samih testova. 
+\par S obzirom na to da je Elixir funkcionalni jezik, može se diskutovati o tome šta se smatra "jedinicom". Uobičajeno je da se jedinični testovi fokusiraju na pojedinačnu funkciju i njenu logiku, kako bi se opseg testa održavao što užim, radi bržeg pronalaženja grešaka. Međutim, nekada ima smisla da se u opseg testa uključi više modula ili procesa, i time se proširi definicija jedinice koda i olakša održavanje samih testova. 
 \par Pisanje testova u programskom jeziku Elixir je moguće bez potrebe za drugim bibliotekama, jer je \emph{ExUnit} razvijan zajedno sa samim jezikom od početka. Svi testovi su implementirani kao Elixir skripte, pa je pri davanju imena testu neophodno koristiti ekstenziju datoteke \emph{.exs}. Pre pokretanja testova potrebno je pokrenuti \emph{ExUnit}, kao što je prikazano u primeru koda \ref{lst:start}. Ova naredba se obično navodi unutar automatski generisane datoteke \emph{test/test{\textunderscore}helper.exs}. 
 
 \begin{lstlisting}[language=elixir, caption={Pokretanje ExUnit},captionpos=b, label={lst:start}]
@@ -372,7 +396,7 @@ programming interface} )} obezbeđuje čist k$\hat{o}$d i jednostavne i kontroli
 ExUnit.start()
 \end{lstlisting}
 
-\par Testovi se pokreću najpre pozicioniranjem u direktorijum projekta, a zatim navođenjem komande \emph{mix test}. Ova komanda pokreće sve testove koji se nalaze unutar \emph{test} direktorijuma. Navođenjem parametra \emph{--only} i imena testa ili modula može se pokrenuti specifičan test ili skup testova unutar jednog modula. Pozivanje naredbe \emph{mix test} pokreće testove, i daje sledeći izlaz:  
+\par Testovi se pokreću najpre pozicioniranjem u direktorijum projekta, a zatim navođenjem komande \emph{mix test}. Ova komanda pokreće sve testove koji se nalaze unutar \emph{test} direktorijuma. Navođenjem parametra \emph{--only} i imena testa ili modula može se pokrenuti specifičan test ili skup testova unutar jednog modula. Pozivanje naredbe \emph{mix test} pokreće sve testove, i daje sledeći izlaz:  
 
 \begin{lstlisting}[style=DOS]
 PS C:\Users\panap\testing-msnr-portal\portal\msnr_api> mix test
@@ -382,53 +406,49 @@ Finished in 0.2 seconds (0.00s async, 0.2s sync)
 16 tests, 0 failures
 \end{lstlisting}
 
+\par Svita testova (eng. \emph{test suite}) je kolekcija testova slučajeva upotrebe, koji imaju isti posao, ali različite scenarije. Ona može služiti kao dokumentacija, sa opisima o očekivanom ponašanju koda, tako da treba voditi računa da bude dobro organizovana. \emph{ExUnit} dolazi sa veoma korisnim funkcijima i makroima koji omogućavaju tu organizaciju u jednu čitljivu i održivu datoteku. Alat \emph{describe} omogućava davanje opisa grupe testova, kao i dodeljivanja zajedničke pripreme podataka za celu grupu. Preporuka je za početak grupisati testove po funkciji, kao što je prikazano u primeru koda \ref{lst:desc}, ali odluka o načinu grupisanja je na pojedincu. Svrha je čitljivost i lakše razumevanje. 
 
-\par Svita testova (eng. \emph{test suite}) je kolekcija testova slučajeva upotrebe, koji imaju isti posao, ali različite scenarije. Ona može služiti kao dokumentacija, sa opisima o očekivanom ponašanju koda, tako da treba voditi računa da bude dobro organizovana. \emph{ExUnit} dolazi sa veoma korisnim funkcijima i makroima koji omogućavaju tu organizaciju u jednu čitljivu i održivu  datoteku. Alat \emph{describe} omogućava davanje opisa grupe testova, kao i dodeljivanja zajedničke pripreme podataka za celu grupu. Preporuka je za početak grupisati testove po funkciji, kao što je prikazano u primeru koda \ref{lst:desc}, ali odluka o načinu grupisanja je na pojedincu. Svrha je čitljivost i lakše razumevanje. 
+\begin{lstlisting}[language=elixir, caption={Opisivanje testova unutar jedne grupe, na primeru funkcije za dohvatanje korisnika},captionpos=b, label={lst:desc}]
+defmodule MsnrApi.Queries.AccountsTest  do
+...
+describe "get_user/1" do
 
-\begin{lstlisting}[language=elixir, caption={Opisivanje testova unutar jedne grupe},captionpos=b, label={lst:desc}]
-defmodule MyApp.ModuleTest do 
-   use ExUnit.Case 
-   
-   describe ''thing_to_do/1'' do
-   	test ''it returns :ok, calls the function if the key is correct''
-   	test ''it does not call the function if the key is wrong''
-   end
-end
-\end{lstlisting}
-
-\par Testovi u Elixir projektima se organizuju u module i test slučajeve. U prethodnom primeru koda, modul pod nazivom \emph{ModuleTest} se sastoji od dva test slučaja. Navođenjem ključne reči \emph{test}, a za njom niske koja treba da opiše šta je to što test treba da uradi, definiše se jedna funkcija koja predstavlja test slučaj.
-\par Za svaku funkciju ili upravljač potrebno je napisati test slučajeve. Unutar jednog test slučaja poziva se funkcija ili upravljač i proverava se očekivani rezultat. Makroom \emph{assert} se testira da li je izraz istinit. U slučaju da nije, test ne prolazi i izbacuje grešku. Korišćenje ovog makroa može se videti u primeru \ref{lst:hello}.  Ako funkcija \emph{hello} definisana unutar modula \emph{Example} kao povratnu vrednost vraća atom \emph{:world}, ovaj test prolazi.
-
-\begin{lstlisting}[language=elixir, caption={Testiranje jednostavne funkcije},captionpos=b, label={lst:hello}]
-defmodule HelloTest do
-    use ExUnit.Case
-    doctest Example
-    
-    test ''function returns expected atom'' do
-    	assert Example.hello() == :world
+    test "success: it returns a user when given a valid id" do
+      existing_user = Factory.insert(:user)
+      assert returned_user = Accounts.get_user!(existing_user.id)
+      assert returned_user == existing_user
     end
-end
+
+    test "error: it returns a NoResultsError when a user doesn't exist" do
+      assert_raise Ecto.NoResultsError, fn ->
+        Accounts.get_user!(invalid_id) end
+    end
+ end
 \end{lstlisting}
 
-\par U slučaju da leva i desna strana izraza navedenog nakon makroa \emph{assert} nisu jednake, test ne prolazi, a \emph{ExUnit} daje obaveštenje o tome koji od testova su neuspešni, kao i koje su prava i očekivana vrednost. Ako se umesto \emph{:world} u testu navede na primer atom \emph{:word}, test ne prolazi i dobija se sledeći izlaz:
+\par Testovi u Elixir projektima se organizuju u module i test slučajeve. U prethodnom primeru koda, modul pod nazivom \emph{AccountsTest} sadrži testove koji se odnose na kontekst koji opisuje korisnike. Blok \emph{describe} iz primera se sastoji od dva test slučaja, i odnosi se na funkciju \emph{get{\textunderscore}user}, koja vrši jednostavno dohvatanje korisnika iz baze prosleđivanjem identifikatora. Navođenjem ključne reči \emph{test}, a za njom niske koja treba da opiše šta je to što test treba da uradi, definiše se jedna funkcija koja predstavlja test slučaj. Na primeru describe bloka funkcije \emph{get{\textunderscore}user}, prikazana su dva test slučaja, od kojih jedan proverava uspešno izvršavanje funkcije kada se prosledi validan identifikator, a drugi proverava da li se javlja greška kada se prosledi identifikator korisnika koji ne postoji.
+\par Za svaku funkciju ili upravljač potrebno je napisati test slučajeve. Unutar jednog test slučaja poziva se funkcija ili upravljač i proverava se očekivani rezultat. Makroom \emph{assert} se testira da li je izraz istinit. U slučaju da nije, test ne prolazi i izbacuje grešku. Ako funkcija \emph{get{\textunderscore}user} vrati korisnika koji je jednak postojećem korisniku iz baze, ovaj test uspešno prolazi. U slučaju da leva i desna strana izraza navedenog nakon makroa \emph{assert} nisu jednake, test ne prolazi, a \emph{ExUnit} daje obaveštenje o tome koji od testova su neuspešni, kao i koje su prava i očekivana vrednost. Ako dobijeni korisnik nije onaj koji je očekivan, izlaz će izgledati ovako: 
 
 \begin{lstlisting}[style=DOS]
-1) function returns expected atom (HelloTest)
-     test/hello_test.exs:5
-     Assertion with == failed
-     code:  assert Example.hello() == :word
-     left:  :world
-     right: :word
+1) test get_user/1 success: it returns a user when given a valid id (MsnrApi.Queries.AccountsTest)
+     test/msnr_api/queries/accounts_test.exs:73
+     ** (Ecto.NoResultsError) expected at least one result but got none in query:
+
+     from u0 in MsnrApi.Accounts.User,
+       where: u0.id == ^6
+
+     code: assert returned_user = Accounts.get_user!(6)
      stacktrace:
-       test/helllo_test.exs:6 (test)
+       (ecto 3.7.1) lib/ecto/repo/queryable.ex:156: Ecto.Repo.Queryable.one!/3
+       test/msnr_api/queries/accounts_test.exs:76: (test)
 
-.
+Finished in 0.5 seconds (0.00s async, 0.5s sync)
 
-Finished in 0.04 seconds
 2 tests, 1 failures
 \end{lstlisting}
 
-\par U narednoj listi, navedeni su neki od makroa koji se koriste u testovima, pored makroa \emph{assert}: 
+
+\par U narednoj listi dati su nazivi i opisi makroa koji se mogu koristiti u testovima pored makroa \emph{assert}: 
  \begin{itemize}
  \item \emph{refute} --- koristi se kada je potrebno utvrditi da je izraz uvek neistinit. 
  \item \emph {assert{\textunderscore}raise} --- koristi se kada je potrebno proveriti da li se javlja konkretan izuzetak.
@@ -438,7 +458,24 @@ Finished in 0.04 seconds
  \item \emph{setup i setup{\textunderscore}all} --- koriste se kada je potrebno izvršiti pripremu testova, pokreću se pre svakog testa, ili pre jedne grupe.
  \end{itemize}
  
- \par
+\par U test slučaju greške iz primera \ref{lst:desc}, iskorišćen je i makro \emph{assert{\textunderscore}raise} --- očekuje se da se pri dohvatanju korisnika koji ne postoji javi izuzetak \emph{NoResultsError}. U primeru dela koda \ref{lst:del} prikazano je kako se koriste makroi \emph{refute} i \emph{setup}. 
+ 
+\begin{lstlisting}[language=elixir, caption={Upotreba makroa \emph{setup} i \emph{refute} na primeru funkcije \emph{delete{\textunderscore}user}},captionpos=b, label={lst:del}]
+setup do
+    Ecto.Adapters.SQL.Sandbox.checkout(MsnrApi.Repo)
+end
+  
+describe "delete_user/1" do
+   test "success: it deletes the user" do
+      user = Factory.insert(:user)
+      assert {:ok, _deleted_user} = Accounts.delete_user(user)
+
+      refute Repo.get(User, user.id)
+   end
+end
+\end{lstlisting}
+
+\par Kod unutar makroa \emph{setup} će se pokretati pre svakog testa, a u ovom primeru priprema podrazumeva eksplicitno dohvatanje konekcije sa bazom podataka pre izvršavanja svakog od testova. Pri testiranju funkcije \emph{delete{\textunderscore}user}, koja treba da ukloni korisnika iz baze, iskorišćen je makro \emph{refute}. Kada se pokuša dohvatanje korisnika koji je prethodno izbrisan, trebalo bi da to nije moguće i da dođe do grešle. Zbog toga je u ovom slučaju \emph{refute} dobar izbor.
 
 \section{Testiranje komunikacije sa bazom podataka}
 \par \emph{Ecto} biblioteka zadužena je za sve interakcije sa relacionim bazama podataka u Elixir okruženju \cite{ecto}. Pored komunikacije sa bazom, \emph{Ecto} ima i ulogu u validaciji. U ovom delu, prikazani su testovi koji proveravaju da li k$\hat{o}$d koristi funkcionalnosti ove biblioteke na ispravan način. Dva značajna modula koja \emph{Ecto} poseduje su \emph{Ecto.Schema} i \emph{Ecto.Changeset}. Prvi se odnosi na definisanje mapiranja eksternih podataka u Elixir strukture. Koncept skupa promena (eng. \emph{changeset}) odnosi se na proces validacije podataka, njihovog konvertovanja i provere dodatnih uslova pre nego što se upišu u bazu. \emph{Ecto.Changeset} modul opisuje kako se menjaju podaci. 
@@ -548,7 +585,8 @@ describe "changeset/2" do
 end
 \end{lstlisting}
 
-\par 
+\subsection{Testiranje CRUD operacija}
+\par TODO
 
 \section{Integraciono testiranje}
 \label{sec:elixint}

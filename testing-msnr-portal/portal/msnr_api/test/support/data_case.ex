@@ -1,4 +1,4 @@
-defmodule MsnrApiWeb.DataCase do
+defmodule MsnrApi.Support.DataCase do
   @moduledoc """
   This module defines the setup for tests requiring
   access to the application's data layer.
@@ -18,18 +18,16 @@ defmodule MsnrApiWeb.DataCase do
 
   using do
     quote do
-      alias MsnrApiWeb.Repo
+      alias MsnrApi.{Support.Factory, Repo}
+      alias Ecto.Changeset
 
-      import Ecto
-      import Ecto.Changeset
       import Ecto.Query
-      import MsnrApiWeb.DataCase
+      import MsnrApi.Support.DataCase
     end
   end
 
-  setup tags do
-    MsnrApiWeb.DataCase.setup_sandbox(tags)
-    :ok
+  setup _ do
+    Ecto.Adapters.SQL.Sandbox.mode(MsnrApi.Repo, :manual)
   end
 
   @doc """

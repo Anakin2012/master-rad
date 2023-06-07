@@ -2,7 +2,6 @@ defmodule MsnrApi.Accounts do
   @moduledoc """
   The Accounts context.
   """
-
   import Ecto.Query, warn: false
   alias MsnrApi.Repo
 
