@@ -26,15 +26,15 @@
 \contentsline {chapter}{\chapternumberline {4}Testiranje serverskog dela aplikacije}{19}{chapter.4}%
 \contentsline {section}{\numberline {4.1}Testiranje jedinica koda u programskom jeziku Elixir}{19}{section.4.1}%
 \contentsline {section}{\numberline {4.2}Integraciono testiranje}{23}{section.4.2}%
-\contentsline {section}{\numberline {4.3}Testiranje komunikacije sa bazom podataka}{23}{section.4.3}%
-\contentsline {subsection}{Testiranje polja i tipova}{25}{section*.17}%
-\contentsline {subsection}{Testiranje skupa promena}{26}{section*.18}%
-\contentsline {subsection}{Testiranje upita}{32}{section*.19}%
-\contentsline {subsubsection}{Fabrike za pripremu podataka}{33}{section*.20}%
-\contentsline {subsubsection}{Testiranje osnovnih CRUD operacija}{36}{section*.21}%
+\contentsline {subsection}{Testiranje komunikacije sa bazom podataka}{23}{section*.17}%
+\contentsline {subsubsection}{Testiranje polja i tipova}{25}{section*.18}%
+\contentsline {subsubsection}{Testiranje skupa promena}{25}{section*.19}%
+\contentsline {subsubsection}{Testiranje upita}{32}{section*.20}%
+\contentsline {subsubsection}{Fabrike za pripremu podataka}{33}{section*.21}%
+\contentsline {subsubsection}{Testiranje osnovnih CRUD operacija}{35}{section*.22}%
 \contentsline {chapter}{\chapternumberline {5}Testiranje klijentskog dela aplikacije}{42}{chapter.5}%
 \contentsline {chapter}{\chapternumberline {6}Testiranje celokupnog sistema --- End to End}{43}{chapter.6}%
 \contentsline {section}{\numberline {6.1}Integracija klijentske i serverske strane}{43}{section.6.1}%
 \contentsline {section}{\numberline {6.2}Testiranje opterećenja}{43}{section.6.2}%
 \contentsline {chapter}{\chapternumberline {7}Zaključak}{44}{chapter.7}%
-\contentsline {chapter}{Bibliografija}{45}{chapter*.22}%
+\contentsline {chapter}{Bibliografija}{45}{chapter*.23}%

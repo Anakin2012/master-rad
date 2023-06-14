@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 23.1) (preloaded format=pdflatex 2023.4.5)  14 JUN 2023 19:51
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 23.1) (preloaded format=pdflatex 2023.4.5)  14 JUN 2023 20:01
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1202,7 +1202,7 @@ LaTeX Font Info:    Font shape `T1/DejaVuSansMono-TLF/m/n' will be
 (Font)              scaled to size 8.09995pt on input line 401.
  [20] [21] [22] [23] [24] [25] [26] [27] [28] [29] [30] [31]
 [32]
-Overfull \hbox (0.19676pt too wide) in paragraph at lines 724--725
+Overfull \hbox (0.19676pt too wide) in paragraph at lines 723--724
 \T1/lmr/m/n/12 ba-zom po-da-ta-ka, kre-i-ra-na je za-jed-ni£-ka da-to-te-ka \T1
 /lmr/m/it/12 msnr_api/test/support/factory.ex\T1/lmr/m/n/12 .
  []
@@ -1245,42 +1245,56 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
 LaTeX Warning: There were multiply-defined labels.
 
-Package rerunfilecheck Info: File `AnaPetrovicMasterRad.out' has not changed.
-(rerunfilecheck)             Checksum: 570B35516F136B0BAFB1A0EFD51A1005;3743.
+
+Package rerunfilecheck Warning: File `AnaPetrovicMasterRad.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `AnaPetrovicMasterRad.out':
+(rerunfilecheck)             Before: 570B35516F136B0BAFB1A0EFD51A1005;3743
+(rerunfilecheck)             After:  9D2C088670A71DE9E070FEE8F70A17E4;3471.
  ) 
 Here is how much of TeX's memory you used:
- 19257 strings out of 476334
- 299789 string characters out of 5787972
- 2105382 words of memory out of 5000000
+ 19258 strings out of 476334
+ 299794 string characters out of 5787972
+ 2079382 words of memory out of 5000000
  38848 multiletter control sequences out of 15000+600000
  600548 words of font info for 83 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  90i,12n,90p,1657b,2156s stack positions out of 10000i,1000n,20000p,200000b,200000s
-{C:/Users/panap/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathsy.en
-c}{C:/Users/panap/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ec.enc}{C
-:/Users/panap/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/dejavu/dejavumono_t
-1-type1.enc}{C:/Users/panap/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm
--mathit.enc}{C:/Users/panap/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm
--rm.enc}{C:/Users/panap/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ts1
-.enc} <C:\Users\panap\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\e
-crm1440.pk> <C:\Users\panap\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dp
-i600\ecrm2074.pk> <C:\Users\panap\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen
-/ec/dpi600\ecrm1728.pk><C:/Users/panap/AppData/Local/Programs/MiKTeX/fonts/type
-1/public/dejavu/DejaVuSansMono.pfb><C:/Users/panap/AppData/Local/Programs/MiKTe
-X/fonts/type1/public/lm/lmbx12.pfb><C:/Users/panap/AppData/Local/Programs/MiKTe
-X/fonts/type1/public/lm/lmbxi10.pfb><C:/Users/panap/AppData/Local/Programs/MiKT
-eX/fonts/type1/public/lm/lmcsc10.pfb><C:/Users/panap/AppData/Local/Programs/MiK
-TeX/fonts/type1/public/lm/lmmi12.pfb><C:/Users/panap/AppData/Local/Programs/MiK
-TeX/fonts/type1/public/lm/lmr10.pfb><C:/Users/panap/AppData/Local/Programs/MiKT
-eX/fonts/type1/public/lm/lmr12.pfb><C:/Users/panap/AppData/Local/Programs/MiKTe
-X/fonts/type1/public/lm/lmr7.pfb><C:/Users/panap/AppData/Local/Programs/MiKTeX/
-fonts/type1/public/lm/lmr8.pfb><C:/Users/panap/AppData/Local/Programs/MiKTeX/fo
-nts/type1/public/lm/lmri10.pfb><C:/Users/panap/AppData/Local/Programs/MiKTeX/fo
-nts/type1/public/lm/lmri12.pfb><C:/Users/panap/AppData/Local/Programs/MiKTeX/fo
-nts/type1/public/lm/lmsy10.pfb>
-Output written on AnaPetrovicMasterRad.pdf (50 pages, 749708 bytes).
+
+pdfTeX warning (dest): name{chapter*.22} has been referenced but does not exist
+, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{section.4.3} has been referenced but does not exist
+, replaced by a fixed one
+
+{C:/Users/panap/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathsy.enc}
+{C:/Users/panap/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ec.enc}{C:/
+Users/panap/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/dejavu/dejavumono_t1-
+type1.enc}{C:/Users/panap/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-m
+athit.enc}{C:/Users/panap/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-r
+m.enc}{C:/Users/panap/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ts1.e
+nc} <C:\Users\panap\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecr
+m1440.pk> <C:\Users\panap\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi6
+00\ecrm2074.pk> <C:\Users\panap\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/e
+c/dpi600\ecrm1728.pk><C:/Users/panap/AppData/Local/Programs/MiKTeX/fonts/type1/
+public/dejavu/DejaVuSansMono.pfb><C:/Users/panap/AppData/Local/Programs/MiKTeX/
+fonts/type1/public/lm/lmbx12.pfb><C:/Users/panap/AppData/Local/Programs/MiKTeX/
+fonts/type1/public/lm/lmbxi10.pfb><C:/Users/panap/AppData/Local/Programs/MiKTeX
+/fonts/type1/public/lm/lmcsc10.pfb><C:/Users/panap/AppData/Local/Programs/MiKTe
+X/fonts/type1/public/lm/lmmi12.pfb><C:/Users/panap/AppData/Local/Programs/MiKTe
+X/fonts/type1/public/lm/lmr10.pfb><C:/Users/panap/AppData/Local/Programs/MiKTeX
+/fonts/type1/public/lm/lmr12.pfb><C:/Users/panap/AppData/Local/Programs/MiKTeX/
+fonts/type1/public/lm/lmr7.pfb><C:/Users/panap/AppData/Local/Programs/MiKTeX/fo
+nts/type1/public/lm/lmr8.pfb><C:/Users/panap/AppData/Local/Programs/MiKTeX/font
+s/type1/public/lm/lmri10.pfb><C:/Users/panap/AppData/Local/Programs/MiKTeX/font
+s/type1/public/lm/lmri12.pfb><C:/Users/panap/AppData/Local/Programs/MiKTeX/font
+s/type1/public/lm/lmsy10.pfb>
+Output written on AnaPetrovicMasterRad.pdf (50 pages, 749859 bytes).
 PDF statistics:
- 1149 PDF objects out of 1200 (max. 8388607)
- 549 named destinations out of 1000 (max. 500000)
+ 1150 PDF objects out of 1200 (max. 8388607)
+ 550 named destinations out of 1000 (max. 500000)
  183 words of extra memory for PDF output out of 10000 (max. 10000000)
 
