@@ -3,7 +3,6 @@ defmodule MsnrApi.Queries.AccountsTest do
   use MsnrApi.Support.DataCase
   alias MsnrApi.{Accounts, Accounts.User}
   alias Ecto.Changeset
-  import MsnrApi.Support.Factory
 
   setup do
     Ecto.Adapters.SQL.Sandbox.checkout(MsnrApi.Repo)
@@ -12,8 +11,7 @@ defmodule MsnrApi.Queries.AccountsTest do
   describe "create_user/1" do
 
     test "success: it inserts a user in the db and returns the user" do
-      # ovo nalazi account_factory funkciju
-      # dobijamo parametre sa string key values
+
       params = Factory.string_params_for(:user)
 
       assert {:ok, %User{} = returned_user} = Accounts.create_user(params)
@@ -79,7 +77,7 @@ defmodule MsnrApi.Queries.AccountsTest do
 
     test "error: it returns an error tuple when a user doesn't exist" do
 
-      invalid_id = Enum.random(5000..6000)
+      invalid_id = -1
       assert_raise Ecto.NoResultsError, fn ->
         Accounts.get_user!(invalid_id) end
 
@@ -138,7 +136,6 @@ defmodule MsnrApi.Queries.AccountsTest do
 
       refute Repo.get(User, user.id)
     end
-
   end
 
 end

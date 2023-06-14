@@ -5,7 +5,7 @@ import Config
 # The MIX_TEST_PARTITION environment variable can be used
 # to provide built-in test partitioning in CI environment.
 # Run `mix help test` for more information.
-config :msnr_api, MsnrApi.Repo,
+  config :msnr_api, MsnrApi.Repo,
   username: "postgres",
   password: "1234",
   database: "msnr_api_test#{System.get_env("MIX_TEST_PARTITION")}",

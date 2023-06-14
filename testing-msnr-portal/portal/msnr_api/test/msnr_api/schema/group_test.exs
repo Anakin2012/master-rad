@@ -1,6 +1,9 @@
 defmodule MsnrApi.Schema.GroupTest do
   use MsnrApi.Support.SchemaCase
   alias MsnrApi.Groups.Group
+  alias MsnrApi.Topics.Topic
+  alias MsnrApi.Semesters.Semester
+
 
   @required_fields [
     {:topic_id, :id}
@@ -53,7 +56,7 @@ defmodule MsnrApi.Schema.GroupTest do
 
       {_, meta} = errors[:topic_id]
       assert meta[:validation] == :cast,
-          "The validation type #{meta[:validaiton]} is incorrect."
+          "The validation type #{meta[:validation]} is incorrect."
     end
 
     test "error: returns an error changeset when required fields are missing" do
@@ -73,7 +76,44 @@ defmodule MsnrApi.Schema.GroupTest do
       end
     end
 
+    test "unique constraint for topic_id" do
 
+      Ecto.Adapters.SQL.Sandbox.checkout(MsnrApi.Repo)
+
+      {:ok, existing_semester} =
+        %Semester{}
+        |> Semester.changeset(valid_params([
+          {:year, :integer},
+          {:is_active, :boolean}
+        ]))
+        |> MsnrApi.Repo.insert()
+
+      {:ok, existing_topic} =
+        %Topic{}
+        |> Topic.changeset(Map.put(valid_params([{:title, :string}]), "semester_id", existing_semester.id))
+        |> MsnrApi.Repo.insert()
+
+      {:ok, existing_group} =
+        %Group{}
+        |> Group.changeset(%{"topic_id" => existing_topic.id})
+        |> MsnrApi.Repo.insert()
+
+      changeset_with_reused_topic_id =
+        %Group{}
+        |> Group.changeset(valid_params(@required_fields)
+                          |> Map.put("topic_id", existing_group.topic_id))
+
+      assert {:error, %Changeset{valid?: false, errors: errors}} =
+        MsnrApi.Repo.insert(changeset_with_reused_topic_id)
+
+      assert errors[:topic_id], "The field :topic_id is missing from errors."
+
+      {_, meta} = errors[:topic_id]
+
+      assert meta[:constraint] == :unique,
+        "The validation type #{meta[:validation]} is incorrect."
+
+    end
   end
 
 end

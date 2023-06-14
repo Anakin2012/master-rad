@@ -3,6 +3,7 @@ defmodule MsnrApi.Schema.StudentTest do
   alias MsnrApi.Students.Student
   alias MsnrApi.Accounts.User
   alias MsnrApi.Semesters.Semester
+  alias MsnrApi.StudentRegistrations.StudentRegistration
 
   @required_fields [
     {:index_number, :string}
@@ -15,8 +16,16 @@ defmodule MsnrApi.Schema.StudentTest do
     {:role, :string}
   ]
 
-  @optional_fields [
-    :user_id, :inserted_at, :updated_at
+  @student_registration_fields [
+    {:email, :string},
+    {:first_name, :string},
+    {:last_name, :string},
+    {:index_number, :string},
+  ]
+
+  @required_semester_fields [
+    {:year, :integer},
+    {:is_active, :boolean}
   ]
 
   @expected_fields_with_types [
@@ -40,6 +49,128 @@ defmodule MsnrApi.Schema.StudentTest do
 
   describe "changeset/2" do
 
+    setup do
+      Ecto.Adapters.SQL.Sandbox.checkout(MsnrApi.Repo)
+    end
+
+    test "success: returns a valid changeset when given valid arguments" do
+
+      {:ok, existing_user} =
+        %User{}
+        |> User.changeset(valid_params(@required_user_fields))
+        |> MsnrApi.Repo.insert()
+
+      {:ok, existing_semester} =
+        %Semester{}
+        |> Semester.changeset(valid_params(@required_semester_fields))
+        |> MsnrApi.Repo.insert()
+
+      valid_params = valid_params(@required_fields)
+      changeset = Student.changeset(existing_user, Map.put(valid_params, "semesters", existing_semester))
+
+      assert %Changeset{valid?: true, changes: changes} = changeset
+
+      for {field, _} <- @required_fields do
+        actual = Map.get(changes, field)
+        expected = valid_params[Atom.to_string(field)]
+        assert actual == expected,
+          "Values did not match for: #{field}\nexpected: #{inspect(expected)}\nactual: #{inspect(actual)}"
+      end
+    end
+
+    test "error: returns an invalid changeset when given uncastable values" do
+      {:ok, existing_user} =
+        %User{}
+        |> User.changeset(valid_params(@required_user_fields))
+        |> MsnrApi.Repo.insert()
+
+      {:ok, existing_semester} =
+        %Semester{}
+        |> Semester.changeset(valid_params(@required_semester_fields))
+        |> MsnrApi.Repo.insert()
+
+      invalid_params = invalid_params(@required_fields)
+
+      assert %Changeset{valid?: false, errors: errors} =
+        Student.changeset(existing_user, Map.put(invalid_params, "semesters", existing_semester))
+
+      assert errors[:index_number], "the field index_number is missing from errors."
+
+      {_, meta} = errors[:index_number]
+      assert meta[:validation] == :cast,
+          "The validation type #{meta[:validation]} is incorrect."
+    end
+
+    test "error: returns an error changeset when required fields are missing" do
+      params = %{}
+
+      {:ok, existing_user} =
+        %User{}
+        |> User.changeset(valid_params(@required_user_fields))
+        |> MsnrApi.Repo.insert()
+
+      {:ok, existing_semester} =
+        %Semester{}
+        |> Semester.changeset(valid_params(@required_semester_fields))
+        |> MsnrApi.Repo.insert()
+
+      assert %Changeset{valid?: false, errors: errors} =
+        Student.changeset(existing_user, Map.put(params, "semesters", existing_semester))
+
+        assert errors[:index_number], "The field :index_number is missing from errors."
+
+        {_, meta} = errors[:index_number]
+
+        assert meta[:validation] == :required,
+        "The validation type #{meta[:validation]} is incorrect."
+    end
+
+
+    test "unique constraint for index_number" do
+
+      params = valid_params(@required_fields)
+
+      params_sr = valid_params(@student_registration_fields)
+      params_sr = Map.put(params_sr, "status", :accepted)
+
+      {:ok, existing_sr} =
+        %StudentRegistration{}
+        |> StudentRegistration.changeset_insert(params_sr)
+        |> MsnrApi.Repo.insert()
+
+      {:ok, existing_user} =
+        %User{}
+        |> User.changeset(existing_sr)
+        |> MsnrApi.Repo.insert()
+
+
+      {:ok, existing_semester} =
+        %Semester{}
+        |> Semester.changeset(valid_params(@required_semester_fields))
+        |> MsnrApi.Repo.insert()
+
+      {:ok, existing_student} =
+        %Student{}
+        |> Student.changeset(existing_user, params
+                                            |> Map.put("semesters", existing_semester))
+        |> MsnrApi.Repo.insert()
+
+      changeset_with_reused_index_number =
+        %Student{}
+        |> Student.changeset(existing_user, params
+                                            |> Map.put("index_number", existing_student.index_number))
+
+      assert {:error, %Changeset{valid?: false, errors: errors}} =
+        MsnrApi.Repo.insert(changeset_with_reused_index_number)
+
+      assert errors[:index_number], "The field :index_number is missing from errors."
+
+      {_, meta} = errors[:index_number]
+
+      assert meta[:constraint] == :unique,
+        "The validation type #{meta[:validation]} is incorrect."
+
+    end
 
   end
 end

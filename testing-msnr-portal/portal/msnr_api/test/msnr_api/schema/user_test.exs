@@ -107,7 +107,7 @@ defmodule MsnrApi.Schema.UserTest do
         # unutar te meta liste postoji key :validation koji treba da bude cast
         {_, meta} = errors[field]
         assert meta[:validation] == :cast,
-          "The validation type #{meta[:validaiton]} is incorrect."
+          "The validation type #{meta[:validation]} is incorrect."
       end
     end
 
@@ -206,7 +206,7 @@ defmodule MsnrApi.Schema.UserTest do
 
         {_, meta} = errors[field]
         assert meta[:validation] == :cast,
-          "The validation type #{meta[:validaiton]} is incorrect."
+          "The validation type #{meta[:validation]} is incorrect."
       end
 
       role = errors[:role]

@@ -1,5 +1,6 @@
 defmodule MsnrApi.Schema.StudentRegistrationTest do
   use ExUnit.Case
+  use MsnrApi.Support.SchemaCase
   alias Ecto.Changeset
   alias MsnrApi.StudentRegistrations.StudentRegistration
 
@@ -7,8 +8,8 @@ defmodule MsnrApi.Schema.StudentRegistrationTest do
     :status
   ]
 
-  @optional_fields [
-    :id, :email, :first_name, :index_number, :last_name, :semester_id, :inserted_at, :updated_at
+  @insert_fields [
+    :email, :first_name, :last_name, :index_number, :status
   ]
 
   @expected_fields_with_types [
@@ -87,7 +88,7 @@ defmodule MsnrApi.Schema.StudentRegistrationTest do
       assert errors[:status], "the field :status is misssing from errors."
       {_, meta} = errors[:status]
       assert meta[:validation] == :cast,
-      "The validation type #{meta[:validaiton]} is incorrect."
+      "The validation type #{meta[:validation]} is incorrect."
     end
 
     test "error: returns an error changeset when default fields are missing" do
@@ -96,6 +97,67 @@ defmodule MsnrApi.Schema.StudentRegistrationTest do
       assert %Changeset{valid?: true, changes: changes} = StudentRegistration.changeset(%StudentRegistration{}, params)
 
       refute changes[:status], "The default field :status is not default when it should be."
+    end
+  end
+
+  describe "changeset_insert/2" do
+
+    setup do
+      Ecto.Adapters.SQL.Sandbox.checkout(MsnrApi.Repo)
+    end
+
+    test "success: returns a valid changeset when given valid arguments" do
+
+      valid_params = %{"email" => "pana@gmail.com", "first_name" => "ana", "last_name" => "petrovic",
+                      "index_number" => "12345", "status" => :accepted}
+
+      assert %Changeset{valid?: true, changes: changes} =
+         StudentRegistration.changeset_insert(%StudentRegistration{}, valid_params)
+
+      for field <- @insert_fields do
+        actual = Map.get(changes, field)
+        expected = valid_params[Atom.to_string(field)]
+        assert actual == expected,
+          "Values did not match for: #{field}\nexpected: #{inspect(expected)}\nactual: #{inspect(actual)}"
+      end
+    end
+
+    test "error: returns an invalid changeset when given uncastable values" do
+      invalid_params = %{
+        "email" => NaiveDateTime.local_now(),
+        "first_name" => NaiveDateTime.local_now(),
+        "last_name" => NaiveDateTime.local_now(),
+        "index_number" => NaiveDateTime.local_now(),
+        "status" => NaiveDateTime.local_now()
+      }
+
+      assert %Changeset{valid?: false, errors: errors} =
+         StudentRegistration.changeset_insert(%StudentRegistration{}, invalid_params)
+
+      for field <- @insert_fields do
+
+        assert errors[field], "the field: #{field} is missing from errors."
+
+        {_, meta} = errors[field]
+        assert meta[:validation] == :cast,
+            "The validation type #{meta[:validation]} is incorrect."
+      end
+    end
+
+    test "error: returns an error changeset when required fields are missing" do
+      params = %{}
+
+      assert %Changeset{valid?: false, errors: errors} =
+        StudentRegistration.changeset_insert(%StudentRegistration{}, params)
+
+      for field <- @insert_fields, field not in [:status] do
+        assert errors[field], "The field #{field} is missing from errors."
+
+        {_, meta} = errors[field]
+
+        assert meta[:validation] == :required,
+          "The validation type #{meta[:validation]} is incorrect."
+      end
     end
 
   end

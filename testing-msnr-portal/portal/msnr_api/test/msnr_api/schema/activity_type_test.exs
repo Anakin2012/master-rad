@@ -117,7 +117,7 @@ defmodule MsnrApi.Schema.ActivityTypeTest do
 
         {_, meta} = errors[field]
         assert meta[:constraint] == :unique,
-          "The validation type #{meta[:validaiton]} is incorrect."
+          "The validation type #{meta[:validation]} is incorrect."
       end
     end
 

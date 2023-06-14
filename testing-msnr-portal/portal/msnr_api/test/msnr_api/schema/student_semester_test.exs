@@ -57,7 +57,7 @@ defmodule MsnrApi.Schema.StudentSemesterTest do
 
         {_, meta} = errors[field]
         assert meta[:validation] == :cast,
-          "The validation type #{meta[:validaiton]} is incorrect."
+          "The validation type #{meta[:validation]} is incorrect."
       end
     end
 

@@ -39,6 +39,7 @@ defmodule MsnrApi.Schema.ActivityTest do
     end
   end
 
+  @must
   describe "changeset/2" do
     test "success: returns a valid changeset when given valid arguments" do
       valid_params = valid_params(@required_fields)
@@ -64,7 +65,7 @@ defmodule MsnrApi.Schema.ActivityTest do
 
         {_, meta} = errors[field]
         assert meta[:validation] == :cast,
-          "The validation type #{meta[:validaiton]} is incorrect."
+          "The validation type #{meta[:validation]} is incorrect."
       end
     end
 
@@ -88,7 +89,6 @@ defmodule MsnrApi.Schema.ActivityTest do
 
       refute errors[:is_signup], "The is_signup field isn't default when it should be."
     end
-
 
   end
 end

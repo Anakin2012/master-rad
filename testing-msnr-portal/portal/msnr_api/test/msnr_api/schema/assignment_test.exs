@@ -61,7 +61,7 @@ defmodule MsnrApi.Schema.AssignmentTest do
 
         {_, meta} = errors[field]
         assert meta[:validation] == :cast,
-          "The validation type #{meta[:validaiton]} is incorrect."
+          "The validation type #{meta[:validation]} is incorrect."
       end
     end
 
@@ -108,9 +108,8 @@ defmodule MsnrApi.Schema.AssignmentTest do
       assert errors[:completed], "the field :completed is missing from errors."
       {_, meta} = errors[:completed]
       assert meta[:validation] == :cast,
-        "The validation type #{meta[:validaiton]} is incorrect."
+        "The validation type #{meta[:validation]} is incorrect."
     end
-
   end
 
 
