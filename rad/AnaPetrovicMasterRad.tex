@@ -161,7 +161,7 @@ Mogućnost prosleđivanja funkcija kao argumenata drugih funkcija je ključna za
 \item Transparentnost referenci 
 \item Imutabilnost 
 \end{itemize}
-\par  Koncept transparetnosti referenci se odnosi na to da je vrednost izraza jedinstveno određena. Izraz se može zameniti svojom vrednošću na bilo kom mestu u programu, bez promene u ponašanju programa. Definicija se može proširiti i na funkcije: funkcija poseduje transparentnost referenci ako pri pozivu sa istim vrednostima argumenata uvek proizvodi isti rezultat. Ponašanje takve funkcije je određeno njenim ulaznim vrednostima. Kao posledica, redosled naredbi u funkcionalnim programskim jezicima nije važan.
+\par  Koncept transparetnosti referenci se odnosi na to da je vrednost izraza jedinstveno određena. Izraz se može zameniti svojom vrednošću na bilo kom mestu u programu, bez promene u ponašanju programa. Definicija se može proširiti i na funkcije: funkcija poseduje transparentnost referenci ako pri pozivu sa istim vrednostima argumenata uvek proizvodi isti rezultat. Ponašanje takve funkcije je određeno njenim ulaznim vrednostima.
 \par Imutabilnost podrazumeva odsustvo propratnih efekata, tj. da čista funkcija ne vrši nikakve izmene nad argumentima, kao ni nad promenljivima. Jedini rezultat čiste funkcije jeste vrednost koju ona vrati. Kao posledica ovoga, funkcionalni programi su laki za debagovanje. Čiste funkcije takođe olakšavaju paralelizaciju i konkurentnost aplikacija. Na osnovu ovako napisanih programa, kompilator lako može da paralelizuje naredbe, sačeka da evaluira rezultate kada budu potrebni, i na kraju da zapamti rezultat, s obzirom na to da se on neće promeniti sve dok ulaz ostaje isti. K$\hat{o}$d \ref{lst:pure} prikazuje primer jedne čiste funkcije u programskom jeziku Elixir. 
 
 \begin{lstlisting}[language=elixir, caption={Primer čiste funkcije},captionpos=b, label={lst:pure}]
@@ -176,7 +176,7 @@ IO.puts Math.fibonacci(9)
 
 \subsection{Funkcije višeg reda}
 Funkcija višeg reda je funkcija koja kao argument uzima jednu ili više funkcija i/ili ima funkciju kao svoju povratnu vrednost. U funkcionalnom programiranju se intenzivno koriste ovakve funkcije, a po svojoj važnosti se posebno izdvajaju \textit{map}, \textit{filter} i \textit{reduce (fold)}.  Funkcija \textit{map} kao argumente prima funkciju i listu, i zatim primeni datu funkciju na svaki element liste i kao povratnu vrednost proizvodi novu listu. Upotrebom funkcije \textit{filter} mogu se eliminisati neželjeni elementi neke liste --- na osnovu prosleđene funkcije predikata i date liste, \textit{filter} vraća listu sa elementima koji ispunjavaju dati kriterijum. \textit{Fold} prihvata tri argumenta: funkciju spajanja, početnu vrednost i listu. Iznova primenjuje funkciju spajanja na početnu vrednost i datu listu, sve dok se rezultat ne redukuje na jednu vrednost. 
-\par Prednost korišćenja ovih funkcija je u paralelnom izvršavanju, s obzirom da funkcionalni programi nemaju stanje. Takođe, daju prilično sažet i čist k$\hat{o}$d. Primer koda \ref{lst:high} pokazuje upotrebu funkcija višeg reda u programskom jeziku Elm.
+\par Prednost korišćenja ovih funkcija je u sažetom i čistom kodu. Takođe, pogodne su i za paralelizaciju. Primer koda \ref{lst:high} pokazuje upotrebu funkcija višeg reda u programskom jeziku Elm.
 
 
 \begin{lstlisting}[language=elm, caption={Funkcije višeg reda},captionpos=b, label={lst:high}]
@@ -187,7 +187,7 @@ Funkcija višeg reda je funkcija koja kao argument uzima jednu ili više funkcij
 
 \subsection{Odsustvo promenljivih i rekurzija}
 \par Čisti funkcionalni jezici nemaju stanje koje bi se menjalo tokom izvršavanja programa, pa zbog toga ne podržavaju koncept promenljivih. Sa druge strane, nečisti funkcionalni jezici podržavaju i karakteristike drugih programskih paradigmi, te je u okviru njih dozvoljena upotreba promenljivih. Iako su fleksibilniji po tom pitanju, nečisti funkcionalni jezici promovišu imutabilnost kao dobru praksu. 
-\par Za razliku od imperativnog programiranja, kod funkcionalno napisanih programa može se primetiti odsustvo petlji. Funkcije se definišu rekurzivno --- pozivaju same sebe i time postižu ponavljanje izvršavanja. U mnogim slučajevima, umesto rekurzije se koriste funkcije višeg reda.
+\par Kod funkcionalno napisanih programa može se primetiti odsustvo petlji. Funkcije se definišu rekurzivno --- pozivaju same sebe i time postižu ponavljanje izvršavanja. U mnogim slučajevima, umesto rekurzije se koriste funkcije višeg reda.
 
 \section{Testiranje u razvoju softvera}
 \label{sec:piramid}
@@ -260,7 +260,7 @@ sumTest =
 \label{sec:system}
 \par Nakon završenog jediničnog i integracionog testiranja, neophodno je sprovesti sistemske testove. Ova vrsta testiranja se vrši nad kompletno integrisanim sistemom, i podrazumeva proveru da li celokupni sistem ispunjava zahteve, odnosno da li je spreman za isporuku krajnjim korisnicima. Sistemski testovi se sprovode u okruženju koje je konfigurisano tako da bude što sličnije onom kakvo će biti u produkciji. Praksa je da ih pišu testeri koji nisu učestvovali u razvoju, kako bi se izbegla pristrasnost. Pored funkcionalnih i nefunkcionalnih specifikacija koje se tiču ponašanja sistema, testiraju i očekivanja korisnika. Mogu biti manuelni ili automatski. 
 \par Sistemsko testiranje se smatra testiranjem crne kutije (eng. \emph{black-box testing}). Ponašanje sistema se evaluira iz ugla korisnika, što znači da ne zahteva nikakvo znanje o unutrašnjem dizajnu i strukturi koda. Ono što je neophodno jeste da očekivanja i zahtevi budu precizni i jasni, kao i da se razume upotreba aplikacije u realnom vremenu. 
-\par Postoji mnogo vrsta sistemskog testiranja, i potrebno je doneti odluku koje od njih će biti sprovedene, u zavisnosti od zahteva, tipa aplikacije i raspoloživih resursa. Neke od vrsta sistemskog testiranja su: 
+\par Postoji mnogo vrsta sistemskog testiranja, i potrebno je doneti odluku koje od njih će biti sprovedene, u zavisnosti od zahteva, tipa aplikacije i raspoloživih resursa.  Neke od vrsta sistemskog testiranja koje se odnose na nefunkcionalne osobine softvera su: 
 \begin{itemize}
 \item Testiranje oporavka (eng. \emph{recovery testing}) --- nakon što se izazove pad sistema, proverava se da li se on vraća u prvobitno stanje na ispravan način.
 \item Testiranje perfomansi (eng. \emph{perfomance testing}) --- proverava se skalabilnost, pouzdanost, i vreme odgovora sistema.
@@ -346,7 +346,7 @@ programming interface} )} obezbeđuje čist k$\hat{o}$d i jednostavne i kontroli
 \end{figure}
 
 \subsubsection{Struktura serverske strane portala}
-\par U programskom jeziku Elixir, za razvoj veb aplikacija koristi se razvojni okvir \emph{Phoenix} \cite{phx}. Zasnovan je na obrascu \emph{model-pogled-upravljač} (eng. \emph{Model-View-Controller pattern, MVC}). Serverski deo aplikacija MSNR portal implementiran je kao \emph{Phoenix} projekat. Preciznije, projekat je u osnovi \emph{Mix} projekat, sa \emph{Phoenix} proširenjima. Mix je osnovni alat ovog jezika koji se koristi za kreiranje, prevođenje i testiranje projekata. Pored ovog alata, potrebno je prethodno instalirati i menadžer paketa za ekosistem \emph{Erlang} pod nazivom \emph{Hex} \cite{hex}. Pri kreiranju Phoenix projekta, dodeljeno mu je ime \emph{msnr{\textunderscore}api}. Na slici \ref{fig:msnr-str} je prikazana struktura projekta nakon uspešnog pokretanja komande za kreiranje. 
+\par U programskom jeziku Elixir, za razvoj veb aplikacija koristi se razvojni okvir \emph{Phoenix} \cite{phx}. Zasnovan je na obrascu \emph{model-pogled-upravljač} (eng. \emph{Model-View-Controller pattern, MVC}). Serverski deo aplikacija MSNR portal implementiran je kao \emph{Phoenix} projekat. Preciznije, projekat je u osnovi \emph{Mix} projekat, sa \emph{Phoenix} proširenjima. \emph{Mix} je osnovni alat ovog jezika koji se koristi za kreiranje, prevođenje i testiranje projekata. Pored ovog alata, potrebno je prethodno instalirati i menadžer paketa za ekosistem \emph{Erlang} pod nazivom \emph{Hex} \cite{hex}. Pri kreiranju \emph{Phoenix} projekta, dodeljeno mu je ime \emph{msnr{\textunderscore}api}. Na slici \ref{fig:msnr-str} je prikazana struktura projekta nakon uspešnog pokretanja komande za kreiranje. 
 
 \begin{figure}[!ht]
   \centering
@@ -356,8 +356,8 @@ programming interface} )} obezbeđuje čist k$\hat{o}$d i jednostavne i kontroli
 \end{figure}
 
 \par U direktorijumu \emph{lib} nalaze se dva konteksta (eng. \emph{context}), tj. dva modula, od kojih svaki grupiše funkcije sa zajedničkom svrhom. Prvi kontekst je \emph{MsnrApi}, unutar koga je enkapsulirana sva domenska i poslovna logika, i definisani svi entiteti i funkcije za rad sa njima. Inicijalno su kreirana tri podmodula ovog konteksta: \emph{MsnrApi.Application}, koji pokreće aplikaciju, \emph{MsnrApi.Repo}, koji je zadužen za komunikaciju sa bazom, i \emph{MsnrApi.Mailer}, koji služi za slanje elektronske pošte. Drugi kontekst ima naziv \emph{MsnrApiWeb}, i on sadrži implementaciju za poglede i upravljače unutar arhitekture MVC. Njegovi podmoduli \emph{MnsrApiWeb.Endpoint} i \emph{MsnrApiWeb.Router} imaju ulogu u pripremi HTTP zahteva i njihovom prosleđivanju odgovarajućim upravljačima. 
-\par Za sve obrade HTTP zahteva koristi se biblioteka \emph{Plug} \cite{plug}. Utikač (eng. \emph{plug}) je funkcija koja ima kao ulaznu i povratnu vrednost strukturu \emph{Plug.Conn} koja sadrži sve informacije o primljenom HTTP zahtevu. Phoenix poziva utikače jedan za drugim, i svaki od njih transformiše ovu strukturu dok se obrada zahteva ne završi, i na kraju odgovor pošalje korisniku. Sa utikačima se povezuje veb server pod nazivom \emph{Cowboy}, a u mix.exs je automatski ubačena zavisnost \emph{plug{\textunderscore}cowboy}.
-\par Kada se kreira novi mix projekat, pored konfiguracione datoteke \emph{mix.exs}, i direktorijuma \emph{lib} koji sadrži osnovni k$\hat{o}$d aplikacije, kreira se i direktorijum \emph{test}. Unutar ovog direktorijuma će biti smešteni svi testovi vezani za serversku stranu aplikacije. 
+\par Za sve obrade HTTP zahteva koristi se biblioteka \emph{Plug} \cite{plug}. Utikač (eng. \emph{plug}) je funkcija koja ima kao ulaznu i povratnu vrednost strukturu \emph{Plug.Conn} koja sadrži sve informacije o primljenom HTTP zahtevu. \emph{Phoenix} poziva utikače jedan za drugim, i svaki od njih transformiše ovu strukturu dok se obrada zahteva ne završi, i na kraju odgovor pošalje korisniku. Sa utikačima se povezuje veb server pod nazivom \emph{Cowboy}, a u mix.exs je automatski ubačena zavisnost \emph{plug{\textunderscore}cowboy}.
+\par Kada se kreira novi \emph{mix} projekat, pored konfiguracione datoteke \emph{mix.exs}, i direktorijuma \emph{lib} koji sadrži osnovni k$\hat{o}$d aplikacije, kreira se i direktorijum \emph{test}. Unutar ovog direktorijuma će biti smešteni svi testovi vezani za serversku stranu aplikacije. 
 
 \subsubsection{Struktura klijentske strane portala}
 \par Klijent aplikacija Portala MSNR predstavlja jedan Elm projekat. Inicijalizacija ovog projekta podrazumeva kreiranje jednog praznog direktorijuma src i datoteke elm.json, a sam korisnik odlučuje o organizaciji datoteka unutar projekta. Na slici \ref{fig:msnr-elm} prikazano je rešenje organizacije Elm datoteka u okviru aplikacije Portal MSNR. 
@@ -375,7 +375,7 @@ programming interface} )} obezbeđuje čist k$\hat{o}$d i jednostavne i kontroli
 \par Elm aplikacija podeljena je na tri osnovna dela: stranice koje se koriste za prijavljivanje i registraciju korisnika, studentsku stranicu, i profesorske stranice. Pored njih, postoje i stranice koje nisu izdvojene u posebne module --- početna stranica i stranica koja se prikazuje u slučaju pogrešne putanje.
 
 
-\subsection{Testiranje portala}
+\section{Testiranje portala}
 \par Testiranje ovakve aplikacije podrazumeva podelu na različite vrste testova. Za početak, jedinični testovi koji se odnose na individualne funkcije i upravljače koji barataju zahtevima u okviru serverskog dela aplikacije moraju biti napisani u programskom jeziku Elixir. Na serverskoj strani, potrebno je napisati i testove koji simuliraju zahteve API-ju i verifikuju odgovore od baze. Sa druge strane, jedinični testovi koji se fokusiraju na pojedinačne komponente i funkcije korisničkog interfejsa moraju biti napisani u programskom jeziku Elm. Nakon pojedinačnog testiranja klijentske i serverske aplikacije, slede integracioni testovi koji proveravaju kako korisnički interfejs funkcioniše zajedno sa API-jem. Na kraju je neophodno testirati celokupan sistem, od korisničkog interfejsa do baze podataka, pisanjem sistemskih testova. S obzirom na to da se radi o veb aplikaciji, mogu se sprovesti i testovi opterećenja koji će proveriti kako portal podnosi velike količine zahteva i korisnika. 
 %U narednim poglavljima biće detaljno prikazano sprovođenje svih ovih testova.
 
@@ -406,13 +406,13 @@ Finished in 0.2 seconds (0.00s async, 0.2s sync)
 16 tests, 0 failures
 \end{lstlisting}
 
-\par Svita testova (eng. \emph{test suite}) je kolekcija testova slučajeva upotrebe, koji imaju isti posao, ali različite scenarije. Ona može služiti kao dokumentacija, sa opisima o očekivanom ponašanju koda, tako da treba voditi računa da bude dobro organizovana. \emph{ExUnit} dolazi sa veoma korisnim funkcijima i makroima koji omogućavaju tu organizaciju u jednu čitljivu i održivu datoteku. Alat \emph{describe} omogućava davanje opisa grupe testova, kao i dodeljivanja zajedničke pripreme podataka za celu grupu. Preporuka je za početak grupisati testove po funkciji, kao što je prikazano u primeru koda \ref{lst:desc}, ali odluka o načinu grupisanja je na pojedincu. Svrha je čitljivost i lakše razumevanje. 
+\par Svita testova (eng. \emph{test suite}) je kolekcija testova slučajeva upotrebe, koji imaju isti posao, ali različite scenarije. Ona može služiti kao dokumentacija, sa opisima o očekivanom ponašanju koda, tako da treba voditi računa da bude dobro organizovana. \emph{ExUnit} dolazi sa veoma korisnim funkcijima i makroima koji omogućavaju tu organizaciju u jednu čitljivu i održivu datoteku. Alat \emph{describe} omogućava davanje opisa grupe testova, kao i dodeljivanja zajedničke pripreme podataka za celu grupu. Preporuka je za početak grupisati testove po funkciji, kao što je prikazano u primeru koda \ref{lst:desc}, ali odluka o načinu grupisanja je na pojedincu. Svrha je čitljivost i lakše razumevanje. \par Testovi u Elixir projektima se organizuju u module i test slučajeve. U ovom primeru, modul pod nazivom \emph{AccountsTest} sadrži testove koji se odnose na kontekst koji opisuje korisnike. Blok \emph{describe} iz primera se sastoji od dva test slučaja, i odnosi se na funkciju \emph{get{\textunderscore}user}, koja vrši jednostavno dohvatanje korisnika iz baze prosleđivanjem identifikatora. Navođenjem ključne reči \emph{test}, a za njom niske koja treba da opiše šta je to što test treba da uradi, definiše se jedna funkcija koja predstavlja test slučaj. Na primeru \emph{describe} bloka funkcije \emph{get{\textunderscore}user}, prikazana su dva test slučaja, od kojih jedan proverava uspešno izvršavanje funkcije kada se prosledi validan identifikator, a drugi proverava da li se javlja greška kada se prosledi identifikator korisnika koji ne postoji.
+\par Unutar jednog test slučaja poziva se funkcija ili upravljač i proverava se očekivani rezultat. Makroom \emph{assert} se testira da li je izraz istinit. U slučaju da nije, test ne prolazi i izbacuje grešku. Ako funkcija \emph{get{\textunderscore}user} vrati korisnika koji je jednak postojećem korisniku iz baze, ovaj test uspešno prolazi.
 
 \begin{lstlisting}[language=elixir, caption={Opisivanje testova unutar jedne grupe, na primeru funkcije za dohvatanje korisnika},captionpos=b, label={lst:desc}]
 defmodule MsnrApi.Queries.AccountsTest  do
 ...
 describe "get_user/1" do
-
     test "success: it returns a user when given a valid id" do
       existing_user = Factory.insert(:user)
       assert returned_user = Accounts.get_user!(existing_user.id)
@@ -426,10 +426,10 @@ describe "get_user/1" do
  end
 \end{lstlisting}
 
-\par Testovi u Elixir projektima se organizuju u module i test slučajeve. U prethodnom primeru koda, modul pod nazivom \emph{AccountsTest} sadrži testove koji se odnose na kontekst koji opisuje korisnike. Blok \emph{describe} iz primera se sastoji od dva test slučaja, i odnosi se na funkciju \emph{get{\textunderscore}user}, koja vrši jednostavno dohvatanje korisnika iz baze prosleđivanjem identifikatora. Navođenjem ključne reči \emph{test}, a za njom niske koja treba da opiše šta je to što test treba da uradi, definiše se jedna funkcija koja predstavlja test slučaj. Na primeru describe bloka funkcije \emph{get{\textunderscore}user}, prikazana su dva test slučaja, od kojih jedan proverava uspešno izvršavanje funkcije kada se prosledi validan identifikator, a drugi proverava da li se javlja greška kada se prosledi identifikator korisnika koji ne postoji.
-\par Za svaku funkciju ili upravljač potrebno je napisati test slučajeve. Unutar jednog test slučaja poziva se funkcija ili upravljač i proverava se očekivani rezultat. Makroom \emph{assert} se testira da li je izraz istinit. U slučaju da nije, test ne prolazi i izbacuje grešku. Ako funkcija \emph{get{\textunderscore}user} vrati korisnika koji je jednak postojećem korisniku iz baze, ovaj test uspešno prolazi. U slučaju da leva i desna strana izraza navedenog nakon makroa \emph{assert} nisu jednake, test ne prolazi, a \emph{ExUnit} daje obaveštenje o tome koji od testova su neuspešni, kao i koje su prava i očekivana vrednost. Ako dobijeni korisnik nije onaj koji je očekivan, izlaz će izgledati ovako: 
 
-\begin{lstlisting}[style=DOS]
+\par U slučaju da leva i desna strana izraza navedenog nakon makroa \emph{assert} nisu jednake, test ne prolazi, a \emph{ExUnit} daje obaveštenje o tome koji od testova su neuspešni, kao i koje su prava i očekivana vrednost. Izlaz koji se dobije u slučaju da dohvaćeni korisnik nije onaj koji je očekivan, prikazan je na listingu \ref{lst:term}. 
+
+\begin{lstlisting}[style=DOS, caption={Izlaz u slučaju testa koji ne prolazi},captionpos=b, label={lst:term}]
 1) test get_user/1 success: it returns a user when given a valid id (MsnrApi.Queries.AccountsTest)
      test/msnr_api/queries/accounts_test.exs:73
      ** (Ecto.NoResultsError) expected at least one result but got none in query:
@@ -452,13 +452,13 @@ Finished in 0.5 seconds (0.00s async, 0.5s sync)
  \begin{itemize}
  \item \emph{refute} --- koristi se kada je potrebno utvrditi da je izraz uvek neistinit. 
  \item \emph {assert{\textunderscore}raise} --- koristi se kada je potrebno proveriti da li se javlja konkretan izuzetak.
- \item \emph{assert{\textunderscore}receive} --- koristi kada je potrebno proveriti da li je proces primio konkretnu poruku.
+ \item \emph{assert{\textunderscore}receive} --- koristi se kada je potrebno proveriti da li je proces primio konkretnu poruku.
  \item \emph {capture{\textunderscore}io} --- koristi se kada je potrebno proveriti da li se na standardanom izlazu ispisuje očekivano.
  \item \emph{capture{\textunderscore}log} --- koristi se kada je potrebno proveriti sadržaj log poruka, npr. pri pozivu \emph{Logger.info}.
  \item \emph{setup i setup{\textunderscore}all} --- koriste se kada je potrebno izvršiti pripremu testova, pokreću se pre svakog testa, ili pre jedne grupe.
  \end{itemize}
  
-\par U test slučaju greške iz primera \ref{lst:desc}, iskorišćen je i makro \emph{assert{\textunderscore}raise} --- očekuje se da se pri dohvatanju korisnika koji ne postoji javi izuzetak \emph{NoResultsError}. U primeru dela koda \ref{lst:del} prikazano je kako se koriste makroi \emph{refute} i \emph{setup}. 
+\par U test slučaju greške iz primera \ref{lst:desc}, iskorišćen je i makro \emph{assert{\textunderscore}raise} --- očekuje se da se pri dohvatanju korisnika koji ne postoji javi izuzetak \emph{NoResultsError}. Upotreba makroa \emph{refute} i \emph{setup} prikazana je u primeru dela koda \ref{lst:del}. K$\hat{o}$d  unutar makroa \emph{setup} će se pokretati pre svakog testa, a u ovom primeru priprema podrazumeva eksplicitno dohvatanje konekcije sa bazom podataka pre izvršavanja svakog od testova. Pri testiranju funkcije \emph{delete{\textunderscore}user}, koja treba da ukloni korisnika iz baze, iskorišćen je makro \emph{refute}. Kada se pokuša dohvatanje korisnika koji je prethodno izbrisan, trebalo bi da to nije moguće i da dođe do greške. Zbog toga je u ovom slučaju \emph{refute} dobar izbor.
  
 \begin{lstlisting}[language=elixir, caption={Upotreba makroa \emph{setup} i \emph{refute} na primeru funkcije \emph{delete{\textunderscore}user}},captionpos=b, label={lst:del}]
 setup do
@@ -475,12 +475,26 @@ describe "delete_user/1" do
 end
 \end{lstlisting}
 
-\par Kod unutar makroa \emph{setup} će se pokretati pre svakog testa, a u ovom primeru priprema podrazumeva eksplicitno dohvatanje konekcije sa bazom podataka pre izvršavanja svakog od testova. Pri testiranju funkcije \emph{delete{\textunderscore}user}, koja treba da ukloni korisnika iz baze, iskorišćen je makro \emph{refute}. Kada se pokuša dohvatanje korisnika koji je prethodno izbrisan, trebalo bi da to nije moguće i da dođe do grešle. Zbog toga je u ovom slučaju \emph{refute} dobar izbor.
+\section{Integraciono testiranje}
+\label{sec:elixint}\}
+\par Nakon dobro istestiranih pojedinačnih funkcija i modula, potrebno je proveriti da li komponente funkcionišu ispravno kao celina. U ovoj sekciji biće prikazani testovi koji proveravaju da li različiti delovi sistema koji komuniciraju međusobno, kao i sa nekim eksternim sistemima, rade to na ispravan način.
 
 \section{Testiranje komunikacije sa bazom podataka}
-\par \emph{Ecto} biblioteka zadužena je za sve interakcije sa relacionim bazama podataka u Elixir okruženju \cite{ecto}. Pored komunikacije sa bazom, \emph{Ecto} ima i ulogu u validaciji. U ovom delu, prikazani su testovi koji proveravaju da li k$\hat{o}$d koristi funkcionalnosti ove biblioteke na ispravan način. Dva značajna modula koja \emph{Ecto} poseduje su \emph{Ecto.Schema} i \emph{Ecto.Changeset}. Prvi se odnosi na definisanje mapiranja eksternih podataka u Elixir strukture. Koncept skupa promena (eng. \emph{changeset}) odnosi se na proces validacije podataka, njihovog konvertovanja i provere dodatnih uslova pre nego što se upišu u bazu. \emph{Ecto.Changeset} modul opisuje kako se menjaju podaci. 
-\par Svi testovi koji se odnose na \emph{Ecto} biblioteku nalaze se u direktorijumu \textit{'/test/msnr{\textunderscore}api/schema'}, u okviru projekta \emph{msnr{\textunderscore}api}. 
-\par Na početku, napisani su jednostavni testovi koji proveravaju ispravnost definisanja struktura pomoću \emph{Ecto.Schema} modula. Primer definisanja entiteta dodeljenih aktivnosti  dat je u primeru koda \ref{lst:schema}. Pomoću makroa \emph{schema} i \emph{field} definišu se tabele, njihova polja i relacije sa drugim tabelama. Oni istovremeno definišu i Elixir strukturu --- u slučaju primera \ref{lst:schema}, ta struktura se naziva \emph{Assignment}. 
+\par \emph{Ecto} biblioteka zadužena je za sve interakcije sa relacionim bazama podataka u \emph{Elixir} okruženju \cite{ecto}. Pored komunikacije sa bazom, \emph{Ecto} ima i ulogu u validaciji. Moduli ove biblioteke koje je značajno naglasiti su: \emph{Ecto.Repo}, \emph{Ecto.Schema} i \emph{Ecto.Changeset}. \emph{Ecto.Repo} opisuje gde se nalaze podaci, odnosno definiše omotač oko baze preko kog se ostvaraje komunikacija sa bazom. \emph{Ecto.Schema} ima ulogu u definisanju mapiranja eksternih podataka u \emph{Elixir} strukture. Koncept skupa promena (eng. \emph{changeset}) odnosi se na proces validacije podataka, njihovog konvertovanja i provere dodatnih uslova pre nego što se upišu u bazu. \emph{Ecto.Changeset} modul opisuje kako se menjaju podaci. U ovom delu, prikazani su testovi koji proveravaju da li k$\hat{o}$d koristi funkcionalnosti \emph{Ecto} biblioteke na ispravan način.
+\par \emph{Ecto} i svi potrebni moduli se podrazumevano uključuju prilikom kreiranja \emph{Phoenix} projekta. Pre samog pisanja testova, neophodno je podesiti sve parametre za komunikaciju sa bazom podataka \emph{PostgreSQL} u testnom okruženju. U datoteci \emph{config/test.exs} potrebno je uneti podatke kao što je prikazano u primeru koda \ref{lst:conf}. Pokretanjem naredbe \emph{MIX{\textunderscore}ENV=test mix ecto.create} iz komandne linije, lokalno će se kreirati \emph{msnr{\textunderscore}api{\textunderscore}test} baza podataka.
+
+\begin{lstlisting}[language=elixir, caption={Konfiguracija baze podataka u testnom okruženju},captionpos=b, label={lst:conf}]
+  config :msnr_api, MsnrApi.Repo,
+  username: "postgres",
+  password: "1234",
+  database: "msnr_api_test#{System.get_env("MIX_TEST_PARTITION")}",
+  hostname: "localhost",
+  pool: Ecto.Adapters.SQL.Sandbox,
+  pool_size: 10
+\end{lstlisting}
+
+\par Svi testovi u vezi sa bazom podataka nalaze se u direktorijumima \textit{'/test/msnr{\textunderscore}api/schema'} i \textit{'/test/msnr{\textunderscore}api/queries'}, u okviru projekta \emph{msnr{\textunderscore}api}. 
+\par Na početku, napisani su jednostavni testovi koji proveravaju ispravnost definisanja struktura pomoću \emph{Ecto.Schema} modula. Primer definisanja entiteta dodeljenih aktivnosti  dat je u primeru koda \ref{lst:schema}. Pomoću makroa \emph{schema} i \emph{field} definišu se tabele, njihova polja i relacije sa drugim tabelama. Oni istovremeno definišu i Elixir strukturu --- u ovom primeru, ta struktura se naziva \emph{Assignment}. Pored ovog, i svi ostali entiteti su definisani kao konteksti u okviru konteksta \emph{MsnrApi}, koji sadrži domensku logiku aplikacije. Funkcija \emph{changeset/2} biće objašnjena kasnije.
 
 \begin{lstlisting}[language=elixir, caption={Shema tabele assignments},captionpos=b, label={lst:schema}]
 defmodule MsnrApi.Assignments.Assignment do
@@ -507,34 +521,77 @@ defmodule MsnrApi.Assignments.Assignment do
 \end{lstlisting}
 
 \subsection{Testiranje polja i tipova}
-\par Test koji se odnosi na prethodni primer prikazan je u kodu \ref{lst:testschema}. Ovo je primer jednostavnog jediničnog testa koji proverava da li definisana shema ima tačna polja i odgovarajuće tipove. Unutar testa se prvo prolaskom kroz sva polja Assignment strukture izvuku polje i njegov tip, i zatim se navodi ključna reč \emph{assert}, kojom se proverava da li su prava polja i tipovi jednaki očekivanim. Lista \emph{@expected{\textunderscore}fields{\textunderscore}with{\textunderscore}types} definisana je kao lista parova polja i odgovarajućih tipova, kao što su navedeni u primeru \ref{lst:schema}. Unutar assert naredbe, i prava i očekivana lista pretvorene su u \emph{MapSet} strukturu, kako bi se redosledi polja poklapali sa obe strane. Slični testovi napisani su i za sve ostale entitete navedene u sekciji \ref{sec:entiteti}.
+\par Test koji se odnosi na prethodni primer prikazan je u kodu \ref{lst:testschema}. Ovo je primer jednostavnog jediničnog testa koji proverava da li definisana shema ima tačna polja i odgovarajuće tipove. Unutar testa se prvo prolaskom kroz sva polja Assignment strukture izvuku polje i njegov tip, i zatim se navodi ključna reč \emph{assert}, kojom se proverava da li su prava polja i tipovi jednaki očekivanim. Lista \emph{@expected{\textunderscore}fields{\textunderscore}with{\textunderscore}types} definisana je kao lista parova polja i odgovarajućih tipova, kao što su navedeni u primeru \ref{lst:schema}. Unutar \emph{assert} naredbe, i prava i očekivana lista pretvorene su u \emph{MapSet} strukturu, kako bi se redosledi polja poklapali sa obe strane. Slični testovi napisani su i za sve ostale entitete navedene u sekciji \ref{sec:entiteti}.
 
-\begin{lstlisting}[language=elixir, caption={Test za proveru polja i tipova tabele assignments},captionpos=b, label={lst:testschema}]
+\begin{lstlisting}[language=elixir, caption={Test za proveru polja i tipova tabele \emph{assignments}},captionpos=b, label={lst:testschema}]
 defmodule MsnrApi.Schema.AssignmentTest do
-  use ExUnit.Case
-  alias MsnrApi.Assignments.Assignment
-  
+...  
   describe "fields and types" do
     test "it has the correct fields and types" do
       actual_fields_with_types =
         for field <- Assignment.__schema__(:fields) do
           type = Assignment.__schema__(:type, field)
           {field, type}
-    end
+         end
     
-        assert MapSet.new(actual_fields_with_types) == MapSet.new(@expected_fields_with_types)
+      assert MapSet.new(actual_fields_with_types) == MapSet.new(@expected_fields_with_types)
+  end
+ end
+\end{lstlisting}
+
+\subsection{Testiranje skupa promena}
+\par Funkcija \emph{changeset} iz primera koda \ref{lst:schema} obuhvata različite transformacije podataka, kao i njihovu validaciju pre unosa u bazu podataka. Svrha ove funkcije je da svi podaci koji se unose ili ažuriraju u bazi budu ispravni i u skladu sa zahtevima aplikacije. Svaka od shema ima svoju definiciju polja i svoju \emph{changeset} funkciju. Tokom razvoja aplikacije, shemama se mogu dodavati različite izmene, kao što su nova polja, ili izmene u samim validacijama unutar funkcije \emph{changeset}. Funkcija \emph{cast} je prva u nizu funkcija koje se pozivaju i ona ograničava polja koja se mogu menjati. U slučaju modula \emph{Assignment}, to su polja \emph{comment} i \emph{grade}. Funkcija validaterequired proverava obavezna polja. Rezultat izvršavanja ovih funkcija je takođe \emph{Ecto.Changeset} struktura, koja sadrži informacije o promenama koje treba izvršiti, validnost izmena i greške validacije ukoliko one postoje.
+\par Testovi koji se odnose na ove funkcije implementirani su unutar \emph{describe} bloka \emph{''changeset/2''}, za svaki od entiteta aplikacije. Oni pokrivaju i uspešan scenario, i neke od slučajeva greški. Koji od ovih scenarija će se desiti, zavisi od ispravnosti prosleđenih parametara funkcije. Parametri koji će se prosleđivati u testovima formirani su unutar pomoćnih funkcija koje se nalaze u modulu \emph{SchemaCase}. On se nalazi u direktorijumu \emph{msnr{\textunderscore}api/test/support}, zajedno sa ostalim datotekama koje sadrže zajednički k$\hat{o}$d. Da bi ova datoteka bila prepoznata kada se pokreću testovi, potrebno je dodati dve linije unutar \emph{mix.exs} datoteke, koje su prikazane u kodu \ref{lst:mst}. Ovime se govori aplikaciji da uključi sve datoteke u \emph{test} direktorijumu prilikom kompilacije u testnom okruženju. Tako \emph{SchemaCase} postaje dostupan isključivo prilikom testiranja.
+
+\begin{lstlisting}[language=elixir, caption={Uključivanje datoteka iz test direktorijuma pri kompilaciji u testnom okruženju},captionpos=b, label={lst:mst}]
+defp elixirc_paths(:test), do: [''lib'', ''test'']
+defp elixirc_paths(_), do :[''lib'']
+...
+def project do [
+     ...
+     elixirc_paths: elixirc_paths(Mix.env()), 
+]
+\end{lstlisting}
+
+\par Modul \emph{SchemaCase} sadrži dve funkcije, od kojih jedna konstruiše realistične podatke ispravnih tipova, a druga konstruiše podatke koji su pogrešnog tipa u odnosu na polje tabele. Funkcije \emph{valid{\textunderscore}params} i \emph{invalid{\textunderscore}params} prikazane su u primeru koda \ref{lst:faker}. Ove funkcije kao povratnu vrednost imaju mapu koja sadrži niske naziva polja kao ključeve, i odgovarajuće generisane vrednosti koje njima odgovaraju. Biblioteka \emph{Faker} \cite{faker} ima ulogu u formiranju nasumičnih realističnih podataka. Na primer, pomoću modula ove biblioteke pod nazivom \emph{Lorem}, mogu se dobiti nasumične reči koje će predstavljati polja tabela koja treba da imaju nisku kao svoju vrednost. \emph{Faker} je potrebno uključiti u zavisnosti projekta, dodavanjem linije \textit{\{:faker, ''$\sim$> 0.17'', only: :test\}} u \emph{deps} delu konfiguracione datoteke \emph{mix.exs}. Biblioteku nije potrebno koristiti u razvojnom i produkcionom okruženju, te se ovom linijom ograničava njena upotreba samo na testno okruženje.
+
+\begin{lstlisting}[language=elixir, caption={Definicije pomoćnih funkcija \emph{valid{\textunderscore}params} i \emph{invalid{\textunderscore}params}},captionpos=b, label={lst:faker}]
+
+def valid_params(fields_with_types) do
+
+    valid_value_by_type = %{
+      string: fn -> Faker.Lorem.word() end,
+      naive_datetime: fn -> Faker.NaiveDateTime.backward(Enum.random(0..100)) end,
+      id: fn -> Enum.random(0..100) end,
+      ... 
+    }
+
+    for {field, type} <- fields_with_types, into: %{} do
+      case field do
+        {Atom.to_string(field), valid_value_by_type[type].()}
+      end
     end
   end
+
+  def invalid_params(fields_with_types) do
+    invalid_value_by_type = %{
+      string: fn -> DateTime.utc_now() end,
+      naive_datetime: fn -> Faker.Lorem.word() end,
+      id: fn -> DateTime.utc_now() end,
+      ...
+    }
+
+    for {field, type} <- fields_with_types, into: %{} do
+      {Atom.to_string(field), invalid_value_by_type[type].()}
+    end
+  end
+
 \end{lstlisting}
 
 
-\subsection{Testiranje skupa promena}
-\par Funkcija \emph{changeset} obuhvata različite transformacije podataka, kao i njihovu validaciju pre unosa u bazu podataka. Svrha ove funkcije je da svi podaci koji se unose ili ažuriraju u bazi budu ispravni i u skladu sa zahtevima aplikacije. 
-\par Testovi koji se odnose na ove funkcije implementirani su unutar describe bloka ''changeset/2''. Oni pokrivaju i uspešan scenario, i neke od slučajeva greški. 
-Funkcija \emph{changeset/2} iz primera koda \ref{lst:schema}, koja kao argumente prihvata strukturu \emph{Assignment} i listu atributa, ima ulogu da validira prisustvo dva polja u tabeli \emph{assignments} --- polja \emph{comment} i \emph{grade}. Testovi koji proveravaju ispravnost ove funkcije dati su u primeru koda \ref{lst:changeset}.
+\par Funkcija \emph{changeset/2} iz primera koda \ref{lst:schema}, koja kao argumente prihvata strukturu \emph{Assignment} i listu atributa, ima ulogu da validira prisustvo dva polja u tabeli \emph{assignments} --- polja \emph{comment} i \emph{grade}. Test slučaj koji proverava uspešnu putanju izvršavanja funkcije \emph{changeset/2} prikazan je u primeru koda \ref{lst:changeset}. Funkciji se prosleđuju validni parametri, kreirani pomoću prethodno definisane funkcije \emph{valid{\textunderscore}params}. Nakon toga, proverava se da li je dobijeni skup promena validan, a onda se pojedinačno za svako neophodno polje proverava da li je ispravno.
 
-\begin{lstlisting}[language=elixir, caption={Testovi za proveru funkcije changeset/2},captionpos=b, label={lst:changeset}]
-describe "changeset/2" do
+\begin{lstlisting}[language=elixir, caption={Test slučaj uspešne upotrebe funkcije \emph{changeset/2}},captionpos=b, label={lst:changeset}]
   test "success: returns a valid changeset when given valid arguments" do
       valid_params = valid_params(@required_fields)
       changeset = Assignment.changeset(%Assignment{}, valid_params)
@@ -547,9 +604,13 @@ describe "changeset/2" do
         assert actual == expected,
           "Values did not match for: #{field}\nexpected: #{inspect(expected)}\nactual: #{inspect(actual)}"
       end
-    end 
-    
-   test "error: returns an invalid changeset when given uncastable values" do
+  end 
+\end{lstlisting}
+
+\par Drugi test slučaj koji je potrebno pokriti je slučaj kada dolazi do greške zbog prosleđenih parametara koji nisu ispravni. Funkciji \emph{changeset} se proslede parametri formirani pomoću funkcije \emph{invalid{\textunderscore}params}, i očekuje se da će dobijeni skup promena biti nevalidan. Nakon te provere, proverava se lista grešaka, koja bi trebalo da sadrži svako od neophodnih polja. Pošto su prosleđeni parametri pogrešnog tipa, koji se ne može kastovati u odgovarajući ispravni tip, očekuje se da u okviru greške, vrsta validacije bude \emph{:cast}, pa se i to na kraju proverava još jednom \emph{assert} naredbom. Ovaj test slučaj prikazan je u primeru koda \ref{lst:cast}. 
+
+\begin{lstlisting}[language=elixir, caption={Test slučaj neuspešne upotrebe funkcije \emph{changeset/2}, prosleđivanjem nekastabilnih parametara},captionpos=b, label={lst:cast}]
+test "error: returns an invalid changeset when given uncastable values" do
       invalid_params = invalid_params(@required_fields)
 
       assert %Changeset{valid?: false, errors: errors} = Assignment.changeset(%Assignment{}, invalid_params)
@@ -559,20 +620,21 @@ describe "changeset/2" do
 
         {_, meta} = errors[field]
         assert meta[:validation] == :cast,
-          "The validation type #{meta[:validaiton]} is incorrect."
+          "The validation type #{meta[:validation]} is incorrect."
       end
-    end
+end
+\end{lstlisting}
 
-    test "error: returns an error changeset when required fields are missing" do
+\par Ako se funkciji \emph{changeset} prosledi prazna mapa, tj. ako nedostaju polja koja inače moraju biti navedena, javlja se greška čiji je tip validacije \emph{:required}. Primer ovog test slučaja dat je u kodu \ref{lst:req}. U ovom slučaju, nakon provere da li je skup promena neispravan, proverava se da li je svako od zahtevanih polja u listi grešaka, a nakon toga i da li je tip validacije \emph{:required}. Na kraju, pomoću \emph{refute} naredbe, utvrđuje se da se opciona polja ne nalaze u listi grešaka. To su polja koja nije neophodno navesti pri pozivanju ove funkcije, i oni se zato ne trebaju naći ni među greškama.
+
+\begin{lstlisting}[language=elixir, caption={Test slučaj neuspešne upotrebe funkcije \emph{changeset/2}, sa nedostajućim parametrima},captionpos=b, label={lst:req}]
+test "error: returns an error changeset when required fields are missing" do
       params = %{}
-
       assert %Changeset{valid?: false, errors: errors} = Assignment.changeset(%Assignment{}, params)
 
       for {field, _} <- @required_fields do
         assert errors[field], "The field #{field} is missing from errors."
-
         {_, meta} = errors[field]
-
         assert meta[:validation] == :required,
         "The validation type #{meta[:validation]} is incorrect."
       end
@@ -580,25 +642,278 @@ describe "changeset/2" do
       for field <- @optional_fields do
         refute errors[field], "The optional field #{field} is required when it shouldn't be."
       end
-    end
-
 end
 \end{lstlisting}
 
-\subsection{Testiranje CRUD operacija}
-\par TODO
+\par Neke od shema će unutar svoje \emph{changeset} funkcije imati i dodatne validacije, kao što je na primer validacija jedinstvenih polja. Na primeru sheme \emph{users}, nakon ostalih izmena i validacija, dodat je i sledeći poziv funkcije: \emph{unique{\textunderscore}constraint(:email)}. Ova funkcija obaveštava \emph{Ecto} da u tabeli korisnika ne sme postojati dva korisnika sa istom imejl adresom, tj. polje \emph{:email} mora biti jedinstveno za svakog korisnika. Ako se desi pokušaj registrovanja korisnika sa već iskorišćenom imejl adresom, dolazi do greške tipa \emph{:unique}. Ovaj test slučaj prikazan je u primeru koda \ref{lst:uniq}. Neophodno je ostvariti direktan pristup bazi podataka, pa je prva linija unutar test slučaja naredba kojom se kreira konekcija sa bazom. Zatim se u bazu ubacuje novi korisnik (pozivom \emph{MsnrApi.Repo.insert()}), i time je završena priprema testa. Nakon toga, pokušava se ubacivanje još jednog korisnika sa istom imejl adresom. To bi trebalo da izazove grešku, što se proverava prvom \emph{assert} naredbom. Druga \emph{assert} naredba proverava da li se greška odnosi na polje \emph{:email}, a treća utvrđuje i tačnu vrstu greške, slično kao u prethodnim primerima. Za razliku od prethodnih testova, meta podaci u ovom slučaju nisu validacija, već ograničenje (eng. \emph{constraint}). 
 
-\section{Integraciono testiranje}
-\label{sec:elixint}
-\par Nakon dobro istestiranih pojedinačnih funkcija i modula, potrebno je proveriti da li komponente funkcionišu ispravno kao celina. U ovoj sekciji biće prikazani testovi koji proveravaju da li različiti delovi sistema koji komuniciraju međusobno, kao i sa nekim eksternim sistemima, rade to na ispravan način.
+\begin{lstlisting}[language=elixir, caption={Test slučaj neuspešne upotrebe funkcije \emph{changeset/2}, pri narušavanju ograničenja jedinstvenosti},captionpos=b, label={lst:uniq}]
+test "error: returns an error changeset when an email is reused" do
+      Ecto.Adapters.SQL.Sandbox.checkout(MsnrApi.Repo)
 
-\subsection{Test dubleri}
+      {:ok, existing_user} =
+        %User{}
+        |> User.changeset(valid_params(@required_fields))
+        |> MsnrApi.Repo.insert()
+        
+      changeset_with_reused_email =
+        %User{}
+        |> User.changeset(valid_params(@required_fields)
+        |> Map.put("email", existing_user.email))
 
-\par 
+      assert {:error, %Changeset{valid?: false, errors: errors}} =
+        MsnrApi.Repo.insert(changeset_with_reused_email)
 
-\subsection{Neki podnaslov}
-U aplikaciji MSNR portal --- TODO konkretni primeri ... 
+      assert errors[:email], "The field :email is missing from errors."
 
+      {_, meta} = errors[:email]
+
+      assert meta[:constraint] == :unique,
+      "The validation type #{meta[:validation]} is incorrect."
+    end
+\end{lstlisting}
+
+\par Što se tiče faze rušenja, \emph{Ecto} obezbeđuje da svaki pojedinačni test ne mora da prati i vraća okruženje na prvobitno stanje. Za to je zadužen \emph{Ecto.Sandbox}, koji omogućava paralelno izvršavanje testova bez deljenog stanja u bazi podataka i automatski vrši poništavanje svih promena u bazi na kraju svakog testa. Konfiguracija je prikazana u primeru koda \ref{lst:sand}. U datoteci schema{\textunderscore}case potrebno je dodati \emph{setup} blok koji će svi testovi koji koriste ovaj obrazac pokretati na početku izvršavanja. Manuelni režim podrazumeva da će svaki test moći da zahteva svoju \emph{Sandbox} konekciju. Takođe, u konfiguracionoj datoteci \emph{config/test.exs}, u \emph{Ecto} delu, dodaju se linije koje obaveštavaju \emph{Ecto} da će se koristiti \emph{Sandbox}.
+%TODO sta je connection pool?? kako prevesti
+\begin{lstlisting}[language=elixir, caption={Podešavanje \emph{Ecto.Sandbox}},captionpos=b, label={lst:sand}]
+
+# msnr_api/test/schema_case.ex
+setup do
+    Ecto.Adapters.SQL.Sandbox.mode(MsnrApi.Repo, :manual)
+end
+...
+# msnr_api/config/test.exs
+config :msnr_api, MsnrApi.Repo,
+  database: "msnr_api_test",
+  pool: Ecto.Adapters.SQL.Sandbox,
+\end{lstlisting}
+
+
+\subsection{Testiranje upita}
+\par U ovom delu biće prikazano kako su testirani konteksti entiteta. Modul koji će služiti kao primer se odnosi na korisnike --- \emph{MsnrApi.Accounts}. Struktura jednog dela ove datoteke prikazana je u primeru koda \ref{lst:act}, gde se može videti upotreba funkcija za interakciju sa bazom podataka kroz modul \emph{Ecto.Repo}. Prikazane su osnovne operacije dohvatanja redova iz tabele, dodavanja novog reda, ažuriranja reda, i brisanja reda iz zadate tabele. Unutar funkcija \emph{create{\textunderscore}user} i \emph{update{\textunderscore}user} poziva se i funkcija \emph{User.changeset}, koja je već prethodno istestirana.  
+
+\begin{lstlisting}[language=elixir, caption={Definicija modula \emph{MsnrApi.Accounts}},captionpos=b, label={lst:act}]
+defmodule MsnrApi.Accounts do
+  alias MsnrApi.Repo
+  alias MsnrApi.Accounts.User
+
+ def list_users do
+    Repo.all(User)
+  end
+  
+  def get_user!(id), do: Repo.get!(User, id)
+
+  def create_user(attrs \\ %{}) do
+    %User{}
+    |> User.changeset(attrs)
+    |> Repo.insert()
+  end
+
+  def update_user(%User{} = user, attrs) do
+    user
+    |> User.changeset(attrs)
+    |> Repo.update()
+  end
+
+  def delete_user(%User{} = user) do
+    Repo.delete(user)
+  end
+\end{lstlisting}
+
+\subsubsection{Fabrike za pripremu podataka}
+\par Prilikom pisanja testova koji pristupaju tabelama baze podataka, za dohvatanje podataka u fazi pripreme, pogodno je iskoristiti obrazac fabrike (eng. \emph{factory pattern}). Kako aplikacija raste, održavanje testova postaje zahtevnije, i u tome značajno pomaže imati jedan izvor za pripremu podataka. U slučaju testiranja interakcija sa bazom podataka, kreirana je zajednička datoteka \emph{msnr{\textunderscore}api/test/support/factory.ex}. Pored toga, kreiran je poseban direktorijum \emph{msnr{\textunderscore}api/test/support/factories} u kome će se nalaziti pojedinačne fabrike za svaki od entiteta. U osnovi ovih fabrika nalazi se biblioteka \emph{ExMachina} \cite{exmachina}. Ova biblioteka obezbeđuje podatake za sheme, kao i mehanizam za ubacivanje podataka u bazu bez pisanja koda. Kao prvi korak, \emph{ExMachina} je dodata kao zavisnost aplikacije: u okviru datoteke \emph{msnr{\textunderscore}api/mix.exs} ubačena je linija \textit{\{:exmachina, ''$\sim$> 2.7.0'', only: :test\}}. Da bi mogla da se koristi, pokrenuti komandu \emph{mix deps.get} iz komandne linije.
+\par Datoteka \emph{factory.ex} prikazana je u primeru koda \ref{lst:fact}. Prva linija uključuje biblioteku \emph{ExMachina} i prosleđuje joj naziv repozitorijuma aplikacije, što znači da će ova fabrika moći da se koristi specifično u tom repozitorijumu. Ostatak datoteke su uključivanja pojedinačnih fabrika za svaki kontekst aplikacije. U okviru testova za te kontekste, importovaće se samo ova \emph{factory.ex} datoteka.
+
+\begin{lstlisting}[language=elixir, caption={Definicija modula \emph{Factory}},captionpos=b, label={lst:fact}]
+defmodule MsnrApi.Support.Factory do
+
+  use ExMachina.Ecto, repo: MsnrApi.Repo
+  use MsnrApi.UserFactory
+  use MsnrApi.ActivityFactory
+  use MsnrApi.ActivityTypeFactory
+  use MsnrApi.AssignmentFactory
+  use MsnrApi.DocumentFactory
+  use MsnrApi.GroupFactory
+  use MsnrApi.SemesterFactory
+  use MsnrApi.StudentRegistrationFactory
+  use MsnrApi.StudentFactory
+  use MsnrApi.TopicFactory
+end
+\end{lstlisting}
+
+\par Definicija funkcije fabrike data je u primeru koda \ref{lst:userfact}, u kome je prikazana definicija fabrike za korisnika. Po konvenciji biblioteke, pri imenovanju ovih funkcija neophodno je navesti ime sheme, i zatim \emph{''{\textunderscore}factory''}. Povratna vrednost funkcije je struktura sheme sa popunjenim lažnim vrednostima, dobijenim iz \emph{Faker} biblioteke. 
+
+\begin{lstlisting}[language=elixir, caption={Definicija modula \emph{UserFactory}},captionpos=b, label={lst:userfact}]
+defmodule MsnrApi.UserFactory do
+  alias MsnrApi.Queries.AccountsTest
+  alias MsnrApi.Accounts.User
+
+  defmacro __using__(_opts) do
+    quote do
+      def user_factory do
+        %User {
+          email: Faker.Internet.email(),
+          first_name: Faker.Person.first_name(),
+          last_name: Faker.Person.last_name(),
+         	...
+        }
+      end
+ ...
+\end{lstlisting}
+
+\par U direktorijumu za pomoćne datoteke \emph{msnr{\textunderscore}test/support} kreiran je još jedan modul --- \emph{DataCase}. Ovaj modul služiće za sve situacije u kojima je potrebno baratati podacima pri interakciji sa bazom. Modul je prikazan u primeru koda \ref{lst:datacase}. U njemu se mogu nalaziti pomoćne funkcije koje će se koristiti u testovima, slično kao kod modula \emph{SchemaCase} koji je korišćen pri testiranju samih shema. U okviru datoteke, obezbeđena je zajednička priprema \emph{Sandbox} konekcija, i uključeni su aliasi za fabrike i za repozitorijum, koji će biti potrebni pri testiranju upita. Ako je neka funkcija fokusirana na pravljenju podataka, dobra je praksa smestiti je u fabriku. U suprotnom, pripadaće nekom ovakvom obrascu slučaja (eng. \emph{case template}), kao što je \emph{DataCase}. 
+
+\begin{lstlisting}[language=elixir, caption={Definicija modula \emph{DataCase}},captionpos=b, label={lst:datacase}]
+defmodule MsnrApi.Support.DataCase do
+
+  use ExUnit.CaseTemplate
+
+  using do
+    quote do
+      alias MsnrApi.{Support.Factory, Repo}
+      alias Ecto.Changeset
+
+      import Ecto.Query
+      import MsnrApi.Support.DataCase
+    end
+  end
+
+  setup _ do
+    Ecto.Adapters.SQL.Sandbox.mode(MsnrApi.Repo, :manual)
+  end
+end
+\end{lstlisting}
+
+\subsubsection{Testiranje osnovnih CRUD operacija}
+
+\par Datoteka \emph{MsnrApi.Accounts} sadrži osnovne operacije kreiranja, čitanja, ažuriranja i brisanja (eng. \emph{Create, Read/get, Update, Delete --- CRUD}) iz tabele. Testiranje ovih jednostavnih funkcija biće prikazano na primeru datoteke \emph{MsnrApi.Queries.AccountsTest}. U primeru koda \ref{lst:create} prikazani su testovi koji proveravaju ispravnost funkcije \emph{create{\textunderscore}user/1}. Prva linija unutar testa uspešne putanje koristi funkciju fabrike. Funkcija \emph{string{\textunderscore}params{\textunderscore}for} uzima atom \emph{:user} i sama poziva funkciju \emph{user{\textunderscore}factory}. \emph{ExMachina} obezbeđuje da povratna vrednost ove funkcije bude mapa sa ključevima koji su niske i predstavljaju parametre, koji se zatim prosleđuju funkciji \emph{create{\textunderscore}user} u fazi delovanja. S obzirom na to da je pozivom te funkcije izvršen upis u bazu, u fazi provere neophodno je izvršiti čitanje iz baze. Test direktno poziva \emph{MsnrApi.Repo}, a ne koristi k$\hat{o}$d iz same aplikacije. Nije poželjno da test zavisi od koda aplikacije, jer ako dođe do neke izmene koja može narušiti trenutnu funkcionalnost, mnogo testova ne bi više prolazilo, a bilo bi teško zaključiti zbog čega.  
+\par Pored povratne vrednosti funkcije, u ovom slučaju to je korisnik koji je ubačen u bazu, u ovim testovima treba voditi računa i o sporednim efektima. Sporedni efekat je to da su dodati novi podaci u bazu podataka. Pored toga što proverava povratnu vrednost funkcije (da li je vraćen novokreirani korisnik), test nakon toga i dohvata konkretne podatke iz baze i poredi da li je vraćeni korisnik jednak onome iz baze. Zatim, važno je proći kroz sve parametre i proveriti da li su oni sada prisutni u bazi podataka. Na samom kraju, vrši se još jedna provera kako bi test bio što temeljniji --- porede se vremenske oznake kreiranja i ažuriranja.
+\par Pošto su testovi skupova promena iz prethodnog dela pokrili sve slučajeve greške do kojih može doći, na ovom mestu je dovoljan samo jedan test neuspešne putanje. Sve što on treba da utvrdi je postojanje greške, i da li je povratna vrednost ispravnog oblika. 
+
+
+\begin{lstlisting}[language=elixir, caption={Testiranje funkcije \emph{create{\textunderscore}user/1}},captionpos=b, label={lst:create}]
+describe "create_user/1" do
+
+    test "success: it inserts a user in the db and returns the user" do
+
+      params = Factory.string_params_for(:user)
+
+      assert {:ok, %User{} = returned_user} = Accounts.create_user(params)
+
+      user_from_db = Repo.get(User, returned_user.id)
+      assert returned_user == user_from_db
+
+      for {field, expected} <- params do
+        schema_field = String.to_existing_atom(field)
+        actual = Map.get(user_from_db, schema_field)
+
+        assert actual == expected,
+          "Values did not match for field: #{field}\nexpected: #{inspect(expected)}\nactual: #{inspect(actual)}"
+      end
+
+      assert user_from_db.inserted_at == user_from_db.updated_at
+    end
+
+    test "error: returns an error tuple when user can't be created" do
+      missing_params = %{}
+
+      assert {:error, %Changeset{valid?: false}} = Accounts.create_user(missing_params)
+    end
+  end
+\end{lstlisting}
+ 
+\par Naredna testirana operacija je čitanje podataka iz baze. U modulu \emph{Accounts} tu operaciju izvršava funkcija \emph{get{\textunderscore}user/1}, tako što dohvata jedan red iz tabele na osnovu jedinstvenog identifikatora korisnika. Dva testa ove funkcije prikazana su u primeru koda \ref{lst:get}. Za uspešan scenario, na početku se ubacuje jedan korisnik u bazu pomoću fabrike, kako bi nakon toga mogao biti dohvaćen. U \emph{assert} naredbi funkciji \emph{get{\textunderscore}user} prosleđuje se identifikator prethodno dodatog korisnika i nakon toga se još jednom \emph{assert} naredbom utvrđuje da li je dohvaćeni korisnik identičan postojećem.
+\par Neuspešan scenario podrazumeva pokušaj dohvatanja korisnika sa nepostojećim identifikatorom, nakon čega se očekuje greška tipa \emph{Ecto.NoResultsError}.
+ 
+\begin{lstlisting}[language=elixir, caption={Testiranje funkcije \emph{get{\textunderscore}user/1}},captionpos=b, label={lst:get}]
+describe "get_user/1" do
+
+    test "success: it returns a user when given a valid id" do
+      existing_user = Factory.insert(:user)
+
+      assert returned_user = Accounts.get_user!(existing_user.id)
+
+      assert returned_user == existing_user
+    end
+
+    test "error: it returns an error tuple when a user doesn't exist" do
+
+      invalid_id = -1
+      assert_raise Ecto.NoResultsError, fn ->
+        Accounts.get_user!(invalid_id) end
+    end
+end
+\end{lstlisting}
+
+\par Funkcija \emph{list{\textunderscore}users/0} jednostavno poziva funkciju \emph{all} iz \emph{Repo} modula, i time dohvata sve redove zadate tabele. Testovi funkcije \emph{list{\textunderscore}users/0} dati su u primeru koda \ref{lst:list}. Slično kao u prethodnom primeru, korisnici se ubace u bazu, a zatim se dohvataju. Očekivana povratna vrednost je lista kreiranih korisnika. U testu slučaju greške, najpre se izbriše cela tabela \emph{users}, a zatim proveri da li će funkcija vratiti praznu listu. 
+
+\begin{lstlisting}[language=elixir, caption={Testiranje funkcije \emph{list{\textunderscore}users/0}},captionpos=b, label={lst:list}]
+describe "list_users/0" do
+
+    test "success: returns a list of all users" do
+      existing_users = [
+        Factory.insert(:user),
+        Factory.insert(:user),
+        Factory.insert(:user)
+      ]
+
+      assert retrieved_users = Accounts.list_users()
+
+      assert retrieved_users == existing_users
+    end
+
+    test "success: returns an empty list when no users" do
+      {:ok, _} = Ecto.Adapters.SQL.query(MsnrApi.Repo, "DELETE FROM users")
+
+      assert [] == Accounts.list_users()
+    end
+end
+\end{lstlisting}
+
+\par Ažuriranje redova tabele vrši se pomoću funkcije \emph{update{\textunderscore}user/2}, koja kao ulazne parametre prima jednog korisnika i listu atributa koji se ažuriraju. Slično kao kod kreiranja, i ovde se poziva najpre \emph{User.changeset} funkcija, pa onda i \emph{Repo.update}. Testovi su prikazani u primeru koda \ref{lst:upd}. Slučaj uspešne putanje počinje ubacivanjem novog korisnika u bazu podataka pozivanjem fabrike. Nakon toga, kreira se mapa parametara, a iz nje zatim dohvata jedan ključ/vrednost par. Uzima se samo podatak o imenu korisnika, za koji je malo verovatno da će se promeniti u budućnosti. Kada bi se proveravalo ažuriranje svakog dozvoljenog polja, povećala bi se šansa da test vremenom postane zastareo. Pored toga, provera dozvoljenih polja za izmenu je već odrađena u delu o testiranju skupa promena. Test treba da utvrdi da su sva polja osim jednog ostala nepromenjena. To se postiže formiranjem mape sa očekivanim ključevima i vrednostima, a zatim poređenjem sa vrednostima dohvaćenim iz baze. Izostavljaju se dva polja koje ne treba proveravati. 
+\par Test slučaj greške podrazumeva dodavanje novog korisnika u tabelu, a zatim pokušaj ažuriranja tog korisnika prosleđivanjem nevalidnih parametara. Ime korisnika se umesto neke niske postavi kao tip podataka koji opisuje datum. Dodatnu sigurnost obezbeđuje poslednja linija testa koja utvrđuje da se ništa nije zapravo promenilo u bazi.
+
+\begin{lstlisting}[language=elixir, caption={Testiranje funkcije \emph{update{\textunderscore}user/2}},captionpos=b, label={lst:upd}]
+describe "update_user/2" do
+
+    test "success: it updates database and returns the user" do
+      existing_user = Factory.insert(:user)
+      params = Factory.string_params_for(:user)
+        |> Map.take(["first_name"])
+      assert {:ok, returned_user} = Accounts.update_user(existing_user, params)
+      user_from_db = Repo.get(User, returned_user.id)
+      assert returned_user == user_from_db
+      expected_user_data = existing_user
+        |> Map.from_struct()
+        |> Map.drop([:__meta__, :updated_at])
+        |> Map.put(:first_name, params["first_name"])
+      for {field, expected} <- expected_user_data do
+        actual = Map.get(user_from_db, field)
+        assert actual == expected,
+          "Values did not match for field: #{field}\nexpected: #{inspect(expected)}\nactual: #{inspect(actual)}"
+      end
+    end
+
+    test "error: returns an error tuple when user can't be updated" do
+      existing_user = Factory.insert(:user)
+      bad_params = %{"first_name" => DateTime.utc_now()}
+      assert {:error, %Changeset{}} = Accounts.update_user(existing_user, bad_params)
+      assert existing_user == Repo.get(User, existing_user.id)
+    end
+  end
+\end{lstlisting}
+
+\par Poslednja CRUD operacija se odnosi na brisanje određenog reda iz tabele. Funkcija u \emph{Accounts} modulu koja ovo obezbeđuje je \emph{delete{\textunderscore}user/1}. Ona ima jednu liniju u kojoj poziva \emph{Repo.delete}. Slučaj greške je skoro nemoguć, te ovde postoji samo jedan test slučaj koji predstavlja uspešnu putanju izvršavanja, prikazan u primeru koda \ref{lst:del}. Kao i svi ostali, test počinje unosom novog korisnika. Zatim poziva funkciju brisanja i očekuje kao povratnu vrednost par koji sadrži atom \emph{:ok} i obrisanog korisnika. Povratna vrednost nakon toga nije ni potrebna, jer taj korisnik više ne postoji. Poslednja linija pomoću makroa \emph{refute} utvrđuje da korisnika više nema u bazi podataka. 
+
+\begin{lstlisting}[language=elixir, caption={Testiranje funkcije \emph{delete{\textunderscore}user/1}},captionpos=b, label={lst:del}]
+describe "delete_user/1" do
+    test "success: it deletes the user" do
+      user = Factory.insert(:user)
+      assert {:ok, _deleted_user} = Accounts.delete_user(user)
+      refute Repo.get(User, user.id)
+    end
+end
+\end{lstlisting}
 \chapter{Testiranje klijentskog dela aplikacije}
 \label{chp:elm}
 

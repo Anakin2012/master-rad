@@ -69,7 +69,6 @@ defmodule MsnrApi.Queries.AccountsTest do
 
   describe "get_user/1" do
 
-    @tag mustexec: true
     test "success: it returns a user when given a valid id" do
       existing_user = Factory.insert(:user)
 
@@ -78,7 +77,6 @@ defmodule MsnrApi.Queries.AccountsTest do
       assert returned_user == existing_user
     end
 
-    @tag mustexec: true
     test "error: it returns an error tuple when a user doesn't exist" do
 
       invalid_id = Enum.random(5000..6000)

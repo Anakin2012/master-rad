@@ -15,26 +15,26 @@
 \contentsline {section}{\numberline {2.3}Testiranje funkcionalnih programa}{10}{section.2.3}%
 \contentsline {subsection}{Testiranje čistih funkcija}{10}{section*.11}%
 \contentsline {subsubsection}{Refaktorisanje ka čistim funkcijama}{11}{section*.12}%
-\contentsline {subsection}{Izolovanje koda}{11}{section*.13}%
+\contentsline {subsection}{Izolovanje koda}{12}{section*.13}%
 \contentsline {chapter}{\chapternumberline {3}Portal MSNR}{13}{chapter.3}%
 \contentsline {section}{\numberline {3.1}Funkcionalnosti i osnovni entiteti portala}{13}{section.3.1}%
 \contentsline {subsection}{Entiteti}{14}{section*.14}%
 \contentsline {section}{\numberline {3.2}Arhitektura portala}{15}{section.3.2}%
 \contentsline {subsubsection}{Struktura serverske strane portala}{15}{section*.15}%
 \contentsline {subsubsection}{Struktura klijentske strane portala}{17}{section*.16}%
-\contentsline {subsection}{Testiranje portala}{18}{section*.17}%
+\contentsline {section}{\numberline {3.3}Testiranje portala}{18}{section.3.3}%
 \contentsline {chapter}{\chapternumberline {4}Testiranje serverskog dela aplikacije}{19}{chapter.4}%
 \contentsline {section}{\numberline {4.1}Testiranje jedinica koda u programskom jeziku Elixir}{19}{section.4.1}%
-\contentsline {section}{\numberline {4.2}Testiranje komunikacije sa bazom podataka}{23}{section.4.2}%
-\contentsline {subsection}{Testiranje polja i tipova}{24}{section*.18}%
-\contentsline {subsection}{Testiranje skupa promena}{25}{section*.19}%
-\contentsline {subsection}{Testiranje CRUD operacija}{27}{section*.20}%
-\contentsline {section}{\numberline {4.3}Integraciono testiranje}{27}{section.4.3}%
-\contentsline {subsection}{Test dubleri}{27}{section*.21}%
-\contentsline {subsection}{Neki podnaslov}{27}{section*.22}%
-\contentsline {chapter}{\chapternumberline {5}Testiranje klijentskog dela aplikacije}{28}{chapter.5}%
-\contentsline {chapter}{\chapternumberline {6}Testiranje celokupnog sistema --- End to End}{29}{chapter.6}%
-\contentsline {section}{\numberline {6.1}Integracija klijentske i serverske strane}{29}{section.6.1}%
-\contentsline {section}{\numberline {6.2}Testiranje opterećenja}{29}{section.6.2}%
-\contentsline {chapter}{\chapternumberline {7}Zaključak}{30}{chapter.7}%
-\contentsline {chapter}{Bibliografija}{31}{chapter*.23}%
+\contentsline {section}{\numberline {4.2}Integraciono testiranje}{23}{section.4.2}%
+\contentsline {section}{\numberline {4.3}Testiranje komunikacije sa bazom podataka}{23}{section.4.3}%
+\contentsline {subsection}{Testiranje polja i tipova}{25}{section*.17}%
+\contentsline {subsection}{Testiranje skupa promena}{26}{section*.18}%
+\contentsline {subsection}{Testiranje upita}{32}{section*.19}%
+\contentsline {subsubsection}{Fabrike za pripremu podataka}{33}{section*.20}%
+\contentsline {subsubsection}{Testiranje osnovnih CRUD operacija}{36}{section*.21}%
+\contentsline {chapter}{\chapternumberline {5}Testiranje klijentskog dela aplikacije}{42}{chapter.5}%
+\contentsline {chapter}{\chapternumberline {6}Testiranje celokupnog sistema --- End to End}{43}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Integracija klijentske i serverske strane}{43}{section.6.1}%
+\contentsline {section}{\numberline {6.2}Testiranje opterećenja}{43}{section.6.2}%
+\contentsline {chapter}{\chapternumberline {7}Zaključak}{44}{chapter.7}%
+\contentsline {chapter}{Bibliografija}{45}{chapter*.22}%

@@ -27,6 +27,14 @@ Rest architectural style.
 Zvanična dokumentacija biblioteke ecto.
 \newblock on-line at: \url{https://hexdocs.pm/ecto/Ecto.html}.
 
+\bibitem{exmachina}
+Zvanična dokumentacija biblioteke exmachina.
+\newblock on-line at: \url{https://hex.pm/packages/ex_machina}.
+
+\bibitem{faker}
+Zvanična dokumentacija biblioteke faker.
+\newblock on-line at: \url{https://hexdocs.pm/faker/readme.html}.
+
 \bibitem{plug}
 Zvanična dokumentacija biblioteke plug.
 \newblock on-line at: \url{https://hexdocs.pm/plug/readme.html}.
