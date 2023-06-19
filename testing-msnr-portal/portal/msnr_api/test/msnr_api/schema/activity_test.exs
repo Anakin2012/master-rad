@@ -39,7 +39,6 @@ defmodule MsnrApi.Schema.ActivityTest do
     end
   end
 
-  @must
   describe "changeset/2" do
     test "success: returns a valid changeset when given valid arguments" do
       valid_params = valid_params(@required_fields)

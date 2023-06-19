@@ -8,8 +8,28 @@ defmodule MsnrApi.Queries.AccountsTest do
     Ecto.Adapters.SQL.Sandbox.checkout(MsnrApi.Repo)
   end
 
-  describe "create_user/1" do
+  describe "list_users/0" do
 
+    test "success: returns a list of all users" do
+      existing_users = [
+        Factory.insert(:user),
+        Factory.insert(:user),
+        Factory.insert(:user)
+      ]
+
+      assert retrieved_users = Accounts.list_users()
+
+      assert retrieved_users == existing_users
+    end
+
+    test "success: returns an empty list when no users" do
+      {:ok, _} = Ecto.Adapters.SQL.query(MsnrApi.Repo, "DELETE FROM users")
+
+      assert [] == Accounts.list_users()
+    end
+  end
+
+  describe "create_user/1" do
     test "success: it inserts a user in the db and returns the user" do
 
       params = Factory.string_params_for(:user)
@@ -43,28 +63,6 @@ defmodule MsnrApi.Queries.AccountsTest do
 
   end
 
-
-  describe "list_users/0" do
-
-    test "success: returns a list of all users" do
-      existing_users = [
-        Factory.insert(:user),
-        Factory.insert(:user),
-        Factory.insert(:user)
-      ]
-
-      assert retrieved_users = Accounts.list_users()
-
-      assert retrieved_users == existing_users
-    end
-
-    test "success: returns an empty list when no users" do
-      {:ok, _} = Ecto.Adapters.SQL.query(MsnrApi.Repo, "DELETE FROM users")
-
-      assert [] == Accounts.list_users()
-    end
-  end
-
   describe "get_user/1" do
 
     test "success: it returns a user when given a valid id" do
@@ -80,7 +78,6 @@ defmodule MsnrApi.Queries.AccountsTest do
       invalid_id = -1
       assert_raise Ecto.NoResultsError, fn ->
         Accounts.get_user!(invalid_id) end
-
     end
   end
 

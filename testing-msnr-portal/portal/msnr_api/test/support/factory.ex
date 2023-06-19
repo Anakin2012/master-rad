@@ -5,5 +5,9 @@ defmodule MsnrApi.Support.Factory do
   use MsnrApi.ActivityTypeFactory
   use MsnrApi.AssignmentFactory
   use MsnrApi.DocumentFactory
-
+  use MsnrApi.GroupFactory
+  use MsnrApi.SemesterFactory
+  use MsnrApi.StudentRegistrationFactory
+  use MsnrApi.TopicFactory
+  use MsnrApi.StudentFactory
 end

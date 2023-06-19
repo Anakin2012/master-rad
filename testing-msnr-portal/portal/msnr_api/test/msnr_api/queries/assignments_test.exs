@@ -1,17 +1,17 @@
 defmodule MsnrApi.Queries.AssignmentsTest do
 
   use MsnrApi.Support.DataCase
-  alias MsnrApi.{Assignments, Assignments.Assignment}
+  alias MsnrApi.{Assignments, Assignments.Assignment, Activities, Activities.Activity}
   alias Ecto.Changeset
-  import MsnrApi.Support.Factory
 
   setup do
     Ecto.Adapters.SQL.Sandbox.checkout(MsnrApi.Repo)
   end
 
   describe "list_assignments/1" do
+    test "success: it lists all the assignments for a semester" do
 
-
+    end
   end
 
   describe "get_assignment/1" do

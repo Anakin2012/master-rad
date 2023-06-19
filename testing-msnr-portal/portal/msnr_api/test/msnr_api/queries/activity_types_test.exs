@@ -3,7 +3,6 @@ defmodule MsnrApi.Queries.ActivityTypesTest do
   use MsnrApi.Support.DataCase
   alias MsnrApi.{ActivityTypes, ActivityTypes.ActivityType}
   alias Ecto.Changeset
-  import MsnrApi.Support.Factory
 
   setup do
     Ecto.Adapters.SQL.Sandbox.checkout(MsnrApi.Repo)
@@ -11,16 +10,15 @@ defmodule MsnrApi.Queries.ActivityTypesTest do
 
   describe "list_activity_types/0" do
 
-#    test "success: returns a list of all activity types" do
- #     existing_activity_types = [
-  #      Factory.insert(:activity_type),
-   #     Factory.insert(:activity_type),
-    # ]
+    test "success: returns a list of all activity types" do
+      existing_activity_types = [
+        Factory.insert(:activity_type),
+        Factory.insert(:activity_type),
+     ]
 
-     # assert retrieved_activity_types = ActivityTypes.list_activity_types()
-
-      #assert retrieved_activity_types == existing_activity_types
-    #end
+      assert retrieved_activity_types = ActivityTypes.list_activity_types()
+      assert retrieved_activity_types == existing_activity_types
+    end
 
     test "success: returns an empty list when no users" do
       {:ok, _} = Ecto.Adapters.SQL.query(MsnrApi.Repo, "DELETE FROM activity_types")
@@ -100,9 +98,6 @@ defmodule MsnrApi.Queries.ActivityTypesTest do
         assert actual == expected,
           "Values did not match for field: #{field}\nexpected: #{inspect(expected)}\nactual: #{inspect(actual)}"
       end
-
-      # refute user_from_db.updated_at == existing_user.updated_at
-      # assert %DateTime{} = user_from_db.updated_at
     end
 
     test "error: returns an error tuple when activity type can't be updated" do
@@ -127,8 +122,5 @@ defmodule MsnrApi.Queries.ActivityTypesTest do
 
       refute Repo.get(ActivityType, activity_type.id)
     end
-
   end
-
-
 end

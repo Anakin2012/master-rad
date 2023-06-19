@@ -8,13 +8,10 @@ defmodule MsnrApi.ActivityFactory do
       def activity_factory do
         %Activity {
           end_date: Faker.random_between(1000000000, 2147483647),
-          is_signup: true,
           start_date: Faker.random_between(1000000000, 2147483647),
-          points: Faker.random_between(0, 100)
+          points: Faker.random_between(1, 100)
         }
       end
-
-
     end
   end
 end

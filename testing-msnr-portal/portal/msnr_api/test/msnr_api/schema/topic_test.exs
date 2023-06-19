@@ -72,7 +72,6 @@ defmodule MsnrApi.Schema.TopicTest do
       assert meta[:validation] == :required,
           "The validation type #{meta[:validation]} is incorrect."
     end
-
   end
 
 end
