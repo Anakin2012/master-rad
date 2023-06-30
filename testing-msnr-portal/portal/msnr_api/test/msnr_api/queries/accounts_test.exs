@@ -1,11 +1,18 @@
 defmodule MsnrApi.Queries.AccountsTest do
 
   use MsnrApi.Support.DataCase
-  alias MsnrApi.{Accounts, Accounts.User}
+  alias MsnrApi.{Accounts, Accounts.User, Semesters, StudentRegistrations.StudentRegistration}
   alias Ecto.Changeset
 
   setup do
     Ecto.Adapters.SQL.Sandbox.checkout(MsnrApi.Repo)
+  end
+
+  defp setup_semester() do
+    semester = Factory.insert(:semester)
+
+    params = %{"is_active" => true}
+    {:ok, active_semester} = Semesters.update_semester(semester, params)
   end
 
   describe "list_users/0" do
@@ -59,7 +66,25 @@ defmodule MsnrApi.Queries.AccountsTest do
 
 
   describe "create_student_account/1" do
+    test "success: it inserts a student account in the db when given student registration and returns the student" do
 
+      setup_semester()
+      student_registration = Factory.insert(:student_registration)
+
+      assert {:ok, %User{} = returned_user} = Accounts.create_student_account(student_registration)
+
+      user_from_db = Repo.get(User, returned_user.id)
+      assert returned_user == user_from_db
+      assert returned_user.role == :student
+
+      assert user_from_db.inserted_at == user_from_db.updated_at
+    end
+
+    test "error: returns an error tuple when student account can't be created" do
+      #missing params
+      student_registration = %StudentRegistration{}
+      assert {:error, %Changeset{valid?: false}} = Accounts.create_student_account(student_registration)
+    end
 
   end
 

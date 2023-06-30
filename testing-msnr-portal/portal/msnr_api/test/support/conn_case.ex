@@ -16,6 +16,7 @@ defmodule MsnrApiWeb.ConnCase do
   """
 
   use ExUnit.CaseTemplate
+  alias MsnrApi.Support.DataCase
 
   using do
     quote do
@@ -24,7 +25,7 @@ defmodule MsnrApiWeb.ConnCase do
       import Phoenix.ConnTest
       import MsnrApiWeb.ConnCase
 
-      use MsnrApiWeb, :verified_routes
+      use MsnrApiWeb
 
       # The default endpoint for testing
       @endpoint MsnrApiWeb.Endpoint
@@ -32,7 +33,7 @@ defmodule MsnrApiWeb.ConnCase do
   end
 
   setup tags do
-    MsnrApiWeb.DataCase.setup_sandbox(tags)
+    DataCase.setup_sandbox(tags)
     {:ok, conn: Phoenix.ConnTest.build_conn()}
   end
 end

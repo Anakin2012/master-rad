@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 23.1) (preloaded format=pdflatex 2023.4.5)  14 JUN 2023 20:03
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 23.1) (preloaded format=pdflatex 2023.4.5)  30 JUN 2023 17:35
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -958,6 +958,13 @@ File: t1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 ty
 Package: DejaVuSansMono 2011/06/01 Style file for DejaVuSansMono.
 )
+(C:\Users\panap\AppData\Local\Programs\MiKTeX\tex/latex/multirow\multirow.sty
+Package: multirow 2021/03/15 v2.8 Span multiple rows of a table
+\multirow@colwidth=\skip196
+\multirow@cntb=\count347
+\multirow@dima=\skip197
+\bigstrutjot=\dimen261
+)
 Package csquotes Info: Checking for multilingual support...
 Package csquotes Info: ... found 'babel' package.
 Package csquotes Info: Adjusting default style.
@@ -966,69 +973,58 @@ Package csquotes Info: Redefining alias 'default' -> 'serbian'.
 (C:\Users\panap\AppData\Local\Programs\MiKTeX\tex/latex/l3backend\l3backend-pdf
 tex.def
 File: l3backend-pdftex.def 2023-01-16 L3 backend support: PDF output (pdfTeX)
-\l__color_backend_stack_int=\count347
+\l__color_backend_stack_int=\count348
 \l__pdf_internal_box=\box60
-) (AnaPetrovicMasterRad.aux
-
-LaTeX Warning: Label `lst:del' multiply defined.
-
-)
+) (AnaPetrovicMasterRad.aux)
 \openout1 = `AnaPetrovicMasterRad.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 105.
-LaTeX Font Info:    ... okay on input line 105.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 105.
-LaTeX Font Info:    ... okay on input line 105.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 105.
-LaTeX Font Info:    ... okay on input line 105.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 105.
-LaTeX Font Info:    ... okay on input line 105.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 105.
-LaTeX Font Info:    ... okay on input line 105.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 105.
-LaTeX Font Info:    ... okay on input line 105.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 105.
-LaTeX Font Info:    ... okay on input line 105.
-LaTeX Font Info:    Checking defaults for T2A/cmr/m/n on input line 105.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 106.
+LaTeX Font Info:    ... okay on input line 106.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 106.
+LaTeX Font Info:    ... okay on input line 106.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 106.
+LaTeX Font Info:    ... okay on input line 106.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 106.
+LaTeX Font Info:    ... okay on input line 106.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 106.
+LaTeX Font Info:    ... okay on input line 106.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 106.
+LaTeX Font Info:    ... okay on input line 106.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 106.
+LaTeX Font Info:    ... okay on input line 106.
+LaTeX Font Info:    Checking defaults for T2A/cmr/m/n on input line 106.
 LaTeX Font Info:    Trying to load font information for T2A+cmr on input line 1
-05.
- (C:\Users\panap\AppData\Local\Programs\MiKTeX\tex/latex/cyrillic\t2acmr.fd
+06.
+
+(C:\Users\panap\AppData\Local\Programs\MiKTeX\tex/latex/cyrillic\t2acmr.fd
 File: t2acmr.fd 2001/08/11 v1.0a Computer Modern Cyrillic font definitions
 )
-LaTeX Font Info:    ... okay on input line 105.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 105.
-LaTeX Font Info:    ... okay on input line 105.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 105.
-LaTeX Font Info:    ... okay on input line 105.
+LaTeX Font Info:    ... okay on input line 106.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 106.
+LaTeX Font Info:    ... okay on input line 106.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 106.
+LaTeX Font Info:    ... okay on input line 106.
 
 (C:\Users\panap\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pdf.mk
 ii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count348
-\scratchdimen=\dimen261
+\scratchcounter=\count349
+\scratchdimen=\dimen262
 \scratchbox=\box61
-\nofMPsegments=\count349
-\nofMParguments=\count350
+\nofMPsegments=\count350
+\nofMParguments=\count351
 \everyMPshowfont=\toks32
-\MPscratchCnt=\count351
-\MPscratchDim=\dimen262
-\MPnumerator=\count352
-\makeMPintoPDFobject=\count353
+\MPscratchCnt=\count352
+\MPscratchDim=\dimen263
+\MPnumerator=\count353
+\makeMPintoPDFobject=\count354
 \everyMPtoPDFconversion=\toks33
 )
 (C:\Users\panap\AppData\Local\Programs\MiKTeX\tex/latex/epstopdf-pkg\epstopdf-b
 ase.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
-
-(C:\Users\panap\AppData\Local\Programs\MiKTeX\tex/latex/grfext\grfext.sty
-Package: grfext 2019/12/03 v1.3 Manage graphics extensions (HO)
-)
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
 85.
-Package grfext Info: Graphics extension search list:
-(grfext)             [.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPE
-G,.JBIG2,.JB2,.eps]
-(grfext)             \AppendGraphicsExtensions on input line 504.
 
 (C:\Users\panap\AppData\Local\Programs\MiKTeX\tex/latex/00miktex\epstopdf-sys.c
 fg
@@ -1047,38 +1043,38 @@ Package: lscape 2020/05/28 v3.02 Landscape Pages (DPC)
 )
 Package pdflscape Info: Auto-detected driver: pdftex on input line 81.
 ))
-Package csquotes Info: Redefining character " on input line 105.
-Package hyperref Info: Link coloring OFF on input line 105.
+Package csquotes Info: Redefining character " on input line 106.
+Package hyperref Info: Link coloring OFF on input line 106.
 
 (AnaPetrovicMasterRad.out) (AnaPetrovicMasterRad.out)
 \@outlinefile=\write4
 \openout4 = `AnaPetrovicMasterRad.out'.
 
-\c@lstlisting=\count354
+\c@lstlisting=\count355
 LaTeX Font Info:    Trying to load font information for T1+fos on input line 11
-1.
-LaTeX Font Info:    No file T1fos.fd. on input line 111.
+2.
+LaTeX Font Info:    No file T1fos.fd. on input line 112.
 
 
 LaTeX Font Warning: Font shape `T1/fos/m/n' undefined
-(Font)              using `T1/cmr/m/n' instead on input line 111.
+(Font)              using `T1/cmr/m/n' instead on input line 112.
 
 
 LaTeX Font Warning: Font shape `T1/fos/m/n' in size <16> not available
-(Font)              size <17.28> substituted on input line 111.
+(Font)              size <17.28> substituted on input line 112.
 
 <matf.png, id=75, 346.29375pt x 409.53pt>
 File: matf.png Graphic file (type png)
 <use matf.png>
-Package pdftex.def Info: matf.png  used on input line 111.
+Package pdftex.def Info: matf.png  used on input line 112.
 (pdftex.def)             Requested size: 85.35826pt x 100.94499pt.
 
 LaTeX Font Warning: Font shape `T1/fos/m/n' in size <22> not available
-(Font)              size <20.74> substituted on input line 111.
+(Font)              size <20.74> substituted on input line 112.
 
 
 LaTeX Font Warning: Font shape `T1/fos/b/n' undefined
-(Font)              using `T1/fos/m/n' instead on input line 111.
+(Font)              using `T1/fos/m/n' instead on input line 112.
 
 [1
 
@@ -1089,7 +1085,7 @@ LaTeX Font Warning: Font shape `T1/fos/b/n' undefined
 
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 117--117
+Underfull \hbox (badness 10000) in paragraph at lines 118--118
 
  []
 
@@ -1137,15 +1133,15 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 
 ]
 LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 1
-51.
+52.
 
 (C:\Users\panap\AppData\Local\Programs\MiKTeX\tex/latex/lm\ts1lmr.fd
 File: ts1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on i
-nput line 167.
+nput line 168.
 LaTeX Font Info:    Trying to load font information for T1+DejaVuSansMono-TLF o
-n input line 167.
+n input line 168.
 
 (C:\Users\panap\AppData\Local\Programs\MiKTeX\tex/latex/dejavu\t1dejavusansmono
 -tlf.fd
@@ -1153,66 +1149,139 @@ File: T1DejaVuSansMono-TLF.fd 2011/06/01 Font definitions for T1/DejaVuSansMono
 -TLF.
 )
 LaTeX Font Info:    Font shape `T1/DejaVuSansMono-TLF/m/n' will be
-(Font)              scaled to size 10.79993pt on input line 167.
+(Font)              scaled to size 10.79993pt on input line 168.
  [3]
 LaTeX Font Info:    Font shape `T1/DejaVuSansMono-TLF/m/n' will be
-(Font)              scaled to size 9.85492pt on input line 182.
+(Font)              scaled to size 9.85492pt on input line 183.
  [4]
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10> on input line 201.
+(Font)              <10> on input line 202.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <7> on input line 201.
+(Font)              <7> on input line 202.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <5> on input line 201.
+(Font)              <5> on input line 202.
  [5]
 <piramidanova.png, id=177, 531.48563pt x 297.36093pt>
 File: piramidanova.png Graphic file (type png)
 <use piramidanova.png>
-Package pdftex.def Info: piramidanova.png  used on input line 207.
+Package pdftex.def Info: piramidanova.png  used on input line 208.
 (pdftex.def)             Requested size: 340.8013pt x 190.67787pt.
  [6 <./piramidanova.png>] [7] [8] [9] [10]
-<dep.png, id=241, 557.08125pt x 286.82156pt>
+<dep.png, id=239, 557.08125pt x 286.82156pt>
 File: dep.png Graphic file (type png)
 <use dep.png>
-Package pdftex.def Info: dep.png  used on input line 290.
+Package pdftex.def Info: dep.png  used on input line 293.
 (pdftex.def)             Requested size: 383.3974pt x 197.40378pt.
- [11 <./dep.png>] [12] [13
+ [11] [12 <./dep.png>] [13
 
 ] [14]
 <msnr-arch.png, id=275, 714.16812pt x 287.57437pt>
 File: msnr-arch.png Graphic file (type png)
 <use msnr-arch.png>
-Package pdftex.def Info: msnr-arch.png  used on input line 344.
+Package pdftex.def Info: msnr-arch.png  used on input line 347.
 (pdftex.def)             Requested size: 383.3974pt x 154.38391pt.
 <msnr-str.png, id=281, 316.93407pt x 587.94656pt>
 File: msnr-str.png Graphic file (type png)
 <use msnr-str.png>
-Package pdftex.def Info: msnr-str.png  used on input line 354.
+Package pdftex.def Info: msnr-str.png  used on input line 357.
 (pdftex.def)             Requested size: 213.0pt x 395.15123pt.
  [15 <./msnr-arch.png>] [16 <./msnr-str.png>]
 <msnr-elm.png, id=305, 337.26pt x 395.22656pt>
 File: msnr-elm.png Graphic file (type png)
 <use msnr-elm.png>
-Package pdftex.def Info: msnr-elm.png  used on input line 368.
+Package pdftex.def Info: msnr-elm.png  used on input line 371.
 (pdftex.def)             Requested size: 255.6026pt x 299.53703pt.
  [17 <./msnr-elm.png>] [18] [19
 
 ]
 LaTeX Font Info:    Font shape `T1/DejaVuSansMono-TLF/m/n' will be
-(Font)              scaled to size 8.09995pt on input line 401.
- [20] [21] [22] [23] [24] [25] [26] [27] [28] [29] [30] [31]
-[32]
-Overfull \hbox (0.19676pt too wide) in paragraph at lines 723--724
-\T1/lmr/m/n/12 ba-zom po-da-ta-ka, kre-i-ra-na je za-jed-ni£-ka da-to-te-ka \T1
-/lmr/m/it/12 msnr_api/test/support/factory.ex\T1/lmr/m/n/12 .
+(Font)              scaled to size 8.09995pt on input line 403.
+ [20] [21] [22] [23] [24] [25] [26] [27]
+Underfull \hbox (badness 5475) in paragraph at lines 588--589
+[]|\T1/lmr/m/n/10.95 generisanje na-su-mi£-nih
  []
 
-[33] [34] [35] [36] [37] [38] [39] [40] [41] [42
 
-] [43
+Underfull \hbox (badness 2538) in paragraph at lines 588--589
+\T1/lmr/m/n/10.95 £e-ni-ca ili po-je-di-na£-nih
+ []
+
+
+Underfull \hbox (badness 5475) in paragraph at lines 590--591
+[]|\T1/lmr/m/n/10.95 generisanje na-su-mi£-nih
+ []
+
+
+Overfull \hbox (2.49345pt too wide) in paragraph at lines 592--592
+[]|\T1/lmr/bx/it/12 Faker.Internet| 
+ []
+
+
+Underfull \hbox (badness 5475) in paragraph at lines 592--593
+[]|\T1/lmr/m/n/10.95 generisanje na-su-mi£-nih
+ []
+
+
+Overfull \hbox (3.21916pt too wide) in paragraph at lines 594--594
+[]|\T1/lmr/bx/it/12 Faker.Random| 
+ []
+
+
+Underfull \hbox (badness 5475) in paragraph at lines 594--595
+[]|\T1/lmr/m/n/10.95 generisanje na-su-mi£-nih
+ []
+
+
+Underfull \hbox (badness 5475) in paragraph at lines 596--597
+[]|\T1/lmr/m/n/10.95 generisanje na-su-mi£-nih
+ []
+
+
+Underfull \hbox (badness 5475) in paragraph at lines 598--599
+[]|\T1/lmr/m/n/10.95 generisanje na-su-mi£-nih
+ []
+
+
+Underfull \hbox (badness 4621) in paragraph at lines 598--599
+\T1/lmr/m/n/10.95 da-tu-ma odre-že-ni broj
+ []
+
+[28] [29] [30] [31] [32] [33] [34]
+Underfull \hbox (badness 2401) in paragraph at lines 770--771
+[]|\T1/lmr/m/n/10.95 Kreira no-vu fa-bri-ku i
+ []
+
+
+Underfull \hbox (badness 2401) in paragraph at lines 774--775
+[]|\T1/lmr/m/n/10.95 Kreira no-vu fa-bri-ku i
+ []
+
+
+Underfull \hbox (badness 2401) in paragraph at lines 776--777
+[]|\T1/lmr/m/n/10.95 Kreira no-vu fa-bri-ku i
+ []
+
+
+Underfull \hbox (badness 1281) in paragraph at lines 776--777
+\T1/lmr/m/n/10.95 ci-je pri-pa-da-nja dru-gim
+ []
+
+
+Underfull \hbox (badness 2401) in paragraph at lines 778--779
+[]|\T1/lmr/m/n/10.95 Kreira no-vu fa-bri-ku i
+ []
+
+
+Overfull \hbox (1.22586pt too wide) in paragraph at lines 766--782
+ [] 
+ []
+
+[35] [36] [37] [38] [39] [40] [41] [42] [43] [44
+
+] [45
 
 ]
-(AnaPetrovicMasterRad.bbl [44
+(AnaPetrovicMasterRad.bbl [46
 
 ]
 bibitemlist
@@ -1223,14 +1292,14 @@ Underfull \hbox (badness 3302) in paragraph at lines 4--6
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 17--20
-[]\T1/lmr/m/n/12 Functional pro-gram-ming pa-ra-digm.  on-line at: []$\T1/DejaV
-uSansMono-TLF/m/n/12 https : / / www .
+Underfull \hbox (badness 5878) in paragraph at lines 13--16
+[]\T1/lmr/m/n/12 REST arc-hi-tec-tu-ral style.  on-line at: []$\T1/DejaVuSansMo
+no-TLF/m/n/12 https : / / www . ics . uci . edu /
  []
 
-[45
+[47
 
-]) [46]
+]) [48]
 \tf@toc=\write5
 \openout5 = `AnaPetrovicMasterRad.toc'.
 
@@ -1242,20 +1311,17 @@ LaTeX Font Warning: Size substitutions with differences
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
-
-LaTeX Warning: There were multiply-defined labels.
-
 Package rerunfilecheck Info: File `AnaPetrovicMasterRad.out' has not changed.
-(rerunfilecheck)             Checksum: 9D2C088670A71DE9E070FEE8F70A17E4;3471.
+(rerunfilecheck)             Checksum: B0A6DEF4198BFC74FCC55817A8C79707;3490.
  ) 
 Here is how much of TeX's memory you used:
- 19255 strings out of 476334
- 299759 string characters out of 5787972
- 2079382 words of memory out of 5000000
- 38847 multiletter control sequences out of 15000+600000
- 600548 words of font info for 83 fonts, out of 8000000 for 9000
+ 19300 strings out of 476334
+ 300216 string characters out of 5787972
+ 2073382 words of memory out of 5000000
+ 38882 multiletter control sequences out of 15000+600000
+ 609082 words of font info for 85 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 90i,12n,90p,1657b,2156s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 90i,12n,90p,1845b,2156s stack positions out of 10000i,1000n,20000p,200000b,200000s
 {C:/Users/panap/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathsy.en
 c}{C:/Users/panap/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ec.enc}{C
 :/Users/panap/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/dejavu/dejavumono_t
@@ -1278,9 +1344,9 @@ fonts/type1/public/lm/lmr8.pfb><C:/Users/panap/AppData/Local/Programs/MiKTeX/fo
 nts/type1/public/lm/lmri10.pfb><C:/Users/panap/AppData/Local/Programs/MiKTeX/fo
 nts/type1/public/lm/lmri12.pfb><C:/Users/panap/AppData/Local/Programs/MiKTeX/fo
 nts/type1/public/lm/lmsy10.pfb>
-Output written on AnaPetrovicMasterRad.pdf (50 pages, 749051 bytes).
+Output written on AnaPetrovicMasterRad.pdf (52 pages, 763897 bytes).
 PDF statistics:
- 1144 PDF objects out of 1200 (max. 8388607)
- 548 named destinations out of 1000 (max. 500000)
+ 1169 PDF objects out of 1200 (max. 8388607)
+ 558 named destinations out of 1000 (max. 500000)
  175 words of extra memory for PDF output out of 10000 (max. 10000000)
 

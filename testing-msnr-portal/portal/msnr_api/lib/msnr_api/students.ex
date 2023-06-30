@@ -83,6 +83,7 @@ defmodule MsnrApi.Students do
 
       TO DO: ispravi updae
   """
+
   def update_student(student, attrs) do
     student
     |> Student.changeset(attrs)

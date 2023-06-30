@@ -9,57 +9,67 @@ Adresa sa implementacijom portala msnr.
 \newblock on-line at:
   \url{https://github.com/NemanjaSubotic/master-rad/tree/master/portal}.
 
-\bibitem{exunit}
-{ExUnit}.
-\newblock on-line at: \url{https://hexdocs.pm/ex_unit/ExUnit.html}.
-
-\bibitem{func}
-{Functional programming paradigm}.
-\newblock on-line at:
-  \url{https://www.geeksforgeeks.org/functional-programming-paradigm/}.
-
 \bibitem{rest}
-Rest architectural style.
+{REST architectural style}.
 \newblock on-line at:
   \url{https://www.ics.uci.edu/~fielding/pubs/dissertation/rest_arch_style.htm}.
 
 \bibitem{ecto}
-Zvanična dokumentacija biblioteke ecto.
+{Zvanična dokumentacija biblioteke Ecto}.
 \newblock on-line at: \url{https://hexdocs.pm/ecto/Ecto.html}.
 
 \bibitem{exmachina}
-Zvanična dokumentacija biblioteke exmachina.
-\newblock on-line at: \url{https://hex.pm/packages/ex_machina}.
+{Zvanična dokumentacija biblioteke ExMachina}.
+\newblock on-line at: \url{https://hexdocs.pm/ex_machina/readme.html}.
 
 \bibitem{faker}
-Zvanična dokumentacija biblioteke faker.
+{Zvanična dokumentacija biblioteke Faker}.
 \newblock on-line at: \url{https://hexdocs.pm/faker/readme.html}.
 
 \bibitem{plug}
-Zvanična dokumentacija biblioteke plug.
+{Zvanična dokumentacija biblioteke Plug}.
 \newblock on-line at: \url{https://hexdocs.pm/plug/readme.html}.
 
+\bibitem{execto}
+{Zvanična dokumentacija modula ExMachina.Ecto}.
+\newblock on-line at: \url{https://hexdocs.pm/ex_machina/ExMachina.Ecto.html}.
+
+\bibitem{exunit}
+{Zvanična dokumentacija okruženja ExUnit}.
+\newblock on-line at: \url{https://hexdocs.pm/ex_unit/ExUnit.html}.
+
 \bibitem{hex}
-Zvanična stranica alata hex.
+{Zvanična stranica alata Hex}.
 \newblock on-line at: \url{https://hex.pm/}.
 
 \bibitem{postgre}
-Zvanična stranica baze podataka postgresql.
+{Zvanična stranica baze podataka PostgreSql}.
 \newblock on-line at: \url{https://www.postgresql.org}.
 
 \bibitem{phx}
-Zvanična stranica razvojnog okruženja phoenix.
+{Zvanična stranica razvojnog okruženja Phoenix}.
 \newblock on-line at: \url{https://www.phoenixframework.org}.
+
+\bibitem{fabrike}
+Ulisses Almeida.
+\newblock An introduction to test factories and fixtures for elixir.
+\newblock 2023.
 
 \bibitem{cohn}
 M.~Cohn.
 \newblock {\em Succeeding with Agile: Software Development Using Scrum}.
 \newblock A Mike Cohen signature book. Addison-Wesley, 2010.
 
+\bibitem{func}
+GeeksForGeeks.
+\newblock {Functional programming paradigm}.
+\newblock on-line at:
+  \url{https://www.geeksforgeeks.org/functional-programming-paradigm/}.
+
 \bibitem{testingelixir}
 Andrea Leopardi and Jeffrey Matthias.
-\newblock {\em Testing Elixir - Effective and Robust Testing for Elixir and its
-  Ecosystem}.
+\newblock {\em {Testing Elixir - Effective and Robust Testing for Elixir and
+  its Ecosystem}}.
 \newblock Pragmatic Bookshelf, 2021.
 
 \bibitem{4phase}
@@ -69,9 +79,14 @@ Gerard Meszaros.
 
 \bibitem{rad}
 {Nemanja Subotić}.
-\newblock Programski jezici elm i elixir u razvoju studentskog veb portala,
+\newblock {Programski jezici Elm i Elixir u razvoju studentskog veb portala},
   2022.
 \newblock on-line at:
   \url{http://elibrary.matf.bg.ac.rs/bitstream/handle/123456789/5482/MasterRadNemanjaSubotic.pdf?sequence=1}.
+
+\bibitem{external}
+German Velasco.
+\newblock {Mocking External Dependencies in Elixir}.
+\newblock 2022.
 
 \end{thebibliography}

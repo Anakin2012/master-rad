@@ -94,9 +94,6 @@ defmodule MsnrApi.Queries.StudentRegistrationsTest do
     end
   end
 
-
-
-
   describe "delete_student_registration/1" do
 
     test "success: it deletes the student_registration" do
