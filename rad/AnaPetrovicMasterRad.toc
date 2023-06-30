@@ -34,10 +34,10 @@
 \contentsline {subsection}{Testiranje upita}{33}{section*.22}%
 \contentsline {subsubsection}{Fabrike za pripremu podataka}{34}{section*.23}%
 \contentsline {subsubsection}{Testiranje osnovnih CRUD operacija}{37}{section*.24}%
-\contentsline {subsection}{Integraciono testiranje}{43}{section*.25}%
+\contentsline {section}{\numberline {4.3}Testiranje upravljača i pogleda}{43}{section.4.3}%
 \contentsline {chapter}{\chapternumberline {5}Testiranje klijentskog dela aplikacije}{44}{chapter.5}%
 \contentsline {chapter}{\chapternumberline {6}Testiranje celokupnog sistema --- End to End}{45}{chapter.6}%
 \contentsline {section}{\numberline {6.1}Integracija klijentske i serverske strane}{45}{section.6.1}%
 \contentsline {section}{\numberline {6.2}Testiranje opterećenja}{45}{section.6.2}%
 \contentsline {chapter}{\chapternumberline {7}Zaključak}{46}{chapter.7}%
-\contentsline {chapter}{Bibliografija}{47}{chapter*.26}%
+\contentsline {chapter}{Bibliografija}{47}{chapter*.25}%

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 23.1) (preloaded format=pdflatex 2023.4.5)  30 JUN 2023 17:35
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 23.1) (preloaded format=pdflatex 2023.4.5)  30 JUN 2023 17:40
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1063,7 +1063,7 @@ LaTeX Font Warning: Font shape `T1/fos/m/n' undefined
 LaTeX Font Warning: Font shape `T1/fos/m/n' in size <16> not available
 (Font)              size <17.28> substituted on input line 112.
 
-<matf.png, id=75, 346.29375pt x 409.53pt>
+<matf.png, id=79, 346.29375pt x 409.53pt>
 File: matf.png Graphic file (type png)
 <use matf.png>
 Package pdftex.def Info: matf.png  used on input line 112.
@@ -1161,13 +1161,13 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <5> on input line 202.
  [5]
-<piramidanova.png, id=177, 531.48563pt x 297.36093pt>
+<piramidanova.png, id=182, 531.48563pt x 297.36093pt>
 File: piramidanova.png Graphic file (type png)
 <use piramidanova.png>
 Package pdftex.def Info: piramidanova.png  used on input line 208.
 (pdftex.def)             Requested size: 340.8013pt x 190.67787pt.
  [6 <./piramidanova.png>] [7] [8] [9] [10]
-<dep.png, id=239, 557.08125pt x 286.82156pt>
+<dep.png, id=244, 557.08125pt x 286.82156pt>
 File: dep.png Graphic file (type png)
 <use dep.png>
 Package pdftex.def Info: dep.png  used on input line 293.
@@ -1175,18 +1175,18 @@ Package pdftex.def Info: dep.png  used on input line 293.
  [11] [12 <./dep.png>] [13
 
 ] [14]
-<msnr-arch.png, id=275, 714.16812pt x 287.57437pt>
+<msnr-arch.png, id=280, 714.16812pt x 287.57437pt>
 File: msnr-arch.png Graphic file (type png)
 <use msnr-arch.png>
 Package pdftex.def Info: msnr-arch.png  used on input line 347.
 (pdftex.def)             Requested size: 383.3974pt x 154.38391pt.
-<msnr-str.png, id=281, 316.93407pt x 587.94656pt>
+<msnr-str.png, id=286, 316.93407pt x 587.94656pt>
 File: msnr-str.png Graphic file (type png)
 <use msnr-str.png>
 Package pdftex.def Info: msnr-str.png  used on input line 357.
 (pdftex.def)             Requested size: 213.0pt x 395.15123pt.
  [15 <./msnr-arch.png>] [16 <./msnr-str.png>]
-<msnr-elm.png, id=305, 337.26pt x 395.22656pt>
+<msnr-elm.png, id=310, 337.26pt x 395.22656pt>
 File: msnr-elm.png Graphic file (type png)
 <use msnr-elm.png>
 Package pdftex.def Info: msnr-elm.png  used on input line 371.
@@ -1312,13 +1312,13 @@ LaTeX Font Warning: Size substitutions with differences
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
 Package rerunfilecheck Info: File `AnaPetrovicMasterRad.out' has not changed.
-(rerunfilecheck)             Checksum: B0A6DEF4198BFC74FCC55817A8C79707;3490.
+(rerunfilecheck)             Checksum: 0ACAC8743EC1F44334C2EF655C856B2B;3712.
  ) 
 Here is how much of TeX's memory you used:
- 19300 strings out of 476334
- 300216 string characters out of 5787972
+ 19301 strings out of 476334
+ 300229 string characters out of 5787972
  2073382 words of memory out of 5000000
- 38882 multiletter control sequences out of 15000+600000
+ 38883 multiletter control sequences out of 15000+600000
  609082 words of font info for 85 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  90i,12n,90p,1845b,2156s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -1344,9 +1344,9 @@ fonts/type1/public/lm/lmr8.pfb><C:/Users/panap/AppData/Local/Programs/MiKTeX/fo
 nts/type1/public/lm/lmri10.pfb><C:/Users/panap/AppData/Local/Programs/MiKTeX/fo
 nts/type1/public/lm/lmri12.pfb><C:/Users/panap/AppData/Local/Programs/MiKTeX/fo
 nts/type1/public/lm/lmsy10.pfb>
-Output written on AnaPetrovicMasterRad.pdf (52 pages, 763897 bytes).
+Output written on AnaPetrovicMasterRad.pdf (52 pages, 764217 bytes).
 PDF statistics:
- 1169 PDF objects out of 1200 (max. 8388607)
+ 1173 PDF objects out of 1200 (max. 8388607)
  558 named destinations out of 1000 (max. 500000)
- 175 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 183 words of extra memory for PDF output out of 10000 (max. 10000000)
 
