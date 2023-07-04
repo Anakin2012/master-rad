@@ -9,7 +9,10 @@ defmodule MsnrApi.Schema.StudentRegistrationTest do
   ]
 
   @insert_fields [
-    :email, :first_name, :last_name, :index_number, :status
+    {:email, :string},
+    {:first_name, :string},
+    {:last_name, :string},
+    {:index_number, :string}
   ]
 
   @expected_fields_with_types [
@@ -91,12 +94,14 @@ defmodule MsnrApi.Schema.StudentRegistrationTest do
       "The validation type #{meta[:validation]} is incorrect."
     end
 
-    test "error: returns an error changeset when default fields are missing" do
+    test "success: returns a valid changeset when not given default field" do
       params = %{}
 
-      assert %Changeset{valid?: true, changes: changes} = StudentRegistration.changeset(%StudentRegistration{}, params)
+      changeset = StudentRegistration.changeset(%StudentRegistration{}, params)
+      assert %Changeset{valid?: true, changes: _changes} = changeset
 
-      refute changes[:status], "The default field :status is not default when it should be."
+      actual = Ecto.Changeset.get_field(changeset, :status)
+      assert actual == :pending
     end
   end
 
@@ -108,13 +113,13 @@ defmodule MsnrApi.Schema.StudentRegistrationTest do
 
     test "success: returns a valid changeset when given valid arguments" do
 
-      valid_params = %{"email" => "pana@gmail.com", "first_name" => "ana", "last_name" => "petrovic",
-                      "index_number" => "12345", "status" => :accepted}
+      valid_params = valid_params(@insert_fields)
+                     |> Map.put("status", :accepted)
 
       assert %Changeset{valid?: true, changes: changes} =
          StudentRegistration.changeset_insert(%StudentRegistration{}, valid_params)
 
-      for field <- @insert_fields do
+      for {field, _} <- [{:status, Ecto.Enum} | @insert_fields] do
         actual = Map.get(changes, field)
         expected = valid_params[Atom.to_string(field)]
         assert actual == expected,
@@ -123,18 +128,13 @@ defmodule MsnrApi.Schema.StudentRegistrationTest do
     end
 
     test "error: returns an invalid changeset when given uncastable values" do
-      invalid_params = %{
-        "email" => NaiveDateTime.local_now(),
-        "first_name" => NaiveDateTime.local_now(),
-        "last_name" => NaiveDateTime.local_now(),
-        "index_number" => NaiveDateTime.local_now(),
-        "status" => NaiveDateTime.local_now()
-      }
+      invalid_params = invalid_params(@insert_fields)
+                      |> Map.put("status", NaiveDateTime.utc_now())
 
       assert %Changeset{valid?: false, errors: errors} =
          StudentRegistration.changeset_insert(%StudentRegistration{}, invalid_params)
 
-      for field <- @insert_fields do
+      for {field, _} <- [{:status, Ecto.Enum} | @insert_fields] do
 
         assert errors[field], "the field: #{field} is missing from errors."
 
@@ -150,7 +150,7 @@ defmodule MsnrApi.Schema.StudentRegistrationTest do
       assert %Changeset{valid?: false, errors: errors} =
         StudentRegistration.changeset_insert(%StudentRegistration{}, params)
 
-      for field <- @insert_fields, field not in [:status] do
+      for {field, _} <- @insert_fields, field not in [:status] do
         assert errors[field], "The field #{field} is missing from errors."
 
         {_, meta} = errors[field]

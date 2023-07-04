@@ -1,6 +1,7 @@
 defmodule MsnrApi.Schema.TopicTest do
   use MsnrApi.Support.SchemaCase
   alias MsnrApi.Topics.Topic
+  alias MsnrApi.Semesters.Semester
 
   @required_fields [
     {:title, :string},
@@ -47,21 +48,33 @@ defmodule MsnrApi.Schema.TopicTest do
       end
     end
 
-    test "error: returns an invalid changeset when given uncastable values" do
-      invalid_params = invalid_params([{:title, :string}])
-      valid_params = valid_params([{:semester_id, :id}])
-      params = Map.merge(invalid_params, valid_params)
+    test "success: returns a valid topic number when given valid arguments" do
+      {:ok, existing_semester} = insert_semester()
+      {:ok, existing_topic} = insert_topic(existing_semester)
 
-      assert %Changeset{valid?: false, errors: errors} = Topic.changeset(%Topic{}, params)
+      valid_params = %{"title" => "new title", "semester_id" => existing_semester.id}
+      changeset = Topic.changeset(%Topic{}, valid_params)
 
-      assert errors[:title], "the field: :title is missing from errors."
+      assert %Changeset{valid?: true, changes: changes} = changeset
 
-      {_, meta} = errors[:title]
-      assert meta[:validation] == :cast,
-          "The validation type #{meta[:validation]} is incorrect."
+      assert Map.get(changes, :number) == (existing_topic.number + 1)
     end
 
-    test "error: returns an error changeset when required fields are missing" do
+    test "error: returns an invalid changeset when given uncastable title value" do
+     invalid_params = invalid_params([{:title, :string}])
+     valid_params = valid_params([{:semester_id, :id}])
+     params = Map.merge(invalid_params, valid_params)
+
+    assert %Changeset{valid?: false, errors: errors} = Topic.changeset(%Topic{}, params)
+
+    assert errors[:title], "the field: :title is missing from errors."
+
+    {_, meta} = errors[:title]
+    assert meta[:validation] == :cast,
+      "The validation type #{meta[:validation]} is incorrect."
+    end
+
+    test "error: returns an error changeset when required field title is missing" do
       params = valid_params([{:semester_id, :id}])
 
       assert %Changeset{valid?: false, errors: errors} = Topic.changeset(%Topic{}, params)
@@ -72,6 +85,33 @@ defmodule MsnrApi.Schema.TopicTest do
       assert meta[:validation] == :required,
           "The validation type #{meta[:validation]} is incorrect."
     end
+
+    test "error: returns a FunctionClauseError when not given semester_id or given invalid id" do
+      params = %{}
+
+      assert_raise FunctionClauseError, fn ->
+        Topic.changeset(%Topic{}, params) end
+
+      assert_raise FunctionClauseError, fn ->
+        Topic.changeset(%Topic{}, %{"semester_id" => NaiveDateTime.utc_now()}) end
+    end
+  end
+
+  defp insert_semester() do
+    {:ok, _existing_semester} =
+      %Semester{}
+      |> Semester.changeset(valid_params([
+        {:year, :integer},
+        {:is_active, :boolean}
+      ]))
+      |> MsnrApi.Repo.insert()
+  end
+
+  defp insert_topic(semester) do
+    {:ok, _existing_topic} =
+      %Topic{}
+      |> Topic.changeset(Map.put(valid_params([{:title, :string}]), "semester_id", semester.id))
+      |> MsnrApi.Repo.insert()
   end
 
 end

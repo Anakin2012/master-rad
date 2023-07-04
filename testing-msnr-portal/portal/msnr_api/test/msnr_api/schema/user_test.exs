@@ -66,13 +66,6 @@ defmodule MsnrApi.Schema.UserTest do
     end
   end
 
-  # testiramo uspesan scenario, prvo prosledimo argumente - kreiramo mapu
-  # validnih parametara sa ispravnim podacima
-  # prvi assert - radimo pattern matching sa nasom changeset strukturom
-  # da li je pattern ispravan i promene da li je jednak ovom changesetu koji smo napravili
-  # nakon sto ynamo da changeset validan
-  # hocemo da ynamo i da su nam parametri tacno ono sto ocekujemo
-  # loopujemo kroy ocekivana polja
   describe "changeset/2" do
     test "success: returns a valid changeset when given valid arguments" do
       valid_params = valid_params(@required_fields)
@@ -88,30 +81,20 @@ defmodule MsnrApi.Schema.UserTest do
       end
     end
 
-    # pravim mapu sa nevalidnim parametrima, stavljam pogresne tipove
-    # sad assertujem da mi changeset bude invalid, i umesto changes,
-    # dobijam listu errors
     test "error: returns an error changeset when given uncastable values" do
       invalid_params = invalid_params(@required_fields)
 
-      #ovo samo kaze da changeset nije validan
       assert %Changeset{valid?: false, errors: errors} = User.changeset(%User{}, invalid_params)
 
-      #ovde zapravo proveravamo da tipovi nisu castable
       for {field, _} <- @required_fields do
         assert errors[field], "the field: #{field} is missing from errors."
 
-        # ovde proveramo da je u pitanju cast greska,
-        # pattern matchujem meta podatke dohvatam iz gresaka
-        # error[field] vraca mapu i druga vrednost su ti meta podaci
-        # unutar te meta liste postoji key :validation koji treba da bude cast
         {_, meta} = errors[field]
         assert meta[:validation] == :cast,
           "The validation type #{meta[:validation]} is incorrect."
       end
     end
 
-    #ovde treba da dobijemo required error
     test "error: returns an error changeset when required fields are missing" do
       params = %{}
 
@@ -132,16 +115,13 @@ defmodule MsnrApi.Schema.UserTest do
     end
 
     test "error: returns an error changeset when an email is reused" do
-      # konekcja na bazu
       Ecto.Adapters.SQL.Sandbox.checkout(MsnrApi.Repo)
 
-      # ubacujemo novog korisnika u bazu
       {:ok, existing_user} =
         %User{}
         |> User.changeset(valid_params(@required_fields))
         |> MsnrApi.Repo.insert()
 
-      #sad hocu da napravim jos jedan sa istim mejlom
       changeset_with_reused_email =
         %User{}
         |> User.changeset(valid_params(@required_fields)
@@ -156,7 +136,6 @@ defmodule MsnrApi.Schema.UserTest do
 
       assert meta[:constraint] == :unique,
       "The validation type #{meta[:validation]} is incorrect."
-
     end
   end
 
@@ -167,11 +146,7 @@ defmodule MsnrApi.Schema.UserTest do
       params = valid_params(@student_registration_fields)
       params = Map.put(params, "status", :accepted)
 
-      student_registration = %StudentRegistration{email: Map.get(params, "email"),
-                                                  first_name: Map.get(params, "first_name"),
-                                                  last_name: Map.get(params, "last_name"),
-                                                  index_number: Map.get(params, "index_number"),
-                                                  status: Map.get(params, "status")}
+      student_registration = create_registration(params)
 
       changeset = User.changeset(%User{}, student_registration)
 
@@ -193,11 +168,7 @@ defmodule MsnrApi.Schema.UserTest do
       params = invalid_params(@student_registration_fields)
       params = Map.put(params, "status", NaiveDateTime.local_now())
 
-      student_registration = %StudentRegistration{email: Map.get(params, "email"),
-                                                  first_name: Map.get(params, "first_name"),
-                                                  last_name: Map.get(params, "last_name"),
-                                                  index_number: Map.get(params, "index_number"),
-                                                  status: Map.get(params, "status")}
+      student_registration = create_registration(params)
 
       assert %Changeset{valid?: false, errors: errors} = User.changeset(%User{}, student_registration)
 
@@ -212,8 +183,107 @@ defmodule MsnrApi.Schema.UserTest do
       role = errors[:role]
       refute role == :student
     end
+  end
 
+  describe "changeset_password/2" do
+    test "success: returns a valid changeset with validated and hashed password" do
+      valid_params = valid_params(@required_fields)
+                    |> Map.put("password", "pass123")
+
+      changeset = User.changeset_password(%User{}, valid_params)
+
+      assert %Changeset{valid?: true, changes: changes} = changeset
+
+      actual = Map.get(changes, :password)
+      expected = valid_params[Atom.to_string(:password)]
+      assert actual == expected,
+        "Values did not match for: password\nexpected: #{inspect(expected)}\nactual: #{inspect(actual)}"
+
+      assert _actual_hashed = Map.get(changes, :hashed_password)
+    end
+
+    test "error: returns an error changeset when given uncastable password value" do
+      invalid_params = valid_params(@required_fields)
+                       |> Map.put("password", NaiveDateTime.utc_now())
+
+      assert %Changeset{valid?: false, errors: errors} = User.changeset_password(%User{}, invalid_params)
+
+      assert errors[:password], "the field :password is missing from errors."
+      {_, meta} = errors[:password]
+      assert meta[:validation] == :cast,
+        "The validation type #{meta[:validation]} is incorrect."
+    end
+
+    test "error: returns an error changeset when password field is missing" do
+      params = valid_params(@required_fields)
+
+      assert %Changeset{valid?: false, errors: errors} = User.changeset_password(%User{}, params)
+
+      assert errors[:password], "The field :password is missing from errors."
+      {_, meta} = errors[:password]
+      assert meta[:validation] == :required,
+        "The validation type #{meta[:validation]} is incorrect."
+    end
+
+    test "error: returns an error changeset when password is too short" do
+      params = valid_params(@required_fields)
+               |> Map.put("password", "ana")
+
+      assert %Changeset{valid?: false, errors: errors} = User.changeset_password(%User{}, params)
+
+      assert errors[:password], "The field :password is missing from errors."
+      {_, meta} = errors[:password]
+      assert meta[:validation] == :length,
+        "The validation type #{meta[:validation]} is incorrect."
+    end
+  end
+
+  describe "changeset_token/2" do
+    test "success: returns a valid changeset with refresh token" do
+      valid_params = valid_params(@required_fields)
+                    |> Map.put("refresh_token", Ecto.UUID.generate())
+
+      changeset = User.changeset_token(%User{}, valid_params)
+
+      assert %Changeset{valid?: true, changes: changes} = changeset
+
+      actual = Map.get(changes, :refresh_token)
+      expected = valid_params[Atom.to_string(:refresh_token)]
+      assert actual == expected,
+        "Values did not match for: password\nexpected: #{inspect(expected)}\nactual: #{inspect(actual)}"
+    end
+
+    test "error: returns an error changeset when given uncastable refresh token value" do
+      invalid_params = valid_params(@required_fields)
+                       |> Map.put("refresh_token", NaiveDateTime.utc_now())
+
+      assert %Changeset{valid?: false, errors: errors} = User.changeset_token(%User{}, invalid_params)
+
+      assert errors[:refresh_token], "the field :refresh_token is missing from errors."
+      {_, meta} = errors[:refresh_token]
+      assert meta[:validation] == :cast,
+        "The validation type #{meta[:validation]} is incorrect."
+    end
+
+    test "error: returns an error changeset when refresh token field is missing" do
+      params = valid_params(@required_fields)
+
+      assert %Changeset{valid?: false, errors: errors} = User.changeset_token(%User{}, params)
+
+      assert errors[:refresh_token], "The field :refresh_token is missing from errors."
+      {_, meta} = errors[:refresh_token]
+      assert meta[:validation] == :required,
+        "The validation type #{meta[:validation]} is incorrect."
+    end
 
   end
 
+  defp create_registration(params) do
+    %StudentRegistration{
+      email: Map.get(params, "email"),
+      first_name: Map.get(params, "first_name"),
+      last_name: Map.get(params, "last_name"),
+      index_number: Map.get(params, "index_number"),
+      status: Map.get(params, "status")}
+  end
 end

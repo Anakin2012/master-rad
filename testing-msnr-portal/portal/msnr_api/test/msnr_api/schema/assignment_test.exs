@@ -110,7 +110,17 @@ defmodule MsnrApi.Schema.AssignmentTest do
       assert meta[:validation] == :cast,
         "The validation type #{meta[:validation]} is incorrect."
     end
+
+    test "success: returns a valid changeset if default field :completed isn't provided" do
+      params = %{}
+
+      changeset = Assignment.signup_changeset(%Assignment{}, params)
+      assert %Changeset{valid?: true, changes: _changes} = changeset
+
+      actual = Ecto.Changeset.get_field(changeset, :completed)
+      expected = false
+      assert actual == expected,
+        "Values did not match for: :completed\nexpected: #{inspect(expected)}\nactual: #{inspect(actual)}"
+    end
   end
-
-
 end

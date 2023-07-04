@@ -76,27 +76,13 @@ defmodule MsnrApi.Schema.GroupTest do
       end
     end
 
-    test "unique constraint for topic_id" do
+    test "error: returns an error changeset when topic_id is reused" do
 
       Ecto.Adapters.SQL.Sandbox.checkout(MsnrApi.Repo)
 
-      {:ok, existing_semester} =
-        %Semester{}
-        |> Semester.changeset(valid_params([
-          {:year, :integer},
-          {:is_active, :boolean}
-        ]))
-        |> MsnrApi.Repo.insert()
-
-      {:ok, existing_topic} =
-        %Topic{}
-        |> Topic.changeset(Map.put(valid_params([{:title, :string}]), "semester_id", existing_semester.id))
-        |> MsnrApi.Repo.insert()
-
-      {:ok, existing_group} =
-        %Group{}
-        |> Group.changeset(%{"topic_id" => existing_topic.id})
-        |> MsnrApi.Repo.insert()
+      {:ok, existing_semester} = insert_semester()
+      {:ok, existing_topic} = insert_topic(existing_semester)
+      {:ok, existing_group} = insert_group(existing_topic)
 
       changeset_with_reused_topic_id =
         %Group{}
@@ -114,6 +100,30 @@ defmodule MsnrApi.Schema.GroupTest do
         "The validation type #{meta[:validation]} is incorrect."
 
     end
+  end
+
+  defp insert_semester() do
+    {:ok, _existing_semester} =
+      %Semester{}
+      |> Semester.changeset(valid_params([
+        {:year, :integer},
+        {:is_active, :boolean}
+      ]))
+      |> MsnrApi.Repo.insert()
+  end
+
+  defp insert_topic(semester) do
+    {:ok, _existing_topic} =
+      %Topic{}
+      |> Topic.changeset(Map.put(valid_params([{:title, :string}]), "semester_id", semester.id))
+      |> MsnrApi.Repo.insert()
+  end
+
+  defp insert_group(topic) do
+    {:ok, _existing_group} =
+      %Group{}
+      |> Group.changeset(%{"topic_id" => topic.id})
+      |> MsnrApi.Repo.insert()
   end
 
 end

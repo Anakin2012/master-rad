@@ -1,6 +1,8 @@
 defmodule MsnrApi.Schema.ActivityTest do
   use MsnrApi.Support.SchemaCase
   alias MsnrApi.Activities.Activity
+  alias MsnrApi.Semesters.Semester
+  alias MsnrApi.ActivityTypes.ActivityType
 
   @required_fields [
     {:semester_id, :id},
@@ -89,5 +91,65 @@ defmodule MsnrApi.Schema.ActivityTest do
       refute errors[:is_signup], "The is_signup field isn't default when it should be."
     end
 
+    test "error: returns an error changeset when reusing unique fields" do
+      unique_fields = [{:semester_id, :id}]
+                      # {:activity_type_id, :id},
+                      # {:is_signup, :boolean}]
+
+      Ecto.Adapters.SQL.Sandbox.checkout(MsnrApi.Repo)
+
+      {:ok, existing_semester} = insert_semester()
+      {:ok, existing_activity_type} = insert_activity_type()
+
+      {:ok, existing_activity} =
+        %Activity{}
+        |> Activity.changeset(valid_params(@required_fields)
+                              |> Map.put("semester_id", existing_semester.id)
+                              |> Map.put("activity_type_id", existing_activity_type.id))
+        |> MsnrApi.Repo.insert()
+
+      changeset_with_reused_fields =
+        %Activity{}
+        |> Activity.changeset(valid_params([{:start_date, :integer},
+                                            {:end_date, :integer},
+                                            {:points, :integer}])
+                          |> Map.put("semester_id", existing_activity.semester_id)
+                          |> Map.put("activity_type_id", existing_activity.activity_type_id)
+                          |> Map.put("is_signup", existing_activity.is_signup))
+
+      assert {:error, %Changeset{valid?: false, errors: errors}} =
+        MsnrApi.Repo.insert(changeset_with_reused_fields)
+
+      for {field, _} <- unique_fields do
+        assert errors[field], "the field: #{field} is missing from errors."
+
+        {_, meta} = errors[field]
+        assert meta[:constraint] == :unique,
+          "The validation type #{meta[:validation]} is incorrect."
+      end
+    end
+
+  end
+
+  defp insert_semester() do
+    {:ok, _semester} =
+      %Semester{}
+      |> Semester.changeset(valid_params([
+        {:year, :integer},
+        {:is_active, :boolean}
+      ]))
+      |> MsnrApi.Repo.insert()
+  end
+
+  defp insert_activity_type() do
+    {:ok, _activity_type} =
+      %ActivityType{}
+      |> ActivityType.changeset(valid_params([
+        {:name, :string},
+        {:code, :string},
+        {:description, :string},
+        {:content, :map}
+      ]))
+      |> MsnrApi.Repo.insert()
   end
 end

@@ -111,7 +111,6 @@ defmodule MsnrApi.Schema.ActivityTypeTest do
       assert {:error, %Changeset{valid?: false, errors: errors}} =
         MsnrApi.Repo.insert(changeset_with_reused_fields)
 
-
       for {field, _} <- [:name, :code] do
         assert errors[field], "the field: #{field} is missing from errors."
 
