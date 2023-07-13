@@ -13,51 +13,53 @@ Warning--to sort, need author or key in phx
 Warning--to sort, need author or key in hex
 Warning--to sort, need author or key in plug
 Warning--to sort, need author or key in exunit
+Warning--to sort, need author or key in pbk
 Warning--to sort, need author or key in ecto
 Warning--to sort, need author or key in faker
 Warning--to sort, need author or key in exmachina
 Warning--to sort, need author or key in execto
+Warning--to sort, need author or key in hexcontrol
 Warning--empty journal in fabrike
 Warning--empty journal in external
-You've used 19 entries,
+You've used 21 entries,
             2118 wiz_defined-function locations,
-            564 strings with 6124 characters,
-and the built_in function-call counts, 3403 in all, are:
-= -- 304
-> -- 67
+            570 strings with 6343 characters,
+and the built_in function-call counts, 3717 in all, are:
+= -- 332
+> -- 69
 < -- 0
-+ -- 36
++ -- 38
 - -- 16
-* -- 118
-:= -- 466
-add.period$ -- 45
-call.type$ -- 19
-change.case$ -- 61
+* -- 128
+:= -- 498
+add.period$ -- 49
+call.type$ -- 21
+change.case$ -- 67
 chr.to.int$ -- 0
-cite$ -- 33
-duplicate$ -- 154
-empty$ -- 421
+cite$ -- 37
+duplicate$ -- 168
+empty$ -- 467
 format.name$ -- 16
-if$ -- 784
+if$ -- 862
 int.to.chr$ -- 0
-int.to.str$ -- 19
+int.to.str$ -- 21
 missing$ -- 8
-newline$ -- 85
+newline$ -- 93
 num.names$ -- 14
-pop$ -- 188
+pop$ -- 210
 preamble$ -- 1
-purify$ -- 46
+purify$ -- 50
 quote$ -- 0
-skip$ -- 118
+skip$ -- 130
 stack$ -- 0
-substring$ -- 96
-swap$ -- 17
+substring$ -- 106
+swap$ -- 19
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 70
-warning$ -- 14
+type$ -- 78
+warning$ -- 16
 while$ -- 14
-width$ -- 21
-write$ -- 152
-(There were 14 warnings)
+width$ -- 23
+write$ -- 166
+(There were 16 warnings)

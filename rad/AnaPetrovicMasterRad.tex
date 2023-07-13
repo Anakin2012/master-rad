@@ -398,7 +398,7 @@ programming interface} )} obezbeđuje čist k$\hat{o}$d i jednostavne i kontroli
 ExUnit.start()
 \end{lstlisting}
 
-\par Testovi se pokreću najpre pozicioniranjem u direktorijum projekta, a zatim navođenjem komande \emph{mix test}. Ova komanda pokreće sve testove koji se nalaze unutar \emph{test} direktorijuma. Navođenjem parametra \emph{--only} i imena testa ili modula može se pokrenuti specifičan test ili skup testova unutar jednog modula. Pozivanje naredbe \emph{mix test} pokreće sve testove, i daje sledeći izlaz:  
+\par Testovi se pokreću najpre pozicioniranjem u direktorijum projekta, a zatim navođenjem komande \textbf{mix test}. Ova komanda pokreće sve testove koji se nalaze unutar \emph{test} direktorijuma. Navođenjem parametra \emph{--only} i imena testa ili modula može se pokrenuti specifičan test ili skup testova unutar jednog modula. Pozivanje naredbe \textbf{mix test } pokreće sve testove, i daje sledeći izlaz:  
 
 \begin{lstlisting}[style=DOS]
 PS C:\Users\panap\testing-msnr-portal\portal\msnr_api> mix test
@@ -406,74 +406,85 @@ PS C:\Users\panap\testing-msnr-portal\portal\msnr_api> mix test
 ..............
 Finished in 0.2 seconds (0.00s async, 0.2s sync)
 16 tests, 0 failures
+
+Randomized with seed 801308
 \end{lstlisting}
 
-\par Svita testova (eng. \emph{test suite}) je kolekcija testova slučajeva upotrebe, koji imaju isti posao, ali različite scenarije. Ona može služiti kao dokumentacija, sa opisima o očekivanom ponašanju koda, tako da treba voditi računa da bude dobro organizovana. \emph{ExUnit} dolazi sa veoma korisnim funkcijima i makroima koji omogućavaju tu organizaciju u jednu čitljivu i održivu datoteku. Alat \emph{describe} omogućava davanje opisa grupe testova, kao i dodeljivanja zajedničke pripreme podataka za celu grupu. Preporuka je za početak grupisati testove po funkciji, kao što je prikazano u primeru koda \ref{lst:desc}, ali odluka o načinu grupisanja je na pojedincu. Svrha je čitljivost i lakše razumevanje. \par Testovi u Elixir projektima se organizuju u module i test slučajeve. U ovom primeru, modul pod nazivom \emph{AccountsTest} sadrži testove koji se odnose na kontekst koji opisuje korisnike. Blok \emph{describe} iz primera se sastoji od dva test slučaja, i odnosi se na funkciju \emph{get{\textunderscore}user}, koja vrši jednostavno dohvatanje korisnika iz baze prosleđivanjem identifikatora. Navođenjem ključne reči \emph{test}, a za njom niske koja treba da opiše šta je to što test treba da uradi, definiše se jedna funkcija koja predstavlja test slučaj. Na primeru \emph{describe} bloka funkcije \emph{get{\textunderscore}user}, prikazana su dva test slučaja, od kojih jedan proverava uspešno izvršavanje funkcije kada se prosledi validan identifikator, a drugi proverava da li se javlja greška kada se prosledi identifikator korisnika koji ne postoji. Deo koda koji se odnosi na samo ubacivanje korisnika u bazu podataka, upotreba koncepta fabrike, kao i vraćanje baze na prvobitno stanje biće detaljno objašnjeni u delu \ref{sec:baza}.
-\par Unutar jednog test slučaja poziva se funkcija ili upravljač i proverava se očekivani rezultat. Makroom \emph{assert} se testira da li je izraz istinit. U slučaju da nije, test ne prolazi i izbacuje grešku. Ako funkcija \emph{get{\textunderscore}user} vrati korisnika koji je jednak postojećem korisniku iz baze, ovaj test uspešno prolazi. Na primeru testa koji proverava neuspešnu putanju izvršavanja, koristi se makro \emph{assert{\textunderscore}raise}, koji se koristi kada je potrebno proveriti da li se javlja konkretan izuzetak. U ovom slučaju, pri pokušaju dohvatanja nepostojećeg korisnika, očekuje se izuzetak tipa \emph{NoResultsError}.
+\par \emph{ExUnit} će testove izvršavati nasumičnim redosledom, koristeći ceo broj kao seme nasumičnosti (eng. \emph{randomization seed}). Poželjno je da se testovi izvršavaju slučajnim redosledom, jer se tako osigurava njihova izlovanost. Ako se desi da određeni test pada sporadično, to može biti jer neki od prethodnih testova menja stanje i ima posledice po druge testove. Ovako nešto može da se desi ako se testovi izvršavaju nekim određenim redosledom, i taj redosled se može dobiti pomoću ovog nasumičnog broja koji je dat u samom izlazu. Pokretanjem testova ponovo koristeći taj konkretni ceo broj kao seme nasumičnosti može se pronaći uzrok greške. 
 
-\begin{lstlisting}[language=elixir, caption={Opisivanje testova unutar jedne grupe, na primeru funkcije za dohvatanje korisnika},captionpos=b, label={lst:desc}]
-defmodule MsnrApi.Queries.AccountsTest  do
+\par Svita testova (eng. \emph{test suite}) je kolekcija testova slučajeva upotrebe, koji imaju isti posao, ali različite scenarije. Ona može služiti kao dokumentacija, sa opisima o očekivanom ponašanju koda, tako da treba voditi računa da bude dobro organizovana. \emph{ExUnit} dolazi sa veoma korisnim funkcijima i makroima koji omogućavaju tu organizaciju u jednu čitljivu i održivu datoteku. Alat \emph{describe} omogućava davanje opisa grupe testova, kao i dodeljivanja zajedničke pripreme podataka za celu grupu. Preporuka je za početak grupisati testove po funkciji, kao što je prikazano u primeru koda \ref{lst:desc}, ali odluka o načinu grupisanja je na pojedincu. Svrha je čitljivost i lakše razumevanje.
+\par Testovi u \emph{Elixir} projektima se organizuju u module i test slučajeve. U ovom primeru, modul pod nazivom \emph{MsnrApi.UnitTests.PasswordTest} sadrži jedinične testove koji se odnose na kontekst koji opisuje šifre korisnika (\emph{MsnrApi.Accounts.Password}). Blok \emph{describe} se sastoji od dva test slučaja i odnosi se na funkcije hash i \emph{verify{\textunderscore}with{\textunderscore}hash}. Njihova uloga je da hešuju lozinku upotrebom nasumične tzv. \emph{salt} niske i zatim verifikuju da je lozinka ispravno heširana, tj. zaštićena tako da postoji kao nasumična niska u bazi. Više o ovim funkcijama može se naći u dokumentaciji Eliksirovog modula \emph{Pbkdf2} \cite{pbk}. Navođenjem ključne reči test, a za njom niske koja treba da opiše šta je to što test treba da uradi, definiše se jedna funkcija koja predstavlja test slučaj. U primeru koda \ref{lst:desc} data su dva test slučaja, od kojih jedan proverava uspešno izvršavanje funkcije kada se prosledi ispravna lozinka funkciji \emph{verify{\textunderscore}with{\textunderscore}hash}, a drugi proverava da li se javlja greška kada se prosledi neodgovarajuća niska. 
+ 
+% \par Testovi u Elixir projektima se organizuju u module i test slučajeve. U ovom primeru, modul pod nazivom \emph{AccountsTest} sadrži testove koji se odnose na kontekst koji opisuje korisnike. Blok \emph{describe} iz primera se sastoji od dva test slučaja, i odnosi se na funkciju \emph{get{\textunderscore}user}, koja vrši jednostavno dohvatanje korisnika iz baze prosleđivanjem identifikatora. Navođenjem ključne reči \emph{test}, a za njom niske koja treba da opiše šta je to što test treba da uradi, definiše se jedna funkcija koja predstavlja test slučaj. Na primeru \emph{describe} bloka funkcije \emph{get{\textunderscore}user}, prikazana su dva test slučaja, od kojih jedan proverava uspešno izvršavanje funkcije kada se prosledi validan identifikator, a drugi proverava da li se javlja greška kada se prosledi identifikator korisnika koji ne postoji. Deo koda koji se odnosi na samo ubacivanje korisnika u bazu podataka, upotreba koncepta fabrike, kao i vraćanje baze na prvobitno stanje biće detaljno objašnjeni u delu \ref{sec:baza}.
+\par Unutar jednog test slučaja poziva se funkcija ili upravljač i proverava se očekivani rezultat. Makroom \emph{assert} se testira da li je izraz istinit. U slučaju da nije, test ne prolazi i izbacuje grešku. Ako funkcija \emph{verify{\textunderscore}with{\textunderscore}hash} vrati \emph{true}, ovaj test uspešno prolazi. Na primeru testa koji proverava neuspešnu putanju izvršavanja, koristi se makro \emph{refute}, koji se koristi kada je potrebno proveriti da li je izraz neistinit (eng. \emph{false}) . U ovom slučaju očekuje se da funkcija vrati false kada joj se prosledi neispravna lozinka.
+
+
+
+\begin{lstlisting}[language=elixir, caption={Opisivanje testova unutar jedne grupe, na primeru funkcije za verifikaciju lozinke},captionpos=b, label={lst:desc}]
+defmodule MsnrApi.UnitTests.PasswordTest do
 ...
-describe "get_user/1" do
-    test "success: it returns a user when given a valid id" do
-      existing_user = Factory.insert(:user)
-      assert returned_user = Accounts.get_user!(existing_user.id)
-      assert returned_user == existing_user
+  describe "verify password" do
+    test "success: verifies the password by hashing" do
+      password = "somepass123"
+
+      assert hash = Password.hash(password)
+      assert Password.verify_with_hash(password, hash) == true
     end
 
-    test "error: it returns a NoResultsError when a user doesn't exist" do
-      assert_raise Ecto.NoResultsError, fn ->
-        Accounts.get_user!(invalid_id) end
+    test "error: returns false when given wrong password" do
+      password = "somepass123"
+      wrong = "wrong"
+
+      assert hash = Password.hash(password)
+      refute Password.verify_with_hash(wrong, hash)
     end
- end
+  end
 \end{lstlisting}
 
 
-\par U slučaju da leva i desna strana izraza navedenog nakon makroa \emph{assert} nisu jednake, test ne prolazi, a \emph{ExUnit} daje obaveštenje o tome koji od testova su neuspešni, kao i koje su prava i očekivana vrednost. Izlaz koji se dobije u slučaju da dohvaćeni korisnik nije onaj koji je očekivan, prikazan je na listingu \ref{lst:term}. 
+\par U slučaju da leva i desna strana izraza navedenog nakon makroa \emph{assert} nisu jednake, test ne prolazi, a \emph{ExUnit} daje obaveštenje o tome koji od testova su neuspešni, kao i koje su prava i očekivana vrednost. Izlaz koji se dobije u slučaju da rezultat izvršavanja funkcije nije onaj koji je očekivan, prikazan je na listingu \ref{lst:term}. 
 
 \begin{lstlisting}[style=DOS, caption={Izlaz u slučaju testa koji ne prolazi},captionpos=b, label={lst:term}]
-1) test get_user/1 success: it returns a user when given a valid id (MsnrApi.Queries.AccountsTest)
-     test/msnr_api/queries/accounts_test.exs:73
-     ** (Ecto.NoResultsError) expected at least one result but got none in query:
+1) test verify password success: verifies the password by hashing (MsnrApi.UnitTests.PasswordTest)
+   test/msnr_api/unit_tests/password_test.exs:6
+   Assertion with == failed
+   code:  assert Password.verify_with_hash(password, hash) == true
+   left:  false
+   right: true
+   stacktrace:
+     test/msnr_api/unit_tests/password_test.exs:10: (test)
+.
+Finished in 5.0 seconds (0.00s async, 5.0s sync)
+2 tests, 1 failure
 
-     from u0 in MsnrApi.Accounts.User,
-       where: u0.id == ^6
-
-     code: assert returned_user = Accounts.get_user!(6)
-     stacktrace:
-       (ecto 3.7.1) lib/ecto/repo/queryable.ex:156: Ecto.Repo.Queryable.one!/3
-       test/msnr_api/queries/accounts_test.exs:76: (test)
-
-Finished in 0.5 seconds (0.00s async, 0.5s sync)
-
-2 tests, 1 failures
 \end{lstlisting}
 
 
 \par Pored najčešće korišćenog makroa \emph{assert}, \emph{ExUnit} nudi još nekoliko njih koji se mogu koristiti u različitim situacijama. U narednoj listi dati su nazivi i opisi nekih takvih makroa:
  \begin{itemize}
- \item \emph{refute} --- koristi se kada je potrebno utvrditi da je izraz uvek neistinit. 
+ \item \emph{assert{\textunderscore}raise} --- koristi se kada je potrebno utvrditi da je podignut odgovarajući izuzetak. 
  \item \emph{assert{\textunderscore}receive} --- koristi se kada je potrebno proveriti da li je proces primio konkretnu poruku.
  \item \emph {capture{\textunderscore}io} --- koristi se kada je potrebno proveriti da li se na standardanom izlazu ispisuje očekivano.
  \item \emph{capture{\textunderscore}log} --- koristi se kada je potrebno proveriti sadržaj log poruka, npr. pri pozivu \emph{Logger.info}.
  \item \emph{setup i setup{\textunderscore}all} --- koriste se kada je potrebno izvršiti pripremu testova, pokreću se pre svakog testa, ili pre jedne grupe.
  \end{itemize}
  
-\par Upotreba makroa \emph{refute} i \emph{setup} prikazana je u primeru dela koda \ref{lst:del}. K$\hat{o}$d  unutar makroa \emph{setup} će se pokretati pre svakog testa, a u ovom primeru priprema podrazumeva eksplicitno dohvatanje konekcije sa bazom podataka pre izvršavanja svakog od testova. Pri testiranju funkcije \emph{delete{\textunderscore}user}, koja treba da ukloni korisnika iz baze, iskorišćen je makro \emph{refute}. Kada se pokuša dohvatanje korisnika koji je prethodno izbrisan, trebalo bi da to nije moguće i da dođe do greške. Zbog toga je u ovom slučaju \emph{refute} dobar izbor.
+\par Upotreba makroa \emph{setup} i \emph{assert{\textunderscore}raise} prikazana je u primeru dela koda \ref{lst:del}. K$\hat{o}$d  unutar makroa \emph{setup} će se pokretati pre svakog testa, a u ovom primeru priprema podrazumeva eksplicitno dohvatanje konekcije sa bazom podataka pre izvršavanja svakog od testova. Povezivanje sa bazom podataka biće detaljno objašnjeno u narednoj sekciji. Test slučaj iz ovog primera pokriva neuspešan slučaj funkcije \emph{get{\textunderscore}user} koja treba da dohvati korisnika iz baze. Pri pokušaju dohvatanja nepostojećeg korisnika, očekuje se izuzetak tipa \emph{NoResultsError}.
  
-\begin{lstlisting}[language=elixir, caption={Upotreba makroa \emph{setup} i \emph{refute} na primeru funkcije \emph{delete{\textunderscore}user}},captionpos=b, label={lst:del}]
+\begin{lstlisting}[language=elixir, caption={Upotreba makroa \emph{setup} i \emph{assert{\textunderscore}raise} na primeru funkcije \emph{get{\textunderscore}user}},captionpos=b, label={lst:del}]
 setup do
     Ecto.Adapters.SQL.Sandbox.checkout(MsnrApi.Repo)
 end
   
-describe "delete_user/1" do
-   test "success: it deletes the user" do
-      user = Factory.insert(:user)
-      assert {:ok, _deleted_user} = Accounts.delete_user(user)
+describe "get_user/1" do
+...
+    test "error: it returns an Ecto.NoResultsError when a user doesn't exist" do
 
-      refute Repo.get(User, user.id)
-   end
-end
+      invalid_id = -1
+      assert_raise Ecto.NoResultsError, fn ->
+        Accounts.get_user!(invalid_id) end
+    end
+  end
 \end{lstlisting}
 
 
@@ -755,12 +766,12 @@ defmodule MsnrApi.Accounts do
 \end{lstlisting}
 
 \subsubsection{Fabrike za pripremu podataka}
-\par Prilikom pisanja testova koji pristupaju tabelama baze podataka, za dohvatanje podataka u fazi pripreme, pogodno je iskoristiti obrazac fabrike (eng. \emph{factory pattern}) \cite{fabrike}. Fabrike u testiranju jesu funkcije koje generišu podatke. Kako aplikacija raste, održavanje testova postaje zahtevnije, i u tome značajno pomaže imati jedan izvor za pripremu podataka. U slučaju testiranja interakcija sa bazom podataka, kreirana je zajednička datoteka \emph{msnr{\textunderscore}api/test/support/factory.ex}. Pored toga, kreiran je poseban direktorijum \emph{msnr{\textunderscore}api/test/support/factories} u kome će se nalaziti pojedinačne fabrike za svaki od entiteta. U osnovi ovih fabrika nalazi se biblioteka \emph{ExMachina} \cite{exmachina}. Ova biblioteka obezbeđuje kreiranje kompleksnih struktura podataka za sheme, kao i mehanizam za ubacivanje podataka u bazu bez pisanja koda. Kao prvi korak, \emph{ExMachina} je dodata kao zavisnost aplikacije: u okviru datoteke \emph{msnr{\textunderscore}api/mix.exs} ubačena je linija \textit{\{:exmachina, ''$\sim$> 2.7.0'', only: :test\}}. Da bi mogla da se koristi, pokrenuti komandu \emph{mix deps.get} iz komandne linije. U tabeli \ref{tab:exmachina} prikazane su neke od funkcija unutar \emph{ExMachina.Ecto} modula, koje se koriste pri ubacivanju podataka prilikom testiranja \cite{execto}.
+\par Prilikom pisanja testova koji pristupaju tabelama baze podataka, za dohvatanje podataka u fazi pripreme, pogodno je iskoristiti obrazac fabrike (eng. \emph{factory pattern}) \cite{fabrike}. Fabrike u testiranju jesu funkcije koje generišu podatke. Kako aplikacija raste, održavanje testova postaje zahtevnije, i u tome značajno pomaže imati jedan izvor za pripremu podataka. U slučaju testiranja interakcija sa bazom podataka, kreirana je zajednička datoteka \emph{msnr{\textunderscore}api/test/support/factory.ex}. Pored toga, kreiran je poseban direktorijum \emph{msnr{\textunderscore}api/test/support/factories} u kome će se nalaziti pojedinačne fabrike za svaki od entiteta. U osnovi ovih fabrika nalazi se biblioteka \emph{ExMachina} \cite{exmachina}. Ova biblioteka obezbeđuje kreiranje kompleksnih struktura podataka za sheme, kao i mehanizam za ubacivanje podataka u bazu bez pisanja koda. Kao prvi korak, \emph{ExMachina} je dodata kao zavisnost aplikacije: u okviru datoteke \emph{msnr{\textunderscore}api/mix.exs} ubačena je linija \textit{\{:exmachina, ''$\sim$> 2.7.0'', only: :test\}}. Da bi mogla da se koristi, pokrenuti komandu \textbf{mix deps.get} iz komandne linije. U tabeli \ref{tab:exmachina} prikazane su neke od funkcija unutar \emph{ExMachina.Ecto} modula, koje se koriste pri ubacivanju podataka prilikom testiranja \cite{execto}.
 
 
 \begin{table}[!htbp]
 \centering
-\caption{Funkcije modula ExMachina.Ecto}
+\caption{Funkcije modula \emph{ExMachina.Ecto}}
 \label{tab:exmachina}
 \begin{center}
 \begin{tabular}{ | m{10cm} | m{10em} | } 
@@ -977,6 +988,180 @@ end
 \end{lstlisting}
 
 \section{Testiranje upravljača i pogleda}
+
+\par \emph{Phoenix} upravljači (eng. \emph{controllers}) su utikači i predstavljaju posredničke module \cite{hexcontrol}. Funkcije unutar upravljača nazivaju se akcije. One se pokreću unutar \emph{MnsrApiWeb.Router} modula kao odgovori na HTTP zahteve. Njihova uloga je da prikupe sve neophodne podatke i izvrše odgovarajuće operacije pre nego što 
+pozovu funkciju \emph{render}, definisanu u sloju pogleda (eng. \emph{view layer}). Ova funkcija prihvata \emph{Plug.Conn} strukturu, naziv šablona i podatke potrebne za iscrtavanje, a kao izlaznu vrednost kreira mapu koja se prevodi u JSON objekat. Struktura upravljača i pogleda na primeru entiteta semestra prikazana je u primerima koda \ref{lst:controller} i \ref{lst:view}.
+
+\begin{lstlisting}[language=elixir, caption={Struktura upravljača \emph{SemesterController}},captionpos=b, label={lst:controller}]
+defmodule MsnrApiWeb.SemesterController do
+  use MsnrApiWeb, :controller
+  action_fallback MsnrApiWeb.FallbackController
+
+   def create(conn, %{"semester" => semester_params}) do
+      with {:ok, %Semester{} = semester} <- Semesters.create_semester(semester_params) do
+        conn
+        |> put_status(:created)
+        |> put_resp_header("location", Routes.semester_path(conn, :show, semester))
+        |> render("show.json", semester: semester)
+     end
+   end
+   ...
+end
+\end{lstlisting}
+
+\begin{lstlisting}[language=elixir, caption={Struktura pogleda \emph{SemesterView}},captionpos=b, label={lst:view}]
+defmodule MsnrApiWeb.SemesterView do
+  use MsnrApiWeb, :view
+
+  def render("show.json", %{semester: semester}) do
+    %{data: render_one(semester, SemesterView, "semester.json")}
+  end
+  ...
+end
+\end{lstlisting}
+
+\par Akcija \emph{create} prihvata parametre za novi semestar i čuva ga u bazi, a zatim iscrtava taj novonastali semestar. Prvo vrši proveru da li semestar može biti kreiran, i ako može postavlja status na \emph{:created} --- koji se prevodi na 201. Nakon toga, postavlja zaglavlje \emph{location} na lokaciju tog semestra, a zatim iscrtava ''\emph{show.json}'' sa informacijama o novom semestru.
+\par Specijalna naredba \emph{with} eksplicitno proverava uspešno izvršavanje. Ako funkcija \emph{Semesters.create{\textunderscore}semester(semester{\textunderscore}params)} iz nekog razloga ne uspe, ona vraća grešku u obliku skupa promena --- \emph{\{:error, changeset\}}.  Akcije upravljača ne znaju kako da obrade ovakav tip greške. U tome im pomaže \emph{Action Fallback} upravljač. Modul \emph{FallbackController} aktivira se svaki put kada neka akcija upravljača ne vrati \emph{Plug.Conn} strukturu. On definiše različite funkcije \emph{call} koje prevode rezultate izvršavanja akcija u validne \emph{Plug.Conn} odgovore. Implementacija ovog upravljača data je u primeru koda \ref{lst:fallback}.
+
+\begin{lstlisting}[language=elixir, caption={Struktura pogleda \emph{SemesterView}},captionpos=b, label={lst:view}]
+defmodule MsnrApiWeb.FallbackController do
+  use MsnrApiWeb, :controller
+
+  def call(conn, {:error, %Ecto.Changeset{} = changeset}) do
+    conn
+    |> put_status(:unprocessable_entity)
+    |> put_view(MsnrApiWeb.ChangesetView)
+    |> render("error.json", changeset: changeset)
+  end
+...
+\end{lstlisting}
+
+\par U ovom primeru prikazana je funkcija \emph{call} koja obrađuje grešku tipa \emph{\{:error, changeset\}}. Ova funkcija se poziva kada se desi greška pri pozivu \emph{Ecto}operacija \emph{insert, update} ili \emph{delete}. Postavlja status na 422 (\emph{unprocessable entity}) i iscrtava ''error.json'' iz pogleda skupa promena \emph{MsnrApiWeb.ChangesetView} u kome prikazuje neuspešan skup promena.
+
+
+\par Pored akcije \emph{create}, upravljači definišu i druge, kojima se po konvenciji dodeljuju sledeća imena: 
+\begin{itemize}
+\item \emph{index} --- generiše listu svih objekata datog tipa (u ovom slučaju semestar)
+\item \emph{show} --- iscrtava jedan objekat preko identifikatora
+\item \emph{update} --- prihvata parametre za ažuriranje objekta i čuva ga u bazi
+\item \emph{delete} --- prihvata identifikator za dati objekat i briše ga iz baze
+\end{itemize}
+
+\par Svaka od ovih akcija kao prvi argument uzima \emph{Plug.Conn} strukturu, koja sadrži informacije o korisničkom zahtevu i dolazi iz \emph{Elixir Plug} okruženja. Drugi argument je mapa \emph{params}, koja sadrži parametre koji se prosleđuju unutar HTTP zahteva.
+\par Da bi funkcija \emph{render} iz primera koda \ref{lst:view} ispravno radila, upravljač i pogled moraju da imaju isti naziv (u ovom slučaju \emph{Semester}). Zadatak pogleda je da izgeneriše podatke u određenom formatu. U slučaju ove aplikacije, korišćen je JSON veb interfejs, i svi pogledi generišu JSON sadržaj.
+
+\subsection{Priprema za testiranje}
+
+\par Sve datoteke upravljača i pogleda generišu se pozivanjem komande \textbf{mix phx.gen.json} koju pruža razvojno okruženje \emph{Phoenix}. Parametri koji se navode uz ovu komandu su naziv konteksta, naziv strukture i naziv tabele u bazi, nakon čega slede definicije polja, odnosno kolona. Pored ovih datoteka, \emph{Phoenix} automatski generiše i datoteke koje predstavljaju šablone za testove unutar \emph{test{\textbackslash}msnr{\textunderscore}api{\textunderscore}web} direktorijuma. Takođe, u \emph{test{\textbackslash}support} direktorijumu, nalaziće se i datoteka koja definiše modul \emph{ConnCase}. Ovo je još jedan obrazac slučaja, koji se uključuje na početku svakog od testova upravljača, linijom \emph{use MsnrApiWeb.ConnCase}. Modul ConnCase prikazan je u primeru koda \ref{lst:conncase}.
+
+\begin{lstlisting}[language=elixir, caption={Modul \emph{ConnCase}},captionpos=b, label={lst:conncase}]
+defmodule MsnrApiWeb.ConnCase do
+  use ExUnit.CaseTemplate
+  alias MsnrApi.Support.DataCase
+
+  using do
+    quote do
+      import Plug.Conn
+      import Phoenix.ConnTest
+      import MsnrApiWeb.ConnCase
+
+      alias MsnrApiWeb.Router.Helpers, as: Routes
+
+      @endpoint MsnrApiWeb.Endpoint
+    end
+  end
+
+  setup tags do
+    pid = Ecto.Adapters.SQL.Sandbox.start_owner!(MsnrApi.Repo, shared: not tags[:async])
+    on_exit(fn -> Ecto.Adapters.SQL.Sandbox.stop_owner(pid) end)
+    {:ok, conn: Phoenix.ConnTest.build_conn()}
+  end
+end
+\end{lstlisting}
+
+\par Uključuju se neophodni moduli koji će se koristiti u testovima --- \emph{Plug.Conn} i \emph{Phoenix.ConnTest}. Ova dva modula sadrže funkcije koje pomažu u testiranju krajnjih tačaka (eng. \emph{endpoints}) i konekcija. Utikač \emph{MsnrApiWeb.Endpoint} predstavlja početnu tačku prilikom obrade HTTP zahteva i sastoji se od niza utikača, kroz koje prolazi svaki zahtev. Funkcije iz \emph{Phoenix.ConnTest} modula se koriste za različite operacije nad konekcijom koje je potrebno sprovesti pre nego što se ona isporuči krajnjoj tački. Dalje, u datoteci \emph{ConnCase} navodi se utikač \emph{MsnrApiWeb.Endpoint} uz atribut \emph{@endpoint}, da se naznači da će to biti krajnja tačka koja se testira. Takođe, omogućava se korišćenje putanja u testovima iz \emph{MsnrApiWeb.Router} modula. Na kraju, definiše se setup blok koji će biti pozvan pre svakog testa. Tu se nalaze \emph{SQL Sandbox} podešavanja, a na samom kraju se poziva funkcija \emph{build{\textunderscore}conn()} iz modula \emph{Phoenix.ConnTest}. Ona vraća novu \emph{Plug.Conn} konekciju koja će biti dostupna u svakom od testova. Još korisnih funkcija ovog modula koje se koriste za upravljanje konekcijama pri testiranju biće objašnjeno kroz opise konkretnih testova u nastavku.
+
+\subsection{Testovi akcija upravljača}
+
+\par Test koji proverava uspešnu putanju izvršavanja akcije \emph{create} upravljača \emph{SemesterController} prikazan je u primeru koda \ref{lst:testcontrolcreate}. Koristi funkciju \emph{post} da kreira novi semestar. Ova funkcija dolazi iz \emph{Phoenix.ConnTest}, i kao argumente prihvata \emph{Plug.Conn} strukturu, putanju koju dohvata iz modula \emph{MsnrApiWeb.Router} i preko koje poziva akciju \emph{create}, i mapu polja neophodnih za kreiranje semestra. Zatim verifikuje da je vraćen JSON odgovor sa statusom 201 i da poseduje \emph{''data''} ključ u sebi. Tu proveru obezbeđuje funkcija \emph{json{\textunderscore}response}. Izvršava se \emph{get} zahtev nad \emph{:show} putanjom i utvrđuje se da je semestar uspešno kreiran. Na kraju se naredbom \emph{assert} upoređuju očekivana polja sa poljima iz JSON odgovora.
+
+\begin{lstlisting}[language=elixir, caption={Testiranje akcije \emph{create} upravljača \emph{SemesterController}},captionpos=b, label={lst:testcontrolcreate}]
+describe "create semester" do
+    test "renders semester when data is valid", %{conn: conn} do
+
+      conn = post(conn, Routes.semester_path(conn, :create), semester: @create_attrs)
+      assert %{"id" => id} = json_response(conn, 201)["data"]
+
+      conn = get(conn, Routes.semester_path(conn, :show, id))
+
+      assert %{
+               "id" => ^id,
+               "is_active" => true,
+               "year" => 2023
+             } = json_response(conn, 200)["data"]
+    end
+...
+\end{lstlisting}
+
+\par Drugi test unutar \emph{describe} bloka proverava neuspešan scenario akcije za kreiranje. Prikazan je u primeru koda \ref{lst:createfail}. Slično kao u prethodnom primeru, poziva \emph{post}, ali ovaj put prosleđuje neodgovarajuće parametre. Tada se aktivira upravljač \emph{FallbackController} koji će iscrtati odgovarajući JSON odgovor. Očekuje se da taj odgovorum ima status 422, i da ''errors'' mapa ne bude prazna. 
+
+\begin{lstlisting}[language=elixir, caption={Testiranje akcije \emph{create} upravljača \emph{SemesterController}},captionpos=b, label={lst:createfail}]
+describe "create semester" do
+...
+   test "renders errors when data is invalid", %{conn: conn} do
+      conn = post(conn, Routes.semester_path(conn, :create), semester: @invalid_attrs)
+      assert json_response(conn, 422)["errors"] != %{}
+    end
+end
+\end{lstlisting}
+
+\par Naredne dve akcije koje se testiraju su akcije \emph{index} i \emph{show}. One imaju jednostavne uloge --- da prikažu listu svih semestara (\emph{index}) ili jednog konkretnog semestra na osnovu identifikatora (\emph{show}). Testovi koji proveravaju ove funkcije jednostavno pozivaju \emph{get} funkciju modula \emph{Phoenix.ConnTest} i verifikuju ispravnost JSON odgovora, slično kao u prethodnom primeru. Implementirani su unutar datoteke \emph{msnr{\textunderscore}api{\textbackslash}test{\textbackslash}msnr{\textunderscore}api{\textunderscore}web{\textbackslash}controllers{\textbackslash}semester{\textunderscore}controller{\textunderscore}test.exs.}
+
+\par Testovi koji pokrivaju akcije \emph{update} i \emph{delete} prikazane su u primeru koda \ref{lst:updatedelete}. U oba slučaja potrebno je prvo kreirati jedan semestar na kome bi  mogle da se primene ove akcije upravljača. Kreiranje semestra obezbeđuje privatna funkcija koja koristi modul \emph{MsnrApi.SemestersFixtures}, u kome se poziva funkcija iz konteksta \emph{Semesters} koja kreira semestar u bazi, istestirana u prethodnoj sekciji.
+
+\begin{lstlisting}[language=elixir, caption={Testiranje akcije \emph{update} i \emph{delete} upravljača \emph{SemesterController}},captionpos=b, label={lst:updatedelete}]
+describe "update semester" do
+    setup [:create_semester]
+
+    test "renders semester when data is valid", %{
+      conn: conn,
+      semester: %Semester{id: id} = semester
+    } do
+      conn = put(conn, Routes.semester_path(conn, :update, semester), semester: @update_attrs)
+      assert %{"id" => ^id} = json_response(conn, 200)["data"]
+
+      conn = get(conn, Routes.semester_path(conn, :show, id))
+
+      assert %{
+               "id" => ^id,
+               "is_active" => false,
+               "year" => 2024
+             } = json_response(conn, 200)["data"]
+    end
+
+    test "renders errors when data is invalid", %{conn: conn, semester: semester} do
+      conn = put(conn, Routes.semester_path(conn, :update, semester), semester: @invalid_attrs)
+      assert json_response(conn, 422)["errors"] != %{}
+    end
+  end
+
+  describe "delete semester" do
+    setup [:create_semester]
+
+    test "deletes chosen semester", %{conn: conn, semester: semester} do
+
+      conn = delete(conn, Routes.semester_path(conn, :delete, semester))
+      assert response(conn, 204)
+
+      assert_error_sent 404, fn ->
+        get(conn, Routes.semester_path(conn, :show, semester))
+      end
+    end
+  end
+\end{lstlisting}
+
+\par Akcija ažuriranja se jednostavno proverava, pozivanjem funkcije \emph{put}, i nakon toga verifikacijom ažuriranih podataka. \emph{Describe} blok sadrži i test koji pokriva scenario u kom dolazi do greške i očekuje se  k$\hat{o}$d 422. Akcija brisanja semestra treba da izazove prazan odgovor (koji ovoga puta nije JSON) sa kodom 204 --- \emph{no{\textunderscore}content}. Takođe, nakon što je semestar uspešno obrisan, očekuje se da on ne može biti dohvaćen i funkcija \emph{get} izaziva grešku tipa 404 --- \emph{not{\textunderscore}found}
+\par Ukupan broj testova za akcije upravljača za semestre je sedam. Za svaki od entiteta napisani su slični testovi, koji se nalaze u direktorijumu \emph{msnr{\textunderscore}api{\textbackslash}test{\textbackslash}msnr{\textunderscore}api{\textunderscore}web{\textbackslash}controllers}. 
 
 % \subsection{Integraciono testiranje}
 

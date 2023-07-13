@@ -38,6 +38,10 @@ Adresa sa implementacijom portala msnr.
 {Zvanična dokumentacija okruženja ExUnit}.
 \newblock on-line at: \url{https://hexdocs.pm/ex_unit/ExUnit.html}.
 
+\bibitem{hexcontrol}
+{Zvanična dokumentacija Phoenix upravljača}.
+\newblock on-line at: \url{https://hexdocs.pm/phoenix/controllers.html}.
+
 \bibitem{hex}
 {Zvanična stranica alata Hex}.
 \newblock on-line at: \url{https://hex.pm/}.
@@ -45,6 +49,10 @@ Adresa sa implementacijom portala msnr.
 \bibitem{postgre}
 {Zvanična stranica baze podataka PostgreSql}.
 \newblock on-line at: \url{https://www.postgresql.org}.
+
+\bibitem{pbk}
+{Zvanična stranica biblioteke Pbkdf2}.
+\newblock on-line at: \url{https://hexdocs.pm/pbkdf2_elixir/Pbkdf2.html}.
 
 \bibitem{phx}
 {Zvanična stranica razvojnog okruženja Phoenix}.

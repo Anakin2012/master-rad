@@ -1,5 +1,7 @@
 defmodule MsnrApi.Schema.UserTest do
   use MsnrApi.Support.SchemaCase
+  use MsnrApi.Support.DataCase
+
   alias MsnrApi.Accounts.User
   alias MsnrApi.StudentRegistrations.StudentRegistration
 
@@ -235,6 +237,14 @@ defmodule MsnrApi.Schema.UserTest do
       {_, meta} = errors[:password]
       assert meta[:validation] == :length,
         "The validation type #{meta[:validation]} is incorrect."
+    end
+
+    test "error: password must be at least four characters long" do
+      params = valid_params(@required_fields)
+               |> Map.put("password", "ana")
+
+      changeset = User.changeset_password(%User{}, params)
+      assert %{password: ["should be at least 4 character(s)"]} = errors_on(changeset)
     end
   end
 

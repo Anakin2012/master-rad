@@ -25,7 +25,7 @@ defmodule MsnrApiWeb.ConnCase do
       import Phoenix.ConnTest
       import MsnrApiWeb.ConnCase
 
-      use MsnrApiWeb
+      alias MsnrApiWeb.Router.Helpers, as: Routes
 
       # The default endpoint for testing
       @endpoint MsnrApiWeb.Endpoint
@@ -33,7 +33,8 @@ defmodule MsnrApiWeb.ConnCase do
   end
 
   setup tags do
-    DataCase.setup_sandbox(tags)
+    pid = Ecto.Adapters.SQL.Sandbox.start_owner!(MsnrApi.Repo, shared: not tags[:async])
+    on_exit(fn -> Ecto.Adapters.SQL.Sandbox.stop_owner(pid) end)
     {:ok, conn: Phoenix.ConnTest.build_conn()}
   end
 end

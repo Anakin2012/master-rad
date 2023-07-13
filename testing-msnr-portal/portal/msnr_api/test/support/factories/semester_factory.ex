@@ -7,7 +7,7 @@ defmodule MsnrApi.SemesterFactory do
     quote do
       def semester_factory do
         %Semester {
-          year: Faker.random_between(2015, 2023)
+          year: Faker.random_between(2000, 2023)
         }
       end
     end

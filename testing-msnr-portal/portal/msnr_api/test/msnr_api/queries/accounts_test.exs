@@ -98,7 +98,7 @@ defmodule MsnrApi.Queries.AccountsTest do
       assert returned_user == existing_user
     end
 
-    test "error: it returns an error tuple when a user doesn't exist" do
+    test "error: it returns an Ecto.NoResultsError when a user doesn't exist" do
 
       invalid_id = -1
       assert_raise Ecto.NoResultsError, fn ->
@@ -159,5 +159,83 @@ defmodule MsnrApi.Queries.AccountsTest do
       refute Repo.get(User, user.id)
     end
   end
+
+  describe "set_password/2" do
+    test "success: updates the password field in database" do
+      existing_user = Factory.insert(:user)
+      password = "pass123"
+
+      assert {:ok, returned_user} = Accounts.set_password(existing_user, password)
+
+      assert returned_user.password == password
+      user_from_db = Accounts.get_user!(existing_user.id)
+
+      assert user_from_db.hashed_password == returned_user.hashed_password
+      assert user_from_db.password == nil
+    end
+
+    test "error: cant set a password if it is too short" do
+      existing_user = Factory.insert(:user)
+      invalid_password = "123"
+
+      assert {:error, %Changeset{}} = Accounts.set_password(existing_user, invalid_password)
+
+      assert existing_user == Accounts.get_user!(existing_user.id)
+    end
+
+    test "error: cant set a password if it is not a string" do
+      existing_user = Factory.insert(:user)
+      invalid_password = DateTime.utc_now()
+
+      assert {:error, %Changeset{}} = Accounts.set_password(existing_user, invalid_password)
+
+      assert existing_user == Accounts.get_user!(existing_user.id)
+    end
+  end
+
+  describe "verify_user/1 with email and password url path" do
+    test "success: returns an authorized user" do
+      existing_user = Factory.insert(:user)
+      params = %{email: existing_user.email,
+                 uuid: existing_user.password_url_path}
+
+      assert {:ok, user} = Accounts.verify_user(params)
+      assert user == existing_user
+    end
+
+    test "error: returns an error tuple when user can't be authorized" do
+      params = %{email: "user@email",
+                 uuid: Ecto.UUID.generate()}
+
+      assert {:error, :unauthorized} = Accounts.verify_user(params)
+    end
+  end
+
+  describe "verify_user/1 with id and refresh token" do
+    test "success: returns an authorized user with professor role" do
+      setup_semester()
+      params = Factory.string_params_for(:user)
+               |> Map.put("role", :professor)
+
+      assert {:ok, %User{} = professor} = Accounts.create_user(params)
+
+      params = %{id: professor.id,
+                 refresh_token: professor.refresh_token}
+
+      assert {:ok, user_info} = Accounts.verify_user(params)
+    end
+
+    test "success: returns an authorized user with student role" do
+      # TODODODODO
+    end
+
+    test "error: returns an error tuple when user can't be authorized" do
+      params = %{id: -1,
+                 refresh_token: Ecto.UUID.generate()}
+
+      assert {:error, :unauthorized} = Accounts.verify_user(params)
+    end
+  end
+
 
 end

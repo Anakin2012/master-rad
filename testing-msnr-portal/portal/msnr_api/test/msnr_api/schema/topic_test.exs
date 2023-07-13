@@ -48,7 +48,7 @@ defmodule MsnrApi.Schema.TopicTest do
       end
     end
 
-    test "success: returns a valid topic number when given valid arguments" do
+    test "success: returns a changeset with valid topic number when given valid arguments" do
       {:ok, existing_semester} = insert_semester()
       {:ok, existing_topic} = insert_topic(existing_semester)
 
