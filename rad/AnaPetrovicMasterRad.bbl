@@ -9,6 +9,10 @@ Adresa sa implementacijom portala msnr.
 \newblock on-line at:
   \url{https://github.com/NemanjaSubotic/master-rad/tree/master/portal}.
 
+\bibitem{npm}
+{Node.js upravljač paketa}.
+\newblock url: \url{https://www.npmjs.com/package/elm-test}.
+
 \bibitem{rest}
 {REST architectural style}.
 \newblock on-line at:
@@ -42,6 +46,10 @@ Adresa sa implementacijom portala msnr.
 {Zvanična dokumentacija Phoenix upravljača}.
 \newblock on-line at: \url{https://hexdocs.pm/phoenix/controllers.html}.
 
+\bibitem{elm-test}
+{Zvanična stranica alata elm-test}.
+\newblock url: \url{https://www.npmjs.com/package/elm-test}.
+
 \bibitem{hex}
 {Zvanična stranica alata Hex}.
 \newblock on-line at: \url{https://hex.pm/}.
@@ -50,9 +58,24 @@ Adresa sa implementacijom portala msnr.
 {Zvanična stranica baze podataka PostgreSql}.
 \newblock on-line at: \url{https://www.postgresql.org}.
 
+\bibitem{expect}
+{Zvanična stranica biblioteke Expect}.
+\newblock url:
+  \url{https://package.elm-lang.org/packages/elm-explorations/test/latest/Expect}.
+
+\bibitem{fuzz}
+{Zvanična stranica biblioteke Fuzz}.
+\newblock url:
+  \url{https://package.elm-lang.org/packages/elm-explorations/test/latest/Fuzz}.
+
 \bibitem{pbk}
 {Zvanična stranica biblioteke Pbkdf2}.
 \newblock on-line at: \url{https://hexdocs.pm/pbkdf2_elixir/Pbkdf2.html}.
+
+\bibitem{testmodul}
+{Zvanična stranica biblioteke Test}.
+\newblock url: \url
+  {https://package.elm-lang.org/packages/elm-explorations/test/latest/Test}.
 
 \bibitem{phx}
 {Zvanična stranica razvojnog okruženja Phoenix}.
@@ -67,6 +90,11 @@ Ulisses Almeida.
 M.~Cohn.
 \newblock {\em Succeeding with Agile: Software Development Using Scrum}.
 \newblock A Mike Cohen signature book. Addison-Wesley, 2010.
+
+\bibitem{elm-in-action}
+Richard Feldman.
+\newblock {\em {Elm in Action}}.
+\newblock Manning, 2020.
 
 \bibitem{func}
 GeeksForGeeks.

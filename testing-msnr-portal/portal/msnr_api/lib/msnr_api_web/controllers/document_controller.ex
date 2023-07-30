@@ -60,7 +60,6 @@ defmodule MsnrApiWeb.DocumentController do
 #end
 end
 
-
   def show(conn, %{"id" => id}) do
     document = Documents.get_document!(id)
     send_download(conn, {:file, document.file_path})

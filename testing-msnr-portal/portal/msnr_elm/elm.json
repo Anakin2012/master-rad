@@ -20,7 +20,6 @@
             "elm/svg": "1.0.1",
             "elm/time": "1.0.0",
             "elm/url": "1.0.0",
-            "elm-explorations/test": "1.2.2",
             "rtfeldman/elm-css": "17.1.0",
             "tesk9/accessible-html-with-css": "2.3.1"
         },
@@ -40,7 +39,9 @@
         }
     },
     "test-dependencies": {
-        "direct": {},
+        "direct": {
+            "elm-explorations/test": "2.1.1"
+        },
         "indirect": {
             "avh4/elm-color": "1.0.0"
         }
