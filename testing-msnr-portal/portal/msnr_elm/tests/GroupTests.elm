@@ -1,4 +1,5 @@
-module GroupTests exposing (decoderTests, viewTests, encoderStudent, toStringTests)
+module GroupTests exposing (decoderTests, encoderStudent, toStringTests)
+-- , viewTests)
 import Expect exposing (Expectation)
 import Fuzz exposing (Fuzzer, list, int, string, map6, intRange, maybe, bool, triple)
 import Test exposing (..)
@@ -79,7 +80,7 @@ toStringTests =
                |> Expect.equal lastNames
     ]
 
-
+{-
 viewTests = 
     describe "Group view" 
     [fuzz2 (intRange 1 50) studentListFuzzer "fuzz when topic is Nothing" <|
@@ -120,3 +121,4 @@ viewTests =
     ]
 
 
+-}

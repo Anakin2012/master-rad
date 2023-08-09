@@ -1457,6 +1457,29 @@ test "Given invalid input returns (Err _)" <|
           Expect.err decodedOutput
 \end{lstlisting}
 
+\par U \emph{Expect} modulu postoji još jedna korisna funkcija, \emph{Expect.fail}. Kada se desi da test sa \emph{Expect.equal} ne prolazi, jedina informacija koja se dobije je da se očekivana i stvarna vrednost ne poklapaju. U testovima dekodera dodata je provera prikazana u kodu \ref{lst:expfail}. Često se dešava da se pri pisanju enkodera unutar testa pogrešno unese polje JSON objekta, naročito kada su ovakvi podaci u pitanju --- npr. unese se niska \emph{accessToken} umesto \emph{access{\textunderscore}token}. Pozivanjem funkcije \emph{Expect.pass}, test uvek prolazi. \emph{Expect.fail} omogućava da se u slučaju pada testa ispiše poruka koja će objasniti o čemu se radi. U ovom slučaju, poruka je izvučena direktno iz rezultata koji je tipa \emph{Decode.Error}. Tada će pokretanje ovog testa dati izlaz prikazan na slici \ref{fig:expfail}. Na osnovu ovakvog izlaza, tačno se može zaključiti na kom mestu je potrebno ispraviti test. 
+
+\begin{lstlisting}[language=elm, caption={Implementacija testa koji izbacuje poruku u slučaju da ne prolazi},captionpos=b, label={lst:expfail}]
+fuzz sessionFuzzer "fuzz test for valid decoding session" <| 
+     \session -> 
+         let result = encodeSession session 
+                      |> Decode.decodeValue Session.decodeSession
+         in 
+            case result of 
+                Ok _ -> 
+                    Expect.pass
+                Err err -> 
+                    Expect.fail (Decode.errorToString err)
+\end{lstlisting}
+
+\begin{figure}[!ht]
+  \centering
+  \label{fig:expfail}
+  \includegraphics[width=0.7\textwidth]{expfail.png}
+  \caption{Izlaz sa porukom o greški dobijen upotrebom funkcije \emph{Expect.fail}}
+\end{figure}
+
+
 
 \section{Testiranje Arhitekture Elm}
 \par U delu \ref{sec:arhitektura} objašnjen je \emph{MVU} obrazac projektovanja koji svaki Elm program implementira. Glavne funkcije koje se nalaze u svakom od modula su funkcije \textbf{\emph{update}} i \emph{\textbf{view}}. U ovoj sekciji, najpre će biiti prikazano testiranje funkcija ažuriranja \emph{update}, čija je uloga da na osnovu primljene poruke od pretraživača kreiraju novi model. Nakon toga, napisani su testovi za funkcije pogleda \emph{view}, na osnovu kojih se generiše HTML.

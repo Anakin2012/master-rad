@@ -1,4 +1,4 @@
-module ProfessorPage.RegistrationRequestsPage exposing (Model, Msg, init, loadRequests, update, view)
+module ProfessorPage.RegistrationRequestsPage exposing (requestDecoder, requestsListDecoder, RegistrationRequest, Model, Msg, init, loadRequests, update, view)
 
 import Accessibility.Styled as Html exposing (Html)
 import Api
@@ -376,3 +376,4 @@ updateRequestStatus modalAction { accessToken, apiBaseUrl } =
 
         Reject { id } ->
             updateRequest id statusRejected
+

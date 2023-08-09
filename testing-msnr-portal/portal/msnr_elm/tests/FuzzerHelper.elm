@@ -11,6 +11,17 @@ import Assignment exposing (Assignment, ShallowAssignment)
 import FileInfo exposing (FileInfo)
 import Session exposing (Session, UserInfo, StudentInfo)
 import Http exposing (Error(..))
+import ProfessorPage.RegistrationRequestsPage as RRP exposing (RegistrationRequest)
+
+registrationRequestFuzzer : Fuzzer RegistrationRequest
+registrationRequestFuzzer = 
+    Fuzz.map6 RegistrationRequest
+        (intRange 1 50)
+        string 
+        string
+        string 
+        string 
+        string
 
 httpErrorFuzzer : Fuzzer Error
 httpErrorFuzzer = 
@@ -184,3 +195,14 @@ encodeActivityType activityType =
      ("is_group", Encode.bool activityType.isGroup),
      ("has_signup", Encode.bool activityType.hasSignup),
      ("content", encodeContent activityType.content)]
+
+requestEncoder : RegistrationRequest -> Value 
+requestEncoder request = 
+    [("id", Encode.int request.id),
+     ("first_name", Encode.string request.firstName),
+     ("last_name", Encode.string request.lastName),
+     ("email", Encode.string request.email),
+     ("index_number", Encode.string request.index),
+     ("status", Encode.string request.status)
+    ]
+    |> Encode.object

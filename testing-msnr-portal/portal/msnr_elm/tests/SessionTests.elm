@@ -6,21 +6,20 @@ import Json.Encode as Encode exposing (string, int, null, Value)
 import Json.Decode as Decode exposing (decodeValue, decodeString)
 import FuzzerHelper exposing (sessionFuzzer, userInfoFuzzer, studentInfoFuzzer, success)
 import Session exposing (..)  
+import Json.Decode as Decode
 
 decodeSessionTests = 
     describe "Session decoder"
     [fuzz sessionFuzzer "fuzz test for valid decoding session" <| 
      \session -> 
-        [("access_token", Encode.string session.accessToken),
-         ("expires_in", Encode.float session.expiresIn),
-         ("user", encodeUserInfo session.userInfo),
-         ("semester_id", Encode.int session.semesterId), 
-         ("student_info", session.studentInfo |> Maybe.map encodeStudentInfo
-                                              |> Maybe.withDefault Encode.null)]
-         |> Encode.object
-         |> Decode.decodeValue Session.decodeSession
-         |> success
-         |> Expect.equal True,
+         let result = encodeSession session 
+                      |> Decode.decodeValue Session.decodeSession
+         in 
+            case result of 
+                Ok _ -> 
+                    Expect.pass
+                Err err -> 
+                    Expect.fail (Decode.errorToString err),
 
      fuzz sessionFuzzer "decoding session with no student info, field should be Nothing" <| 
      \session -> 
@@ -70,6 +69,16 @@ encodeStudentInfo student =
                                   |> Maybe.withDefault Encode.null),
      ("index_number", Encode.string student.indexNumber)]
     |> Encode.object
+
+encodeSession : Session -> Value 
+encodeSession session = 
+        [("accessToken", Encode.string session.accessToken),
+         ("expires_in", Encode.float session.expiresIn),
+         ("user", encodeUserInfo session.userInfo),
+         ("semester_id", Encode.int session.semesterId), 
+         ("student_info", session.studentInfo |> Maybe.map encodeStudentInfo
+                                              |> Maybe.withDefault Encode.null)]
+         |> Encode.object
 
 
 
