@@ -1,5 +1,4 @@
-module LoginPage exposing (Model, Msg, init, update, updateError, view)
-
+module LoginPage exposing (Model, Msg(..), init, update, updateError, view)
 import Accessibility.Styled as Html exposing (Html)
 import Css exposing (..)
 import Http

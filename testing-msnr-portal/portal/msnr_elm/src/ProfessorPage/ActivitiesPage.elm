@@ -12,7 +12,7 @@ import Json.Encode as Encode
 import Nri.Ui.Button.V10 as Button
 import Nri.Ui.Colors.V1 as Colors
 import Nri.Ui.Heading.V2 as Heading
-import Nri.Ui.Modal.V11 as Modal
+import Nri.Ui.Modal.V11 as Modal exposing (Msg(..))
 import Nri.Ui.Select.V8 as Select
 import Nri.Ui.Switch.V1 as Switch
 import Nri.Ui.Table.V5 as Table

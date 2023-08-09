@@ -1,0 +1,77 @@
+This is BibTeX, Version 0.99d
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: AnaPetrovicMasterRad.aux
+Reallocating 'name_of_file' (item size: 1) to 18 items.
+Reallocating 'name_of_file' (item size: 1) to 6 items.
+The style file: plain.bst
+Database file #1: matfmaster-primer.bib
+Warning--to sort, need author or key in test
+Warning--to sort, need author or key in elixir-lang-official
+Warning--to sort, need author or key in erlang
+Warning--to sort, need author or key in elm-lang-official
+Warning--to sort, need author or key in haskell
+Warning--to sort, need author or key in msnr-portal
+Warning--to sort, need author or key in rest
+Warning--to sort, need author or key in postgre
+Warning--to sort, need author or key in phx
+Warning--to sort, need author or key in hex
+Warning--to sort, need author or key in plug
+Warning--to sort, need author or key in exunit
+Warning--to sort, need author or key in pbk
+Warning--to sort, need author or key in ecto
+Warning--to sort, need author or key in faker
+Warning--to sort, need author or key in exmachina
+Warning--to sort, need author or key in execto
+Warning--to sort, need author or key in hexcontrol
+Warning--to sort, need author or key in elm-test
+Warning--to sort, need author or key in npm
+Warning--to sort, need author or key in expect
+Warning--to sort, need author or key in fuzz
+Warning--to sort, need author or key in testmodul
+Warning--to sort, need author or key in cmd1
+Warning--to sort, need author or key in cmd2
+Warning--to sort, need author or key in html-elm-test
+Warning--empty journal in fabrike
+Warning--empty journal in external
+You've used 34 entries,
+            2118 wiz_defined-function locations,
+            610 strings with 7638 characters,
+and the built_in function-call counts, 5816 in all, are:
+= -- 519
+> -- 88
+< -- 0
++ -- 53
+- -- 18
+* -- 196
+:= -- 728
+add.period$ -- 76
+call.type$ -- 34
+change.case$ -- 106
+chr.to.int$ -- 0
+cite$ -- 62
+duplicate$ -- 264
+empty$ -- 765
+format.name$ -- 18
+if$ -- 1376
+int.to.chr$ -- 0
+int.to.str$ -- 34
+missing$ -- 10
+newline$ -- 146
+num.names$ -- 16
+pop$ -- 350
+preamble$ -- 1
+purify$ -- 77
+quote$ -- 0
+skip$ -- 208
+stack$ -- 0
+substring$ -- 171
+swap$ -- 32
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 128
+warning$ -- 28
+while$ -- 16
+width$ -- 36
+write$ -- 260
+(There were 28 warnings)

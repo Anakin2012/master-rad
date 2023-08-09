@@ -12,37 +12,38 @@
 \contentsline {subsubsection}{Testovi jedinica koda}{8}{section*.8}%
 \contentsline {subsubsection}{Integracioni testovi}{8}{section*.9}%
 \contentsline {subsubsection}{Sistemski testovi}{9}{section*.10}%
-\contentsline {section}{\numberline {2.3}Testiranje funkcionalnih programa}{10}{section.2.3}%
-\contentsline {subsection}{Testiranje čistih funkcija}{10}{section*.11}%
-\contentsline {subsubsection}{Refaktorisanje ka čistim funkcijama}{11}{section*.12}%
-\contentsline {subsection}{Izolovanje koda}{11}{section*.13}%
-\contentsline {chapter}{\chapternumberline {3}Portal MSNR}{13}{chapter.3}%
-\contentsline {section}{\numberline {3.1}Funkcionalnosti i osnovni entiteti portala}{13}{section.3.1}%
-\contentsline {subsection}{Entiteti}{14}{section*.14}%
-\contentsline {section}{\numberline {3.2}Arhitektura portala}{15}{section.3.2}%
-\contentsline {subsubsection}{Struktura serverske strane portala}{15}{section*.15}%
-\contentsline {subsubsection}{Struktura klijentske strane portala}{17}{section*.16}%
-\contentsline {section}{\numberline {3.3}Testiranje portala}{19}{section.3.3}%
-\contentsline {chapter}{\chapternumberline {4}Testiranje serverskog dela aplikacije}{20}{chapter.4}%
-\contentsline {section}{\numberline {4.1}Uvod u testiranje u okruženju ExUnit}{20}{section.4.1}%
-\contentsline {section}{\numberline {4.2}Testiranje komunikacije sa bazom podataka}{24}{section.4.2}%
-\contentsline {subsection}{Testiranje u okruženju Ecto}{25}{section*.17}%
-\contentsline {subsection}{Testiranje polja i tipova}{26}{section*.18}%
-\contentsline {subsection}{Testiranje skupa promena}{27}{section*.19}%
-\contentsline {subsubsection}{Generisanje lažnih podataka}{29}{section*.20}%
-\contentsline {subsubsection}{Testiranje funkcija changeset}{31}{section*.21}%
-\contentsline {subsection}{Testiranje upita}{35}{section*.22}%
-\contentsline {subsubsection}{Fabrike za pripremu podataka}{36}{section*.23}%
-\contentsline {subsubsection}{Testiranje osnovnih CRUD operacija}{39}{section*.24}%
-\contentsline {section}{\numberline {4.3}Testiranje upravljača i pogleda}{44}{section.4.3}%
-\contentsline {subsection}{Priprema za testiranje}{47}{section*.25}%
-\contentsline {subsection}{Testovi akcija upravljača}{48}{section*.26}%
-\contentsline {chapter}{\chapternumberline {5}Testiranje klijentskog dela aplikacije}{52}{chapter.5}%
-\contentsline {section}{\numberline {5.1}Uvod u testiranje Elm aplikacija}{52}{section.5.1}%
-\contentsline {subsection}{Struktura jediničnog testa}{53}{section*.27}%
-\contentsline {subsection}{Faz testiranje}{55}{section*.28}%
-\contentsline {chapter}{\chapternumberline {6}Testiranje celokupnog sistema --- End to End}{59}{chapter.6}%
-\contentsline {section}{\numberline {6.1}Integracija klijentske i serverske strane}{59}{section.6.1}%
-\contentsline {section}{\numberline {6.2}Testiranje opterećenja}{59}{section.6.2}%
-\contentsline {chapter}{\chapternumberline {7}Zaključak}{60}{chapter.7}%
-\contentsline {chapter}{Bibliografija}{61}{chapter*.29}%
+\contentsline {section}{\numberline {2.3}Testiranje funkcionalnih programa --- Elm i Elixir}{10}{section.2.3}%
+\contentsline {subsection}{Programski jezik Elixir i testiranje}{11}{section*.11}%
+\contentsline {subsection}{Programski jezik Elm i testiranje}{13}{section*.12}%
+\contentsline {chapter}{\chapternumberline {3}Portal MSNR}{16}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Funkcionalnosti i osnovni entiteti portala}{16}{section.3.1}%
+\contentsline {subsection}{Entiteti}{17}{section*.13}%
+\contentsline {section}{\numberline {3.2}Arhitektura portala}{18}{section.3.2}%
+\contentsline {subsubsection}{Struktura serverske strane portala}{18}{section*.14}%
+\contentsline {subsubsection}{Struktura klijentske strane portala}{20}{section*.15}%
+\contentsline {section}{\numberline {3.3}Testiranje portala}{22}{section.3.3}%
+\contentsline {chapter}{\chapternumberline {4}Testiranje serverskog dela aplikacije}{23}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Uvod u testiranje u okruženju ExUnit}{23}{section.4.1}%
+\contentsline {section}{\numberline {4.2}Testiranje komunikacije sa bazom podataka}{27}{section.4.2}%
+\contentsline {subsection}{Testiranje u okruženju Ecto}{28}{section*.16}%
+\contentsline {subsection}{Testiranje polja i tipova}{29}{section*.17}%
+\contentsline {subsection}{Testiranje skupa promena}{30}{section*.18}%
+\contentsline {subsubsection}{Generisanje lažnih podataka}{32}{section*.19}%
+\contentsline {subsubsection}{Testiranje funkcija changeset}{34}{section*.20}%
+\contentsline {subsection}{Testiranje upita}{38}{section*.21}%
+\contentsline {subsubsection}{Fabrike za pripremu podataka}{39}{section*.22}%
+\contentsline {subsubsection}{Testiranje osnovnih CRUD operacija}{42}{section*.23}%
+\contentsline {section}{\numberline {4.3}Testiranje upravljača i pogleda}{47}{section.4.3}%
+\contentsline {subsection}{Priprema za testiranje}{50}{section*.24}%
+\contentsline {subsection}{Testovi akcija upravljača}{51}{section*.25}%
+\contentsline {chapter}{\chapternumberline {5}Testiranje klijentskog dela aplikacije}{55}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Uvod u testiranje Elm aplikacija}{55}{section.5.1}%
+\contentsline {subsection}{Struktura jediničnog testa}{56}{section*.26}%
+\contentsline {subsection}{Faz testiranje}{59}{section*.27}%
+\contentsline {section}{\numberline {5.2}Testiranje rada sa JSON podacima}{61}{section.5.2}%
+\contentsline {section}{\numberline {5.3}Testiranje Arhitekture Elm}{64}{section.5.3}%
+\contentsline {subsection}{Testiranje promena stanja aplikacije}{65}{section*.28}%
+\contentsline {subsection}{Testiranje HTML sadržaja}{66}{section*.29}%
+\contentsline {subsubsection}{Testiranje interakcija sa korisnikom}{68}{section*.30}%
+\contentsline {chapter}{\chapternumberline {6}Zaključak}{70}{chapter.6}%
+\contentsline {chapter}{Bibliografija}{71}{chapter*.31}%

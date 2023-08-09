@@ -13,10 +13,20 @@ Adresa sa implementacijom portala msnr.
 {Node.js upravljač paketa}.
 \newblock url: \url{https://www.npmjs.com/package/elm-test}.
 
+\bibitem{cmd1}
+{Paket elm-testable}.
+\newblock url : \url
+  {https://package.elm-lang.org/packages/rogeriochaves/elm-testable/latest}.
+
 \bibitem{rest}
 {REST architectural style}.
 \newblock on-line at:
   \url{https://www.ics.uci.edu/~fielding/pubs/dissertation/rest_arch_style.htm}.
+
+\bibitem{cmd2}
+{Testing programs with Cmds}.
+\newblock url : \url
+  {https://elm-program-test.netlify.app/cmds.html#introducing-the-example-program}.
 
 \bibitem{ecto}
 {Zvanična dokumentacija biblioteke Ecto}.
@@ -76,6 +86,27 @@ Adresa sa implementacijom portala msnr.
 {Zvanična stranica biblioteke Test}.
 \newblock url: \url
   {https://package.elm-lang.org/packages/elm-explorations/test/latest/Test}.
+
+\bibitem{html-elm-test}
+{Zvanična stranica paketa elm-html-test}.
+\newblock url: \url
+  {https://package.elm-lang.org/packages/eeue56/elm-html-test/5.2.0/}.
+
+\bibitem{elixir-lang-official}
+{Zvanična stranica programskog jezika Elixir}.
+\newblock url: \url {https://elixir-lang.org/}.
+
+\bibitem{elm-lang-official}
+{Zvanična stranica programskog jezika Elm}.
+\newblock url: \url {https://guide.elm-lang.org/}.
+
+\bibitem{erlang}
+{Zvanična stranica programskog jezika Erlang}.
+\newblock url: \url {https://www.erlang.org/}.
+
+\bibitem{haskell}
+{Zvanična stranica programskog jezika Haskell}.
+\newblock url: \url {https://www.haskell.org/}.
 
 \bibitem{phx}
 {Zvanična stranica razvojnog okruženja Phoenix}.

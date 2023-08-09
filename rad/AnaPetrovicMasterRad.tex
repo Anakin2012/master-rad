@@ -20,6 +20,7 @@
 \usepackage[scaled=0.9]{DejaVuSansMono}
 
 \usepackage{multirow}
+\usepackage{comment}
 
 \lstdefinestyle{DOS}
 {
@@ -141,8 +142,7 @@ Ovde ide uvod .. ... .....
 \label{chp:uvodnideo}
 
 \par Funkcionalno programiranje je specifičan pristup programiranju, tj. programska paradigma, koja se zasniva na pojmu matematičke funkcije. Programi se kreiraju pomoću izraza i funkcija, bez izmena stanja i podataka \cite{func}. Iz tog razloga, jednostavniji su za razumevanje i otporniji na greške u odnosu na imperativne programe. Programski stil je deklarativnog tipa i umesto naredbi koriste se izrazi, tako da se izvršavanje programa svodi na evaluaciju izraza. Vrednost izraza je nezavisna od konteksta u kojem se izraz nalazi, što se naziva \emph{transparentnost referenci} i predstavlja osnovnu osobinu \emph{čistih} funkcionalnih jezika (eng. \textit{pure functional programming language}). Transparentnost referenci kao osnovnu posledicu ima nepostojanje propratnih efekata. Sa druge strane, \emph{nečisti} funkcionalni jezici (eng. \textit{impure functional programming language}) dozvoljavaju propratne efekte, koji mogu izazvati suptilne greške i biti teži za razumevanje. Međutim, praktičniji su za specifične vrste zadataka, kao što je programiranje korisničkog interfejsa ili rad sa bazom podataka. 
-%\par Funkcionalni jezici zasnovani su na \textit{lambda računu} (eng. \textit{$\lambda$-calculus}), čija je osnovna svrha da d\a'a  definiciju izračunljivosti. Pored toga što se smatra prvim %funkcionalnim jezikom, lambda račun se naziva i najmanjim programskim jezikom na svetu. Sve što se može izračunati lambda računom smatra se izračunljivim. Ekspresivnost % funkcionalnih jezika ekvivalentna je ekspresivnosti Tjuringove mašine \cite{turing}. 
-% TODO ako se ovo iybacuje, izbaciti literaturu
+%\par Funkcionalni jezici zasnovani su na \textit{lambda računu} (eng. \textit{$\lambda$-calculus}), čija je osnovna svrha da d\a'a  definiciju izračunljivosti. Pored toga što se smatra prvim %funkcionalnim jezikom, lambda račun se naziva i najmanjim programskim jezikom na svetu. Sve što se može izračunati lambda računom smatra se izračunljivim. Ekspresivnost % funkcionalnih jezika ekvivalentna je ekspresivnosti Tjuringove mašine \cite{turing}. -- ova literatura je izbacena
 
 
 \section{Karakteristike funkcionalnih jezika}
@@ -275,16 +275,66 @@ sumTest =
 \end{itemize}
 \par Pisanjem sistemskih testova obezbeđuje se kvalitet i pouzdanost softvera, umanjuje rizik od neispravnosti i povećava zadovoljostvo korisnika sistema. Temeljnim testiranjem sistema mogu se otkriti i ispraviti novi problemi pre samog puštanja u rad, koje nije bilo moguće primetiti u ranijim fazama testiranja. 
 
-\section{Testiranje funkcionalnih programa}
+\section{Testiranje funkcionalnih programa --- Elm i Elixir}
+\label{sec:elmopste}
 
 \par Najvažnija stvar kod testiranja u funkcionalnoj paradigmi jeste pisanje čistih funkcija i njihovo testiranje u izolaciji, kako bi se obezbedila ispravnost i robustnost. Takođe je važno da se ne testira samo uspešan scenario, već i granični slučajevi, kao i slučajevi greške.
-
-\subsection{Testiranje čistih funkcija}
-
 \par Najjednostavniji k$\hat{o}$d za testiranje jeste čista funkcija. Pri testiranju čiste funkcije, s obzirom da ne postoje propratni efekti, test može da se fokusira samo na dve stvari: ulazne podatke i na sam izlaz funkcije. 
-\par Kada je u pitanju čista funkcija, jedina priprema koja je potrebna jesu podaci koji će se proslediti kao parametri. Drugi korak jeste poziv funkcije, sa prosleđenim argumentima. Faza verfikacije podrazumeva samo provere nad rezultatom. Testovi su veoma jednostavni jer ne moraju da brinu o propratnim efektima i njihovim neželjenim posledicama.
-\par Aplikacije se u većini slučajeva neće sastojati od isključivo čistih funkcija, i u vezi sa tim postoje dve strategije \cite{testingelixir}. Prva je izdvojiti logiku u čiste funkcije, a druga dizajnirati funkcije tako da koriste neku od metoda ubrizgavanja zavisnosti (eng. \textit{dependency injection}) \footnote{Ubrizgavanje zavisnosti je obrazac u kom objekat ili funkcija prihvata druge objekte ili funkcije od kojih zavisi. Jedan od oblika inverzije kontrole, za cilj ima da razdvoji konstrukciju i upotrebu objekata i time smanjuje spregnutost programa.}, što omogućava izolaciju koda.
+\par Kada je u pitanju čista funkcija, jedina priprema koja je potrebna jesu podaci koji će se proslediti kao parametri. Drugi korak jeste poziv funkcije, sa prosleđenim argumentima. Faza verfikacije podrazumeva samo provere nad rezultatom. Testovi su veoma jednostavni jer ne moraju da brinu o propratnim efektima i njihovim neželjenim posledicama. Međutim, aplikacije se u većini slučajeva neće sastojati od isključivo čistih funkcija.
+\par U ovom radu, testiranje funkcionalnih programa ograničeno je na testiranje programa napisanih na dva različita moderna funkcionalna programska jezika. Serverski deo aplikacije koja se testira napisan je na programskom jeziku \emph{Elixir}, u razvojnom okviru namenjenom razvoju veb aplikacija pod nazivom \emph{Phoenix}. Drugi programski jezik, korišćen pri implementaciji klijentske strane testirane aplikacije, naziva se \emph{Elm}. Iako oba pripadaju funkcionalnoj paradigmi, \emph{Elixir} i \emph{Elm} se značajno razlikuju po svojim osobinama i namenama. Stoga, testiranje programa napisanih u svakom od ovih jezika podrazumeva različite pristupe i pravila u pisanju testova.   
 
+\subsection{Programski jezik Elixir i testiranje}
+\par \emph{Elixir} je dinamički tipiziran, funkcionalan programski jezik opšte namene, a uspešno se koristi u razvoju veb aplikacija. Radi na virtuelnoj mašini programskog jezika \emph{Erlang}, koji je poznat po podršci za rad sistema koji su otporni na greške \cite{elixir-lang-official, erlang}. \emph{Elixir} i \emph{Erlang} su kompatibilni, pa zbog toga \emph{Elixir} može direktno koristiti \emph{Erlang} biblioteke i module. 
+\par \emph{Elixir} nije čist funkcionalni jezik, jer dozvoljava propratne efekte. Pored toga, odlikuje ga imutabilnost podataka i izraženo poklapanje obrazaca, što dovodi do konciznog i održivog koda. Jedna od prednosti ovog jezika je njegova skalabilnost. \emph{Elixir} k$\hat{o}$d se izvršava na virtuelnoj mašini paralelno u vidu veoma lakih niti (eng. \emph{lightweight thread}), koje se nazivaju procesi. Ovi procesi su potpuno izolovani, ne dele memoriju i komuniciraju preko asinhronih poruka. Na istoj mašini se konkurentno može izvršavati na hiljade ovakvih procesa, a da svaki od njih koristi sve resurse. Ovo omogućava \emph{Elixir} sistemima da budu distribuirani, skalabilni i otporni na greške. 
+\par Jedan od najčešćih načina baratanja greškama u ovom programskom jeziku je upotreba izuzetaka, koji se koriste kada se neke specifične greške dogode u kodu. Izuzeci mogu biti različitih tipova, kao što su \emph{ArithmeticError, RuntimeError, ArgumentError} i slično. Takođe, postoji mogućnost korisnički definisanih izuzetaka, kreiranjem modula u kome je neophodno iskoristiti ključnu reč \emph{defexception}. Najčešće se definiše sa poljem \emph{message} i niskom odgovarajuće poruke, kao što je prikazano u primeru koda \ref{lst:excepttion}. Ovako definisana greška se u kodu može podići u odgovarajućim situacijama. 
+
+
+\begin{lstlisting}[language=elixir, caption={Definicija izuzetka u programskom jeziku Elixir},captionpos=b, label={lst:excepttion}]
+iex > defmodule MyError do 
+iex > 	 defexception message : ''default message''
+iex > end 
+
+iex > raise MyError
+** (My Error) default message
+\end{lstlisting}
+
+\par Izuzetak u jednom procesu neće nikako uticati na izvršavanje drugih procesa, zahvaljući njihovoj međusobnoj izolovanosti. Ovo omogućava definisanje supervizorskih procesa, čija je uloga da kada se neki proces neočekivano prekine, umesto njega započnu novi. Zahvaljujući supervizorima, \emph{Elixir} podstiče dozvoljavanje neuspeha (pada procesa), pre nego pokušavanje spašavanja svake moguće greške upotrebom \emph{try / rescue} koncepta.
+\par Navedene osobine \emph{Elixir} programa omogućavaju veoma ugodno testiranje. Imutabilnost olakšava pisanje čistih funkcija, za koje se mogu pisati jedinični testovi u izolaciji i time osigurati ispravnost svake komponente. Iako podstiče pisanje funkcionalnog i čistog koda, \emph{Elixir} nije čist funkcionalni jezik i dozvoljava funkcije sa propratnim efektima.  Postoje dve strategije pomoću kojih se olakšava testiranje ovakvih funkcija \cite{testingelixir}. Prva je izdvojiti logiku u čiste funkcije, a druga dizajnirati funkcije tako da koriste neku od metoda ubrizgavanja zavisnosti (eng. \textit{dependency injection}) \footnote{Ubrizgavanje zavisnosti je obrazac u kom objekat ili funkcija prihvata druge objekte ili funkcije od kojih zavisi. Jedan od oblika inverzije kontrole, za cilj ima da razdvoji konstrukciju i upotrebu objekata i time smanjuje spregnutost programa.}, što omogućava izolaciju koda.  
+\par U pisanju testova u \emph{Elixir-u} značajno pomažu poklapanje obrazaca i upotreba čuvara (eng. \emph{guards}). Čuvari su uslovi nad argumentima funkcije koji se navode prilikom njenog definisanja. Ova svojstva omogućavaju pokrivanje velikog broja različitih putanja izvršavanja u testovima. \emph{Elixir} ima ugrađen razvojni okvir za testiranje koji je razvijan zajedno sa samim jezikom, koji pruža podršku za pokrivanje svih mogućih slojeva aplikacije pouzdanim i lako održivim testovima. \emph{Elixir} razvojno okruženje za testiranje detaljno je predstavljeno u poglavlju \ref{chp:elixir}, na testovima pisanim za različite komponente serverske strane aplikacije \emph{Portal MSNR}. 
+ 
+ 
+ 
+\subsection{Programski jezik Elm i testiranje}
+
+\par \emph{Elm} je statički tipiziran, čist funkcionalan programski jezik, namenjen programiranju korisničkog interfejsa, i njegov k$\hat{o}$d se kompilira u \emph{JavaScript}. Pored toga što je programski jezik, \emph{Elm} je i platforma za razvoj aplikacija. Na zvaničnoj stranici može se pronaći vodič kroz \emph{Elm}, pomoću kog se lako savladavaju osnovni koncepti jezika \cite{elm-lang-official}. Sa sobom, ovaj jezik donosi alat i okruženje \emph{Elm} (eng. \emph{Elm Runtime}). 
+\par Jedna od najvažnijih osobina jeste nepromenljivost podataka (imutabilnost) i odsustvo promenljivih, što za posledicu ima veoma brzo iscrtavanje HTML-a. \emph{Elm} koristi virtuelni objektni model dokumenta (eng. \emph{Document Object Model --- DOM}), koji podrazumeva da se u memoriji čuva virtuelna reprezentacija korisničkog interfejsa na osnovu koje će se ažurirati stvarni DOM. U njemu se poređenja mogu vršiti po referenci, i zbog toga se HTML sadržaj brzo iscrtava. Funkcije su Karijeve (eng. \emph{Curried}), što znači da su funkcije jednog argumenta koje kao povratnu vrednost imaju funkciju. \emph{Elm} sam zaključuje tip funkcije, ali podstiče i navođenje anotacije u liniji iznad definicije. Prilikom kompilacije, vrši se poklapanje anotacije sa stvarnim tipom, što dovodi do lakšeg uočavanja grešaka. Funkcije su čiste i pišu se upotrebom operatora prosleđivanja i kompozicije, što dovodi do čitljivijeg koda.
+\par Za aplikacije napisane u ovom programskom jeziku važi da u praksi ne izbacuju neplanirane greške tokom izvršavanja (eng. \emph{No Runtime Exceptions}). Sintaksa jezika je jednostavna, a jedan od najkorisnijih alata jeste njegov karakteristični kompilator, koji je veoma udoban za upotrebu. Ako dođe do greške, \emph{Elm} kompilator daje konkretna objašnjenja zbog čega je došlo do nje i predloge načina za njeno ispravljanje. Kompilator i ostali alati napisani su na programskom jeziku \emph{Haskell}, koji je stoga značajno uticao na \emph{Elm} \cite{haskell}. \emph{Haskell} podržava pisanje kratkog i čistog koda, i time osigurava veću pouzdanost. Pored kompilatora, korisnici mogu proveravati ispravnost napisanih funkcija upotrebom interpretatora \emph{elm repl}, koji je takođe veoma prijatan za korišćenje. Jednostavno se uključe željeni moduli i funkcije i pozivaju sa konkretnim ulazima iz komandne linije.
+\par Jedan od razloga za odsustvo grešaka tokom izvršavanja je svojstvo da \emph{Elm} tretira greške kao podatke. Umesto da dođe do pada programa, neuspešni slučajevi se modeluju korisnički definisanim tipovima. U primeru koda \ref{lst:errhandle} prikazan je jedan takav tip. Ako se tip \emph{MaybeAge} iskoristi kao tip povratne vrednosti funkcije, takva funkcija će uvek vratiti neku vrednost. Za slučaj neispravnog ulaza, funkcija će vratiti \emph{InvalidInput}, i time pokriti sve moguće putanje izvršavanja. 
+
+\begin{lstlisting}[language=elm, caption={Primer definicije i upotrebe korisnički definisanog tipa},captionpos=b, label={lst:errhandle}]
+type MaybeAge
+	=  Age Int
+	  | InvalidInput
+	  
+toAge : String -> MaybeAge
+toAge input = 
+	... 
+\end{lstlisting}
+
+\par Za obradu grešaka se najčešće koriste sledeća dva tipa: 
+
+\begin{enumerate}
+\item \emph{type \textbf{Maybe} a = Just a | Nothing} --- kada očekivani podatak možda postoji, i u slučaju da ne postoji, biće Nothing.
+\item \emph{type \textbf{Result} error value = Ok value | Err error} --- koristi se kao povratna vrednost koja može pružiti dodatne informacije o greški.
+\end{enumerate}
+
+\par \emph{Maybe} i \emph{Result} se koriste umesto vrednosti \emph{null}, koja u \emph{Elm-u} ne postoji. Ako se neuspešni slučajevi definišu na ovaj način, sprečavaju se neprijatna iznenađenja. Tip \emph{Result} može pomoći i kod oporavka nakon greške. Ako na osnovu poruke o greški korisnik zaključi tačno koji problem je u pitanju, znaće kako i na kom mestu to da ispravi. 
+\par Zahvaljujući navedenim svojstvima programskog jezika \emph{Elm}, testiranje u ovom jeziku postaje veoma jednostavno. Čist funkcionalnan jezik kao što je \emph{Elm}, sa svojim sistemom tipova već pokriva veliki spektar mogućih ishoda. Greške u programima su i bez testova jako retke. Funkcije su napisane tako da budu male i deklarativne, bez propratnih efekata, i često se njihovo testiranje svodi na pisanje koda sa istom logikom dva puta. To je nepoželjno, jer testovi treba da budu otporni na refaktorisanje, a u ovom slučaju bi morale da se uvode izmene na dva mesta. U slučaju trivijalnih funkcija, jednostavno čitanje koda je često dovoljno. Postavlja se pitanje šta je uopšte vredno testiranja, naročito ako se ne koristi razvoj vođen testovima, već se testovi pišu nakon što je aplikacija koja ide u produkciju već napisana.
+\par Iako je \emph{Elm} dizajniran tako da tipovi pokriju najveći deo korektnosti programa, ipak ne mogu uhvatiti baš svaku grešku. Može da se desi da je neka funkcija komplikovana, i da tipovi ne mogu mnogo da pomognu u proveri njene ispravnosti. Kako bi se izbegla dupla implementacija, funkcije treba tretirati kao crne kutije. U \emph{Elm-u}, to se svodi na testiranje zasnovano na svojstvima (eng. \emph{property based testing}), gde se za veliki broj različitih ulaza koji se generišu nasumično testira očekivano ponašanje. U specifičnim slučajevima gde je potrebno proveriti neki granični slučaj koriste se klasični jedinični testovi. U poglavlju \ref{chp:testiranjeelm} detaljno su objašnjeni koncepti i načini pisanja testova u programskom jeziku \emph{Elm}, na primeru testiranja klijenta aplikacije \emph{Portal MSNR}.
+
+% https://medium.com/@cosc4315/elm-language-fine-tuning-e2dad1a33dad
+
+\begin{comment}
 \subsubsection{Refaktorisanje ka čistim funkcijama} 
 Ako je neki deo koda komplikovan za testiranje, najlakši način da se pojednostavi jeste refaktorisati ga u čistu funkciju, ukoliko je to moguće. Deo koda koji zavisi od nekog drugog dela iz spoljašnjosti će u većini slučajeva pozivati tu spoljašnju zavisnost i onda manipulisati rezultatom pre nego što vrati svoj rezultat. Što više takve manipulacije ima, to je taj deo koda bolji kandidat za premeštanje logike unutar čiste funkcije. Na slici \ref{fig:dep} su date vizuelne reprezentacije kako ovaj proces izgleda pre i posle izmeštanja koda u čistu funkciju. 
 Na početku, funkcija može biti komplikovana za testiranje. Svaki test, za svaki mogući način ponašanja bi nekako morao da garantuje da druga funkcija (ona od koje zavisi prva) vraća neki očekivani odgovor. Ideja je da se deo logike (na slici označen sa ``manipulacija podataka ``) izvuče van --- u novu, čistu funkciju. Tako postaje zasebna komponenta, koja se može odvojeno lako testirati. Kada je taj deo logike dobro istestiran, može se smatrati sigurnim da se ponovo pozove u originalnoj funkciji. Zna se da će taj čisti k$\hat{o}$d uvek vraćati isti rezultat, i može se značajno redukovati broj testova neophodnih za testiranje originalne funkcije. U primeru koda... TODO primer
@@ -302,7 +352,12 @@ Na početku, funkcija može biti komplikovana za testiranje. Svaki test, za svak
 \par Ubrizgavanjem zavisnosti i kreiranjem dublera moguće je eliminisati spoljašnje promenljive, i time kontrolisati situaciju u kojoj k${o}$d koji se testira mora da se nađe. Tako se omogućava očekivanje nekog konkretnog rezultata. 
 \par Zavisnost je bilo koji k$\hat{o}$d na koji se originalni k$\hat{o}$d oslanja. Korišćenjem DI (skraćenica za Dependency Injection) u testovima se kreiraju zamene zavisnosti koje se ponašaju na predvidljiv način, pa testovi mogu da se fokusiraju na logiku unutar koda koji se testira. U jediničnim testovima, najčešće se ubrizgava zavisnost tako što se prosledi kao parametar. Taj parametar može biti funkcija ili modul. Ubrizgavanje zavisnosti kroz API\footnote{skraćenica za aplikacioni veb interfejs (eng. \textit{web applicatoin
 programming interface} )} obezbeđuje čist k$\hat{o}$d i jednostavne i kontrolisane jedinične testove. Sa druge strane, integracioni testovi zahtevaju drugačije metode ubrizgavanja zavisnosti. TODO nastavak...
+\end{comment}
 
+
+
+% The Elm compiler is quite capable of detecting many common errors. One of the major features of Elm that is frequently praised by developers, is its compiler error detection. Compiler error messages in Elm are user-friendly. These appear in the terminal or in the text editor if it is being used instead. They often contain suggestions or hints that are quite useful.
+% https://medium.com/@cosc4315/elm-language-fine-tuning-e2dad1a33dad
 % ------------------------------------------------------------------------------
 
 \chapter{Portal MSNR}
@@ -341,6 +396,7 @@ programming interface} )} obezbeđuje čist k$\hat{o}$d i jednostavne i kontroli
 \end{table}
 
 \section{Arhitektura portala}
+\label{sec:arhitektura}
 \par Portal MSNR je primer klijent/server aplikacije koja se sastoji od tri sloja. Klijentski sloj implementiran je u programskom jeziku \emph{Elm}, kao jednostranična aplikacija (eng. \emph{Single Page Application --- SPA}) koja predstavlja korisnički interfejs. U sredini se nalazi aplikacioni veb interfejs koji je implementiran u programskom jeziku \emph{Elixir} pomoću razvojnog okvira \emph{Phoenix}, u stilu arhitekture \emph{REST} (eng. \emph{Representational State Transfer}) \cite{rest}. Treći sloj predstavlja relaciona baza podataka, i sistem za upravljanje bazom \emph{PostgreSQL} \cite{postgre}. Slika \ref{fig:msnr-arch} prikazuje navedenu arhitekturu. 
 
 \begin{figure}[!ht]
@@ -393,7 +449,8 @@ programming interface} )} obezbeđuje čist k$\hat{o}$d i jednostavne i kontroli
 
 \section{Testiranje portala}
 \par Testiranje ovakve aplikacije podrazumeva podelu na različite vrste testova. Za početak, jedinični testovi koji se odnose na individualne funkcije i upravljače koji barataju zahtevima u okviru serverskog dela aplikacije moraju biti napisani u programskom jeziku Elixir. Na serverskoj strani, potrebno je napisati i testove koji simuliraju zahteve API-ju i verifikuju odgovore od baze. Sa druge strane, jedinični testovi koji se fokusiraju na pojedinačne komponente i funkcije korisničkog interfejsa moraju biti napisani u programskom jeziku Elm. Nakon pojedinačnog testiranja klijentske i serverske aplikacije, slede integracioni testovi koji proveravaju kako korisnički interfejs funkcioniše zajedno sa API-jem. Na kraju je neophodno testirati celokupan sistem, od korisničkog interfejsa do baze podataka, pisanjem sistemskih testova. S obzirom na to da se radi o veb aplikaciji, mogu se sprovesti i testovi opterećenja koji će proveriti kako portal podnosi velike količine zahteva i korisnika. 
-%U narednim poglavljima biće detaljno prikazano sprovođenje svih ovih testova.
+% TODO OVDE trbaju poporavke 
+% U narednim poglavljima biće detaljno prikazano sprovođenje svih ovih testova.
 
 \chapter{Testiranje serverskog dela aplikacije}
 \label{chp:elixir}
@@ -1177,14 +1234,11 @@ describe "update semester" do
 \par Akcija ažuriranja se jednostavno proverava, pozivanjem funkcije \emph{put}, i nakon toga verifikacijom ažuriranih podataka. \emph{Describe} blok sadrži i test koji pokriva scenario u kom dolazi do greške i očekuje se  k$\hat{o}$d 422. Akcija brisanja semestra treba da izazove prazan odgovor (koji ovoga puta nije JSON) sa kodom 204 --- \emph{no{\textunderscore}content}. Takođe, nakon što je semestar uspešno obrisan, očekuje se da on ne može biti dohvaćen i funkcija \emph{get} izaziva grešku tipa 404 --- \emph{not{\textunderscore}found}.
 \par Ukupan broj testova za akcije upravljača za semestre je sedam. Za svaki od entiteta napisani su slični testovi, koji se nalaze u direktorijumu \emph{msnr{\textunderscore}api{\textbackslash}test{\textbackslash}msnr{\textunderscore}api{\textunderscore}web{\textbackslash}controllers}. 
 
-% \subsection{Integraciono testiranje}
-
-% \par Nakon dobro istestiranih pojedinačnih funkcija i modula, potrebno je proveriti da li komponente funkcionišu ispravno kao celina. U ovoj sekciji biće prikazani testovi koji proveravaju da li različiti delovi sistema koji komuniciraju međusobno, kao i sa nekim eksternim sistemima, rade to na ispravan način.
 
 
 \chapter{Testiranje klijentskog dela aplikacije}
-\label{chp:elm}
-\par Klijentski deo portala implementiran je u programskom jeziku \emph{Elm}. \emph{Elm} je statički tipiziran i čist funkcionalni jezik. Odsustvo propratnih efekata u funkcijama omogućava da dokazivanje njihove ispravnosti bude značajno jednostavnije u odnosu na nečiste funkcije iz prethodnog poglavlja. Testovi su predvidljivi i jednostavni za održavanje zahvaljujući prinicipima imutabilnosti. Takođe, za \emph{Elm} aplikacije važi da ne izbacuju neplanirane greške prilikom izvršavanja (eng. \emph{No Runtime Exceptions}). U ovom poglavlju biće predstavljeni koncepti testiranja u ovom programskom jeziku na primeru korisničkog interfejsa aplikacije Portal MSNR. 
+\label{chp:testiranjeelm}
+\par Klijentski deo portala implementiran je u programskom jeziku \emph{Elm}. \emph{Elm} je statički tipiziran i čist funkcionalni jezik. Odsustvo propratnih efekata u funkcijama omogućava da dokazivanje njihove ispravnosti bude značajno jednostavnije u odnosu na nečiste funkcije iz prethodnog poglavlja. Testovi su predvidljivi i jednostavni za održavanje zahvaljujući prinicipima imutabilnosti. Kako je već objašnjeno u delu \ref{sec:elmopste}, za \emph{Elm} aplikacije važi da ne izbacuju neplanirane greške prilikom izvršavanja. U ovom poglavlju biće predstavljeni koncepti testiranja u ovom programskom jeziku na primeru korisničkog interfejsa aplikacije Portal MSNR. 
 
 \section{Uvod u testiranje Elm aplikacija}
 \label{sec:uvod-elm}
@@ -1197,7 +1251,7 @@ PS C:\Users\panap\testing-msnr-portal\portal\msnr_elm> npm install elm-test -g
 
 \end{lstlisting}
 
-\par Nakon uspešne instalacije, potrebno je pokrenuti naredbu koja instalira paket \emph{elm-explorations/test}, koji služi za definisanje testova koji mogu da se pokreću iz komandne linije:  
+\par Nakon uspešne instalacije, potrebno je pokrenuti naredbu koja služi da pripremi projekat za pisanje testova: 
 
 \begin{lstlisting}[style=DOS]
 
@@ -1205,9 +1259,11 @@ PS C:\Users\panap\testing-msnr-portal\portal\msnr_elm> elm-test init
 
 \end{lstlisting}
 
+Naredba \textbf{elm-test init} kreira novi direktorijum pod nazivom \emph{tests} i u njemu datoteku \emph{Example.elm}, koja predstavlja šablon za pisanje prvog testa. Pored toga instalira paket \emph{elm-explorations/test}, koji služi za definisanje testova koji mogu da se pokreću iz komandne linije. Ažuriraće i datoteku \emph{elm.json}, u kojoj će dodati ovaj paket u sekciji \emph{test-dependencies}.
+
 \subsection{Struktura jediničnog testa}
 
-\par Naredba \textbf{elm-test init} će kreirati novi direktorijum pod nazivom \emph{tests} i u njemu jednu datoteku \emph{Example.elm}, koja predstavlja šablon za pisanje testova, i koja nije neophodna u ovom radu. Osnovni koncepti testova u jeziku \emph{Elm} objašnjeni su na primeru testiranja jednostavne funkcije koja prevodi kalendarski mesec u nisku. Ta funkcija definisana je u modulu \emph{Util} i prikazana je u primeru koda \ref{lst:utilprimer}. Ona jednostavno prihvata vrednost tipa \emph{Month} (iz modula \emph{Time}), i na osnovu meseca vraća nisku od dve cifre koje predstavljaju taj mesec.
+\par Osnovni koncepti testova u jeziku \emph{Elm} objašnjeni su na primeru testiranja jednostavne funkcije koja prevodi kalendarski mesec u nisku. Ta funkcija definisana je u modulu \emph{Util} i prikazana je u primeru koda \ref{lst:utilprimer}. Ona jednostavno prihvata vrednost tipa \emph{Month} (iz modula \emph{Time}), i na osnovu meseca vraća nisku od dve cifre koje predstavljaju taj mesec.
 
 \begin{lstlisting}[language=elm, caption={Funkcija \emph{toTwoDigitMonth}},captionpos=b, label={lst:utilprimer}]
 toTwoDigitMonth : Month -> String
@@ -1248,8 +1304,9 @@ toTwoDigitMonthTests =
         ... 
 \end{lstlisting}
 
-\par Unutar funkcije \emph{toTwoDigitMonthTests} najpre se navođenjem bloka \emph{describe} opisuje grupa svih testova koji će se odnositi na funkciju \emph{toTwoDigitMonth}. Preporučuje se da se slični testovi uvek grupišu u zajedničke \emph{describe} blokove, koji se mogu i ugnježdavati. Pri kreiranju testa poziva se funkcija \emph{test} iz modula \emph{Test}, koja ima dva argumenta: opis onoga što se testira i anonimnu funkciju koja sadrži sam test. Testovi ne koriste argumente date anonimnoj funkciji, i zato se taj argument ignoriše navođenjem (\textunderscore). Funkcija \emph{Expect.equal} prihvata očekivanu vrednost i izraz sa kojim će uporediti tu vrednost, a vraća True ako su vrednosti jednake. Operator |> prosleđuje rezultat izraza sa leve strane kao poslednji argument funkcije sa desne strane. Prilikom testova se preporučuje upotreba ovog operatora, jer u suprotnom, kako se povećava broj operacija neophodan za pripremu i poziv funkcije koja se testira, testovi postaju sve nečitljiviji. Operator <| radi slično, samo u drugom smeru, i u testovima se koristi kako bi se izbegla upotreba zagrada. Pored poređenja jednakosti, u modulu \emph{Expect} postoje i druge funkcije koje mogu proveravati nejednakost (\emph{Expect.notEqual}), ili na primer --- da li je jedan izraz manji ili veći od drugog (\emph{Expect.lessThan}, \emph{Expect.greaterThan}).  Više o ovom modulu i njegovim funkcijama može se pronaći na zvaničnoj stranici \cite{expect}.
-\par Naredbom \textbf{elm-test} pokreću se svi testovi, a da bi se pokrenuli samo testovi unutar ovog modula, potrebno je pozvati komandu \textbf{elm-test tests/UtilTests.elm} iz terminala. Nakon toga, trebalo bi da se dobije izlaz prikazan na slici \ref{fig:elmpass}. \emph{Elm} će jasno ispisati ukupan broj testova koji se izvršava, i koliko njih prolazi, a koliko ne. Pored toga, ispisuje i jednu liniju koja se odnosi na faz testiranje, koja će biti objašnjena u delu o faz testovima. U slučaju da neki od testova ne prolaze, tj. ako se očekivana vrednost ne poklapa sa datim izrazom, \emph{elm-test} će dati izlaz prikazan na slici \ref{fig:elmfail}. 
+\par Unutar funkcije \emph{toTwoDigitMonthTests} najpre se navođenjem bloka \emph{describe} opisuje grupa svih testova koji će se odnositi na funkciju \emph{toTwoDigitMonth}. Preporučuje se da se slični testovi uvek grupišu u zajedničke \emph{describe} blokove, koji se mogu i ugnježdavati. Pri kreiranju testa poziva se funkcija \emph{test} iz modula \emph{Test}, koja ima dva argumenta: opis onoga što se testira i anonimnu funkciju koja sadrži sam test. Testovi ne koriste argumente date anonimnoj funkciji, i zato se taj argument ignoriše navođenjem (\textunderscore). Funkcija \emph{Expect.equal} prihvata očekivanu vrednost i izraz sa kojim će uporediti tu vrednost, a vraća True ako su vrednosti jednake. Operator \emph{|> (pipe)} prosleđuje rezultat izraza sa leve strane kao poslednji argument funkcije sa desne strane. Prilikom pisanja testova preporučuje se upotreba ovog operatora, jer u suprotnom, kako se povećava broj operacija neophodan za pripremu i poziv funkcije koja se testira, testovi postaju sve nečitljiviji. Operator \emph{<|} radi slično, samo u drugom smeru, i u testovima se koristi kako bi se izbegla upotreba zagrada. Ovakav način pisanja naziva se cevovod (eng. \emph{pipeline}). 
+\par Pored poređenja jednakosti, u modulu \emph{Expect} postoje i druge funkcije koje mogu proveravati nejednakost (\emph{Expect.notEqual}), ili na primer --- da li je jedan izraz manji ili veći od drugog (\emph{Expect.lessThan}, \emph{Expect.greaterThan}). Više o ovom modulu i njegovim funkcijama može se pronaći na zvaničnoj stranici \cite{expect}.
+\par Naredbom \textbf{elm-test} pokreću se svi testovi, a da bi se pokrenuli samo testovi unutar ovog modula, potrebno je pozvati komandu \textbf{elm-test tests/UtilTests.elm} iz terminala. Kako broj testova bude rastao, preporučuje se pokretanje samo određenog broja testova istovremeno. Funkcije \emph{Test.skip} i \emph{Test.only} su korisne za ovakvo pokretanje, a više o njima može se pronaći u dokumentaciji paketa \emph{Test}.  Nakon navođenja komande \emph{elm-test}, trebalo bi da se dobije izlaz prikazan na slici \ref{fig:elmpass}. \emph{Elm} će jasno ispisati ukupan broj testova koji se izvršava, i koliko njih prolazi, a koliko ne. Pored toga, ispisuje i jednu liniju koja se odnosi na faz testiranje, koja će biti objašnjena u delu o faz testovima. U slučaju da neki od testova ne prolaze, tj. ako se očekivana vrednost ne poklapa sa datim izrazom, \emph{elm-test} će dati izlaz prikazan na slici \ref{fig:elmfail}. 
 
 \begin{figure}[!ht]
   \centering
@@ -1265,10 +1322,11 @@ toTwoDigitMonthTests =
   \label{fig:elmfail}
 \end{figure}
 
-\par Funkcija \emph{toTwoDigitMonth} je dobar kandidat za jednostavne testove, kao što su oni iz primera \ref{lst:example}. U programskom jeziku \emph{Elm} ti testovi nazivaju se jedinični testovi i tako će biti nazivani u nastavku ovog poglavlja. Ovakvi testovi pišu se kada je potrebno proveriti specifičan scenario, kao što je neki granični slučaj. Jedinični testovi pozivaju k$\hat{o}$d koji se testira samo jednom, sa odgovarajućim ulazom, i proveravaju da li je izlaz jednak očekivanom. Na primeru ove funkcije, postoji samo 12 mogućih ulaza (12 meseci). Kada postoji jako veliki broj mogućih ulaza, bilo bi nemoguće ostvariti odgovarajuću pokrivenost samo jediničnim testovima.
+\par Što se tiče testiranja neispravnog ulaza, anotacija funkcije \emph{toTwoDigitMonth} to ne dozvoljava. Funkcija očekuje kao ulaz vrednost tipa \emph{Month}, koji dolazi iz modula \emph{Time}, a kao izlaz vrednost tipa \emph{String}. U ovakvim uslovima, u testu nije moguće pozvati funkciju sa bilo kojim ulazom koji nije \emph{Month}, jer će Elm kompilator to videti kao grešku i dati odgovarajuće objašnjenje. Kako bi se proširili slučajevi ispravne upotrebe ovakve funkcije, ona se može izmeniti tako da povratna vrednost bude tipa \emph{Maybe String}. Tada, pri prosleđivanju bilo čega što nije jedan od 12 mogućih ispravnih ulaza (po jedan za svaki mesec), funkcija bi vraćala \emph{Nothing}.
+\par Funkcija \emph{toTwoDigitMonth} je dobar kandidat za jednostavne testove, kao što su oni iz primera \ref{lst:example}. U programskom jeziku \emph{Elm} ti testovi nazivaju se jedinični testovi i tako će biti nazivani u nastavku ovog poglavlja. Ovakvi testovi pišu se kada je potrebno proveriti specifičan scenario, kao što je neki granični slučaj. Jedinični testovi pozivaju k$\hat{o}$d koji se testira samo jednom, sa odgovarajućim ulazom, i proveravaju da li je izlaz jednak očekivanom. Na primeru ove funkcije, postoji samo 12 mogućih ulaza, pa je zbog toga za testiranje ove funkcije napisano 12 jediničnih testova. 
 
 \subsection{Faz testiranje}
-\par Prednost testiranja u Elm-u je u tome što se mogu kombinovati različite vrste testova kako bi se postigla dobra pokrivenost koda. Pored testova jedinica koda, Elm nudi još jednu vrstu testova --- faz testove. Faz testiranje (eng. \emph{fuzz testing}) je način testiranja u kome se isti test ponavlja iznova sa nasumično generisanim ulazima. Funkcije koje mogu imati veliki broj različitih ulaza predstavljaju dobre kandidate za faz testiranje. Za testiranje jedne funkcije se mogu i kombinovati jedinični i faz testovi.
+\par Kada postoji jako veliki broj mogućih ulaza, bilo bi nemoguće ostvariti odgovarajuću pokrivenost samo jediničnim testovima. Prednost testiranja u Elm-u je u tome što se mogu kombinovati različite vrste testova kako bi se postigla dobra pokrivenost koda. Pored testova jedinica koda, Elm nudi još jednu vrstu testova --- faz testove. Faz testiranje (eng. \emph{fuzz testing}) je način testiranja u kome se isti test ponavlja iznova sa nasumično generisanim ulazima. Funkcije koje mogu imati veliki broj različitih ulaza predstavljaju dobre kandidate za faz testiranje. Unutar jednog \emph{describe} bloka, mogu se kombinovati jedinični i faz testovi.
 \par Funkcija \emph{intToMonth}, delimično prikazana u primeru koda \ref{lst:primerfaz} vrši jednostavno prevođenje celog broja koji predstavlja redni broj meseca u vrednosti tipa \emph{Maybe Month}. U slučaju da je prosleđen broj između 1 i 12, njena povratna vrednost biće konkretan mesec, a za bilo koji drugi ulaz vratiće \emph{Nothing}.
 
 \begin{lstlisting}[language=elm, caption={Implementacija funkcije \emph{intToMonth}},captionpos=b, label={lst:primerfaz}]
@@ -1325,27 +1383,207 @@ intToMonthTests =
 \end{center}
 \end{table}
 
-\par Nakon pokretanja faz testova, na izlazu će se pojaviti seme nasumičnosti koje se može iskoristiti za rekreiranje konkretnih faz testova navođenjem komande \textbf{--seed} iz terminala, a može se i specifikovati konkretan broj faz testova koji će se izvršiti uz komandu \textbf{--fuzz}. Ako neki od testova izazove grešku, na izlazu će pisati koja od vrednosti je izazvala, a ako ih ima više, izabraće najjednostavniju od njih kako bi se što lakše pronašao uzrok.
+\par Nakon pokretanja faz testova, na izlazu će se pojaviti seme nasumičnosti koje se može iskoristiti za rekreiranje konkretnih faz testova navođenjem komande \textbf{--seed} iz terminala, a može se i specifikovati konkretan broj faz testova koji će se izvršiti uz komandu \textbf{--fuzz}. Ako neki od testova izazove grešku, na izlazu će pisati koja od vrednosti je izazvala, a ako ih ima više, izabraće najjednostavniju od njih kako bi se što lakše pronašao uzrok. Navođenje većeg broja faz testova pokriva više ulaza, ali sa druge strane, time se povećava vreme izvršavanja. 
 \par Faz testiranje se smatra testiranjem zasnovanom na svojstvima (eng. \emph{property based testing}). Njihova uloga je da utvrde da određeno svojstvo važi za sve ulaze i izlaze. U slučaju funkcije \emph{intToMonth}, to svojstvo glasi: za svaki ulaz koji nije ceo broj između 1 i 12, izlaz uvek mora biti \emph{Nothing}. Za razliku od jediničnih testova koji proveravaju samo jedan konkretan scenario, faz testovi omogućavaju testiranje koda na mnogo višem nivou. Pri pisanju ovih testova, neophodno je dobro razmisliti šta je to što k$\hat{o}$d treba da uradi i pronaći svojstvo koje mora biti zadovoljeno, i zatim u testu proveriti da li to svojstvo važi. Kad god je to moguće, uvek treba koristiti faz testove umesto jediničnih. 
 
+\section{Testiranje rada sa JSON podacima}
+\par Kodiranje i dekodiranje JSON podataka izvšava se pomoću modula \emph{Json.Encode} i \emph{Json.Decode} iz paketa \emph{elm/json}. Kada nakon HTTP zahteva server pošalje odgovor u JSON formatu, često je neophodno prevesti taj odgovor u odgovarajući slog. Funkcije koje vrše ovo prevođenje nazivaju se dekoderi. U primeru koda \ref{lst:decoderprimer} data je funkcija dekodiranja iz modula \emph{Session}, u kome su izdvojene funkcije za prijavljivanje i odjavljivanje korisnika. Funkcija \emph{decodeSession} dekodira svako polje sloga \emph{Session} i tako pruža validaciju podataka pre nego što oni dođu do aplikacije. 
+
+\begin{lstlisting}[language=elm, caption={Implementacija funkcije dekodiranja \emph{decodeSession}},captionpos=b, label={lst:decoderprimer}]
+decodeSession : Decoder Session
+decodeSession =
+    Decode.map5 Session
+        (Decode.field "access_token" Decode.string)
+        (Decode.field "expires_in" Decode.float)
+        (Decode.field "user" decodeUser)
+        (Decode.field "semester_id" Decode.int)
+        (Decode.maybe (Decode.field "student_info" decodeStudentInfo))
+\end{lstlisting}
+
+\par Unutar dekodera mogu se pozivati i drugi dekoderi --- u ovom primeru to su \emph{decodeUser} i \emph{decodeStudentInfo}, čija je uloga u dekodiranju slogova koji predstavljaju korisnika i studenta. Ipravnost dekodera je jedna od retkih stvari za koje sistem tipova u Elm-u ne može pomoći u pronalaženju grešaka. Pre pisanja samih faz testova, definisani su specifični fazeri, za svaki od slogova. Kako više datoteka sa testovima koristi iste fazere, svi oni su implementirani na jednom mestu --- u pomoćnoj datoteci \emph{tests{\textbackslash}FuzzerHelper.elm}. Svaka datoteka sa testovima uključiće ovu datoteku zajedno sa konkretnim neophodnim fazerima. Za kreiranje nasumičnih kombinacija polja sloga \emph{Session}, definisan je \emph{sessionFuzzer}, prikazan u primeru koda \ref{lst:sessionfuzzer}. Funkcija \emph{map5} će mapirati pet polja i za svako od njih kreirati odgovarajući fazer. Svaki od fazera kreiraće veliki broj različitih vrednosti. Na primer, \emph{Fuzz.string} će generisati nasumične niske, ali sa većom verovatnoćom one za koje se često očekuju greške --- prazne, ili jako dugačke ili kratke niske. Za studenta i korisnika takođe su implementirani specifični fazeri.
+
+\begin{lstlisting}[language=elm, caption={Implementacija fazera za slog \emph{Session}},captionpos=b, label={lst:sessionfuzzer}]
+sessionFuzzer : Fuzzer Session
+sessionFuzzer = 
+    Fuzz.map5 Session
+        Fuzz.string
+        Fuzz.float
+        userInfoFuzzer
+        (Fuzz.intRange 1 10)
+        (Fuzz.maybe studentInfoFuzzer)
+\end{lstlisting} 
+
+\par Fazer je sada spreman za upotrebu iz modula \emph{SessionTests}. Svaki od dekodera istestiran je pojedinačno, a faz testovi koji proveravaju ispravnost funkcije \emph{decodeSession} prikazani su u primeru koda \ref{lst:testdecode}. Priprema testa podrazumeva enkodiranje svakog od polja, koje funkcioniše na sličan način kao i dekodiranje, samo u suprotnom smeru. Enkoderi se takođe mogu kreirati za specifične tipove podataka. Nakon što se objekat enkodira u JSON vrednost, poziva se funkcija \emph{decodeValue} koja prihvata dekoder koji se testira kao prvi argument, i enkodirani objekat kao drugi. Ako je izvršavanje uspešno, očekuje se izlaz oblika \emph{(Ok \_)}, za čiju proveru je zadužena pomoćna funkcija \emph{success}. 
+\par U drugom faz testu prikazano je kako se može izvući specifično polje iz rezultata, korišćenjem \emph{Result.map}. Taj test proverava da li će polje \emph{studentInfo} imati očekivanu vrednost \emph{Nothing} ako se u ulazu enkodira \emph{null} na njegovom mestu, s obzirom na to da mu je tip \emph{Maybe}. Ovaj test odnosiće se samo na jedno konkretno polje, umesto na čitavu strukturu. To osigurava da neće biti potrebne manuelne ispravke ovog testa ako se u kodu dese neke izmene, kao na primer dodavanje novog polja. Zbog toga se preporučuje pisanje ovakvih testova koji se fokusiraju na jednu konkretnu stvar i tako sužavaju opseg testa. Takođe, ako se dese greške u nekim drugim poljima, ovaj test će i dalje prolaziti jer nije vezan za ta konkretna polja, i time će olakšati posao pronalaženja greške.
+
+\begin{lstlisting}[language=elm, caption={Implementacija testova za funkciju \emph{decodeSession}},captionpos=b, label={lst:testdecode}]
+decodeSessionTests = 
+    describe "Session decoder"
+    [fuzz sessionFuzzer "fuzz test for decoding session" <| 
+     \session -> 
+        [("access_token", Encode.string session.accessToken),
+         ("expires_in", Encode.float session.expiresIn),
+          .... 
+        ]
+        |> Encode.object
+        |> Decode.decodeValue Session.decodeSession
+        |> success
+        |> Expect.equal True, 
+         
+     fuzz sessionFuzzer "decoding session with no student info, field should be Nothing" <| 
+     \session -> 
+        [ ...
+         ("student_info", Encode.null)
+        ]
+        |> Encode.object
+        |> Decode.decodeValue Session.decodeSession
+        |> Result.map (\s -> s.studentInfo)
+        |> Expect.equal (Ok Nothing)
+    ]
+\end{lstlisting}
+
+\par U slučaju neispravnog ulaza, dekoderi će vratiti rezultat tipa \emph{(Err, \_)}. Kada se to desi, pomoćna funkcija \emph{success} vratiće \emph{False}. Primer jediničnog testa koji proverava neispravan ulaz dat je u kodu \ref{lst:errordecoder}, gde se testira dekoder sloga \emph{Topic}. U testu se priprema ulaz koji je neispravan --- polju \emph{number} dodeli se niska umesto celog broja, zatim se prosledi funkciji i na kraju proveri da li je to dovelo do greške. \emph{Expect.err} radi upravo to, a isto se može postići i upotrebom već spomenute funkcije \emph{success}.
+
+\begin{lstlisting}[language=elm, caption={Implementacija testa koji izaziva grešku na primeru funkcije \emph{Topic.decoder}},captionpos=b, label={lst:errordecoder}]
+test "Given invalid input returns (Err _)" <|
+      \_ -> 
+        let input = """
+                { "id" : 1,
+                  "title" : "naslov",
+                  "number" : "1"} 
+            """
+             decodedOutput = decodeString Topic.decoder input
+        in 
+          Expect.err decodedOutput
+\end{lstlisting}
 
 
+\section{Testiranje Arhitekture Elm}
+\par U delu \ref{sec:arhitektura} objašnjen je \emph{MVU} obrazac projektovanja koji svaki Elm program implementira. Glavne funkcije koje se nalaze u svakom od modula su funkcije \textbf{\emph{update}} i \emph{\textbf{view}}. U ovoj sekciji, najpre će biiti prikazano testiranje funkcija ažuriranja \emph{update}, čija je uloga da na osnovu primljene poruke od pretraživača kreiraju novi model. Nakon toga, napisani su testovi za funkcije pogleda \emph{view}, na osnovu kojih se generiše HTML.
+
+\subsection{Testiranje promena stanja aplikacije}
+
+\par Celokupno stanje Elm aplikacije predstavljeno je jednom vrednošću modela. Model aplikacije definisan je u datoteci \emph{Main.elm}. \emph{Model} se menja tako što funkcija\emph{update} prihvati poruku \emph{Msg} i kao rezultat izvršavanja vrati novi \emph{Model}. Anotacija funkcije \emph{update} prikazana je u kodu \ref{lst:updateanotacija}. Povratna vrednost je torka modela i komande.  Komande u Elm-u predstavljaju vrednosti koje opisuju operacije koje okruženje Elm treba da izvrši, a koje se ne mogu predstaviti funkcijama. Funkcija \emph{update} predstavlja centralno mesto izvršavanja komandi. \emph{Msg} se odnosi na tip poruke koja se vraća aplikaciji. 
+
+\begin{lstlisting}[language=elm, caption={Anotacija funkcije \emph{update}},captionpos=b, label={lst:updateanotacija}]
+update : Msg -> Model -> ( Model, Cmd Msg)
+\end{lstlisting}
+
+\par Svaka promena stanja aplikacije može se testirati tako što se u testovima proslede odgovarajuća poruka i model kao argumenti funkcije \emph{update}, i zatim ispita dobijeni model. Svaka stranica koja ima svoj modul ima definisan model, poruke i funkcije \emph{update} i \emph{view} koje se pozivaju iz glavnog modula aplikacije. Sve poruke objedinjuju se u modulu \emph{Main} u jedan glavni tip poruke, a unutar funkcije \emph{update} glavnog modula se na osnovu poruke poziva funkcija \emph{update} odgovarajuće stranice. Trenutni model se ažurira novim modelom date stranice, a poruku komande je potrebno transformisati u odgovarajući glavni tip poruke.
+\par U okviru modula \emph{LoginPage.elm}, definisana je funkcija \emph{update} prikazana u kodu \ref{lst:loginupdate}. Na osnovu vrste poruke koja se prosledi, model se menja na određeni način. Na primer, kada se prosledi tip poruke \emph{Email}, desiće se jednostavna izmena stanja --- ažuriraće se polje \emph{email}.
+
+\begin{lstlisting}[language=elm, caption={Funkcija \emph{update} stranice za prijavljivanje korisnika \emph{LoginPage}},captionpos=b, label={lst:loginupdate}]
+update : Msg -> Model -> ( Model, Cmd Session.Msg )
+update msg model =
+    case msg of
+        Email email ->
+            ( { model | email = email }, Cmd.none )
+       .... 
+        SubmittedForm ->
+            ({model | error = Nothing, processing = True}, getSession {email = model.email, password = model.password, apiBaseUrl = model.apiBaseUrl})
+\end{lstlisting}
+
+\par Testovi ove funkcije prikazani su u primeru koda \ref{lst:loginupdatetest}. Napisan je po jedan faz test za svaki od tipova poruka. Kreira se fazer za model i zatim se nad njim pozove funkcija ažuriranja. Pomoću \emph{Tuple.first} dohvati se samo prvi član torke iz rezultata, koji predstavlja model. Na kraju se proveri da li polje ima odgovarajuću vrednost. Kada je u pitanju drugi deo povratne vrednosti (\emph{Cmd msg}), Elm još uvek nema mogućnost za ispitivanje \emph{Cmd} vrednosti kako bi se utvrdilo koju komandu predstavlja. Jedan od načina da se to postigne jeste da se testiraju podaci pre nego što se pretvore u komandu. Umesto direktnog testiranja komandi, testiraju se funkcije koje kreiraju te vrednosti. U ovom primeru to je funkcija \emph{getSession}. Ideja je da se funkcija oblika \emph{getCmd : Foo -> Cmd Msg} podeli na dve funkcije kako bi se olakšalo testiranje: 
+
+\begin{enumerate}
+\item \emph{getData : Foo -> FooData} --- funkcija koja se testira
+\item \emph{sendFooData : FooData -> Cmd Msg} --- jednostavna funkcija koja se ne testira 
+\end{enumerate}
+
+\par Jedan od alternativnih načina testiranja komandi je da se kreira specijalan tip koji će predstavljati sve moguće komande aplikacije i postaviti ga kao povratnu vrednost funkcije \emph{update}. Pored toga, napisati funkciju koja prevodi taj tip u \emph{Cmd Msg}. Na taj način će povratna vrednost biti nešto što se može do detalja ispitati. Iako korisna, ova tehnika se retko koristi, i najčešće se jednostavno preskoči testiranje samih komandi. Postoji još korisnih tehnika koje ovde neće biti spominjane jer zahtevaju značajne izmene originalnog koda \cite{cmd1, cmd2}. 
+
+\begin{lstlisting}[language=elm, caption={Testovi za funkciju \emph{update} modula \emph{LoginPage}},captionpos=b, label={lst:loginupdatetest}]
+    [fuzz2 string loginModelFuzzer "Email msg sets the email" <|
+    \email model -> 
+        model
+        |> update (Email email)
+        |> Tuple.first 
+        |> .email 
+        |> Expect.equal email,
+    ...
+\end{lstlisting}
 
 
+\subsection{Testiranje HTML sadržaja}
+
+\par Nakon što funkcija ažuriranja kreira model, on se prosleđuje funkciji \emph{view}, koja taj model transformiše u HTML koji će se prikazati korisniku. Ona prihvata model kao ulaz, a njena povratna vrednost ima tip html poruke. Anotacija svake funkcije \emph{view} je ista i data je u kodu \ref{lst:viewanot}.
+
+\begin{lstlisting}[language=elm, caption={Anotacija funkcije \emph{view}},captionpos=b, label={lst:viewanot}]
+view : Model -> Html Msg
+\end{lstlisting}
+
+\par Za kreiranje HTML čvorova i atributa koriste se funkcije iz modula \emph{Html}. Za opisivanje izgleda stranice u ovom projektu korišćene su funkcije modula \emph{Html.Styled}. Stilizovanje HTML elemenata bez upotrebe css datoteka omogućeno je pomoću paketa \emph{NoRedInk/noredinkui}. U primeru koda \ref{lst:loginview} prikazana je funkcija pogleda za stranicu prijavaljivanja korisnika. Funkcije koje pruža modul \emph{Html}, koje služe za kreiranje čvorova i atributa, imaju nazive po HTML oznakama (\emph{node}, \emph{button} itd.) i tako omogućavaju bolju čitljivost koda. U ovom primeru, navode se jednostavni elementi kao što su zaglavlja, polja za unos imejl adrese i šifre, i jedno dugme koje aktivira događaj. 
+
+\begin{lstlisting}[language=elm, caption={Funkcija \emph{view} modula \emph{LoginPage}},captionpos=b, label={lst:loginview}]
+view model =
+    Container.view
+  	...
+            [ Heading.h3 [ Heading.css [ marginBottom (px 20) ] ] [ Html.text "Prijava korisnika" ]
+            	... 
+            , Button.button "Prijavi se"
+                [  ... , Button.onClick SubmittedForm ]
+            ]
+        ]
+\end{lstlisting}
+
+\par Testiranje funkcija pogleda podrazumeva ispitivanje konkretnih HTML vrednosti. Pre pisanja testova za funkcije \emph{view} neophodno je uključiti paket \emph{elm-html-test} \cite{html-elm-test}. Ovaj paket omogućava kreiranje očekivanja o HTML vrednostima, i zbog toga je njegova glavna namena testiranje funkcija pogleda. Unutar njega, postoje tri najvažnija podmodula namenjena za testiranje različitih svojstava koje funkcija \emph{view} generiše:
+
+\begin{enumerate}
+\item \textbf{\emph{Test.Html.Query}} --- omogućava pisanje upita nad HTML strukturama
+\item \textbf{\emph{Test.Html.Event}} --- omogućava simuliranje događaja nad HTML vrednostima
+\item \textbf{\emph{Test.Html.Selector}} --- omogućava dohvatanje HTML elemenata
+\end{enumerate}
+
+\par Pri testiranju pogleda neophodno je razmisliti šta konkretno testirati. Ne preporučuje se testiranje doslovnog izlaza, jer to izaziva visoku spregnutost između testa i implementacije samog koda. Na primer, ako se dese sitne izmene u svrhu stilizovanja stranice, to bi dovelo do padanja testa koji doslovno proverava prisutne elemente. Ono što treba testirati jeste neka važna logika koju funkcija implementira. Ako neka funkcija \emph{view} prikazuje odgovarajući tekst u zavisnosti od određenog polja modela, to je nešto što je vredno testiranja. Kako bi se predstavili osnovni koncepti modula \emph{Test.Html.Query}, u primeru koda \ref{lst:viewtest} prikazan je jednostavan test koji proverava prisustvo očekivanog teksta pri prikazivanju stranice za prijavljivanje korisnika. U svakom testu funkcija pogleda, nad rezultatom pozivanja funkcije sa datim modelom prvo se poziva funkcija \emph{Query.fromHtml}. Njena uloga je da prihvati HTML i vrati vrednost tipa \emph{Single}, koja predstavlja koreni čvor HTML-a. U ovom slučaju to je glavni kontejner u kome su sadržani svi elementi sa stranice. Nakon toga, upotrebljena je funkcija \emph{Query.has} koja proverava da li se prosleđeni element sadrži sve što mu je dato u listi selektora. U ovoj listi prosleđen je selektor \emph{text} iz modula \emph{Html.Selector}, koji treba da se poklopi sa svim elementima koji sadrže atribut \emph{text} sa datom vrednošću. Ova funkcija vraća vrednost tipa \emph{Expectation}, što znači da se može naći na kraju cevovoda u testu. Slično kao sa tekstom, može se proveriti prisustvo dugmadi, polja za unos teksta i drugih HTML elemenata. Funkcije kao što su \emph{find}, \emph{findAll, contains, count} iz modula \emph{Html.Query}, i \emph{tag, containing, attribute} iz modula \emph{Html.Selector}, su neke od tih koje omogućavaju takve provere.
+
+\begin{lstlisting}[language=elm, caption={Test za funkciju \emph{view} modula \emph{LoginPage}},captionpos=b, label={lst:viewtest}]
+    [fuzz loginModelFuzzer "Correctly renders text in DOM" <|
+     \model ->
+        model
+        |> LoginPage.view 
+        |> Html.toUnstyled
+        |> Query.fromHtml
+        |> Query.has [ text "Prijava korisnika" ]
+\end{lstlisting}
 
 
+\subsubsection{Testiranje interakcija sa korisnikom}
 
-\chapter{Testiranje celokupnog sistema --- End to End}
-\label{chp:e2e}
+\par Kada je utvrđeno da se na stranici prikazuje sve što je očekivano, može se preći na testiranje ispravnosti odgovarajućih događaja --- na primer, da li se k$\hat{o}$d ponaša očekivano kada se klikne na dugme. Na primeru prijave korisnika, klikom na dugme sa tekstom \emph{''Prijavi se''} funkciji \emph{update} se prosleđuje poruka tipa \emph{SubmittedForm}, koja dalje poziva druge funkcije koje će izvršiti \emph{post} zahtev. Pomoću modula \emph{Html.Test.Event} simulira se događaj klika na dugme u testu. Deo testa prikazan je u kodu \ref{lst:eventtest}. Najpre se pronađe dugme pomoću upita i selektora koji proverava da li dugme sadrži tekst ''Prijavi se'', a zatim se nad njim simulira događaj klika pozivom funkcije \emph{Event.simulate}, za koji se očekuje da će vratiti poruku tipa \emph{SubmittedForm}. 
+\par Drugi tip događaja simuliran u ovom modulu je događaj unosa teksta u polja namenjena za imejl adresu i šifru korisnika. Sintaksa je slična i koristi se funkcija \emph{Event.input} koja prihvata nisku koja se unosi. Unosom teksta ažuriraju se odgovarajuća polja modela. Primer ovog testa dat je u kodu \ref{lst:eventinputtest}. 
 
-\section{Integracija klijentske i serverske strane}
+\begin{lstlisting}[language=elm, caption={Simulacija događaja klika na dugme u testu funkcije \emph{view} modula \emph{LoginPage}},captionpos=b, label={lst:eventtest}]
+LoginPage.view model
+	  ... 
+            |> Query.find
+                [ tag "button"
+                , containing [ text "Prijavi se" ]
+                ]
+            |> Event.simulate Event.click
+            |> Event.expect SubmittedForm
+\end{lstlisting}
 
-\section{Testiranje opterećenja}
+\begin{lstlisting}[language=elm, caption={Simulacija događaja unosa teksta u testu funkcije \emph{view} modula \emph{LoginPage}},captionpos=b, label={lst:eventinputtest}]
+        |> Query.fromHtml
+        |> Query.find [ attribute <| Attributes.placeholder "Email" ]
+        |> Event.simulate (Event.input emailString)
+        |> Event.expect (Email emailString)
+\end{lstlisting}
+
+
+%\chapter{Testiranje celokupnog sistema --- End to End}
+%\label{chp:e2e}
+
+%\section{Integracija klijentske i serverske strane}
+
+%\section{Testiranje opterećenja}
 
 % ------------------------------------------------------------------------------
 \chapter{Zaključak}
 % ------------------------------------------------------------------------------
-
+% TODO spomunitu semaphore
+% TODO moglo bi da se doda jos obrada gresaka, tipa ako je age vece od 100 onda Err '''cant be that old'''
+%TODO making impossible staes impossible
 % ------------------------------------------------------------------------------
 % Literatura
 % ------------------------------------------------------------------------------

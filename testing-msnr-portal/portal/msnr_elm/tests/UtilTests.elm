@@ -1,6 +1,6 @@
 module UtilTests exposing (toTwoDigitMonthTests, intToMonthTests)
-import Expect exposing (Expectation)
-import Fuzz exposing (Fuzzer, int, intRange)
+import Expect exposing (..)
+import Fuzz exposing (intRange)
 import Util exposing (..)
 import Test exposing (..)
 import Time exposing (Month(..))
@@ -83,10 +83,10 @@ intToMonthTests =
         test "output is Dec when input is 12" <|
         \_ -> intToMonth 12
               |> Expect.equal (Just Dec),
-        fuzz (intRange -50 0) "output is Nothing if invalid input" <|
+        fuzz (intRange -50 0) "output is Nothing if input < 1" <|
         \month -> intToMonth month
               |> Expect.equal Nothing, 
-        fuzz (intRange 13 50) "output is Nothing if invalid input" <|
+        fuzz (intRange 13 50) "output is Nothing if input > 12" <|
         \month -> intToMonth month
               |> Expect.equal Nothing
         ]
