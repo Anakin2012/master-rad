@@ -12,6 +12,16 @@ import FileInfo exposing (FileInfo)
 import Session exposing (Session, UserInfo, StudentInfo)
 import Http exposing (Error(..))
 import ProfessorPage.RegistrationRequestsPage as RRP exposing (RegistrationRequest)
+import Route exposing (ProfessorSubRoute(..))
+
+professorSubrouteFuzzer : Fuzzer ProfessorSubRoute
+professorSubrouteFuzzer = 
+    Fuzz.oneOfValues 
+        [RegistrationRequests,
+         Activities, 
+         (ActivityAssignments 2),
+         Topics, 
+         Groups]
 
 registrationRequestFuzzer : Fuzzer RegistrationRequest
 registrationRequestFuzzer = 
@@ -21,7 +31,7 @@ registrationRequestFuzzer =
         string
         string 
         string 
-        string
+        (Fuzz.oneOfValues ["accepted", "rejected", "pending"])
 
 httpErrorFuzzer : Fuzzer Error
 httpErrorFuzzer = 
@@ -30,7 +40,7 @@ httpErrorFuzzer =
           BadUrl "somestring",
           Timeout, 
           NetworkError,
-          BadStatus 500,
+          BadStatus 422,
           BadBody "somestring"
         ]
 
@@ -65,6 +75,10 @@ fileInfoFuzzer =
         (bool)
         string
 
+listOfFilesFuzzer : Fuzzer (List FileInfo)
+listOfFilesFuzzer = 
+    Fuzz.list fileInfoFuzzer
+
 assignmentFuzzer : Fuzzer Assignment
 assignmentFuzzer = 
     Fuzz.map6 Assignment
@@ -74,6 +88,10 @@ assignmentFuzzer =
         (Fuzz.maybe string)
         activityFuzzer
         activityTypeFuzzer 
+
+listOfAssignmentsFuzzer : Fuzzer (List Assignment)
+listOfAssignmentsFuzzer = 
+    Fuzz.list assignmentFuzzer
 
 shallowAssignmentFuzzer : Fuzzer ShallowAssignment
 shallowAssignmentFuzzer = 

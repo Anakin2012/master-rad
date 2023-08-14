@@ -40,6 +40,14 @@ defmodule MsnrApi.Queries.TopicsTest do
   end
 
   describe "list_topics/2" do
+    {:ok, semester} = setup_semester()
+    user1 = Factory.insert(:user)
+    user2 = Factory.insert(:user)
+
+    student1 = Factory.insert(:student, user_id: user1.id, semesters: [active_semester], user: user1)
+    student2 = Factory.insert(:student, user_id: user2.id, semesters: [active_semester], user: user2)
+    {:ok, %{group: group}} = Groups.create_group(%{semester_id: semester.id, students: [student1.user_id, student2.user_id]})
+
 
   end
 

@@ -55,6 +55,8 @@ defmodule MsnrApi.Assignments do
     Repo.all(query)
   end
 
+
+
   def list_assignments(%{"semester_id" => semester_id}) do
     from(a in Activity,
       join: as in Assignment, on: a.semester_id == ^semester_id and a.id == as.activity_id,

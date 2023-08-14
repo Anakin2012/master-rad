@@ -1,16 +1,42 @@
 defmodule MsnrApi.Queries.AssignmentsTest do
 
   use MsnrApi.Support.DataCase
-  alias MsnrApi.{Assignments, Assignments.Assignment, Activities, Activities.Activity}
+  alias MsnrApi.{Semesters, Assignments, Assignments.Assignment, Activities, Activities.Activity, ActivityTypes}
   alias Ecto.Changeset
+  alias MsnrApi.Students
+
 
   setup do
     Ecto.Adapters.SQL.Sandbox.checkout(MsnrApi.Repo)
   end
 
+  defp setup_semester() do
+    semester = Factory.insert(:semester)
+
+    params = %{"is_active" => true}
+    Semesters.update_semester(semester, params)
+  end
+
   describe "list_assignments/1" do
     test "success: it lists all the assignments for a semester" do
+      {:ok, active_semester} = setup_semester()
+      activity_type = Factory.insert(:activity_type)
+      user = Factory.insert(:user)
+      params_student = Factory.string_params_for(:student)
 
+      {:ok, student} = Students.create_student(user, params_student)
+
+      params = Factory.string_params_for(:activity)
+               |> Map.put("semester_id", active_semester.id)
+               |> Map.put("activity_type_id", activity_type.id)
+               |> Map.put("is_signup", false)
+               |> Map.put("is_group", false)
+
+      {:ok, activity} = Activities.create_activity(Integer.to_string(active_semester.id), params)
+
+      assert [] == Assignments.list_assignments(%{"semester_id" => active_semester.id})
+
+      #assert [ass] == Assignments.list_all()
     end
   end
 

@@ -1,5 +1,4 @@
-module GroupTests exposing (decoderTests, encoderStudent, toStringTests)
--- , viewTests)
+module GroupTests exposing (decoderTests, encoderStudent, toStringTests, viewTests)
 import Expect exposing (Expectation)
 import Fuzz exposing (Fuzzer, list, int, string, map6, intRange, maybe, bool, triple)
 import Test exposing (..)
@@ -13,7 +12,6 @@ import Accessibility.Styled as Html exposing (Html)
 import Html.Attributes as Attributes
 import Test.Html.Query as Query
 import Test.Html.Selector exposing (attribute, tag, text, containing)
-import Material.List exposing (group)
 
 
 
@@ -80,17 +78,18 @@ toStringTests =
                |> Expect.equal lastNames
     ]
 
-{-
 viewTests = 
     describe "Group view" 
-    [fuzz2 (intRange 1 50) studentListFuzzer "fuzz when topic is Nothing" <|
+    [fuzz2 (intRange 1 10) studentListFuzzer "check when topic is Nothing" <|
     \id students -> 
         let group = { id = id, topic = Nothing, students = students}
+            studentListString = List.map (Student.toString False) group.students
+                                |> String.join ", "
 
         in Group.view group
            |> Html.toUnstyled
            |> Query.fromHtml
-           |> Query.has [ text ""],
+           |> Query.has [ tag "h5", containing [text studentListString]],
 
     fuzz groupFuzzer "fuzz when topic" <|
     \group -> 
@@ -105,20 +104,8 @@ viewTests =
                    |> Query.fromHtml
                    |> Query.has [ tag "h4"
                                 , containing [ text topicString ]
-                                ],
-    
-     fuzz groupFuzzer "Student shows list in h5" <|
-     \group -> 
-        let studentListString = List.map (Student.toString False) group.students
-                                |> String.join ", "
-        
-        in Group.view group 
-           |> Html.toUnstyled
-           |> Query.fromHtml
-           |> Query.has [ tag "h5", 
-                          containing [ text studentListString]
-                        ]
+                                ]
+
     ]
 
 
--}

@@ -1,4 +1,4 @@
-module ProfessorPage.RegistrationRequestsPage exposing (requestDecoder, requestsListDecoder, RegistrationRequest, Model, Msg, init, loadRequests, update, view)
+module ProfessorPage.RegistrationRequestsPage exposing (processData, ModalAction(..), Tab(..), requestDecoder, requestsListDecoder, RegistrationRequest, Model, Msg, init, loadRequests, update, view)
 
 import Accessibility.Styled as Html exposing (Html)
 import Api

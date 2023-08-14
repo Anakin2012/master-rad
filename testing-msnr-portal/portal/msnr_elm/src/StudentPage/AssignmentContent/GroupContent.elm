@@ -84,7 +84,7 @@ update msg model apiParams =
             ( { model | processingRequest = False }, Cmd.none )
 
         GroupCreated (Err err) ->
-            Debug.log (Debug.toString err) <|
+        --    Debug.log (Debug.toString err) <|
                 ( { model | processingRequest = False }, Cmd.none )
 
 

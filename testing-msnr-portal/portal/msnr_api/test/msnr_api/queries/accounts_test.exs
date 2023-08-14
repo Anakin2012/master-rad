@@ -226,7 +226,14 @@ defmodule MsnrApi.Queries.AccountsTest do
     end
 
     test "success: returns an authorized user with student role" do
-      # TODODODODO
+      setup_semester()
+
+      params = Factory.string_params_for(:user)
+               |> Map.put("role", :student)
+
+      assert {:ok, %User{} = student} = Accounts.create_user(params)
+
+
     end
 
     test "error: returns an error tuple when user can't be authorized" do

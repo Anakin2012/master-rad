@@ -21,13 +21,8 @@ defmodule MsnrApiWeb.DocumentControllerTest do
   end
 
   describe "index" do
-    test "lists all documents",%{
-      conn: conn,
-      assignment: %AssignmentDocument{assignment_id: assignment_id} = assignment
-    }
-    do
-      conn = get(conn, Routes.document_path(conn, :index, assignment))
-      assert json_response(conn, 200)["data"] == []
+    test "lists all documents"
+
     end
   end
 

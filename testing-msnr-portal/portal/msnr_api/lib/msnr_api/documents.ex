@@ -138,7 +138,7 @@ defmodule MsnrApi.Documents do
 
     # multi_struct = Multi.new()
     # |> Multi.run(:file_tuples, fn _, _ ->
-    #   Validation.validate_files(docIds, docs, assignment_extended.content)
+    #   Validation.(docIds, docs, assignment_extended.content)
     # end)
     # |> Mulit.run
 

@@ -53,6 +53,11 @@ defmodule MsnrApi.Queries.SemestersTest do
 
       assert [f, s] == students
     end
+
+    test "empty when no students" do
+      {:ok, active_semester} = setup_semester()
+      assert [] = Students.list_students(active_semester.id)
+    end
   end
 
   describe "get_student/1" do
@@ -108,7 +113,37 @@ defmodule MsnrApi.Queries.SemestersTest do
   end
 
   describe "update_student/2" do
-# TODO !!!!!
+    test "updates a field" do
+      {:ok, active_semester} = setup_semester()
+
+      user1 = Factory.insert(:user)
+      student1 = Factory.insert(:student, user_id: user1.id, semesters: [active_semester], user: user1)
+
+
+#      user = Factory.insert(:user)
+      params = Factory.string_params_for(:student)
+               |> Map.put(:semesters, active_semester)
+
+ #     assert {:ok, %User{} = updated_user} = Accounts.update_user(user, params)
+  #    assert {:ok, %Student{} = returned_student} = Students.create_student(user, params)
+
+      assert {:ok, returned_student1} = Students.update_student(user1, params)
+
+      student_from_db = Repo.get(Student, user1.id)
+      assert returned_student1.id == student_from_db.user_id
+
+      expected_user_data = user1
+        |> Map.from_struct()
+        |> Map.drop([:__meta__, :updated_at])
+        |> Map.put(:index_number, params["index_number"])
+
+      for {field, expected} <- expected_user_data do
+        actual = Map.get(student_from_db, field)
+
+        assert actual == expected,
+          "Values did not match for field: #{field}\nexpected: #{inspect(expected)}\nactual: #{inspect(actual)}"
+      end
+    end
   end
 
   describe "delete_student/1" do

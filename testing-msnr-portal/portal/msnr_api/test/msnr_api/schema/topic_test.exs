@@ -89,7 +89,7 @@ defmodule MsnrApi.Schema.TopicTest do
     test "error: returns a FunctionClauseError when not given semester_id or given invalid id" do
       params = %{}
 
-      assert_raise FunctionClauseError, fn ->
+      assert_raise rror, fn ->
         Topic.changeset(%Topic{}, params) end
 
       assert_raise FunctionClauseError, fn ->

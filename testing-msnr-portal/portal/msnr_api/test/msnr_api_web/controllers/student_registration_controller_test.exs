@@ -23,6 +23,15 @@ defmodule MsnrApiWeb.StudentRegistrationControllerTest do
     {:ok, conn: put_req_header(conn, "accept", "application/json")}
   end
 
+  describe "list all registrations" do
+    setup [:create_student_registration]
+    test "renders all registrations in given semester", %{conn: conn, student_registration: student_registration} do
+
+      conn = get(conn, Routes.semester_student_registration_path(conn, :index, 1))
+      assert json_response(conn, 200)["data"] == []
+    end
+  end
+
   describe "create student_registration" do
     test "renders student_registration when data is valid", %{conn: conn} do
       conn =

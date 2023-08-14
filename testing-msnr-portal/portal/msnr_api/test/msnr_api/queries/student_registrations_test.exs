@@ -1,8 +1,9 @@
 defmodule MsnrApi.Queries.StudentRegistrationsTest do
 
   use MsnrApi.Support.DataCase
-  alias MsnrApi.{Semesters, Semesters.Semester, StudentRegistrations, StudentRegistrations.StudentRegistration}
+  alias MsnrApi.{Semesters, Accounts, Accounts.User, Students.Student, Semesters.Semester, StudentRegistrations, StudentRegistrations.StudentRegistration}
   alias Ecto.Changeset
+  alias Ecto.Multi
 
   setup do
     Ecto.Adapters.SQL.Sandbox.checkout(MsnrApi.Repo)
@@ -92,6 +93,31 @@ defmodule MsnrApi.Queries.StudentRegistrationsTest do
 
       assert {:error, %Changeset{valid?: false}} = StudentRegistrations.create_student_registration(missing_params)
     end
+  end
+
+  describe "update_student_registration" do
+    test "status accepted update" do
+      setup_semester()
+      existing_sr = Factory.insert(:student_registration)
+
+      multi = StudentRegistrations.update_student_registration(existing_sr, %{"status" => "accepted"})
+
+      assert [
+        {:ok, returned_sr},
+        {:ok, %User{} = returned_user},
+        {:ok, %Student{} = returned_student},
+        {:ok}
+      ] = Multi.to_list(multi)
+
+      assert returned_user == Repo.get(User, returned_sr.id)
+      assert returned_student == Repo.get(Student, returned_student.id)
+
+    end
+
+
+
+
+
   end
 
   describe "delete_student_registration/1" do

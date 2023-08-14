@@ -2,6 +2,7 @@ defmodule MsnrApiWeb.ActivityControllerTest do
   use MsnrApiWeb.ConnCase
 
   import MsnrApi.ActivitiesFixtures
+  import MsnrApi.SemestersFixtures
 
   alias MsnrApi.Activities.Activity
   alias MsnrApi.Semesters.Semester
@@ -23,8 +24,9 @@ defmodule MsnrApiWeb.ActivityControllerTest do
   end
 
   describe "index" do
+    setup [:create_semester]
     test "lists all activities", %{conn: conn} do
-      conn = get(conn, Routes.activity_path(conn, :index))
+      conn = get(conn, Routes.semester_activity_path(conn, :index, 1))
       assert json_response(conn, 200)["data"] == []
     end
   end
@@ -97,4 +99,8 @@ defmodule MsnrApiWeb.ActivityControllerTest do
     %{activity: activity}
   end
 
+  defp create_semester(_) do
+    semester = semester_fixture()
+    %{semester: semester}
+  end
 end

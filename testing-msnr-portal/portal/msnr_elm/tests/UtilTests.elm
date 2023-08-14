@@ -1,9 +1,177 @@
-module UtilTests exposing (toTwoDigitMonthTests, intToMonthTests)
+module UtilTests exposing (filesViewTests, errorMessageTests, toDictTests, inputDateTests, dateFromStringTests, secsFromDateTests, dateViewTests, toTwoDigitMonthTests, intToMonthTests)
 import Expect exposing (..)
-import Fuzz exposing (intRange)
+import Fuzz exposing (intRange, int)
 import Util exposing (..)
 import Test exposing (..)
 import Time exposing (Month(..))
+import Util exposing (ViewMode(..))
+import Clock exposing (Time)
+import Calendar as Calendar exposing(Date)
+import Accessibility.Styled as Html exposing (Html)
+import Html.Attributes as Attributes
+import Test.Html.Query as Query
+import Test.Html.Event as Event
+import Test.Html.Selector exposing (attribute, tag, text, containing)
+import Css exposing (contain)
+import Dict
+import Http exposing (Expect)
+import Nri.Ui.Message.V3 as Message
+import Css exposing (true)
+import StudentPage.AssignmentContent.FilesContent exposing(Msg(..))
+import FileInfo exposing (FileInfo)
+import Nri.Ui.Modal.V11 as Modal
+import FuzzerHelper exposing (fileInfoFuzzer, listOfFilesFuzzer)
+import File.Select exposing (files)
+
+
+type Msg
+    = StartDate String
+    | EndDate String
+    | Dismiss
+
+filesViewTests = 
+      describe "files View" 
+      [test "check number of buttons" <|
+      \_ ->
+            let files = [FileInfo 1 True "file.txt",
+                         FileInfo 2 False "file2.txt"
+                        ]
+            in
+               files
+               |> filesView ({isActive = True, 
+                              editAttached = False, 
+                              downloadMsg = DownloadFile,  
+                              editMsg = OpenModal { startFocusOn = Modal.closeButtonId, returnFocusTo = "" }}) 
+               |> Html.toUnstyled
+               |> Query.fromHtml
+               |> Query.findAll [ tag "button" ]
+               |> Query.count (Expect.equal 3),
+           
+      test "check click event" <|
+      \_ ->
+            let files = [FileInfo 1 True "file.txt",
+                         FileInfo 2 False "file2.txt"
+                        ]
+                file = FileInfo 1 True "file.txt"
+            in
+               files
+               |> filesView ({isActive = True, 
+                              editAttached = False, 
+                              downloadMsg = DownloadFile,  
+                              editMsg = OpenModal { startFocusOn = Modal.closeButtonId, returnFocusTo = "" }}) 
+               |> Html.toUnstyled
+               |> Query.fromHtml
+               |> Query.findAll [ tag "div",
+                               containing [
+                                          tag "h5",
+                                          containing [text "file.txt" ]
+                                          ]
+                             ]
+               |> Query.first
+               |> Query.findAll [tag "button"]
+               |> Query.first
+               |> Event.simulate Event.click
+               |> Event.expect (DownloadFile file)
+      ]
+
+
+errorMessageTests = 
+      describe "show error message"
+      [test "check message" <|
+      \_ -> 
+            errorMessage Dismiss
+            |> Html.toUnstyled
+            |> Query.fromHtml
+            |> Query.has [ text "Došlo je do neočekivane greške 😞"]
+      ]
+
+toDictTests = 
+      describe "from list to dict" 
+      [test "check keys" <|
+      \_ -> 
+            toDict [{name = "ana", id = 1}, {name = "johndoe", id = 2}]
+            |> Dict.keys
+            |> Expect.equal [1, 2],
+      
+      test "check values" <|
+      \_ -> 
+            toDict [{name = "ana", id = 1}, {name = "johndoe", id = 2}]
+            |> Dict.values
+            |> Expect.equal [{name = "ana", id = 1}, {name = "johndoe", id = 2}]    
+      ]
+
+inputDateTests = 
+      describe "input date view" 
+      [test "id is nothing" <|
+      \_ -> 
+            inputDate { label_ = "label", msg = StartDate, id_ = Nothing, value = "value" }
+            |> Html.toUnstyled
+            |> Query.fromHtml
+            |> Query.find [ attribute <| Attributes.type_ "date" ]
+            |> Query.has [ attribute <| Attributes.value "value" ],
+
+       test "id is Just String" <|
+       \_ -> 
+            inputDate {label_ = "nesto", msg = EndDate, id_ = Just "nekiId", value = "1.1.2023."}
+            |> Html.toUnstyled
+            |> Query.fromHtml
+            |> Query.find [ attribute <| Attributes.type_ "date" ]
+            |> Query.has [ attribute <| Attributes.id "nekiId"],
+
+       test "onInput it sends a message" <|
+       \_ -> 
+            inputDate {label_ = "nesto", msg = EndDate, id_ = Just "nekiId", value = "1.1.2023."}
+            |> Html.toUnstyled
+            |> Query.fromHtml
+            |> Query.find [ attribute <| Attributes.type_ "date" ]
+            |> Event.simulate (Event.input "15.1.2023.")
+            |> Event.expect (EndDate "15.1.2023.")
+      ]
+
+secsFromDateTests = 
+      describe "return time from date in secs"
+      [test "for 1.1.1970." <|
+      \_ ->
+            secsFromDate (Calendar.fromPosix (Time.millisToPosix 0))
+            |> Expect.equal 0
+      ] 
+
+dateFromStringTests = 
+      describe "returns a date for the given string"
+      [test "return Just 1.1.1970" <|
+      \_ -> 
+            dateFromString "1970-01-01"
+            |> Expect.equal (Calendar.fromRawParts { year = 1970, month = Jan, day = 1 }),
+
+       test "returns Nothing if invalid input" <|
+       \_ -> 
+            dateFromString "01.01.1970" 
+            |> Expect.equal Nothing
+      ]
+
+dateViewTests = 
+      describe "Date view" 
+      [test "expect 1970-01-01 if 0 seconds" <|
+      \_ -> 
+            dateView EditMode Time.utc 0
+            |> Expect.equal "1970-01-01",
+
+       test "expect 01.01.1970 if 10 seconds" <|
+      \_ -> 
+            dateView DisplayMode Time.utc 10 
+            |> Expect.equal "01.01.1970.",
+
+      test "expect 2023-08-10" <|
+      \_ -> 
+            dateView EditMode Time.utc 1691694835
+            |> Expect.equal "2023-08-10",
+
+      test "expect 10.8.2023." <|
+      \_ -> 
+            dateView DisplayMode Time.utc 1691694835
+            |> Expect.equal "10.08.2023."
+      ]
+
 
 toTwoDigitMonthTests = 
     describe "ToDigitMonth" 

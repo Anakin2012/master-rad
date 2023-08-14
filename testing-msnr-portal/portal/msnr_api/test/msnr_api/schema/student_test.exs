@@ -127,7 +127,7 @@ defmodule MsnrApi.Schema.StudentTest do
       {_, meta} = errors[:index_number]
 
       assert meta[:constraint] == :unique,
-        "The validation type  is incorrect."
+        "The validation type is incorrect."
     end
 
 
