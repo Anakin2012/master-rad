@@ -16,12 +16,24 @@ defmodule MsnrApi.Topics.Topic do
     topic
     |> cast(attrs, [:title, :semester_id])
     |> validate_required([:title, :semester_id])
-    |> set_number()
+    |> apply_set_number()
   end
 
-  defp set_number(%Ecto.Changeset{changes: %{semester_id: semester_id}} = changeset) do
+  defp apply_set_number(changeset) do
+    semester_id = get_change(changeset, :semester_id)
+
+    case semester_id do
+      nil ->
+        changeset
+      _ ->
+        changeset
+        |> set_number()
+    end
+  end
+
+  defp set_number(changeset) do
     changeset
-    |> put_change(:number, MsnrApi.Topics.next_topic_number(semester_id))
+    |> put_change(:number, MsnrApi.Topics.next_topic_number(get_change(changeset, :semester_id)))
   end
 
 end

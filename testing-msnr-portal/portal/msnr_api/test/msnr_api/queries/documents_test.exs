@@ -1,8 +1,8 @@
 defmodule MsnrApi.Queries.DocumentsTest do
 
   use MsnrApi.Support.DataCase
-  alias MsnrApi.{Documents, Documents.Document}
-  alias MsnrApi.Assignments.AssignmentDocument
+  alias MsnrApi.{Documents, Documents.Document, Semesters, ActivityTypes, Activities, Students}
+  alias MsnrApi.{Assignments.AssignmentDocument, Assignments, Topics, Groups, Groups.Group}
   alias Ecto.Changeset
 
   setup do
@@ -11,7 +11,34 @@ defmodule MsnrApi.Queries.DocumentsTest do
 
   describe "list_documents/1" do
     test "success: lists all documents when given assignment id" do
+      assignment = Factory.insert(:assignment)
+      document = Factory.insert(:document)
 
+      params = Factory.string_params_for(:assignment_document)
+               |> Map.put("assignment_id", assignment.id)
+               |> Map.put("document_id", document.id)
+
+      {:ok, assignment_document} =  %AssignmentDocument{}
+                                    |> AssignmentDocument.changeset(params)
+                                    |> Repo.insert()
+
+      result = Documents.list_documents(%{"assignment_id" => assignment.id}) |> Enum.at(0)
+
+      assert result.attached == assignment_document.attached
+      assert result.id == document.id
+      assert result.file_name == document.file_name
+    end
+
+    test "returns empty list when no documents or nonexistant assignment" do
+      assignment = Factory.insert(:assignment)
+      assert [] == Documents.list_documents(%{"assignment_id" => assignment.id})
+
+      assert [] == Documents.list_documents(%{"assignment_id" => -1})
+    end
+
+    test "error: cast error when wrong argument" do
+      assert_raise Ecto.Query.CastError, fn ->
+        Documents.list_documents(%{"assignment_id" => DateTime.utc_now()}) end
     end
   end
 
@@ -121,4 +148,140 @@ defmodule MsnrApi.Queries.DocumentsTest do
       refute Repo.get(Document, document.id)
     end
   end
+
+  describe "create_documents/3" do
+    test "success: creates documents" do
+
+      assignment = Factory.insert(:assignment)
+      {:ok, semester} = setup_semester()
+      activity_type = Factory.insert(:activity_type)
+      activity = Factory.insert(:activity)
+
+      user = Factory.insert(:user)
+
+      assignment_extended =  %{
+                          assignment: assignment,
+                          semester_year: semester.year,
+                          start_date: activity.start_date,
+                          end_date: activity.end_date,
+                          content: activity_type.content,
+                          name: "CV"
+                          }
+
+      assert true
+      # TODO !!!
+
+      #assignment = Documents.get_assignment_extended@!()
+    end
+  end
+
+  describe "filename_infix/1" do
+    test "success: when student and not group, return student name" do
+      {student, user} = activity_setup(false, ActivityTypes.TypeCode.cv())
+
+      assert "#{user.first_name}#{user.last_name}" == Documents.filename_infix(%{student_id: student.user_id, group_id: nil})
+    end
+
+    test "success: when group and not student, return topic" do
+      {:ok, group} = activity_setup(true, ActivityTypes.TypeCode.group())
+      %{students: students, topic: topic} = Groups.get_group!(group.id)
+      last_names =
+        students
+        |> Enum.map(& &1.user.last_name)
+        |> Enum.join()
+
+      title = topic.title
+            |> String.split()
+            |> Enum.map(&String.capitalize/1)
+            |> Enum.join()
+
+      assert "01_#{last_names}_#{title}" == Documents.filename_infix(%{student_id: nil, group_id: group.id})
+    end
+
+    test "when both nil, raise Argument error" do
+      assert_raise ArgumentError, fn ->
+        Documents.filename_infix(%{student_id: nil, group_id: nil}) end
+    end
+
+    test "when invalid student, raise NoResultsError" do
+
+      assert_raise Ecto.NoResultsError, fn ->
+        Documents.filename_infix(%{student_id: -1, group_id: nil}) end
+    end
+
+    test "when invalid group, raise Match error" do
+      assert_raise MatchError, fn ->
+        Documents.filename_infix(%{student_id: nil, group_id: -1}) end
+    end
+
+    test "when both given, raise FunctionClauseError" do
+      assert_raise FunctionClauseError, fn ->
+        Documents.filename_infix(%{student_id: -1, group_id: -1}) end
+    end
+
+  end
+
+  defp activity_setup(is_group, code) do
+    {:ok, active_semester} = setup_semester()
+    #activity_type = Factory.insert(:activity_type)
+    params_at = Factory.string_params_for(:activity_type)
+                |> Map.put("is_group", is_group)
+                |> Map.put("code", code)
+
+    {:ok, activity_type} = ActivityTypes.create_activity_type(params_at)
+
+    user = Factory.insert(:user)
+    params_student = Factory.string_params_for(:student)
+                     |> Map.put("user", user)
+
+    {:ok, student} = Students.create_student(user, params_student)
+    params = Factory.string_params_for(:activity)
+               |> Map.put("semester_id", active_semester.id)
+               |> Map.put("activity_type_id", activity_type.id)
+               |> Map.put("is_signup", false)
+               |> Map.put("end_date", System.os_time(:second)+100000)
+
+
+    {:ok, activity} = Activities.create_activity(Integer.to_string(active_semester.id), params)
+
+
+    user2 = Factory.insert(:user)
+
+    params_student2 = Factory.string_params_for(:student)
+                     |> Map.put("user", user2)
+
+    {:ok, student2} = Students.create_student(user2, params_student2)
+
+    if is_group == true do
+      setup_group(active_semester.id, [student.user_id, student2.user_id])
+    else
+      {student, user}
+    end
+
+
+  end
+
+  defp setup_group(semester_id, students) do
+    {:ok, topic} = setup_topic()
+    {:ok, group} = Groups.create_group(%{semester_id: semester_id, students: students})
+    {:ok, updated} = group
+                     |> Group.changeset(%{"topic_id" => topic.id})
+                     |> Repo.update()
+
+    {:ok, updated}
+  end
+
+  defp setup_topic() do
+    params_topic = Factory.string_params_for(:topic)
+    {:ok, topic} = Topics.create_topic(params_topic)
+  end
+
+
+  defp setup_semester() do
+    semester = Factory.insert(:semester)
+
+    params = %{"is_active" => true}
+    Semesters.update_semester(semester, params)
+  end
+
 end

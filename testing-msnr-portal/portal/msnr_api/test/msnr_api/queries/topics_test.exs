@@ -1,7 +1,8 @@
 defmodule MsnrApi.Queries.TopicsTest do
 
   use MsnrApi.Support.DataCase
-  alias MsnrApi.{Semesters, Semesters.Semester, Topics, Topics.Topic, Groups, Groups.Group}
+  alias MsnrApi.{Semesters, Semesters.Semester, Topics, Topics.Topic, Groups, Groups.Group, Students}
+  alias MsnrApi.{Students.StudentSemester}
   alias Ecto.Changeset
 
   setup do
@@ -16,6 +17,20 @@ defmodule MsnrApi.Queries.TopicsTest do
   end
 
   describe "list_topics/1" do
+
+    test "success: returns only available topics" do
+      {:ok, semester} = setup_semester()
+      params_topic = Factory.string_params_for(:topic)
+      {:ok, topic} = Topics.create_topic(params_topic)
+      {:ok, group} =   %Group{}
+                      |> Group.changeset(%{"topic_id" => topic.id})
+                      |> Repo.insert()
+
+      {:ok, available}= Factory.string_params_for(:topic)
+                      |> Topics.create_topic()
+
+      assert [available] == Topics.list_topics(%{"semester_id" => semester.id, "available" => "true"})
+    end
 
     test "success: returns a list of topics in the given semester" do
       {:ok, semester} = setup_semester()
@@ -39,17 +54,6 @@ defmodule MsnrApi.Queries.TopicsTest do
     end
   end
 
-  describe "list_topics/2" do
-    {:ok, semester} = setup_semester()
-    user1 = Factory.insert(:user)
-    user2 = Factory.insert(:user)
-
-    student1 = Factory.insert(:student, user_id: user1.id, semesters: [active_semester], user: user1)
-    student2 = Factory.insert(:student, user_id: user2.id, semesters: [active_semester], user: user2)
-    {:ok, %{group: group}} = Groups.create_group(%{semester_id: semester.id, students: [student1.user_id, student2.user_id]})
-
-
-  end
 
   describe "get_topic/1" do
     test "success: it returns a topic when given a valid id" do
@@ -107,32 +111,91 @@ defmodule MsnrApi.Queries.TopicsTest do
   end
 
   describe "update_topic/2" do
-    test "success: it updates database and returns the topic" do
-
+    test "success :it updates the value" do
       setup_semester()
       existing_topic = Factory.insert(:topic)
 
-      params = Factory.string_params_for(:topic)
-               |> Map.take(["title"])
-
+      params = %{"title" => "new"}
       assert {:ok, returned_topic} = Topics.update_topic(existing_topic, params)
 
       topic_from_db = Repo.get(Topic, returned_topic.id)
       assert returned_topic == topic_from_db
 
       expected_topic_data = existing_topic
-        |> Map.from_struct()
-        |> Map.drop([:__meta__, :updated_at])
-        |> Map.put(:title, params["title"])
+                          |> Map.from_struct()
+                          |> Map.drop([:__meta__, :updated_at])
+                          |> Map.put(:title, "new")
 
       for {field, expected} <- expected_topic_data do
         actual = Map.get(topic_from_db, field)
 
-        assert actual == expected,
-          "Values did not match for field: #{field}\nexpected: #{inspect(expected)}\nactual: #{inspect(actual)}"
-      end
+      assert actual == expected,
+        "Values did not match for field: #{field}\nexpected: #{inspect(expected)}\nactual: #{inspect(actual)}"
+    end
+  end
+
+    test "error: returns an error tuple when cant update" do
+      setup_semester()
+      existing_topic = Factory.insert(:topic)
+
+      bad_params = %{"title" => DateTime.utc_now()}
+
+      assert {:error, %Changeset{}} = Topics.update_topic(existing_topic, bad_params)
+
+      assert existing_topic == Repo.get(Topic, existing_topic.id)
+    end
+  end
+
+  describe "selected_topic_ids/1" do
+    test "success: returns all taken topic ids in semester" do
+      {:ok, semester} = setup_semester()
+
+      user = Factory.insert(:user)
+      params_student = Factory.string_params_for(:student)
+                     |> Map.put("user", user)
+
+      {:ok, student} = Students.create_student(user, params_student)
+
+      user2 = Factory.insert(:user)
+      params_student2 = Factory.string_params_for(:student)
+                     |> Map.put("user", user2)
+
+      {:ok, student2} = Students.create_student(user2, params_student2)
+
+      params_topic = Factory.string_params_for(:topic)
+      {:ok, topic} = Topics.create_topic(params_topic)
+
+      {:ok, group} = %Group{}
+                     |> Group.changeset(%{"topic_id" => topic.id,
+                                           "semester_id" => semester.id,
+                                           "students" => [student.user_id, student2.user_id]})
+                     |> Repo.insert()
+
+      Repo.update_all(StudentSemester, set: [group_id: group.id])
+      assert [topic.id] == Topics.selected_topics_ids(semester.id)
     end
 
+    test "success: returns empty list when no taken topics" do
+      {:ok, semester} = setup_semester()
+      assert [] == Topics.selected_topics_ids(semester.id)
+    end
+  end
+
+  describe "next_topic_number/1" do
+    test "success: returns number 1 when no topics in semester" do
+      {:ok, semester} = setup_semester()
+
+      assert 1 == Topics.next_topic_number(semester.id)
+    end
+
+    test "success: returns the next one when there are topics" do
+      {:ok, semester} = setup_semester()
+      params = Factory.string_params_for(:topic)
+
+      existing_topic = Topics.create_topic(params)
+
+      assert 2 == Topics.next_topic_number(semester.id)
+    end
 
   end
 
@@ -148,22 +211,6 @@ defmodule MsnrApi.Queries.TopicsTest do
     end
   end
 
-  describe "selected_topics_ids/1" do
-    test "success: returns a list of topic ids from a given semester" do
-      {:ok, semester} = setup_semester()
-      topics_ids = [Factory.insert(:topic).id, Factory.insert(:topic).id, Factory.insert(:topic).id]
-      groups = [Factory.insert(:group), Factory.insert(:group), Factory.insert(:group)]
 
-      for {group, topic_id} <- Enum.zip(groups, topics_ids),
-      into: [] do
-        params = %{"topic_id" => topic_id}
-        {:ok, group} = Groups.update_group(group, params)
-      end
-      ids = Topics.selected_topics_ids(semester.id)
-
-      assert topics_ids == ids
-
-    end
-  end
 
 end

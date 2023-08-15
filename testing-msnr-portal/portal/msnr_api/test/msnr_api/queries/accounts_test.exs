@@ -1,7 +1,7 @@
 defmodule MsnrApi.Queries.AccountsTest do
 
   use MsnrApi.Support.DataCase
-  alias MsnrApi.{Accounts, Accounts.User, Semesters, StudentRegistrations.StudentRegistration}
+  alias MsnrApi.{Accounts, Accounts.User, Semesters,Students, Students.Student, StudentRegistrations.StudentRegistration}
   alias Ecto.Changeset
 
   setup do
@@ -13,6 +13,43 @@ defmodule MsnrApi.Queries.AccountsTest do
 
     params = %{"is_active" => true}
     {:ok, active_semester} = Semesters.update_semester(semester, params)
+  end
+
+  describe "get_user_info" do
+    test "gets professor info" do
+      {:ok, semester} = setup_semester()
+      params = Factory.string_params_for(:user)
+               |> Map.put("role", :professor)
+
+      {:ok, %User{} = user} = Accounts.create_user(params)
+      user_from_db = Accounts.get_user!(user.id)
+
+      result = Accounts.get_user_info(email: user.email)
+      assert result.user == user_from_db
+      assert result.semester_id == semester.id
+      assert result.student_info.index_number == nil
+      assert result.student_info.group_id == nil
+    end
+
+    test "gets student info" do
+      {:ok, semester} = setup_semester()
+      params = Factory.string_params_for(:user)
+
+      {:ok, %User{} = user} = Accounts.create_user(params)
+      {:ok, %Student{} = student} = Students.create_student(user, %{"index_number" => "122345"})
+
+      user_from_db = Accounts.get_user!(user.id)
+
+      result = Accounts.get_user_info(email: user.email)
+      assert result.user == user_from_db
+      assert result.semester_id == semester.id
+      assert result.student_info.index_number == student.index_number
+      assert result.student_info.group_id == nil
+    end
+
+    test "returns nil if no record" do
+      assert nil == Accounts.get_user_info(email: "allala")
+    end
   end
 
   describe "list_users/0" do

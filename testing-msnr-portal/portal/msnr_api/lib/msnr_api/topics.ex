@@ -8,6 +8,7 @@ defmodule MsnrApi.Topics do
 
   alias MsnrApi.Topics.Topic
   alias MsnrApi.Groups.Group
+  import Ecto.Changeset
 
   @doc """
   Returns the list of topics.

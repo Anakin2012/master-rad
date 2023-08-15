@@ -1,7 +1,7 @@
 defmodule MsnrApi.Queries.ActivitiesTest do
 
   use MsnrApi.Support.DataCase
-  alias MsnrApi.{Activities, Activities.Activity}
+  alias MsnrApi.{Groups.Group, Topics, Students.StudentSemester, Groups, Semesters, Activities, Activities.Activity, ActivityTypes, ActivityTypes.ActivityType, Students, Groups}
   alias Ecto.Changeset
 
   setup do
@@ -46,14 +46,13 @@ defmodule MsnrApi.Queries.ActivitiesTest do
   end
 
   describe "create_activity/2" do
-    test "success: it inserts an activity in the db and returns the activity" do
+    test "success: it inserts a group activity in the db and returns the activity" do
 
-      semester = Factory.insert(:semester)
-      activity_type = Factory.insert(:activity_type)
-      params = Factory.string_params_for(:activity)
-              |> Map.put("activity_type_id", activity_type.id)
-
+      at_params = get_at_params("group", true, false)
+      {:ok, %ActivityType{} = activity_type} = ActivityTypes.create_activity_type(at_params)
+      {:ok, semester} = setup_semester()
       semester_id = Integer.to_string(semester.id)
+      {params, students} = prepare_activity(semester, activity_type)
 
       assert {:ok, %Activity{} = returned_activity} = Activities.create_activity(semester_id, params)
 
@@ -69,6 +68,41 @@ defmodule MsnrApi.Queries.ActivitiesTest do
       end
 
       assert activity_from_db.inserted_at == activity_from_db.updated_at
+    end
+
+    test "success: it inserts a review activity" do
+      at_params = get_at_params("review", false, false)
+      {:ok, %ActivityType{} = activity_type} = ActivityTypes.create_activity_type(at_params)
+      {:ok, semester} = setup_semester()
+      semester_id = Integer.to_string(semester.id)
+      {params, students} = prepare_activity(semester, activity_type)
+
+      setup_topic(students, semester)
+      assert {:ok, %Activity{} = returned_activity} = Activities.create_activity(semester_id, params)
+
+      activity_from_db = Repo.get(Activity, returned_activity.id)
+      assert returned_activity == activity_from_db
+
+      for {field, expected} <- params do
+        schema_field = String.to_existing_atom(field)
+        actual = Map.get(activity_from_db, schema_field)
+
+        assert actual == expected,
+          "Values did not match for field: #{field}\nexpected: #{inspect(expected)}\nactual: #{inspect(actual)}"
+      end
+
+      assert activity_from_db.inserted_at == activity_from_db.updated_at
+    end
+
+    test "error: zero divide when no topics" do
+      at_params = get_at_params("review", false, false)
+      {:ok, %ActivityType{} = activity_type} = ActivityTypes.create_activity_type(at_params)
+      {:ok, semester} = setup_semester()
+      semester_id = Integer.to_string(semester.id)
+      {params, students} = prepare_activity(semester, activity_type)
+
+      assert_raise ArithmeticError, fn ->
+        Activities.create_activity(semester_id, params) end
     end
 
     test "error: returns an error tuple when activity can't be created" do
@@ -134,6 +168,57 @@ defmodule MsnrApi.Queries.ActivitiesTest do
 
       refute Repo.get(Activity, activity.id)
     end
+  end
+
+  defp setup_topic(students, semester) do
+    params_topic = Factory.string_params_for(:topic)
+    {:ok, topic} = Topics.create_topic(params_topic)
+
+    {:ok, group} = %Group{}
+                   |> Group.changeset(%{"topic_id" => topic.id,
+                                        "semester_id" => semester.id,
+                                        "students" => students})
+                   |> Repo.insert()
+
+    Repo.update_all(StudentSemester, set: [group_id: group.id])
+  end
+
+  defp setup_semester() do
+    semester = Factory.insert(:semester)
+
+    params = %{"is_active" => true}
+    Semesters.update_semester(semester, params)
+  end
+
+  defp get_at_params(code, is_group, has_signup) do
+
+    %{"name" => "aktivnost",
+      "description" => "opis",
+      "code" => code,
+      "has_signup" => has_signup,
+      "is_group" => is_group,
+      "content" => %{"" => [""]}
+     }
+  end
+
+  defp prepare_activity(semester, activity_type) do
+
+    user1 = Factory.insert(:user)
+    user2 = Factory.insert(:user)
+    params_student = Factory.string_params_for(:student)
+                     |> Map.put("user", user1)
+    params_student2 = Factory.string_params_for(:student)
+                        |> Map.put("user", user2)
+    {:ok, student1} = Students.create_student(user1, params_student)
+    {:ok, student2} = Students.create_student(user2, params_student2)
+
+    params = Factory.string_params_for(:activity)
+               |> Map.put("semester_id", semester.id)
+               |> Map.put("activity_type_id", activity_type.id)
+               |> Map.put("is_signup", false)
+               |> Map.put("end_date", System.os_time(:second)+10000)
+
+    {params, [student1, student2]}
   end
 
 

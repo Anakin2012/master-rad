@@ -27,4 +27,6 @@ defmodule MsnrApi.Students.Student do
     |> unique_constraint([:index_number])
     |> put_assoc(:semesters, [MsnrApi.Semesters.get_active_semester!()])
   end
+
+
 end

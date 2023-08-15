@@ -10,7 +10,7 @@ defmodule MsnrApi.ActivityTypeFactory do
           content: %{"files" => [%{"name" => "CV", "extension" => ".pdf"}]},
           description: Faker.Lorem.paragraph(1),
           name: Enum.random(["Grupe", "Tema rada", "CV", "Prva verzija rada", "Recenzija", "Finalna verzija rada"]),
-          code: Enum.random(["group", "topic", "cv", "v1", "review", "vFinal"])
+          code: Enum.random(["group", "topic", "cv", "v1", "vFinal"])
         }
       end
     end

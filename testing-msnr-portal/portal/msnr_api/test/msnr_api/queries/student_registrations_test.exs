@@ -1,9 +1,8 @@
 defmodule MsnrApi.Queries.StudentRegistrationsTest do
 
   use MsnrApi.Support.DataCase
-  alias MsnrApi.{Semesters, Accounts, Accounts.User, Students.Student, Semesters.Semester, StudentRegistrations, StudentRegistrations.StudentRegistration}
+  alias MsnrApi.{Semesters, Accounts, Accounts.User, Students.Student, StudentRegistrations, StudentRegistrations.StudentRegistration}
   alias Ecto.Changeset
-  alias Ecto.Multi
 
   setup do
     Ecto.Adapters.SQL.Sandbox.checkout(MsnrApi.Repo)
@@ -13,7 +12,7 @@ defmodule MsnrApi.Queries.StudentRegistrationsTest do
     semester = Factory.insert(:semester)
 
     params = %{"is_active" => true}
-    {:ok, active_semester} = Semesters.update_semester(semester, params)
+    Semesters.update_semester(semester, params)
   end
 
   describe "list_student_registrations/1" do
@@ -96,28 +95,40 @@ defmodule MsnrApi.Queries.StudentRegistrationsTest do
   end
 
   describe "update_student_registration" do
-    test "status accepted update" do
-      setup_semester()
-      existing_sr = Factory.insert(:student_registration)
+    test "status accepted update creates user, student, and sends mail" do
+      {:ok, _} = setup_semester()
+      sr = Factory.insert(:student_registration)
 
-      multi = StudentRegistrations.update_student_registration(existing_sr, %{"status" => "accepted"})
+      assert {:ok, multi} = StudentRegistrations.update_student_registration(sr, %{"status" => "accepted"})
 
-      assert [
-        {:ok, returned_sr},
-        {:ok, %User{} = returned_user},
-        {:ok, %Student{} = returned_student},
-        {:ok}
-      ] = Multi.to_list(multi)
+      user_from_db = Accounts.list_users() |> Enum.at(0)
+      student_from_db = Repo.all(Student) |> Enum.at(0)
 
-      assert returned_user == Repo.get(User, returned_sr.id)
-      assert returned_student == Repo.get(Student, returned_student.id)
 
+      assert {user_from_db.id} == {multi.user.id}
+      assert multi.user.role == :student
+      assert {student_from_db.user_id, student_from_db.index_number} == {multi.student.user_id, multi.student.index_number}
+      assert {sr.id, :accepted} == {multi.student_registration.id, multi.student_registration.status}
+      assert multi.email == %{}
     end
 
+    test "status rejected sets status to rejected and sends mail" do
+      {:ok, _} = setup_semester()
+      sr = Factory.insert(:student_registration)
 
+      assert {:ok, multi} = StudentRegistrations.update_student_registration(sr, %{"status" => "rejected"})
+      assert multi.email == %{}
+      assert multi.student_registration.status == :rejected
+      assert multi.student_registration.id == sr.id
+    end
 
+    test "error: wrong attributes raise FunctionClauseError" do
+      {:ok, _} = setup_semester()
+      sr = Factory.insert(:student_registration)
 
-
+      assert_raise FunctionClauseError, fn ->
+        StudentRegistrations.update_student_registration(sr, %{}) end
+    end
   end
 
   describe "delete_student_registration/1" do

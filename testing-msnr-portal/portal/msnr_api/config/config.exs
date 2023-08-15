@@ -13,8 +13,9 @@ config :msnr_api,
   refresh_token_expiration: 604_800,
   # 30 minuta
   access_token_expiration: 1800,
-  documents_store: "/Users/nemanja/master/novi/msnr_api/files"
-
+  documents_store: "/Users/panap/files_msnr"
+  # "/Users/nemanja/master/novi/msnr_api/files"
+  # C:\Users\panap\files_msnr
 # Configures the endpoint
 config :msnr_api, MsnrApiWeb.Endpoint,
   url: [host: "localhost"],
