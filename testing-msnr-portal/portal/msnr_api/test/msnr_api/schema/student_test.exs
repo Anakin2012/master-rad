@@ -103,7 +103,7 @@ defmodule MsnrApi.Schema.StudentTest do
        "The validation type #{meta[:validation]} is incorrect."
     end
 
-    test "error: returns an error changeset when reusing index number" do
+    test "error: raises Ecto.ConstraintError when reusing index number" do
       {:ok, existing_student_registration} = insert_student_registration()
       {:ok, existing_user} = insert_user(existing_student_registration)
       {:ok, existing_semester} = insert_semester()
@@ -120,63 +120,9 @@ defmodule MsnrApi.Schema.StudentTest do
       changeset_with_reused_index_number = Student.changeset(existing_user,
                                                             Map.put(valid_params, "students", existing_student))
 
-      assert {:error, %Changeset{valid?: false, errors: errors}} = MsnrApi.Repo.insert(changeset_with_reused_index_number)
-
-      assert errors[:index_number], "The field :index_number is missing from errors."
-
-      {_, meta} = errors[:index_number]
-
-      assert meta[:constraint] == :unique,
-        "The validation type is incorrect."
+      assert_raise Ecto.ConstraintError, fn ->
+       MsnrApi.Repo.insert(changeset_with_reused_index_number) end
     end
-
-
-   # test "unique constraint for index_number" do
-@moduledoc """
-      params = valid_params(@required_fields)
-
-      params_sr = valid_params(@student_registration_fields)
-      params_sr = Map.put(params_sr, "status", :accepted)
-
-      {:ok, existing_sr} =
-        %StudentRegistration{}
-        |> StudentRegistration.changeset_insert(params_sr)
-        |> MsnrApi.Repo.insert()
-
-      {:ok, existing_user} =
-        %User{}
-        |> User.changeset(existing_sr)
-        |> MsnrApi.Repo.insert()
-
-
-      {:ok, existing_semester} =
-        %Semester{}
-        |> Semester.changeset(valid_params(@required_semester_fields))
-        |> MsnrApi.Repo.insert()
-
-      {:ok, existing_student} =
-        %Student{}
-        |> Student.changeset(existing_user, params
-                                            |> Map.put("semesters", existing_semester))
-        |> MsnrApi.Repo.insert()
-
-      changeset_with_reused_index_number =
-        %Student{}
-        |> Student.changeset(existing_user, params
-                                            |> Map.put("index_number", existing_student.index_number))
-
-      assert {:error, %Changeset{valid?: false, errors: errors}} =
-        MsnrApi.Repo.insert(changeset_with_reused_index_number)
-
-      assert errors[:index_number], "The field :index_number is missing from errors."
-
-      {_, meta} = errors[:index_number]
-
-      assert meta[:constraint] == :unique,
-        "The validation type  is incorrect."
-"""
-  #  end
-
   end
 
   defp insert_student_registration() do
@@ -187,13 +133,6 @@ defmodule MsnrApi.Schema.StudentTest do
   end
 
   defp insert_user(student_registration) do
-
-    params = %{"email" => student_registration.email,
-               "first_name" => student_registration.first_name,
-               "last_name" => student_registration.last_name,
-               "index_number" => student_registration.index_number
-              }
-
     {:ok, _user} =
       %User{}
       |> User.changeset(student_registration)

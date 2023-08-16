@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 23.1) (preloaded format=pdflatex 2023.4.5)  14 AUG 2023 18:58
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 23.1) (preloaded format=pdflatex 2023.4.5)  16 AUG 2023 23:05
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1133,17 +1133,13 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 ] [1
 
 
-]
-
-LaTeX Warning: Reference `chp:zakljucak' on page 2 undefined on input line 138.
-
-
-[2] [3
+] [2] [3
 
 ]
 LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 1
 56.
- (C:\Users\panap\AppData\Local\Programs\MiKTeX\tex/latex/lm\ts1lmr.fd
+
+(C:\Users\panap\AppData\Local\Programs\MiKTeX\tex/latex/lm\ts1lmr.fd
 File: ts1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on i
@@ -1169,7 +1165,7 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <5> on input line 206.
  [6]
-<piramidanova.png, id=190, 531.48563pt x 297.36093pt>
+<piramidanova.png, id=191, 531.48563pt x 297.36093pt>
 File: piramidanova.png Graphic file (type png)
 <use piramidanova.png>
 Package pdftex.def Info: piramidanova.png  used on input line 212.
@@ -1178,24 +1174,24 @@ Package pdftex.def Info: piramidanova.png  used on input line 212.
 [14] Excluding 'comment' comment. [15] [16] [17
 
 ] [18]
-<msnr-arch.png, id=325, 714.16812pt x 287.57437pt>
+<msnr-arch.png, id=326, 714.16812pt x 287.57437pt>
 File: msnr-arch.png Graphic file (type png)
 <use msnr-arch.png>
 Package pdftex.def Info: msnr-arch.png  used on input line 406.
 (pdftex.def)             Requested size: 383.3974pt x 154.38391pt.
-<msnr-str.png, id=331, 316.93407pt x 587.94656pt>
+<msnr-str.png, id=332, 316.93407pt x 587.94656pt>
 File: msnr-str.png Graphic file (type png)
 <use msnr-str.png>
 Package pdftex.def Info: msnr-str.png  used on input line 415.
 (pdftex.def)             Requested size: 213.0pt x 395.15123pt.
  [19 <./msnr-arch.png>]
 [20 <./msnr-str.png>]
-<elmprog.png, id=355, 278.03876pt x 182.6825pt>
+<elmprog.png, id=356, 278.03876pt x 182.6825pt>
 File: elmprog.png Graphic file (type png)
 <use elmprog.png>
 Package pdftex.def Info: elmprog.png  used on input line 429.
 (pdftex.def)             Requested size: 170.3974pt x 111.9602pt.
-<msnr-elm.png, id=359, 337.26pt x 395.22656pt>
+<msnr-elm.png, id=360, 337.26pt x 395.22656pt>
 File: msnr-elm.png Graphic file (type png)
 <use msnr-elm.png>
 Package pdftex.def Info: msnr-elm.png  used on input line 440.
@@ -1302,12 +1298,12 @@ to-ri-ju-mu \T1/lmr/m/it/12 msnr_api\test\msnr_api_web\controllers\T1/lmr/m/n/1
 [55] [56
 
 ] [57] [58]
-<elmpass.png, id=1164, 661.97313pt x 197.23688pt>
+<elmpass.png, id=1165, 661.97313pt x 197.23688pt>
 File: elmpass.png Graphic file (type png)
 <use elmpass.png>
 Package pdftex.def Info: elmpass.png  used on input line 1314.
 (pdftex.def)             Requested size: 383.3974pt x 114.23192pt.
-<elmfail.png, id=1165, 663.98062pt x 359.84438pt>
+<elmfail.png, id=1166, 663.98062pt x 359.84438pt>
 File: elmfail.png Graphic file (type png)
 <use elmfail.png>
 Package pdftex.def Info: elmfail.png  used on input line 1321.
@@ -1318,7 +1314,7 @@ Overfull \hbox (1.22586pt too wide) in paragraph at lines 1366--1384
  []
 
 [61] [62] [63] [64] [65]
-<expfail.png, id=1290, 413.545pt x 320.19624pt>
+<expfail.png, id=1291, 413.545pt x 320.19624pt>
 File: expfail.png Graphic file (type png)
 <use expfail.png>
 Package pdftex.def Info: expfail.png  used on input line 1479.
@@ -1364,9 +1360,6 @@ LaTeX Font Warning: Size substitutions with differences
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
-
-LaTeX Warning: There were undefined references.
-
 Package rerunfilecheck Info: File `AnaPetrovicMasterRad.out' has not changed.
 (rerunfilecheck)             Checksum: 886B7E46AFEE5F0A63150933EAD7926E;3729.
  ) 
@@ -1401,9 +1394,9 @@ fonts/type1/public/lm/lmr8.pfb><C:/Users/panap/AppData/Local/Programs/MiKTeX/fo
 nts/type1/public/lm/lmri10.pfb><C:/Users/panap/AppData/Local/Programs/MiKTeX/fo
 nts/type1/public/lm/lmri12.pfb><C:/Users/panap/AppData/Local/Programs/MiKTeX/fo
 nts/type1/public/lm/lmsy10.pfb>
-Output written on AnaPetrovicMasterRad.pdf (81 pages, 952817 bytes).
+Output written on AnaPetrovicMasterRad.pdf (81 pages, 952827 bytes).
 PDF statistics:
- 1815 PDF objects out of 2073 (max. 8388607)
+ 1816 PDF objects out of 2073 (max. 8388607)
  932 named destinations out of 1000 (max. 500000)
  198 words of extra memory for PDF output out of 10000 (max. 10000000)
 

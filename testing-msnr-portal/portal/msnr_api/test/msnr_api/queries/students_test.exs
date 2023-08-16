@@ -26,32 +26,12 @@ defmodule MsnrApi.Queries.SemestersTest do
       student1 = Factory.insert(:student, user_id: user1.id, semesters: [active_semester], user: user1)
       student2 = Factory.insert(:student, user_id: user2.id, semesters: [active_semester], user: user2)
 
-      {:ok, student_semester1} =
-        %StudentSemester{}
-          |> StudentSemester.changeset(%{"student_id" => student1.user_id, "semester_id" => active_semester.id, "student" => student1})
-          |> MsnrApi.Repo.insert()
+      student_list = Enum.map(Students.list_students(active_semester.id), fn(x) -> x.student end)
 
-      {:ok, student_semester2} =
-        %StudentSemester{}
-          |> StudentSemester.changeset(%{"student_id" => student2.user_id, "semester_id" => active_semester.id, "student" => student2})
-          |> MsnrApi.Repo.insert()
+      just_students = Enum.map(student_list, fn(x) -> Map.drop(x, [:semesters, :user]) end)
+      just_students_expected = Enum.map([student1, student2], fn(x) -> Map.drop(x, [:semesters, :user]) end)
+      assert just_students_expected == just_students
 
-      students = [student_semester1 |> Map.from_struct()
-                                    |> Map.drop([:student]),
-                  student_semester2 |> Map.from_struct()
-                                    |> Map.drop([:student])]
-
-      assert retrieved_students = Students.list_students(active_semester.id)
-
-      f = hd(retrieved_students)
-          |> Map.from_struct()
-          |> Map.drop([:student])
-
-      s = List.last(retrieved_students)
-          |> Map.from_struct()
-          |> Map.drop([:student])
-
-      assert [f, s] == students
     end
 
     test "empty when no students" do

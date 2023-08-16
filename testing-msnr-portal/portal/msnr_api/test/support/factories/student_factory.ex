@@ -2,6 +2,7 @@ defmodule MsnrApi.StudentFactory do
 
   alias MsnrApi.Queries.StudentsTest
   alias MsnrApi.Students.Student
+  alias MsnrApi.Accounts.User
   alias MsnrApi.Semesters
 
   defmacro __using__(_opts) do
@@ -11,6 +12,7 @@ defmodule MsnrApi.StudentFactory do
           index_number: List.to_string(Faker.Lorem.characters(9))
         }
       end
+
     end
   end
 end

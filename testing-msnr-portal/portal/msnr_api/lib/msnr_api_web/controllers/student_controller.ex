@@ -5,8 +5,15 @@ defmodule MsnrApiWeb.StudentController do
 
   action_fallback MsnrApiWeb.FallbackController
 
+ # def index(conn, %{"semester_id" => semester_id}) do
+  #  students = Students.list_students(semester_id)
+  #  render(conn, "index.json", students: students)
+ # end
+
+  @students_fn &Students.list_students/1
+
   def index(conn, %{"semester_id" => semester_id}) do
-    students = Students.list_students(semester_id)
+    students = @students_fn.(semester_id)
     render(conn, "index.json", students: students)
   end
 

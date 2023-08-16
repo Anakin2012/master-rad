@@ -12,7 +12,49 @@ defmodule MsnrApi.Queries.AccountsTest do
     semester = Factory.insert(:semester)
 
     params = %{"is_active" => true}
-    {:ok, active_semester} = Semesters.update_semester(semester, params)
+    Semesters.update_semester(semester, params)
+  end
+
+  describe "authenticate/2" do
+    test "success: authenticates student user with email and password" do
+      setup_semester()
+      params = Factory.string_params_for(:user)
+
+      {:ok, %User{} = user} = Accounts.create_user(params)
+      {:ok, _} = Students.create_student(user, %{"index_number" => "122345"})
+
+      assert {:ok, returned_user} = Accounts.set_password(user, "somepass")
+
+      assert {:ok, user_info} = Accounts.authenticate(user.email, "somepass")
+      assert user_info.user.password == nil
+      assert user_info.user.hashed_password == returned_user.hashed_password
+    end
+
+    test "success: authenticates professor user" do
+      setup_semester()
+      params = Factory.string_params_for(:user)
+               |> Map.put("role", :professor)
+
+      {:ok, %User{} = user} = Accounts.create_user(params)
+      assert {:ok, returned_user} = Accounts.set_password(user, "somepass")
+
+      assert {:ok, user_info} = Accounts.authenticate(user.email, "somepass")
+      assert user_info.user.password == nil
+      assert user_info.user.hashed_password == returned_user.hashed_password
+    end
+
+    test "error: unauthorized" do
+      setup_semester()
+      params = Factory.string_params_for(:user)
+
+      {:ok, %User{} = user} = Accounts.create_user(params)
+      {:ok, _} = Students.create_student(user, %{"index_number" => "122345"})
+
+      assert {:ok, _} = Accounts.set_password(user, "somepass")
+      assert {:error, :unauthorized} == Accounts.authenticate(user.email, "somepasss")
+
+      assert {:error, :unauthorized} == Accounts.authenticate("email", "somepass")
+    end
   end
 
   describe "get_user_info" do
@@ -250,16 +292,19 @@ defmodule MsnrApi.Queries.AccountsTest do
 
   describe "verify_user/1 with id and refresh token" do
     test "success: returns an authorized user with professor role" do
-      setup_semester()
+      {:ok, semester} = setup_semester()
       params = Factory.string_params_for(:user)
                |> Map.put("role", :professor)
 
       assert {:ok, %User{} = professor} = Accounts.create_user(params)
 
-      params = %{id: professor.id,
-                 refresh_token: professor.refresh_token}
+      id_and_token = %{id: professor.id,
+                       refresh_token: professor.refresh_token}
 
-      assert {:ok, user_info} = Accounts.verify_user(params)
+      assert {:ok, user_info} = Accounts.verify_user(id_and_token)
+      assert user_info.semester_id == semester.id
+      assert user_info.student_info.index_number == nil
+      assert user_info.user == professor
     end
 
     test "success: returns an authorized user with student role" do
@@ -268,9 +313,15 @@ defmodule MsnrApi.Queries.AccountsTest do
       params = Factory.string_params_for(:user)
                |> Map.put("role", :student)
 
-      assert {:ok, %User{} = student} = Accounts.create_user(params)
+      {:ok, %User{} = user} = Accounts.create_user(params)
+      {:ok, %Student{} = student} = Students.create_student(user, %{"index_number" => "122345"})
 
+      id_and_token = %{id: student.user_id,
+                       refresh_token: user.refresh_token}
 
+      assert{:ok, user_info} = Accounts.verify_user(id_and_token)
+      assert user_info.student_info.index_number == student.index_number
+      assert user_info.user == user
     end
 
     test "error: returns an error tuple when user can't be authorized" do

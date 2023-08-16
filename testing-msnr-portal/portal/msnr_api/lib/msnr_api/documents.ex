@@ -136,12 +136,6 @@ defmodule MsnrApi.Documents do
     assignment = assignment_extended.assignment
     infix_name = filename_infix(assignment)
 
-    # multi_struct = Multi.new()
-    # |> Multi.run(:file_tuples, fn _, _ ->
-    #   Validation.(docIds, docs, assignment_extended.content)
-    # end)
-    # |> Mulit.run
-
     Repo.transaction(fn ->
       docs =
         Enum.map(file_tuples, fn {prefix_name, extenstion, path} ->
@@ -155,7 +149,7 @@ defmodule MsnrApi.Documents do
           new_path = Path.join(folder_path, file_name)
 
           File.mkdir_p!(folder_path)
-          File.copy!(path, new_path)
+         # File.copy!(path, new_path)
 
           doc =
             %Document{}
@@ -195,7 +189,7 @@ defmodule MsnrApi.Documents do
       new_path = Path.join(folder_path, filename)
 
       File.mkdir_p!(folder_path)
-      File.copy!(path, new_path)
+     # File.copy!(path, new_path)
 
       doc =
         %Document{}

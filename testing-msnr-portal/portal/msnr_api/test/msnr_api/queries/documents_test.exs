@@ -1,9 +1,10 @@
 defmodule MsnrApi.Queries.DocumentsTest do
 
   use MsnrApi.Support.DataCase
-  alias MsnrApi.{Documents, Documents.Document, Semesters, ActivityTypes, Activities, Students}
-  alias MsnrApi.{Assignments.AssignmentDocument, Assignments, Topics, Groups, Groups.Group}
+  alias MsnrApi.{Documents, Documents.Document, Accounts, Semesters, ActivityTypes, Activities, Students}
+  alias MsnrApi.{Assignments.AssignmentDocument, Assignments.Assignment, Topics, Groups, Groups.Group}
   alias Ecto.Changeset
+  alias MsnrApi.Accounts.TokenPayload
 
   setup do
     Ecto.Adapters.SQL.Sandbox.checkout(MsnrApi.Repo)
@@ -149,25 +150,108 @@ defmodule MsnrApi.Queries.DocumentsTest do
     end
   end
 
+  describe "create_document/1 with tokenpayload" do
+    test "creates a document for assignment and current user" do
+      {:ok, semester} = setup_semester()
+      params_at = Factory.string_params_for(:activity_type)
+                  |> Map.put("is_group", false)
+                  |> Map.put("code", "cv")
+                  |> Map.put("name", "CV")
+
+      {:ok, activity_type} = ActivityTypes.create_activity_type(params_at)
+      params_prof = Factory.string_params_for(:user)
+                    |> Map.put("role", :professor)
+
+      {:ok, user} = Accounts.create_user(params_prof)
+      params_student = Factory.string_params_for(:student)
+                       |> Map.put("user", user)
+
+      {:ok, student} = Students.create_student(user, params_student)
+      params = Factory.string_params_for(:activity)
+                 |> Map.put("semester_id", semester.id)
+                 |> Map.put("activity_type_id", activity_type.id)
+                 |> Map.put("is_signup", false)
+                 |> Map.put("end_date", System.os_time(:second)+100000)
+
+
+      {:ok, activity} = Activities.create_activity(Integer.to_string(semester.id), params)
+      assignment_id = Enum.map(Repo.all(Assignment), fn(x) -> x.id end)
+                      |> Enum.at(0)
+
+      user_info = Accounts.get_user_info(id: user.id)
+      token_payload = TokenPayload.from_user_info(%{user: user, student_info: user_info.student_info, semester_id: semester.id})
+
+      {:ok, document} = Documents.create_document(assignment_id, %{filename: "naslov",
+                                                            path: "/Users/panap/files"},
+                                                            token_payload)
+      document_from_db = Repo.get(Document, document.id)
+
+      assert document_from_db == document
+
+      assignmentDoc = Repo.all(MsnrApi.Assignments.AssignmentDocument)
+                      |> Enum.at(0)
+
+      assert document.id == assignmentDoc.document_id
+      assert assignment_id == assignmentDoc.assignment_id
+      assert assignmentDoc.attached == true
+    end
+
+    test "error: invalid params" do
+      user = Factory.insert(:user)
+      assert_raise FunctionClauseError, fn -> Documents.create_document(-1, %{filename: "naslov",
+                                             path: "/Users/panap/files"},
+                                             user) end
+    end
+
+    test "error: invalid path" do
+      #TODO
+    end
+  end
+
   describe "create_documents/3" do
     test "success: creates documents" do
-
-      assignment = Factory.insert(:assignment)
       {:ok, semester} = setup_semester()
-      activity_type = Factory.insert(:activity_type)
-      activity = Factory.insert(:activity)
+      params_at = Factory.string_params_for(:activity_type)
+                  |> Map.put("is_group", false)
+                  |> Map.put("code", "v1")
+                  |> Map.put("name", "Prva verzija")
 
-      user = Factory.insert(:user)
+      {:ok, activity_type} = ActivityTypes.create_activity_type(params_at)
 
-      assignment_extended =  %{
-                          assignment: assignment,
-                          semester_year: semester.year,
-                          start_date: activity.start_date,
-                          end_date: activity.end_date,
-                          content: activity_type.content,
-                          name: "CV"
-                          }
+      params_prof = Factory.string_params_for(:user)
+                    |> Map.put("role", :student)
 
+      {:ok, user} = Accounts.create_user(params_prof)
+      params_student = Factory.string_params_for(:student)
+                       |> Map.put("user", user)
+
+      {:ok, student} = Students.create_student(user, params_student)
+      params = Factory.string_params_for(:activity)
+                 |> Map.put("semester_id", semester.id)
+                 |> Map.put("activity_type_id", activity_type.id)
+                 |> Map.put("is_signup", false)
+                 |> Map.put("end_date", System.os_time(:second)+100000)
+
+
+      {:ok, activity} = Activities.create_activity(Integer.to_string(semester.id), params)
+
+      assignment_id = Enum.map(Repo.all(Assignment), fn(x) -> x.id end)
+                      |> Enum.at(0)
+
+      extended = %{
+        assignment: Repo.get(Assignment, assignment_id),
+        semester_year: semester.year,
+        start_date: activity.start_date,
+        end_date: activity.end_date,
+        content: activity_type.content,
+        name: activity_type.name
+      }
+
+      user_info = Accounts.get_user_info(id: user.id)
+      token_payload = TokenPayload.from_user_info(%{user: user, student_info: user_info.student_info, semester_id: semester.id})
+
+      file_tuples = [%{"name" => "file1", "extension" => ".txt", "path" => "/path/to/file1.txt"}]
+      assert [] == Documents.create_documents(file_tuples, extended, token_payload)
       assert true
       # TODO !!!
 

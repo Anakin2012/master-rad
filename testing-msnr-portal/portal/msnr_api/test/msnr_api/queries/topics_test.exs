@@ -1,7 +1,7 @@
 defmodule MsnrApi.Queries.TopicsTest do
 
   use MsnrApi.Support.DataCase
-  alias MsnrApi.{Semesters, Semesters.Semester, Topics, Topics.Topic, Groups, Groups.Group, Students}
+  alias MsnrApi.{Semesters, Topics, Topics.Topic, Groups.Group, Students}
   alias MsnrApi.{Students.StudentSemester}
   alias Ecto.Changeset
 
@@ -13,7 +13,7 @@ defmodule MsnrApi.Queries.TopicsTest do
     semester = Factory.insert(:semester)
 
     params = %{"is_active" => true}
-    {:ok, active_semester} = Semesters.update_semester(semester, params)
+    Semesters.update_semester(semester, params)
   end
 
   describe "list_topics/1" do
@@ -22,7 +22,7 @@ defmodule MsnrApi.Queries.TopicsTest do
       {:ok, semester} = setup_semester()
       params_topic = Factory.string_params_for(:topic)
       {:ok, topic} = Topics.create_topic(params_topic)
-      {:ok, group} =   %Group{}
+      {:ok, _} =   %Group{}
                       |> Group.changeset(%{"topic_id" => topic.id})
                       |> Repo.insert()
 
@@ -192,7 +192,7 @@ defmodule MsnrApi.Queries.TopicsTest do
       {:ok, semester} = setup_semester()
       params = Factory.string_params_for(:topic)
 
-      existing_topic = Topics.create_topic(params)
+      _ = Topics.create_topic(params)
 
       assert 2 == Topics.next_topic_number(semester.id)
     end

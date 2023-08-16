@@ -1,7 +1,6 @@
 defmodule MsnrApi.Queries.AssignmentsTest do
 
   use MsnrApi.Support.DataCase
-  alias Protocol.UndefinedError
   alias MsnrApi.{Semesters, Assignments, Assignments.Assignment, Activities}
   alias Ecto.Changeset
   alias MsnrApi.Students
@@ -103,7 +102,7 @@ defmodule MsnrApi.Queries.AssignmentsTest do
       activity_type = Factory.insert(:activity_type)
       user = Factory.insert(:user)
       params_student = Factory.string_params_for(:student)
-      {:ok, student} = Students.create_student(user, params_student)
+      {:ok, _} = Students.create_student(user, params_student)
 
       params = Factory.string_params_for(:activity)
                |> Map.put("semester_id", active_semester.id)
@@ -111,7 +110,7 @@ defmodule MsnrApi.Queries.AssignmentsTest do
                |> Map.put("is_signup", false)
                |> Map.put("is_group", false)
 
-      {:ok, activity} = Activities.create_activity(Integer.to_string(active_semester.id), params)
+      {:ok, _} = Activities.create_activity(Integer.to_string(active_semester.id), params)
       resultList = Assignments.list_assignments(%{"semester_id" => active_semester.id})
       assignment = Enum.at(resultList, 0)
 
@@ -233,7 +232,7 @@ defmodule MsnrApi.Queries.AssignmentsTest do
       activity_type = Factory.insert(:activity_type)
       user = Factory.insert(:user)
       params_student = Factory.string_params_for(:student)
-      {:ok, student} = Students.create_student(user, params_student)
+      {:ok, _} = Students.create_student(user, params_student)
 
       params = Factory.string_params_for(:activity)
                |> Map.put("semester_id", active_semester.id)
@@ -241,7 +240,7 @@ defmodule MsnrApi.Queries.AssignmentsTest do
                |> Map.put("is_signup", true)
                |> Map.put("is_group", false)
 
-      {:ok, activity} = Activities.create_activity(Integer.to_string(active_semester.id), params)
+      {:ok, _} = Activities.create_activity(Integer.to_string(active_semester.id), params)
       resultList = Assignments.list_assignments(%{"semester_id" => active_semester.id})
       assignment = Enum.at(resultList, 0)
 
@@ -253,7 +252,7 @@ defmodule MsnrApi.Queries.AssignmentsTest do
       activity_type = Factory.insert(:activity_type)
       user = Factory.insert(:user)
       params_student = Factory.string_params_for(:student)
-      {:ok, student} = Students.create_student(user, params_student)
+      {:ok, _} = Students.create_student(user, params_student)
 
       params = Factory.string_params_for(:activity)
                |> Map.put("semester_id", active_semester.id)
@@ -261,7 +260,7 @@ defmodule MsnrApi.Queries.AssignmentsTest do
                |> Map.put("is_signup", false)
                |> Map.put("is_group", false)
 
-      {:ok, activity} = Activities.create_activity(Integer.to_string(active_semester.id), params)
+      {:ok, _} = Activities.create_activity(Integer.to_string(active_semester.id), params)
       resultList = Assignments.list_assignments(%{"semester_id" => active_semester.id})
       assignment = Enum.at(resultList, 0)
 

@@ -1,7 +1,7 @@
 defmodule MsnrApi.Queries.ActivitiesTest do
 
   use MsnrApi.Support.DataCase
-  alias MsnrApi.{Groups.Group, Topics, Students.StudentSemester, Groups, Semesters, Activities, Activities.Activity, ActivityTypes, ActivityTypes.ActivityType, Students, Groups}
+  alias MsnrApi.{Groups.Group, Topics, Students.StudentSemester, Semesters, Activities, Activities.Activity, ActivityTypes, ActivityTypes.ActivityType, Students}
   alias Ecto.Changeset
 
   setup do
@@ -52,7 +52,7 @@ defmodule MsnrApi.Queries.ActivitiesTest do
       {:ok, %ActivityType{} = activity_type} = ActivityTypes.create_activity_type(at_params)
       {:ok, semester} = setup_semester()
       semester_id = Integer.to_string(semester.id)
-      {params, students} = prepare_activity(semester, activity_type)
+      {params, _} = prepare_activity(semester, activity_type)
 
       assert {:ok, %Activity{} = returned_activity} = Activities.create_activity(semester_id, params)
 
@@ -99,7 +99,7 @@ defmodule MsnrApi.Queries.ActivitiesTest do
       {:ok, %ActivityType{} = activity_type} = ActivityTypes.create_activity_type(at_params)
       {:ok, semester} = setup_semester()
       semester_id = Integer.to_string(semester.id)
-      {params, students} = prepare_activity(semester, activity_type)
+      {params, _} = prepare_activity(semester, activity_type)
 
       assert_raise ArithmeticError, fn ->
         Activities.create_activity(semester_id, params) end

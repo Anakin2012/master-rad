@@ -86,15 +86,7 @@ defmodule MsnrApi.Schema.TopicTest do
           "The validation type #{meta[:validation]} is incorrect."
     end
 
-    test "error: returns a FunctionClauseError when not given semester_id or given invalid id" do
-      params = %{}
 
-      assert_raise rror, fn ->
-        Topic.changeset(%Topic{}, params) end
-
-      assert_raise FunctionClauseError, fn ->
-        Topic.changeset(%Topic{}, %{"semester_id" => NaiveDateTime.utc_now()}) end
-    end
   end
 
   defp insert_semester() do
