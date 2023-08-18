@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 23.1) (preloaded format=pdflatex 2023.4.5)  16 AUG 2023 23:05
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 23.1) (preloaded format=pdflatex 2023.4.5)  18 AUG 2023 21:24
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1133,19 +1133,107 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 ] [1
 
 
-] [2] [3
-
-]
+] [2]
 LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 1
 56.
 
 (C:\Users\panap\AppData\Local\Programs\MiKTeX\tex/latex/lm\ts1lmr.fd
 File: ts1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
-)
+) [3
+
+]
+Underfull \hbox (badness 10000) in paragraph at lines 171--172
+
+ []
+
 Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on i
-nput line 172.
+nput line 174.
+
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 173--185
+[]$[]$ 
+ []
+
+[4]
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 190--197
+[]$[]$ 
+ []
+
+[5] [6]
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <10> on input line 211.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <7> on input line 211.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <5> on input line 211.
+<piramidanova.png, id=186, 531.48563pt x 297.36093pt>
+File: piramidanova.png Graphic file (type png)
+<use piramidanova.png>
+Package pdftex.def Info: piramidanova.png  used on input line 217.
+(pdftex.def)             Requested size: 340.8013pt x 190.67787pt.
+ [7 <./piramidanova.png>]
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 232--255
+[]$[]$ 
+ []
+
+[8] [9] [10] [11] [12]
+Underfull \hbox (badness 10000) in paragraph at lines 294--295
+
+ []
+
+
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 296--306
+[]$[]$ 
+ []
+
+[13] [14]
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 318--335
+[]$[]$ 
+ []
+
+
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 340--351
+[]$[]$ 
+ []
+
+[15] [16] Excluding 'comment' comment. [17]
+<student-page.png, id=326, 961.09062pt x 477.28313pt>
+File: student-page.png Graphic file (type png)
+<use student-page.png>
+Package pdftex.def Info: student-page.png  used on input line 403.
+(pdftex.def)             Requested size: 383.3974pt x 190.40007pt.
+<professor-page.png, id=329, 962.59625pt x 480.29437pt>
+File: professor-page.png Graphic file (type png)
+<use professor-page.png>
+Package pdftex.def Info: professor-page.png  used on input line 410.
+(pdftex.def)             Requested size: 383.3974pt x 191.29352pt.
+ [18
+
+] [19 <./student-page.png> <./professor-page.png>]
+<msnr-arch.png, id=351, 714.16812pt x 287.57437pt>
+File: msnr-arch.png Graphic file (type png)
+<use msnr-arch.png>
+Package pdftex.def Info: msnr-arch.png  used on input line 449.
+(pdftex.def)             Requested size: 383.3974pt x 154.38391pt.
+ [20]
+<msnr-str.png, id=363, 316.93407pt x 587.94656pt>
+File: msnr-str.png Graphic file (type png)
+<use msnr-str.png>
+Package pdftex.def Info: msnr-str.png  used on input line 458.
+(pdftex.def)             Requested size: 213.0pt x 395.15123pt.
+ [21 <./msnr-arch.png>] [22 <./msnr-str.png>]
+<elmprog.png, id=387, 278.03876pt x 182.6825pt>
+File: elmprog.png Graphic file (type png)
+<use elmprog.png>
+Package pdftex.def Info: elmprog.png  used on input line 472.
+(pdftex.def)             Requested size: 170.3974pt x 111.9602pt.
+<msnr-elm.png, id=391, 337.26pt x 395.22656pt>
+File: msnr-elm.png Graphic file (type png)
+<use msnr-elm.png>
+Package pdftex.def Info: msnr-elm.png  used on input line 483.
+(pdftex.def)             Requested size: 255.6026pt x 299.53703pt.
+ [23 <./elmprog.png>] [24 <./msnr-elm.png>] [25]
 LaTeX Font Info:    Trying to load font information for T1+DejaVuSansMono-TLF o
-n input line 172.
+n input line 502.
 
 (C:\Users\panap\AppData\Local\Programs\MiKTeX\tex/latex/dejavu\t1dejavusansmono
 -tlf.fd
@@ -1153,176 +1241,514 @@ File: T1DejaVuSansMono-TLF.fd 2011/06/01 Font definitions for T1/DejaVuSansMono
 -TLF.
 )
 LaTeX Font Info:    Font shape `T1/DejaVuSansMono-TLF/m/n' will be
-(Font)              scaled to size 10.79993pt on input line 172.
- [4]
-LaTeX Font Info:    Font shape `T1/DejaVuSansMono-TLF/m/n' will be
-(Font)              scaled to size 9.85492pt on input line 187.
- [5]
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10> on input line 206.
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <7> on input line 206.
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <5> on input line 206.
- [6]
-<piramidanova.png, id=191, 531.48563pt x 297.36093pt>
-File: piramidanova.png Graphic file (type png)
-<use piramidanova.png>
-Package pdftex.def Info: piramidanova.png  used on input line 212.
-(pdftex.def)             Requested size: 340.8013pt x 190.67787pt.
- [7 <./piramidanova.png>] [8] [9] [10] [11] [12] [13]
-[14] Excluding 'comment' comment. [15] [16] [17
+(Font)              scaled to size 10.79993pt on input line 502.
 
-] [18]
-<msnr-arch.png, id=326, 714.16812pt x 287.57437pt>
-File: msnr-arch.png Graphic file (type png)
-<use msnr-arch.png>
-Package pdftex.def Info: msnr-arch.png  used on input line 406.
-(pdftex.def)             Requested size: 383.3974pt x 154.38391pt.
-<msnr-str.png, id=332, 316.93407pt x 587.94656pt>
-File: msnr-str.png Graphic file (type png)
-<use msnr-str.png>
-Package pdftex.def Info: msnr-str.png  used on input line 415.
-(pdftex.def)             Requested size: 213.0pt x 395.15123pt.
- [19 <./msnr-arch.png>]
-[20 <./msnr-str.png>]
-<elmprog.png, id=356, 278.03876pt x 182.6825pt>
-File: elmprog.png Graphic file (type png)
-<use elmprog.png>
-Package pdftex.def Info: elmprog.png  used on input line 429.
-(pdftex.def)             Requested size: 170.3974pt x 111.9602pt.
-<msnr-elm.png, id=360, 337.26pt x 395.22656pt>
-File: msnr-elm.png Graphic file (type png)
-<use msnr-elm.png>
-Package pdftex.def Info: msnr-elm.png  used on input line 440.
-(pdftex.def)             Requested size: 255.6026pt x 299.53703pt.
- [21 <./elmprog.png>] [22 <./msnr-elm.png>] [23] [24
+Underfull \hbox (badness 10000) in paragraph at lines 507--508
+
+ []
+
+
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 509--516
+[]$[]$ 
+ []
+
+[26
 
 ]
 LaTeX Font Info:    Font shape `T1/DejaVuSansMono-TLF/m/n' will be
-(Font)              scaled to size 8.09995pt on input line 474.
+(Font)              scaled to size 8.09995pt on input line 520.
 
-[25] [26] [27] [28] [29] [30] [31] [32]
-Underfull \hbox (badness 5475) in paragraph at lines 671--672
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 519--530
+[]$[]$ 
+ []
+
+[27]
+Underfull \hbox (badness 10000) in paragraph at lines 537--538
+
+ []
+
+
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 540--562
+[]$[]$ 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 563--564
+
+ []
+
+
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 565--581
+[]$[]$ 
+ []
+
+[28]
+Underfull \hbox (badness 10000) in paragraph at lines 592--593
+
+ []
+
+
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 594--606
+[]$[]$ 
+ []
+
+[29] [30]
+Underfull \hbox (badness 10000) in paragraph at lines 615--616
+
+ []
+
+
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 617--628
+[]$[]$ 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 630--631
+
+ []
+
+
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 632--651
+[]$[]$ 
+ []
+
+[31]
+Underfull \hbox (badness 10000) in paragraph at lines 653--654
+
+ []
+
+
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 655--668
+[]$[]$ 
+ []
+
+[32]
+Underfull \hbox (badness 10000) in paragraph at lines 672--673
+
+ []
+
+[33]
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 674--685
+[]$[]$ 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 686--687
+
+ []
+
+
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 689--702
+[]$[]$ 
+ []
+
+[34]
+Underfull \hbox (badness 5475) in paragraph at lines 716--717
 []|\T1/lmr/m/n/10.95 generisanje na-su-mi£-nih
  []
 
 
-Underfull \hbox (badness 2538) in paragraph at lines 671--672
+Underfull \hbox (badness 2538) in paragraph at lines 716--717
 \T1/lmr/m/n/10.95 £e-ni-ca ili po-je-di-na£-nih
  []
 
 
-Underfull \hbox (badness 5475) in paragraph at lines 673--674
+Underfull \hbox (badness 5475) in paragraph at lines 718--719
 []|\T1/lmr/m/n/10.95 generisanje na-su-mi£-nih
  []
 
 
-Overfull \hbox (2.49345pt too wide) in paragraph at lines 675--675
+Overfull \hbox (2.49345pt too wide) in paragraph at lines 720--720
 []|\T1/lmr/bx/it/12 Faker.Internet| 
  []
 
 
-Underfull \hbox (badness 5475) in paragraph at lines 675--676
+Underfull \hbox (badness 5475) in paragraph at lines 720--721
 []|\T1/lmr/m/n/10.95 generisanje na-su-mi£-nih
  []
 
 
-Overfull \hbox (3.21916pt too wide) in paragraph at lines 677--677
+Overfull \hbox (3.21916pt too wide) in paragraph at lines 722--722
 []|\T1/lmr/bx/it/12 Faker.Random| 
  []
 
 
-Underfull \hbox (badness 5475) in paragraph at lines 677--678
+Underfull \hbox (badness 5475) in paragraph at lines 722--723
 []|\T1/lmr/m/n/10.95 generisanje na-su-mi£-nih
  []
 
 
-Underfull \hbox (badness 5475) in paragraph at lines 679--680
+Underfull \hbox (badness 5475) in paragraph at lines 724--725
 []|\T1/lmr/m/n/10.95 generisanje na-su-mi£-nih
  []
 
 
-Underfull \hbox (badness 5475) in paragraph at lines 681--682
+Underfull \hbox (badness 5475) in paragraph at lines 726--727
 []|\T1/lmr/m/n/10.95 generisanje na-su-mi£-nih
  []
 
 
-Underfull \hbox (badness 4621) in paragraph at lines 681--682
+Underfull \hbox (badness 4621) in paragraph at lines 726--727
 \T1/lmr/m/n/10.95 da-tu-ma odre-že-ni broj
  []
 
-[33] [34] [35] [36] [37] [38] [39]
-Underfull \hbox (badness 2401) in paragraph at lines 853--854
+
+Underfull \hbox (badness 10000) in paragraph at lines 734--735
+
+ []
+
+[35]
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 736--751
+[]$[]$ 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 754--755
+
+ []
+
+
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 756--769
+[]$[]$ 
+ []
+
+[36]
+Underfull \hbox (badness 10000) in paragraph at lines 770--771
+
+ []
+
+
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 772--787
+[]$[]$ 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 788--789
+
+ []
+
+[37]
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 790--807
+[]$[]$ 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 808--809
+
+ []
+
+[38]
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 810--836
+[]$[]$ 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 838--839
+
+ []
+
+[39]
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 840--858
+[]$[]$ 
+ []
+
+
+Underfull \hbox (badness 2401) in paragraph at lines 872--873
 []|\T1/lmr/m/n/10.95 Kreira no-vu fa-bri-ku i
  []
 
 
-Underfull \hbox (badness 2401) in paragraph at lines 857--858
+Underfull \hbox (badness 2401) in paragraph at lines 876--877
 []|\T1/lmr/m/n/10.95 Kreira no-vu fa-bri-ku i
  []
 
 
-Underfull \hbox (badness 2401) in paragraph at lines 859--860
+Underfull \hbox (badness 2401) in paragraph at lines 878--879
 []|\T1/lmr/m/n/10.95 Kreira no-vu fa-bri-ku i
  []
 
 
-Underfull \hbox (badness 1281) in paragraph at lines 859--860
+Underfull \hbox (badness 1281) in paragraph at lines 878--879
 \T1/lmr/m/n/10.95 ci-je pri-pa-da-nja dru-gim
  []
 
 
-Underfull \hbox (badness 2401) in paragraph at lines 861--862
+Underfull \hbox (badness 2401) in paragraph at lines 880--881
 []|\T1/lmr/m/n/10.95 Kreira no-vu fa-bri-ku i
  []
 
 
-Overfull \hbox (1.22586pt too wide) in paragraph at lines 849--865
+Overfull \hbox (1.22586pt too wide) in paragraph at lines 868--884
  [] 
  []
 
-[40] [41] [42] [43] [44] [45] [46] [47] [48] [49]
-Overfull \hbox (26.4699pt too wide) in paragraph at lines 1127--1128
+
+Underfull \hbox (badness 10000) in paragraph at lines 888--889
+
+ []
+
+[40]
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 890--902
+[]$[]$ 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 903--904
+
+ []
+
+[41]
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 905--917
+[]$[]$ 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 918--919
+
+ []
+
+
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 920--938
+[]$[]$ 
+ []
+
+[42] [43]
+Underfull \hbox (badness 10000) in paragraph at lines 943--944
+
+ []
+
+
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 945--967
+[]$[]$ 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 969--970
+
+ []
+
+[44]
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 971--986
+[]$[]$ 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 987--988
+
+ []
+
+
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 989--1006
+[]$[]$ 
+ []
+
+[45]
+Underfull \hbox (badness 10000) in paragraph at lines 1008--1009
+
+ []
+
+
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 1010--1036
+[]$[]$ 
+ []
+
+[46]
+Underfull \hbox (badness 10000) in paragraph at lines 1037--1038
+
+ []
+
+
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 1039--1048
+[]$[]$ 
+ []
+
+[47]
+Underfull \hbox (badness 10000) in paragraph at lines 1051--1053
+
+ []
+
+
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 1054--1069
+[]$[]$ 
+ []
+
+
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 1072--1082
+[]$[]$ 
+ []
+
+[48]
+Underfull \hbox (badness 10000) in paragraph at lines 1084--1085
+
+ []
+
+
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 1086--1100
+[]$[]$ 
+ []
+
+[49]
+Overfull \hbox (31.65216pt too wide) in paragraph at lines 1118--1119
 []\T1/lmr/m/n/12 Sve da-to-te-ke upra-vlja-£a i po-gle-da ge-ne-ri-²u se po-zi-
-va-njem ko-man-de \T1/lmr/bx/n/12 mix phx.gen.json
+va-njem ko-man-de \T1/DejaVuSansMono-TLF/m/n/12 mix phx.gen.json
  []
 
-[50] [51] [52] [53] [54]
-Overfull \hbox (85.96962pt too wide) in paragraph at lines 1236--1237
-\T1/lmr/m/n/12 ta na-pi-sa-ni su sli£-ni te-sto-vi, ko-ji se na-la-ze u di-rek-
-to-ri-ju-mu \T1/lmr/m/it/12 msnr_api\test\msnr_api_web\controllers\T1/lmr/m/n/1
-2 . 
+
+Underfull \hbox (badness 10000) in paragraph at lines 1118--1119
+
  []
 
-[55] [56
 
-] [57] [58]
-<elmpass.png, id=1165, 661.97313pt x 197.23688pt>
-File: elmpass.png Graphic file (type png)
-<use elmpass.png>
-Package pdftex.def Info: elmpass.png  used on input line 1314.
-(pdftex.def)             Requested size: 383.3974pt x 114.23192pt.
-<elmfail.png, id=1166, 663.98062pt x 359.84438pt>
-File: elmfail.png Graphic file (type png)
-<use elmfail.png>
-Package pdftex.def Info: elmfail.png  used on input line 1321.
-(pdftex.def)             Requested size: 383.3974pt x 207.78194pt.
- [59 <./elmpass.png> <./elmfail.png>] [60]
-Overfull \hbox (1.22586pt too wide) in paragraph at lines 1366--1384
- [] 
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 1120--1146
+[]$[]$ 
  []
 
-[61] [62] [63] [64] [65]
-<expfail.png, id=1291, 413.545pt x 320.19624pt>
-File: expfail.png Graphic file (type png)
-<use expfail.png>
-Package pdftex.def Info: expfail.png  used on input line 1479.
-(pdftex.def)             Requested size: 298.1987pt x 230.89288pt.
- [66 <./expfail.png>] [67] [68] [69] [70] [71] [72
+[50] [51]
+Underfull \hbox (badness 10000) in paragraph at lines 1151--1152
+
+ []
+
+
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 1153--1165
+[]$[]$ 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1166--1167
+
+ []
+
+
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 1169--1178
+[]$[]$ 
+ []
+
+[52]
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 1183--1208
+[]$[]$ 
+ []
+
+[53] [54]
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 1222--1229
+[]$[]$ 
+ []
+
+
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 1232--1239
+[]$[]$ 
+ []
+
+[55
 
 ]
-(AnaPetrovicMasterRad.bbl [73]
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 1246--1258
+[]$[]$ 
+ []
+
+
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 1267--1287
+[]$[]$ 
+ []
+
+[56] [57]
+<elmpass.png, id=1053, 661.97313pt x 197.23688pt>
+File: elmpass.png Graphic file (type png)
+<use elmpass.png>
+Package pdftex.def Info: elmpass.png  used on input line 1294.
+(pdftex.def)             Requested size: 383.3974pt x 114.23192pt.
+<elmfail.png, id=1054, 663.98062pt x 359.84438pt>
+File: elmfail.png Graphic file (type png)
+<use elmfail.png>
+Package pdftex.def Info: elmfail.png  used on input line 1301.
+(pdftex.def)             Requested size: 383.3974pt x 207.78194pt.
+ [58 <./elmpass.png> <./elmfail.png>]
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 1313--1327
+[]$[]$ 
+ []
+
+[59]
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 1330--1342
+[]$[]$ 
+ []
+
+[60]
+Overfull \hbox (1.22586pt too wide) in paragraph at lines 1350--1368
+ [] 
+ []
+
+[61]
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 1377--1388
+[]$[]$ 
+ []
+
+
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 1391--1403
+[]$[]$ 
+ []
+
+[62]
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 1407--1427
+[]$[]$ 
+ []
+
+[63]
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 1430--1442
+[]$[]$ 
+ []
+
+[64]
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 1445--1455
+[]$[]$ 
+ []
+
+<expfail.png, id=1168, 413.545pt x 320.19624pt>
+File: expfail.png Graphic file (type png)
+<use expfail.png>
+Package pdftex.def Info: expfail.png  used on input line 1459.
+(pdftex.def)             Requested size: 298.1987pt x 230.89288pt.
+[65 <./expfail.png>]
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 1470--1475
+[]$[]$ 
+ []
+
+
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 1479--1492
+[]$[]$ 
+ []
+
+[66]
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 1502--1514
+[]$[]$ 
+ []
+
+[67]
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 1519--1524
+[]$[]$ 
+ []
+
+
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 1527--1536
+[]$[]$ 
+ []
+
+[68]
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 1547--1558
+[]$[]$ 
+ []
+
+[69]
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 1564--1574
+[]$[]$ 
+ []
+
+
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 1575--1584
+[]$[]$ 
+ []
+
+[70] [71] [72
+
+] (AnaPetrovicMasterRad.bbl [73]
 bibitemlist
 
 Underfull \hbox (badness 3302) in paragraph at lines 4--6
@@ -1364,39 +1790,36 @@ Package rerunfilecheck Info: File `AnaPetrovicMasterRad.out' has not changed.
 (rerunfilecheck)             Checksum: 886B7E46AFEE5F0A63150933EAD7926E;3729.
  ) 
 Here is how much of TeX's memory you used:
- 19985 strings out of 476334
- 310159 string characters out of 5787972
- 2109382 words of memory out of 5000000
- 39186 multiletter control sequences out of 15000+600000
- 612077 words of font info for 86 fonts, out of 8000000 for 9000
+ 19843 strings out of 476334
+ 307793 string characters out of 5787972
+ 2052382 words of memory out of 5000000
+ 39178 multiletter control sequences out of 15000+600000
+ 611830 words of font info for 85 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 90i,12n,90p,1919b,2156s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 90i,12n,90p,1933b,1336s stack positions out of 10000i,1000n,20000p,200000b,200000s
 {C:/Users/panap/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ec.enc}{C
 :/Users/panap/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathsy.enc}{C
 :/Users/panap/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/dejavu/dejavumono_t
 1-type1.enc}{C:/Users/panap/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm
--ts1.enc}{C:/Users/panap/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ma
-thit.enc}{C:/Users/panap/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-rm
-.enc} <C:\Users\panap\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\e
-crm1440.pk> <C:\Users\panap\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dp
-i600\ecrm2074.pk> <C:\Users\panap\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen
-/ec/dpi600\ecrm1728.pk><C:/Users/panap/AppData/Local/Programs/MiKTeX/fonts/type
-1/public/dejavu/DejaVuSansMono.pfb><C:/Users/panap/AppData/Local/Programs/MiKTe
-X/fonts/type1/public/lm/lmbx10.pfb><C:/Users/panap/AppData/Local/Programs/MiKTe
-X/fonts/type1/public/lm/lmbx12.pfb><C:/Users/panap/AppData/Local/Programs/MiKTe
-X/fonts/type1/public/lm/lmbxi10.pfb><C:/Users/panap/AppData/Local/Programs/MiKT
-eX/fonts/type1/public/lm/lmcsc10.pfb><C:/Users/panap/AppData/Local/Programs/MiK
-TeX/fonts/type1/public/lm/lmmi12.pfb><C:/Users/panap/AppData/Local/Programs/MiK
-TeX/fonts/type1/public/lm/lmr10.pfb><C:/Users/panap/AppData/Local/Programs/MiKT
-eX/fonts/type1/public/lm/lmr12.pfb><C:/Users/panap/AppData/Local/Programs/MiKTe
-X/fonts/type1/public/lm/lmr7.pfb><C:/Users/panap/AppData/Local/Programs/MiKTeX/
-fonts/type1/public/lm/lmr8.pfb><C:/Users/panap/AppData/Local/Programs/MiKTeX/fo
-nts/type1/public/lm/lmri10.pfb><C:/Users/panap/AppData/Local/Programs/MiKTeX/fo
-nts/type1/public/lm/lmri12.pfb><C:/Users/panap/AppData/Local/Programs/MiKTeX/fo
-nts/type1/public/lm/lmsy10.pfb>
-Output written on AnaPetrovicMasterRad.pdf (81 pages, 952827 bytes).
+-ts1.enc} <C:\Users\panap\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi6
+00\ecrm1440.pk> <C:\Users\panap\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/e
+c/dpi600\ecrm2074.pk> <C:\Users\panap\AppData\Local\MiKTeX\fonts/pk/ljfour/jkna
+ppen/ec/dpi600\ecrm1728.pk><C:/Users/panap/AppData/Local/Programs/MiKTeX/fonts/
+type1/public/dejavu/DejaVuSansMono.pfb><C:/Users/panap/AppData/Local/Programs/M
+iKTeX/fonts/type1/public/lm/lmbx10.pfb><C:/Users/panap/AppData/Local/Programs/M
+iKTeX/fonts/type1/public/lm/lmbx12.pfb><C:/Users/panap/AppData/Local/Programs/M
+iKTeX/fonts/type1/public/lm/lmbxi10.pfb><C:/Users/panap/AppData/Local/Programs/
+MiKTeX/fonts/type1/public/lm/lmcsc10.pfb><C:/Users/panap/AppData/Local/Programs
+/MiKTeX/fonts/type1/public/lm/lmr10.pfb><C:/Users/panap/AppData/Local/Programs/
+MiKTeX/fonts/type1/public/lm/lmr12.pfb><C:/Users/panap/AppData/Local/Programs/M
+iKTeX/fonts/type1/public/lm/lmr7.pfb><C:/Users/panap/AppData/Local/Programs/MiK
+TeX/fonts/type1/public/lm/lmr8.pfb><C:/Users/panap/AppData/Local/Programs/MiKTe
+X/fonts/type1/public/lm/lmri10.pfb><C:/Users/panap/AppData/Local/Programs/MiKTe
+X/fonts/type1/public/lm/lmri12.pfb><C:/Users/panap/AppData/Local/Programs/MiKTe
+X/fonts/type1/public/lm/lmsy10.pfb>
+Output written on AnaPetrovicMasterRad.pdf (81 pages, 1011255 bytes).
 PDF statistics:
- 1816 PDF objects out of 2073 (max. 8388607)
- 932 named destinations out of 1000 (max. 500000)
- 198 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1657 PDF objects out of 1728 (max. 8388607)
+ 796 named destinations out of 1000 (max. 500000)
+ 208 words of extra memory for PDF output out of 10000 (max. 10000000)
 

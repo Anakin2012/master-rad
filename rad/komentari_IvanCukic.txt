@@ -1,0 +1,43 @@
+Naziv mašine BEAM 
+-> Rečenica izmenjena u: 
+Programski jezik Elixir je funkcionalni jezik opšte namene koji se izvršava na virtuelnoj mašini \emph{BEAM}, napravljenoj za programski jezik Erlang.
+
+
+Erlang je korišćen za testiranje, a sledeća rečenica kaže da je 'ona' (pp aplikacija) implementirana pomoću Phoenixa odakle zaključujem da je Elixir korišćen i za jedno i za drugo.
+Ili je poenta rečenice da je ta aplicacija već postojala, a da ovaj rad samo implementira testove za istu?
+Treba preformulisati.
+Takodje, umesto 'ona' (subjekat prethodne rečenice je Elixir, pa je malo problematično da piše 'ona') bi bilo bolje 'ova veb aplikacija', ili dati ime aplikaciji i spominjati je po imenu u celom radu.
+
+--> Aplikacija je vec postojala, a samo njen server je napisan u elixiru
+Preformulisano:  U ovom radu korišćen je za testiranje serverskog dela prethodno implementirane veb aplikacije, napisanog pomoću razvojnog okvira \emph{Phoenix}, koji je nastao i razvija se uporedo sa ovim programskim jezikom. 
+
+
+funkcija poseduje transparentnost referenci - Rogobatno zvuci
+--> Slično može važiti i za funkcije, ako se pri pozivu funkcije sa istim vrednostima argumenata uvek proizvodi isti rezultat.
+
+
+Iznova primenjuje funkciju spajanja na vrednost i datu listu... 
+--> 
+prihvata tri argumenta: funkciju spajanja, početnu vrednost u kojoj će se akumulirati rezultat, i listu. Funkcija spajanja je binarna operacija koja se primenjuje redom na svaki element liste i trenutnu akumuliranu vrednost, sve dok se lista ne redukuje na jednu vrednost koja predstavlja krajnji rezultat. 
+
+
+Prednost korišćenja ovih funkcija je u sažetom i čistom kodu. U odnosu na sta?
+--> mislila sam u odnosu na njihovo nekoriscenje 
+Preoformulisano: Funkcije viseg reda dovode do sazetog i cistog koda. 
+
+Testiranjem se osigurava kvalitet softvera
+-- Testiranjem se proverava kvalitet softvera
+
+
+jedinični testovi
+-- promenjeno na testovi jedinica koda na prvom mestu, da li je potrebno svuda?
+
+podstiče dozvoljavanje neuspeha (pada procesa), pre nego pokušavanje spašavanja svake moguće greške 
+-- podstiče dopuštanje neuspešnih procesa pre nego oporavak od svake moguće greške upotrebom \emph{try / rescue} koncepta. 
+
+
+**** kako je brzo iscrtavanje posledica imutabilnosti?
+
+
+
+-- izmenjene su i sve slovne greške (slovo o sa kapicom itd.)

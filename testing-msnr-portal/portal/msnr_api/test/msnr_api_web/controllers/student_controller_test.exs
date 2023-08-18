@@ -1,4 +1,4 @@
-defmodule MsnrApiWeb.SemesterControllerTest do
+defmodule MsnrApiWeb.StudentControllerTest do
   use MsnrApiWeb.ConnCase
   alias MsnrApi.Students.Student
   import MsnrApi.SemestersFixtures
@@ -29,30 +29,15 @@ defmodule MsnrApiWeb.SemesterControllerTest do
       ]
     end
 
-    test "list empty", %{conn: conn} do
+    test "list is empty", %{conn: conn} do
       %{semester: semester} = create_semester()
       conn = get(conn, Routes.semester_student_path(conn, :index, semester.id))
       assert json_response(conn, 200)["data"] == []
     end
+
   end
 
-  describe "show" do
-    test "show student", %{conn: conn} do
-      %{semester: semester} = create_semester()
-      {:ok, student} = create_user()
-
-      conn = get(conn, Routes.semester_student_path(conn, :show, semester.id, student.user_id))
-      assert json_response(conn, 200)["data"] ==
-        %{
-          "email" => "some email",
-          "first_name" => "john",
-          "group_id" => nil,
-          "id" => student.user_id,
-          "index_number" => "123455",
-          "last_name" => "doe"
-         }
-    end
-  end
+  # show isnt used
 
   defp create_semester() do
     semester = semester_fixture()

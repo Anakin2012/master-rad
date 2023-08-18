@@ -2,10 +2,12 @@ defmodule MsnrApiWeb.ActivityControllerTest do
   use MsnrApiWeb.ConnCase
 
   import MsnrApi.ActivitiesFixtures
+  import MsnrApi.UserFixtures
   import MsnrApi.SemestersFixtures
-
+  import MsnrApi.ActivityTypesFixtures
   alias MsnrApi.Activities.Activity
   alias MsnrApi.Semesters.Semester
+  alias MsnrApi.ActivityTypes.ActivityType
 
   @create_attrs %{
     end_date: 42,
@@ -20,83 +22,52 @@ defmodule MsnrApiWeb.ActivityControllerTest do
   @invalid_attrs %{end_date: nil, is_signup: nil, start_date: nil}
 
   setup %{conn: conn} do
-    {:ok, conn: put_req_header(conn, "accept", "application/json")}
+    user_params = %{
+      email: "profemail",
+      first_name: "john",
+      last_name: "doe",
+      password: "test",
+      role: :professor
+    }
+
+    %{professor: professor} = create_professor()
+    authenticated_conn = assign(conn, :user_info, %{role: :professor})
+
+    {:ok, conn: authenticated_conn}
+   # {:ok, conn: put_req_header(authenticated_conn, "accept", "application/json")}
   end
 
-  describe "index" do
-    setup [:create_semester]
-    test "lists all activities", %{conn: conn} do
-      conn = get(conn, Routes.semester_activity_path(conn, :index, 1))
-      assert json_response(conn, 200)["data"] == []
-    end
-  end
+
 
   describe "create activity" do
-    test "renders activity when data is valid", %{
-      conn: conn,
-      semester: %Semester{id: id} = semester
-    } do
-        conn = post(conn, Routes.activity_path(conn, :create, semester), activity: @create_attrs)
-        assert %{"id" => id} = json_response(conn, 201)["data"]
+    setup [:create_semester]
+    test "renders activity when data is valid", %{conn: conn, semester: semester} do
 
-        conn = get(conn, Routes.activity_path(conn, :show, id))
+      %{activity_type: activity_type} = create_activity_type()
+      conn = post(conn, Routes.activity_path(conn, :create), activity: %{activity_type_id: activity_type.id,
+                                                                               end_date: 1712016000,
+                                                                               is_signup: true,
+                                                                               start_date: 1692230400,
+                                                                               semester_id: semester.id})
 
-        assert %{
-               "id" => ^id,
-               "end_date" => 42,
-               "is_signup" => true,
-               "start_date" => 42
-             } = json_response(conn, 200)["data"]
-    end
+      assert %{"id" => id} = json_response(conn, 201)["data"]
 
-    test "renders errors when data is invalid", %{conn: conn} do
-      conn = post(conn, Routes.activity_path(conn, :create), activity: @invalid_attrs)
-      assert json_response(conn, 422)["errors"] != %{}
     end
   end
 
-  describe "update activity" do
-    setup [:create_activity]
-
-    test "renders activity when data is valid", %{
-      conn: conn,
-      activity: %Activity{id: id} = activity
-    } do
-      conn = put(conn, Routes.activity_path(conn, :update, activity), activity: @update_attrs)
-      assert %{"id" => ^id} = json_response(conn, 200)["data"]
-
-      conn = get(conn, Routes.activity_path(conn, :show, id))
-
-      assert %{
-               "id" => ^id,
-               "end_date" => 43,
-               "is_signup" => false,
-               "start_date" => 43
-             } = json_response(conn, 200)["data"]
-    end
-
-    test "renders errors when data is invalid", %{conn: conn, activity: activity} do
-      conn = put(conn, Routes.activity_path(conn, :update, activity), activity: @invalid_attrs)
-      assert json_response(conn, 422)["errors"] != %{}
-    end
-  end
-
-  describe "delete activity" do
-    setup [:create_activity]
-
-    test "deletes chosen activity", %{conn: conn, activity: activity} do
-      conn = delete(conn, Routes.activity_path(conn, :delete, activity))
-      assert response(conn, 204)
-
-      assert_error_sent 404, fn ->
-        get(conn, Routes.activity_path(conn, :show, activity))
-      end
-    end
+  defp create_professor() do
+    professor = user_professor_fixture()
+    %{professor: professor}
   end
 
   defp create_activity(_) do
     activity = activity_fixture()
     %{activity: activity}
+  end
+
+  defp create_activity_type() do
+    activity_type =  activity_type_fixture()
+    %{activity_type: activity_type}
   end
 
   defp create_semester(_) do

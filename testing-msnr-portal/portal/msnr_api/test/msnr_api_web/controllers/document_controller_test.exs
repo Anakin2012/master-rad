@@ -20,14 +20,10 @@ defmodule MsnrApiWeb.DocumentControllerTest do
     {:ok, conn: put_req_header(conn, "accept", "application/json")}
   end
 
-  describe "index" do
-    test "lists all documents"
-
-    end
-  end
-
   defp create_document(_) do
     document = document_fixture()
     %{document: document}
   end
+
+
 end

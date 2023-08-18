@@ -20,4 +20,20 @@ defmodule MsnrApi.UserFixtures do
 
     user
   end
+
+
+  def user_professor_fixture(attrs \\ %{}) do
+    {:ok, user} =
+      attrs
+      |> Enum.into(%{
+        email: "profemail",
+        first_name: "john",
+        last_name: "doe",
+        password: "test",
+        role: :professor
+      })
+      |> MsnrApi.Accounts.create_user()
+
+    user
+  end
 end

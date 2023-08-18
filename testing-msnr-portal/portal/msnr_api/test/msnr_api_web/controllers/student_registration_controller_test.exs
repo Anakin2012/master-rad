@@ -1,8 +1,8 @@
 defmodule MsnrApiWeb.StudentRegistrationControllerTest do
   use MsnrApiWeb.ConnCase
 
-  import MsnrApi.StudentRegistrationsFixtures
-  alias MsnrApi.StudentRegistrations.StudentRegistration
+  alias MsnrApi.StudentRegistrations
+  import MsnrApi.SemestersFixtures
 
   @create_attrs %{
     "email" => "pana.petrovic@gmail.com",
@@ -10,13 +10,7 @@ defmodule MsnrApiWeb.StudentRegistrationControllerTest do
     "index_number" => "12344",
     "last_name" => "petrovic"
   }
-  @update_attrs %{
-    "email" => "pana.petrovic@gmail.com",
-    "first_name" => "ana",
-    "index_number" => "12345",
-    "last_name" => "new last name",
-    "status" => :accepted
-  }
+
   @invalid_attrs %{"status" => nil}
 
   setup %{conn: conn} do
@@ -25,7 +19,7 @@ defmodule MsnrApiWeb.StudentRegistrationControllerTest do
 
   describe "list all registrations" do
     setup [:create_student_registration]
-    test "renders all registrations in given semester", %{conn: conn, student_registration: student_registration} do
+    test "renders all registrations in given semester", %{conn: conn, student_registration: _student_registration} do
 
       conn = get(conn, Routes.semester_student_registration_path(conn, :index, 1))
       assert json_response(conn, 200)["data"] == []
@@ -62,18 +56,73 @@ defmodule MsnrApiWeb.StudentRegistrationControllerTest do
     end
   end
 
+  describe "updates student registration status" do
+    setup [:create_semester, :create_student_registration]
+    test "success: accepts student registrations", %{conn: conn, student_registration: student_registration} do
+      conn = put(conn, Routes.student_registration_path(conn, :update, student_registration.id),
+       %{"student_registration" => %{"status" => "accepted"}}
+      )
+
+      response_map =%{ "email" => "pana.petrovic@gmail.com",
+                        "first_name" => "ana",
+                        "index_number" => "12344",
+                        "last_name" => "petrovic",
+                        "status" => "accepted"
+                      }
+                      |> Map.put("id", student_registration.id)
+
+
+      assert response_map == json_response(conn, 200)["data"]
+    end
+
+    test "success: rejects student registrations", %{conn: conn, student_registration: student_registration} do
+      conn = put(conn, Routes.student_registration_path(conn, :update, student_registration.id),
+       %{"student_registration" => %{"status" => "rejected"}}
+      )
+
+      response_map =%{ "email" => "pana.petrovic@gmail.com",
+                        "first_name" => "ana",
+                        "index_number" => "12344",
+                        "last_name" => "petrovic",
+                        "status" => "rejected"
+                      }
+                      |> Map.put("id", student_registration.id)
+
+
+      assert response_map == json_response(conn, 200)["data"]
+    end
+
+
+
+  end
+
   describe "show student registration" do
     setup [:create_student_registration]
     test "renders student registration when id is valid", %{conn: conn, student_registration: student_registration} do
 
       conn = get(conn, Routes.student_registration_path(conn, :show, student_registration))
 
-      assert %{
-          "email" => "johdoe@gmail.com",
-          "first_name" => "John",
-          "index_number" => "1234",
-          "last_name" => "Doe"
-             } = json_response(conn, 200)["data"]
+
+      response_map =%{ "email" => "pana.petrovic@gmail.com",
+                        "first_name" => "ana",
+                        "index_number" => "12344",
+                        "last_name" => "petrovic",
+                        "status" => "pending"
+                      }
+                      |> Map.put("id", student_registration.id)
+
+
+      assert response_map == json_response(conn, 200)["data"]
+    end
+
+    test "cant render", %{conn: conn, student_registration: student_registration
+    } do
+
+      {response, _, _} = assert_error_sent 404, fn ->
+        get(conn, Routes.student_registration_path(conn, :show, -1))
+      end
+
+      assert 404 == response
     end
   end
 
@@ -94,7 +143,12 @@ defmodule MsnrApiWeb.StudentRegistrationControllerTest do
   end
 
   defp create_student_registration(_) do
-    student_registration = student_registration_fixture()
+    {:ok, student_registration} = StudentRegistrations.create_student_registration(@create_attrs)
     %{student_registration: student_registration}
+  end
+
+  defp create_semester(_) do
+    semester = semester_fixture()
+    %{semester: semester}
   end
 end

@@ -11,12 +11,12 @@ defmodule MsnrApi.ActivityTypesFixtures do
     {:ok, activity_type} =
       attrs
       |> Enum.into(%{
-        content: %{},
-        description: "some description",
-        has_signup: false,
-        is_group: false,
-        name: "some name",
-        code: "topic"
+       name: "Grupe",
+       code: "group",
+       description: "desc",
+       has_signup: false,
+       is_group: false,
+       content: %{}
       })
       |> MsnrApi.ActivityTypes.create_activity_type()
 

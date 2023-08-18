@@ -1,0 +1,135 @@
+1. "U jeziku Elm napisani su testovi za klijentsku stranu veb portala koji služi za upravljanje aktivnostima na kursu Metodologija stručnog i naučnog rada" -> razjasniti da li je to urađeno u sklopu ovom master rada ili nezavisno do njega 
+--------------------------------------
+U okviru rada, napisani su testovi u jeziku Elm za klijentsku stranu veb portala koji služi za upravljanje aktivnostima...
+
+2. - odsustvo propratnih efekata, tj. da čista funkcija ne vrši nikakve izmene nad argumentima, kao ni nad promenljivima -> i malo šire od toga. Npr. ne ispisuje se ništa na ekran, ne upisuje se ništa u fajl/bazu, ..
+--------------------------------------
+Imutabilnost podrazumeva odsustvo propratnih efekata, tj. da čista funkcija ne generiše nikakve posledice u smislu izmena argumenata, promenljivih, ili stanja programa. To podrazumeva i prikazivanje izlaza na ekranu, ili trajno čuvanje podataka u bazi podataka ili datoteci. 
+
+
+3. Listing 2.1 - da li je moguće da se ovi kratki kodovi ne prelamaju na dve strane? (ne insistiram)
+--------------------------------------
+ispravljeno, i za duge kodove
+
+4.  Prednost korišćenja ovih funkcija -> ne samo ovih, već generalno, funkcija višeg reda. Ove su samo karakteristični primeri (mada se i map i filter mogu izraziti preko fold, tako da je on u neku ruku bazična funkcija)
+-----------------------------------------
+Dodata rečenica: Funkcije \emph{map} i \emph{filter} se mogu implementirati i upotrebom funkcije \emph{fold}/ Prednost korišćenja funkcija višeg reda (umesto ovih funkcija)
+
+
+5. Funkcije se definišu rekurzivno -> funkcije se, kad god je to moguće, definišu kompozicijom drugih funkcija, a mogu se definisati i rekurzivno.
+-------------------------------------------
+ Kad god je moguće, funkcije se definišu kompozicijom drugih funkcija, a mogu se definisati i rekurzivno, i tako postići ponavljanje izvršavanja.
+
+6. - nalaze se integracioni testovi -> ako je dato (engl. unit test), onda tako treba uraditi i za ostale vrste testova
+-------------------------------------------
+Dodato za integracione i sistemske testove
+
+7. - Listing 2.3 - opisati malo ovaj primer (npr. operatore <|  |>, tip (), ...)
+-------------------------------------------------
+Dodato: Tip () se naziva jedinični tip (eng. \emph{unit type}). Predstavlja vrednost koja može biti samo jedna, ali nije važno koja je to vrednost. Navođenje _ sugeriše da postoji neka vrednost na tom mestu, ali se ona ne koristi i zbog toga se može ignorisati. Operatori prosleđivanja |> i <| podrazumevaju primenu funkcije, i koriste se kako bi se izbegla upotreba zagrada. Deo koda koji koristi uzastopno ove operatore često se naziva cevovod (eng. \emph{pipeline}). 
+
+
+8. veoma ugodno testiranje -> malo neprecizno
+----------------------------------------------
+Navedene osobine Elixir programa omogućavaju jednostavnije testiranje.
+
+
+9. koje kao povratnu vrednost imaju funkciju -> ne uvek (mogu da vrate i vrednost koja nije funkcija)
+--------------------------------------------------
+Funkcije su Karijeve (eng. \emph{Curried}), što znači da su funkcije jednog argumenta koje kao povratnu vrednost mogu imati drugu funkciju, čime olakšavaju kompoziciju funkcija.
+
+
+10. - operatora prosleđivanja i kompozicije -> možda malo detaljnije diskutovati (kroz primer)?
+----------------------------------------------------------------------
+Dodat je listing 2.5 sa jednostavnim primerom
+
+11. koji je veoma udoban za upotrebu -> nije odmah jasno šta se pod ovim podrazumeva, pa povezati dve rečenice sa "jer" ili "zato što"
+-----------------------------------------------------
+Elm kompilator je veoma udoban za upotrebu, jer ako dođe do greške, daje konkretna objašnjenja zbog čega je došlo do nje i predloge načina za njeno ispravljanje.
+
+
+12.  Greške u programima su i bez testova jako retke. -> da li ovo može da se tvrdi i za funkcionalnu ispravnost programa (programi "ne pucaju", ali da li uvek izračunavaju korektno vrednosti? Šta ako je algoritam korektno implementiran, ali je pogrešan?)
+---------------------------------------------
+Slažem se, samo sam izbacila tu rečenicu, da li je to dovoljno?
+
+
+
+13. Glava 3 - ponovo nije jasno da li je ova aplikacija sastavni deo master teze
+----------------------------------------
+Dodatno na početku poglavalja: Implementacija portala nije deo ovog rada, a u ovom poglavlju biće objašnjene njegove glavne funkcionalnosti.
+
+
+14.  Možda bi bilo dobro da se pre unutrašnje organizacije koda i struktura serverske i klijentske strane opiše ukratko funkcionalnost iz ugla krajnjeg korisnika (prikažu neke slike ekrana)?
+-------------------------------------------------------
+Dodate slike 3.1 i 3.2
+
+- seme nasumičnosti -> :) neuobičajeno je, ali zaista nema šta da se zameri
+- izvršavaju slučajnim redosledom -> nasumičnim
+
+15. 
+- test pada -> možda je ovo previše kolokvijalno i doslovno prevedeno sa engleskog (test fail)
+- test case obično prevodimo kao test-primer, a ne test slučaj?
+---------------------------
+- Ako se desi da određeni test sporadično ne prolazi
+- promenjeno u test primer na svim mestima 
+
+
+16. Obavezno malo smanjiti font u listinzima. To će rešiti nepotreban prelom u više redova koji se često javlja. Možda se potruditi i da se manje prelamaju kroz više strana? Ne insistiram.
+-------------------------------------
+Font smanjen, prelamanje reseno
+
+
+17. u Elixir okruženju -> u okruženju Elixir - ovakvih inverzija ima dosta u svim master radovima. Ispraviti gde je moguće.
+-------------------------------------
+ispravljeno na vise mesta
+
+18. programski kod pisati u verb fontu (javlja se i kasnije) 
+    Sporedni efekat - propratni efekat -> ujednačiti
+
+----------------------------------
+
+19. Listing 4.16 - Svaka master teza treba da ima i dodatak koji sadrži javno dostupan kod implementacije. Ne mora sav kod da završi u pdf-u teze. Ovo se naročito odnosi na blokove koda koji su krajnje neilustrativni poput ovog 4.16. Teza je već predugačka (81 strana). Pomoći će smanjivanje fonta u listinzima, ali bi još više pomoglo kada bi se u tekstu prikazivali samo ilustrativni fragmenti koda, a ne skoro ceo kod.
+--------------------------------------------------
+Primeri kodova u 4. poglavlju su skraćeni tako da pokazuju samo najvažnije
+
+
+20. a i podatke potrebne za iscrtavanje, a kao izlaznu vrednost kreira mapu koja se prevodi u JSON objekat -> objasniti šta podrazumeva ovo "icrtavanje" (verovatno generisanje HTML-a)
+--------------------------------------------
+ovde ne generise html nego json, promenjeno u : Ova funkcija prihvata Plug.Conn strukturu, naziv šablona i podatke potrebne za generisanje mape, koja se prevodi u JSON objekat i vraća kao povratna vrednost.
+
+
+
+
+
+
+
+--Listing 5.15 - šta bi se desilo sa ovim testom ako se pređe na višejezičku aplikaciju?
+Nisam sigurna na sta se pod ovim misli, a odgovor je verovatno da test ne bi prosao?
+
+- za pisanje faz testova -> zar niste uveli neki termin "rasplinuto testiranje"?
+Nisam, da li treba? Ako ga uvedem prvo tako, da li onda da menjam na svim mestima u tezi u rasplinuto umesto faz? Meni nekako jednostavnije zvuci faz, pa sam zato tako i pisala svuda. 
+
+
+- Uključuju se neophodni moduli -> ovo nije interesantno i samo opterećuje tekst teze
+nisam sigurna na sta se misli, da li da se izbaci deo koda i komentar koji se odnosi samo na to ukljucivanje ta dva modula, ili da se izbaci ceo podnaslov "priprema za testiranje", tj njgov tekst 
+
+
+-Uh, zašto -50, 50? Ovo je, čini mi se, veoma krupno pitanje. Zašto -49 zahteva da bude testirano, a +156 ne? Da li ovakvi testovi stvaraju neku lažnu sigurnost? Zar nije mnogo važnije garantovano pokriti 0, 1, ..., 12. Ovde se nula ne testira uvek, a najverovatnije je da će greška biti baš kod nule (a ne -33) jer neko pretpostavlja brojanje od 0, a neko od 1.
+
+- za svaki ulaz koji nije ceo broj između 1 i 12, izlaz uvek mora biti Nothing. -> a onda svaki ulaz postane [-50, 50] :(
+Da, to ima smisla, ovde sam samo htela da pokazem poentu faz testiranja, primer je mozda los za to, ali nisam uspela da nadjem bolji u ovoj aplikaciji. Mogu da dodam da se nula testira bas uvek, a ovi ostali brojevi iz -50, 50 su tu samo primera radi, da se pokaze faz testing, i da se pokrije i bar jos neki slucaj za Nothing. Sta da uradim sa tim, nekako mi se cini da je bitno pokazati taj opseg za faz, ali slazem se da na ovom primeru nema mnogo smisla? 
+
+
+
+-Listing 5.14 - uh, čini mi se da je ovo jako loš pristup stilizovanju, jer ne dopušta podelu posla između programera i dizajnera. Dizajner treba da uređuje CSS i ne treba da ima pristup programskom kodu.
+-------------------------------------------
+Ovo je primer koda iz originalne aplikacije, koji nije moj. Da li ja treba da prokomentarisem njegov pristup stilizovanju?
+
+
+
+
+- validacija jedinstvenih polja - prodiskutovati potrebu za testiranjem ovih standardnih funkcionalnosti baza podataka
+
+- Ograničen broj napisanih testova nije otkrio značajne greške u implementaciji veb portala MSNR. -> Koje greške jeste otkrio? Da li ovo ukazuje na to da su testovi previše detaljni tj. da testiraju stvari koje se prirodno manuelno testiraju prilikom razvoja aplikacije (npr. ako pad nekog testa garantuje da aplikacija puca prilikom pokretanja, taj test nema puno smisla jer će ta greška svakako biti otkrivena prilikom pokretanja aplikacije)
+
+- Trebalo bi u zaključku prodiskutovati i isplativost ovako iscrpnog testiranja. Na nekim mestima u tezi broj linija koda testova uveliko prevazilazi broj linija programskog koda (možda dati statistike za ceo projekat). Trebalo bi diskutovati i održavanje testova tj. njihove izmene kada se menja funkcionalnost koda i aplikacije.

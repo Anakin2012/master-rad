@@ -1,4 +1,4 @@
-defmodule MsnrApi.Queries.SemestersTest do
+defmodule MsnrApi.Queries.StudentsTest do
 
   use MsnrApi.Support.DataCase
   alias MsnrApi.{Students, Students.Student, Students.StudentSemester, Semesters}

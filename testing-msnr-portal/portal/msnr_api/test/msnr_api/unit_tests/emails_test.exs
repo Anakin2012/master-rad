@@ -1,4 +1,4 @@
-defmodule MsnrApi.UnitTests.PasswordTest do
+defmodule MsnrApi.UnitTests.EmailsTest do
   alias MsnrApi.Emails
   alias MsnrApi.Accounts.User
   alias MsnrApi.StudentRegistrations.StudentRegistration
