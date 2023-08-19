@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 23.1) (preloaded format=pdflatex 2023.4.5)  18 AUG 2023 21:24
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 23.1) (preloaded format=pdflatex 2023.4.5)  20 AUG 2023 01:23
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1185,13 +1185,13 @@ Overfull \hbox (17.62482pt too wide) in paragraph at lines 296--306
 []$[]$ 
  []
 
-[13] [14]
-Overfull \hbox (17.62482pt too wide) in paragraph at lines 318--335
+[13]
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 320--337
 []$[]$ 
  []
 
-
-Overfull \hbox (17.62482pt too wide) in paragraph at lines 340--351
+[14]
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 342--353
 []$[]$ 
  []
 
@@ -1199,12 +1199,12 @@ Overfull \hbox (17.62482pt too wide) in paragraph at lines 340--351
 <student-page.png, id=326, 961.09062pt x 477.28313pt>
 File: student-page.png Graphic file (type png)
 <use student-page.png>
-Package pdftex.def Info: student-page.png  used on input line 403.
+Package pdftex.def Info: student-page.png  used on input line 405.
 (pdftex.def)             Requested size: 383.3974pt x 190.40007pt.
 <professor-page.png, id=329, 962.59625pt x 480.29437pt>
 File: professor-page.png Graphic file (type png)
 <use professor-page.png>
-Package pdftex.def Info: professor-page.png  used on input line 410.
+Package pdftex.def Info: professor-page.png  used on input line 412.
 (pdftex.def)             Requested size: 383.3974pt x 191.29352pt.
  [18
 
@@ -1212,28 +1212,28 @@ Package pdftex.def Info: professor-page.png  used on input line 410.
 <msnr-arch.png, id=351, 714.16812pt x 287.57437pt>
 File: msnr-arch.png Graphic file (type png)
 <use msnr-arch.png>
-Package pdftex.def Info: msnr-arch.png  used on input line 449.
+Package pdftex.def Info: msnr-arch.png  used on input line 450.
 (pdftex.def)             Requested size: 383.3974pt x 154.38391pt.
  [20]
 <msnr-str.png, id=363, 316.93407pt x 587.94656pt>
 File: msnr-str.png Graphic file (type png)
 <use msnr-str.png>
-Package pdftex.def Info: msnr-str.png  used on input line 458.
+Package pdftex.def Info: msnr-str.png  used on input line 459.
 (pdftex.def)             Requested size: 213.0pt x 395.15123pt.
  [21 <./msnr-arch.png>] [22 <./msnr-str.png>]
 <elmprog.png, id=387, 278.03876pt x 182.6825pt>
 File: elmprog.png Graphic file (type png)
 <use elmprog.png>
-Package pdftex.def Info: elmprog.png  used on input line 472.
-(pdftex.def)             Requested size: 170.3974pt x 111.9602pt.
+Package pdftex.def Info: elmprog.png  used on input line 473.
+(pdftex.def)             Requested size: 213.0pt x 139.95235pt.
 <msnr-elm.png, id=391, 337.26pt x 395.22656pt>
 File: msnr-elm.png Graphic file (type png)
 <use msnr-elm.png>
-Package pdftex.def Info: msnr-elm.png  used on input line 483.
+Package pdftex.def Info: msnr-elm.png  used on input line 484.
 (pdftex.def)             Requested size: 255.6026pt x 299.53703pt.
- [23 <./elmprog.png>] [24 <./msnr-elm.png>] [25]
+ [23 <./elmprog.png>] [24 <./msnr-elm.png>] [25] [26]
 LaTeX Font Info:    Trying to load font information for T1+DejaVuSansMono-TLF o
-n input line 502.
+n input line 505.
 
 (C:\Users\panap\AppData\Local\Programs\MiKTeX\tex/latex/dejavu\t1dejavusansmono
 -tlf.fd
@@ -1241,514 +1241,514 @@ File: T1DejaVuSansMono-TLF.fd 2011/06/01 Font definitions for T1/DejaVuSansMono
 -TLF.
 )
 LaTeX Font Info:    Font shape `T1/DejaVuSansMono-TLF/m/n' will be
-(Font)              scaled to size 10.79993pt on input line 502.
+(Font)              scaled to size 10.79993pt on input line 505.
 
-Underfull \hbox (badness 10000) in paragraph at lines 507--508
+Underfull \hbox (badness 10000) in paragraph at lines 510--511
 
  []
 
 
-Overfull \hbox (17.62482pt too wide) in paragraph at lines 509--516
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 512--519
 []$[]$ 
  []
 
-[26
+[27
 
 ]
 LaTeX Font Info:    Font shape `T1/DejaVuSansMono-TLF/m/n' will be
-(Font)              scaled to size 8.09995pt on input line 520.
+(Font)              scaled to size 8.09995pt on input line 523.
 
-Overfull \hbox (17.62482pt too wide) in paragraph at lines 519--530
-[]$[]$ 
- []
-
-[27]
-Underfull \hbox (badness 10000) in paragraph at lines 537--538
-
- []
-
-
-Overfull \hbox (17.62482pt too wide) in paragraph at lines 540--562
-[]$[]$ 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 563--564
-
- []
-
-
-Overfull \hbox (17.62482pt too wide) in paragraph at lines 565--581
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 522--533
 []$[]$ 
  []
 
 [28]
-Underfull \hbox (badness 10000) in paragraph at lines 592--593
+Underfull \hbox (badness 10000) in paragraph at lines 540--541
 
  []
 
 
-Overfull \hbox (17.62482pt too wide) in paragraph at lines 594--606
-[]$[]$ 
- []
-
-[29] [30]
-Underfull \hbox (badness 10000) in paragraph at lines 615--616
-
- []
-
-
-Overfull \hbox (17.62482pt too wide) in paragraph at lines 617--628
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 543--565
 []$[]$ 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 630--631
+Underfull \hbox (badness 10000) in paragraph at lines 566--567
 
  []
 
 
-Overfull \hbox (17.62482pt too wide) in paragraph at lines 632--651
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 568--584
 []$[]$ 
  []
 
-[31]
-Underfull \hbox (badness 10000) in paragraph at lines 653--654
+[29]
+Underfull \hbox (badness 10000) in paragraph at lines 595--596
 
  []
 
 
-Overfull \hbox (17.62482pt too wide) in paragraph at lines 655--668
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 597--609
+[]$[]$ 
+ []
+
+[30] [31]
+Underfull \hbox (badness 10000) in paragraph at lines 618--619
+
+ []
+
+
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 620--631
+[]$[]$ 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 633--634
+
+ []
+
+
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 635--654
 []$[]$ 
  []
 
 [32]
-Underfull \hbox (badness 10000) in paragraph at lines 672--673
+Underfull \hbox (badness 10000) in paragraph at lines 656--657
 
+ []
+
+
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 658--671
+[]$[]$ 
  []
 
 [33]
-Overfull \hbox (17.62482pt too wide) in paragraph at lines 674--685
-[]$[]$ 
- []
+Underfull \hbox (badness 10000) in paragraph at lines 675--676
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 686--687
-
- []
-
-
-Overfull \hbox (17.62482pt too wide) in paragraph at lines 689--702
-[]$[]$ 
  []
 
 [34]
-Underfull \hbox (badness 5475) in paragraph at lines 716--717
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 677--688
+[]$[]$ 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 689--690
+
+ []
+
+
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 692--705
+[]$[]$ 
+ []
+
+[35]
+Underfull \hbox (badness 5475) in paragraph at lines 719--720
 []|\T1/lmr/m/n/10.95 generisanje na-su-mi£-nih
  []
 
 
-Underfull \hbox (badness 2538) in paragraph at lines 716--717
+Underfull \hbox (badness 2538) in paragraph at lines 719--720
 \T1/lmr/m/n/10.95 £e-ni-ca ili po-je-di-na£-nih
  []
 
 
-Underfull \hbox (badness 5475) in paragraph at lines 718--719
+Underfull \hbox (badness 5475) in paragraph at lines 721--722
 []|\T1/lmr/m/n/10.95 generisanje na-su-mi£-nih
  []
 
 
-Overfull \hbox (2.49345pt too wide) in paragraph at lines 720--720
+Overfull \hbox (2.49345pt too wide) in paragraph at lines 723--723
 []|\T1/lmr/bx/it/12 Faker.Internet| 
  []
 
 
-Underfull \hbox (badness 5475) in paragraph at lines 720--721
+Underfull \hbox (badness 5475) in paragraph at lines 723--724
 []|\T1/lmr/m/n/10.95 generisanje na-su-mi£-nih
  []
 
 
-Overfull \hbox (3.21916pt too wide) in paragraph at lines 722--722
+Overfull \hbox (3.21916pt too wide) in paragraph at lines 725--725
 []|\T1/lmr/bx/it/12 Faker.Random| 
  []
 
 
-Underfull \hbox (badness 5475) in paragraph at lines 722--723
+Underfull \hbox (badness 5475) in paragraph at lines 725--726
 []|\T1/lmr/m/n/10.95 generisanje na-su-mi£-nih
  []
 
 
-Underfull \hbox (badness 5475) in paragraph at lines 724--725
+Underfull \hbox (badness 5475) in paragraph at lines 727--728
 []|\T1/lmr/m/n/10.95 generisanje na-su-mi£-nih
  []
 
 
-Underfull \hbox (badness 5475) in paragraph at lines 726--727
+Underfull \hbox (badness 5475) in paragraph at lines 729--730
 []|\T1/lmr/m/n/10.95 generisanje na-su-mi£-nih
  []
 
 
-Underfull \hbox (badness 4621) in paragraph at lines 726--727
+Underfull \hbox (badness 4621) in paragraph at lines 729--730
 \T1/lmr/m/n/10.95 da-tu-ma odre-že-ni broj
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 734--735
+Underfull \hbox (badness 10000) in paragraph at lines 737--738
 
- []
-
-[35]
-Overfull \hbox (17.62482pt too wide) in paragraph at lines 736--751
-[]$[]$ 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 754--755
-
- []
-
-
-Overfull \hbox (17.62482pt too wide) in paragraph at lines 756--769
-[]$[]$ 
  []
 
 [36]
-Underfull \hbox (badness 10000) in paragraph at lines 770--771
-
- []
-
-
-Overfull \hbox (17.62482pt too wide) in paragraph at lines 772--787
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 739--754
 []$[]$ 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 788--789
+Underfull \hbox (badness 10000) in paragraph at lines 757--758
 
+ []
+
+
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 759--772
+[]$[]$ 
  []
 
 [37]
-Overfull \hbox (17.62482pt too wide) in paragraph at lines 790--807
+Underfull \hbox (badness 10000) in paragraph at lines 773--774
+
+ []
+
+
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 775--790
 []$[]$ 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 808--809
+Underfull \hbox (badness 10000) in paragraph at lines 791--792
 
  []
 
 [38]
-Overfull \hbox (17.62482pt too wide) in paragraph at lines 810--836
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 793--810
 []$[]$ 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 838--839
+Underfull \hbox (badness 10000) in paragraph at lines 811--812
 
  []
 
 [39]
-Overfull \hbox (17.62482pt too wide) in paragraph at lines 840--858
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 813--839
 []$[]$ 
  []
 
 
-Underfull \hbox (badness 2401) in paragraph at lines 872--873
-[]|\T1/lmr/m/n/10.95 Kreira no-vu fa-bri-ku i
- []
-
-
-Underfull \hbox (badness 2401) in paragraph at lines 876--877
-[]|\T1/lmr/m/n/10.95 Kreira no-vu fa-bri-ku i
- []
-
-
-Underfull \hbox (badness 2401) in paragraph at lines 878--879
-[]|\T1/lmr/m/n/10.95 Kreira no-vu fa-bri-ku i
- []
-
-
-Underfull \hbox (badness 1281) in paragraph at lines 878--879
-\T1/lmr/m/n/10.95 ci-je pri-pa-da-nja dru-gim
- []
-
-
-Underfull \hbox (badness 2401) in paragraph at lines 880--881
-[]|\T1/lmr/m/n/10.95 Kreira no-vu fa-bri-ku i
- []
-
-
-Overfull \hbox (1.22586pt too wide) in paragraph at lines 868--884
- [] 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 888--889
+Underfull \hbox (badness 10000) in paragraph at lines 841--842
 
  []
 
 [40]
-Overfull \hbox (17.62482pt too wide) in paragraph at lines 890--902
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 843--861
 []$[]$ 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 903--904
+Underfull \hbox (badness 2401) in paragraph at lines 875--876
+[]|\T1/lmr/m/n/10.95 Kreira no-vu fa-bri-ku i
+ []
+
+
+Underfull \hbox (badness 2401) in paragraph at lines 879--880
+[]|\T1/lmr/m/n/10.95 Kreira no-vu fa-bri-ku i
+ []
+
+
+Underfull \hbox (badness 2401) in paragraph at lines 881--882
+[]|\T1/lmr/m/n/10.95 Kreira no-vu fa-bri-ku i
+ []
+
+
+Underfull \hbox (badness 1281) in paragraph at lines 881--882
+\T1/lmr/m/n/10.95 ci-je pri-pa-da-nja dru-gim
+ []
+
+
+Underfull \hbox (badness 2401) in paragraph at lines 883--884
+[]|\T1/lmr/m/n/10.95 Kreira no-vu fa-bri-ku i
+ []
+
+
+Overfull \hbox (1.22586pt too wide) in paragraph at lines 871--887
+ [] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 891--892
 
  []
 
 [41]
-Overfull \hbox (17.62482pt too wide) in paragraph at lines 905--917
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 893--905
 []$[]$ 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 918--919
+Underfull \hbox (badness 10000) in paragraph at lines 906--907
 
  []
 
-
-Overfull \hbox (17.62482pt too wide) in paragraph at lines 920--938
-[]$[]$ 
- []
-
-[42] [43]
-Underfull \hbox (badness 10000) in paragraph at lines 943--944
-
- []
-
-
-Overfull \hbox (17.62482pt too wide) in paragraph at lines 945--967
+[42]
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 908--920
 []$[]$ 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 969--970
+Underfull \hbox (badness 10000) in paragraph at lines 921--922
 
  []
 
-[44]
-Overfull \hbox (17.62482pt too wide) in paragraph at lines 971--986
+
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 923--941
+[]$[]$ 
+ []
+
+[43] [44]
+Underfull \hbox (badness 10000) in paragraph at lines 946--947
+
+ []
+
+
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 948--970
 []$[]$ 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 987--988
+Underfull \hbox (badness 10000) in paragraph at lines 972--973
 
- []
-
-
-Overfull \hbox (17.62482pt too wide) in paragraph at lines 989--1006
-[]$[]$ 
  []
 
 [45]
-Underfull \hbox (badness 10000) in paragraph at lines 1008--1009
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 974--989
+[]$[]$ 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 990--991
 
  []
 
 
-Overfull \hbox (17.62482pt too wide) in paragraph at lines 1010--1036
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 992--1009
 []$[]$ 
  []
 
 [46]
-Underfull \hbox (badness 10000) in paragraph at lines 1037--1038
+Underfull \hbox (badness 10000) in paragraph at lines 1011--1012
 
  []
 
 
-Overfull \hbox (17.62482pt too wide) in paragraph at lines 1039--1048
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 1013--1039
 []$[]$ 
  []
 
 [47]
-Underfull \hbox (badness 10000) in paragraph at lines 1051--1053
+Underfull \hbox (badness 10000) in paragraph at lines 1040--1041
 
  []
 
 
-Overfull \hbox (17.62482pt too wide) in paragraph at lines 1054--1069
-[]$[]$ 
- []
-
-
-Overfull \hbox (17.62482pt too wide) in paragraph at lines 1072--1082
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 1042--1051
 []$[]$ 
  []
 
 [48]
-Underfull \hbox (badness 10000) in paragraph at lines 1084--1085
+Underfull \hbox (badness 10000) in paragraph at lines 1054--1056
 
  []
 
 
-Overfull \hbox (17.62482pt too wide) in paragraph at lines 1086--1100
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 1057--1072
+[]$[]$ 
+ []
+
+
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 1075--1085
 []$[]$ 
  []
 
 [49]
-Overfull \hbox (31.65216pt too wide) in paragraph at lines 1118--1119
+Underfull \hbox (badness 10000) in paragraph at lines 1087--1088
+
+ []
+
+
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 1089--1103
+[]$[]$ 
+ []
+
+[50]
+Overfull \hbox (31.65216pt too wide) in paragraph at lines 1121--1122
 []\T1/lmr/m/n/12 Sve da-to-te-ke upra-vlja-£a i po-gle-da ge-ne-ri-²u se po-zi-
 va-njem ko-man-de \T1/DejaVuSansMono-TLF/m/n/12 mix phx.gen.json
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1118--1119
+Underfull \hbox (badness 10000) in paragraph at lines 1121--1122
 
  []
 
 
-Overfull \hbox (17.62482pt too wide) in paragraph at lines 1120--1146
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 1123--1149
 []$[]$ 
  []
 
-[50] [51]
-Underfull \hbox (badness 10000) in paragraph at lines 1151--1152
+[51] [52]
+Underfull \hbox (badness 10000) in paragraph at lines 1154--1155
 
  []
 
 
-Overfull \hbox (17.62482pt too wide) in paragraph at lines 1153--1165
-[]$[]$ 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1166--1167
-
- []
-
-
-Overfull \hbox (17.62482pt too wide) in paragraph at lines 1169--1178
-[]$[]$ 
- []
-
-[52]
-Overfull \hbox (17.62482pt too wide) in paragraph at lines 1183--1208
-[]$[]$ 
- []
-
-[53] [54]
-Overfull \hbox (17.62482pt too wide) in paragraph at lines 1222--1229
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 1156--1168
 []$[]$ 
  []
 
 
-Overfull \hbox (17.62482pt too wide) in paragraph at lines 1232--1239
+Underfull \hbox (badness 10000) in paragraph at lines 1169--1170
+
+ []
+
+
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 1172--1181
 []$[]$ 
  []
 
-[55
+[53]
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 1186--1211
+[]$[]$ 
+ []
+
+[54] [55]
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 1225--1232
+[]$[]$ 
+ []
+
+
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 1235--1242
+[]$[]$ 
+ []
+
+[56
 
 ]
-Overfull \hbox (17.62482pt too wide) in paragraph at lines 1246--1258
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 1249--1261
 []$[]$ 
  []
 
 
-Overfull \hbox (17.62482pt too wide) in paragraph at lines 1267--1287
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 1270--1290
 []$[]$ 
  []
 
-[56] [57]
-<elmpass.png, id=1053, 661.97313pt x 197.23688pt>
+[57] [58]
+<elmpass.png, id=1061, 661.97313pt x 197.23688pt>
 File: elmpass.png Graphic file (type png)
 <use elmpass.png>
-Package pdftex.def Info: elmpass.png  used on input line 1294.
+Package pdftex.def Info: elmpass.png  used on input line 1297.
 (pdftex.def)             Requested size: 383.3974pt x 114.23192pt.
-<elmfail.png, id=1054, 663.98062pt x 359.84438pt>
+<elmfail.png, id=1062, 663.98062pt x 359.84438pt>
 File: elmfail.png Graphic file (type png)
 <use elmfail.png>
-Package pdftex.def Info: elmfail.png  used on input line 1301.
+Package pdftex.def Info: elmfail.png  used on input line 1304.
 (pdftex.def)             Requested size: 383.3974pt x 207.78194pt.
- [58 <./elmpass.png> <./elmfail.png>]
-Overfull \hbox (17.62482pt too wide) in paragraph at lines 1313--1327
-[]$[]$ 
- []
-
-[59]
-Overfull \hbox (17.62482pt too wide) in paragraph at lines 1330--1342
+ [59 <./elmpass.png> <./elmfail.png>]
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 1316--1330
 []$[]$ 
  []
 
 [60]
-Overfull \hbox (1.22586pt too wide) in paragraph at lines 1350--1368
- [] 
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 1333--1345
+[]$[]$ 
  []
 
 [61]
-Overfull \hbox (17.62482pt too wide) in paragraph at lines 1377--1388
-[]$[]$ 
- []
-
-
-Overfull \hbox (17.62482pt too wide) in paragraph at lines 1391--1403
-[]$[]$ 
+Overfull \hbox (1.22586pt too wide) in paragraph at lines 1353--1371
+ [] 
  []
 
 [62]
-Overfull \hbox (17.62482pt too wide) in paragraph at lines 1407--1427
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 1380--1391
 []$[]$ 
  []
 
 [63]
-Overfull \hbox (17.62482pt too wide) in paragraph at lines 1430--1442
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 1394--1406
 []$[]$ 
  []
 
 [64]
-Overfull \hbox (17.62482pt too wide) in paragraph at lines 1445--1455
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 1410--1430
+[]$[]$ 
+ []
+
+
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 1433--1445
+[]$[]$ 
+ []
+
+[65]
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 1448--1458
 []$[]$ 
  []
 
 <expfail.png, id=1168, 413.545pt x 320.19624pt>
 File: expfail.png Graphic file (type png)
 <use expfail.png>
-Package pdftex.def Info: expfail.png  used on input line 1459.
+Package pdftex.def Info: expfail.png  used on input line 1462.
 (pdftex.def)             Requested size: 298.1987pt x 230.89288pt.
-[65 <./expfail.png>]
-Overfull \hbox (17.62482pt too wide) in paragraph at lines 1470--1475
-[]$[]$ 
- []
-
-
-Overfull \hbox (17.62482pt too wide) in paragraph at lines 1479--1492
-[]$[]$ 
- []
-
 [66]
-Overfull \hbox (17.62482pt too wide) in paragraph at lines 1502--1514
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 1473--1478
 []$[]$ 
  []
 
-[67]
-Overfull \hbox (17.62482pt too wide) in paragraph at lines 1519--1524
-[]$[]$ 
- []
-
-
-Overfull \hbox (17.62482pt too wide) in paragraph at lines 1527--1536
+[67 <./expfail.png>]
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 1482--1495
 []$[]$ 
  []
 
 [68]
-Overfull \hbox (17.62482pt too wide) in paragraph at lines 1547--1558
-[]$[]$ 
- []
-
-[69]
-Overfull \hbox (17.62482pt too wide) in paragraph at lines 1564--1574
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 1505--1517
 []$[]$ 
  []
 
 
-Overfull \hbox (17.62482pt too wide) in paragraph at lines 1575--1584
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 1522--1527
 []$[]$ 
  []
 
-[70] [71] [72
 
-] (AnaPetrovicMasterRad.bbl [73]
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 1530--1539
+[]$[]$ 
+ []
+
+[69] [70]
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 1550--1561
+[]$[]$ 
+ []
+
+
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 1567--1577
+[]$[]$ 
+ []
+
+[71]
+Overfull \hbox (17.62482pt too wide) in paragraph at lines 1578--1587
+[]$[]$ 
+ []
+
+[72] [73
+
+] (AnaPetrovicMasterRad.bbl [74]
 bibitemlist
 
 Underfull \hbox (badness 3302) in paragraph at lines 4--6
@@ -1768,9 +1768,9 @@ Underfull \hbox (badness 5878) in paragraph at lines 22--25
 no-TLF/m/n/12 https : / / www . ics . uci . edu /
  []
 
-[74
+[75
 
-] [75]) [76] [77
+] [76]) [77] [78
 
 
 
@@ -1790,13 +1790,13 @@ Package rerunfilecheck Info: File `AnaPetrovicMasterRad.out' has not changed.
 (rerunfilecheck)             Checksum: 886B7E46AFEE5F0A63150933EAD7926E;3729.
  ) 
 Here is how much of TeX's memory you used:
- 19843 strings out of 476334
- 307793 string characters out of 5787972
- 2052382 words of memory out of 5000000
- 39178 multiletter control sequences out of 15000+600000
+ 19848 strings out of 476334
+ 307828 string characters out of 5787972
+ 2049382 words of memory out of 5000000
+ 39180 multiletter control sequences out of 15000+600000
  611830 words of font info for 85 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 90i,12n,90p,1933b,1336s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 90i,12n,90p,2119b,1336s stack positions out of 10000i,1000n,20000p,200000b,200000s
 {C:/Users/panap/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ec.enc}{C
 :/Users/panap/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathsy.enc}{C
 :/Users/panap/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/dejavu/dejavumono_t
@@ -1817,9 +1817,9 @@ TeX/fonts/type1/public/lm/lmr8.pfb><C:/Users/panap/AppData/Local/Programs/MiKTe
 X/fonts/type1/public/lm/lmri10.pfb><C:/Users/panap/AppData/Local/Programs/MiKTe
 X/fonts/type1/public/lm/lmri12.pfb><C:/Users/panap/AppData/Local/Programs/MiKTe
 X/fonts/type1/public/lm/lmsy10.pfb>
-Output written on AnaPetrovicMasterRad.pdf (81 pages, 1011255 bytes).
+Output written on AnaPetrovicMasterRad.pdf (82 pages, 1017017 bytes).
 PDF statistics:
- 1657 PDF objects out of 1728 (max. 8388607)
- 796 named destinations out of 1000 (max. 500000)
+ 1668 PDF objects out of 1728 (max. 8388607)
+ 799 named destinations out of 1000 (max. 500000)
  208 words of extra memory for PDF output out of 10000 (max. 10000000)
 

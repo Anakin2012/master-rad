@@ -1,0 +1,78 @@
+This is BibTeX, Version 0.99d
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: AnaPetrovicMasterRad.aux
+Reallocating 'name_of_file' (item size: 1) to 18 items.
+Reallocating 'name_of_file' (item size: 1) to 6 items.
+The style file: plain.bst
+Database file #1: matfmaster-primer.bib
+Warning--to sort, need author or key in test
+Warning--to sort, need author or key in elixir-lang-official
+Warning--to sort, need author or key in erlang
+Warning--to sort, need author or key in elm-lang-official
+Warning--to sort, need author or key in haskell
+Warning--to sort, need author or key in msnr-portal
+Warning--to sort, need author or key in rest
+Warning--to sort, need author or key in postgre
+Warning--to sort, need author or key in phx
+Warning--to sort, need author or key in hex
+Warning--to sort, need author or key in plug
+Warning--to sort, need author or key in stlc
+Warning--to sort, need author or key in exunit
+Warning--to sort, need author or key in pbk
+Warning--to sort, need author or key in ecto
+Warning--to sort, need author or key in faker
+Warning--to sort, need author or key in exmachina
+Warning--to sort, need author or key in execto
+Warning--to sort, need author or key in hexcontrol
+Warning--to sort, need author or key in elm-test
+Warning--to sort, need author or key in npm
+Warning--to sort, need author or key in expect
+Warning--to sort, need author or key in fuzz
+Warning--to sort, need author or key in testmodul
+Warning--to sort, need author or key in cmd1
+Warning--to sort, need author or key in cmd2
+Warning--to sort, need author or key in html-elm-test
+Warning--empty journal in fabrike
+Warning--empty journal in external
+You've used 36 entries,
+            2118 wiz_defined-function locations,
+            616 strings with 7841 characters,
+and the built_in function-call counts, 6166 in all, are:
+= -- 549
+> -- 96
+< -- 0
++ -- 57
+- -- 20
+* -- 206
+:= -- 775
+add.period$ -- 80
+call.type$ -- 36
+change.case$ -- 113
+chr.to.int$ -- 0
+cite$ -- 65
+duplicate$ -- 278
+empty$ -- 810
+format.name$ -- 20
+if$ -- 1457
+int.to.chr$ -- 0
+int.to.str$ -- 36
+missing$ -- 10
+newline$ -- 154
+num.names$ -- 18
+pop$ -- 369
+preamble$ -- 1
+purify$ -- 82
+quote$ -- 0
+skip$ -- 224
+stack$ -- 0
+substring$ -- 181
+swap$ -- 34
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 136
+warning$ -- 29
+while$ -- 18
+width$ -- 38
+write$ -- 274
+(There were 29 warnings)

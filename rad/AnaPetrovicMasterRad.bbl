@@ -23,6 +23,11 @@ Adresa sa implementacijom portala msnr.
 \newblock on-line at:
   \url{https://www.ics.uci.edu/~fielding/pubs/dissertation/rest_arch_style.htm}.
 
+\bibitem{stlc}
+{Software Testing Life Cycle}.
+\newblock on-line at:
+  \url{https://www.geeksforgeeks.org/software-testing-life-cycle-stlc/}.
+
 \bibitem{cmd2}
 {Testing programs with Cmds}.
 \newblock url : \url
@@ -121,6 +126,11 @@ Ulisses Almeida.
 M.~Cohn.
 \newblock {\em Succeeding with Agile: Software Development Using Scrum}.
 \newblock A Mike Cohen signature book. Addison-Wesley, 2010.
+
+\bibitem{est}
+Elfriede Dustin.
+\newblock {Effective Software Testing: 50 Specific Ways to Improve Your
+  Testing}.
 
 \bibitem{elm-in-action}
 Richard Feldman.
