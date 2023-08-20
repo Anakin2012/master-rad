@@ -36,8 +36,8 @@ podstiče dozvoljavanje neuspeha (pada procesa), pre nego pokušavanje spašavan
 -- podstiče dopuštanje neuspešnih procesa pre nego oporavak od svake moguće greške upotrebom \emph{try / rescue} koncepta. 
 
 
-**** kako je brzo iscrtavanje posledica imutabilnosti?
-
+kako je brzo iscrtavanje posledica imutabilnosti?
+-- deo o iscrtavanju htmla i virtuelnom DOMU je izbacen
 
 
 -- izmenjene su i sve slovne greške (slovo o sa kapicom itd.)

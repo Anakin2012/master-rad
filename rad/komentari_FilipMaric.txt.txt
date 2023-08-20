@@ -84,6 +84,11 @@ Font smanjen, prelamanje rešeno i u kodu i što se tiče strana. Kada se uvedu 
 -------------------------------------
 ispravljeno na vise mesta
 
+ - validacija jedinstvenih polja - prodiskutovati potrebu za testiranjem ovih standardnih funkcionalnosti baza podataka 
+dodatno na početku podnaslova Testiranje u okruženju Ecto: 
+Biblioteka Ecto zadužena je za sve interakcije sa relacionim bazama podataka u okruženju Elixir. Može se podrazumevati da ova biblioteka radi kako treba, kako je široko korišćena i sama detaljno istestirana. Međutim, ono što je potrebno utvrditi jeste da li se unutar koda aplikacije ispravno pozivaju funkcije biblioteke Ecto. 
+
+
 18. programski kod pisati u verb fontu (javlja se i kasnije) 
     Sporedni efekat - propratni efekat -> ujednačiti
 ----------------------------------
@@ -142,13 +147,13 @@ u ovom primeru) koji se koristi u samom testu.
 Primer koda je iz originalne aplikacije koju nisam ja pisala, i taj kod nisam menjala. Čini mi se da ni ne utiče na testiranje?
 
 
-26. validacija jedinstvenih polja - prodiskutovati potrebu za testiranjem ovih standardnih funkcionalnosti baza podataka
------------------------------------------------------------------
-
-
-27. Ograničen broj napisanih testova nije otkrio značajne greške u implementaciji veb portala MSNR. -> Koje greške jeste otkrio? Da li ovo ukazuje na to da su testovi previše detaljni tj. da testiraju stvari koje se prirodno manuelno testiraju prilikom razvoja aplikacije (npr. ako pad nekog testa garantuje da aplikacija puca prilikom pokretanja, taj test nema puno smisla jer će ta greška svakako biti otkrivena prilikom pokretanja aplikacije)
--------------------------------------------------------
-
-
-28. Trebalo bi u zaključku prodiskutovati i isplativost ovako iscrpnog testiranja. Na nekim mestima u tezi broj linija koda testova uveliko prevazilazi broj linija programskog koda (možda dati statistike za ceo projekat). Trebalo bi diskutovati i održavanje testova tj. njihove izmene kada se menja funkcionalnost koda i aplikacije.
+26. Ograničen broj napisanih testova nije otkrio značajne greške u implementaciji veb portala MSNR. -> Koje greške jeste otkrio? Da li ovo ukazuje na to da su testovi previše detaljni tj. da testiraju stvari koje se prirodno manuelno testiraju prilikom razvoja aplikacije (npr. ako pad nekog testa garantuje da aplikacija puca prilikom pokretanja, taj test nema puno smisla jer će ta greška svakako biti otkrivena prilikom pokretanja aplikacije)
+Trebalo bi u zaključku prodiskutovati i isplativost ovako iscrpnog testiranja. Na nekim mestima u tezi broj linija koda testova uveliko prevazilazi broj linija programskog koda (možda dati statistike za ceo projekat). Trebalo bi diskutovati i održavanje testova tj. njihove izmene kada se menja funkcionalnost koda i aplikacije.
 -----------------------------------------------------------------------
+Dodat pasus u zaključku: 
+ Ograničen broj napisanih testova nije otkrio značajne greške u implementaciji veb portala MSNR. Zbog toga što je u pitanju je funkcionalan kod koji je po prirodi robustan, i detaljno manuelno istestiran, a pritom ne sadrži kompleksne algoritme, i nije bilo mnogo prostora za greške. Može se diskutovati o tome koliko je prikazano iscrpno testiranje trenutno isplativo na ovako maloj aplikaciji. Ako bi se planirao dalji razvoj ove aplikacije, i kada bi ona dovoljno narasla, napisani testovi bi postali dragoceni, jer svako manuelno testiranje je neuporedivo skuplje od pokretanja automatskih testova. U slučaju budućih izmena funkcionalnosti koda i same aplikacije, održavanje ovih testova ne predstavlja velik posao, s obzirom na to da su izolovani po komponentama, tako da bi izmene u konkretnoj komponenti u kodu pratile jednostavne izmene u jednom testu.
+
+
+
+Takođe, tekst koji pripada podnaslovu 3.3 Testiranje portala (strana 25.) je potpuno izmenjen i proširen, tako da objašnjava šta je sve neophodno pokriti i šta od toga je urađeno u okviru teze. 
+
