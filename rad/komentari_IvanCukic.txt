@@ -1,43 +1,70 @@
 Naziv mašine BEAM 
--> Rečenica izmenjena u: 
-Programski jezik Elixir je funkcionalni jezik opšte namene koji se izvršava na virtuelnoj mašini \emph{BEAM}, napravljenoj za programski jezik Erlang.
+--------------------------
+Rečenica izmenjena u: 
+Programski jezik Elixir je funkcionalni jezik opšte namene koji se izvršava na virtuelnoj mašini BEAM, napravljenoj za programski jezik Erlang.
 
 
 Erlang je korišćen za testiranje, a sledeća rečenica kaže da je 'ona' (pp aplikacija) implementirana pomoću Phoenixa odakle zaključujem da je Elixir korišćen i za jedno i za drugo.
 Ili je poenta rečenice da je ta aplicacija već postojala, a da ovaj rad samo implementira testove za istu?
 Treba preformulisati.
 Takodje, umesto 'ona' (subjekat prethodne rečenice je Elixir, pa je malo problematično da piše 'ona') bi bilo bolje 'ova veb aplikacija', ili dati ime aplikaciji i spominjati je po imenu u celom radu.
-
---> Aplikacija je vec postojala, a samo njen server je napisan u elixiru
-Preformulisano:  U ovom radu korišćen je za testiranje serverskog dela prethodno implementirane veb aplikacije, napisanog pomoću razvojnog okvira \emph{Phoenix}, koji je nastao i razvija se uporedo sa ovim programskim jezikom. 
+----------------------------------------------------------------------------
+Aplikacija je vec postojala, a samo njen server je napisan u elixiru.
+Preformulisano:  U ovom radu korišćen je za testiranje serverskog dela prethodno implementirane veb aplikacije, napisanog pomoću razvojnog okvira Phoenix, koji je nastao i razvija se uporedo sa ovim programskim jezikom. 
 
 
 funkcija poseduje transparentnost referenci - Rogobatno zvuci
---> Slično može važiti i za funkcije, ako se pri pozivu funkcije sa istim vrednostima argumenata uvek proizvodi isti rezultat.
+---------------------------------------------------------------
+Slično može važiti i za funkcije, ako se pri pozivu funkcije sa istim vrednostima argumenata uvek proizvodi isti rezultat.
 
 
-Iznova primenjuje funkciju spajanja na vrednost i datu listu... 
---> 
+Iznova primenjuje funkciju spajanja na vrednost i datu listu... Nije razumljiva recenica - zvuci kao da fold op init lista poziva fold op init lista (besk. rekurzija)
+------------------------------
 prihvata tri argumenta: funkciju spajanja, početnu vrednost u kojoj će se akumulirati rezultat, i listu. Funkcija spajanja je binarna operacija koja se primenjuje redom na svaki element liste i trenutnu akumuliranu vrednost, sve dok se lista ne redukuje na jednu vrednost koja predstavlja krajnji rezultat. 
 
 
+
 Prednost korišćenja ovih funkcija je u sažetom i čistom kodu. U odnosu na sta?
---> mislila sam u odnosu na njihovo nekoriscenje 
+-----------------------------------------
+mislila sam u odnosu na nekoriscenje 
 Preoformulisano: Funkcije viseg reda dovode do sazetog i cistog koda. 
 
+
 Testiranjem se osigurava kvalitet softvera
--- Testiranjem se proverava kvalitet softvera
+-------------------------------------------
+Testiranjem se proverava kvalitet softvera
 
 
 jedinični testovi
--- promenjeno na testovi jedinica koda na prvom mestu, da li je potrebno svuda?
+------------------------------
+promenjeno na testovi jedinica koda na prvom mestu, da li je potrebno svuda?
+
 
 podstiče dozvoljavanje neuspeha (pada procesa), pre nego pokušavanje spašavanja svake moguće greške 
--- podstiče dopuštanje neuspešnih procesa pre nego oporavak od svake moguće greške upotrebom \emph{try / rescue} koncepta. 
+-------------------------------------------------------------
+podstiče dopuštanje neuspešnih procesa pre nego oporavak od svake moguće greške upotrebom try / rescue koncepta. 
 
 
 kako je brzo iscrtavanje posledica imutabilnosti?
--- deo o iscrtavanju htmla i virtuelnom DOMU je izbacen
+--------------------------------------------------------------------------
+deo o iscrtavanju htmla i virtuelnom DOMU je u dogovoru sa mentorom izbačen, jer ne objašnjava baš najbolje tu vezu između imutabilnosti i iscrtavanja. 
 
 
--- izmenjene su i sve slovne greške (slovo o sa kapicom itd.)
+rolu - ranije su uvedene uloge student i profesor
+---------------------------------------------
+Rola promenjeno u uloga.
+
+
+Phoenix upravljači (eng. controllers) su utikači i predstavljaju posredničke mo-
+dule .
+---------------------------------------------- 
+Phoenix upravljači (eng. controllers) su interno utikači, što znači da prihvataju strukturu Plug.Conn kao ulaznu vrednost i vraćaju je kao povratnu. Upravljači predstavljaju posredničke module.
+
+
+šta su 'principi imutabilnosti'?
+---------------------------------------------
+izbačena je reč 'principi'
+
+
+
+-- izmenjene su i sve slovne greške, pipe operatori su \texttt, slovo o sa kapicom više nije italic, i kapica je ostavljena samo kada je reč 'kod' u nominativu, jer tad može da zvuči kao predlog 'kod'. Kada se reč piše u svim ostalim padežima mislim da kapica nije potrebna.  

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 23.1) (preloaded format=pdflatex 2023.4.5)  20 AUG 2023 13:01
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 23.1) (preloaded format=pdflatex 2023.4.5)  20 AUG 2023 13:38
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1171,6 +1171,17 @@ File: piramidanova.png Graphic file (type png)
 Package pdftex.def Info: piramidanova.png  used on input line 217.
 (pdftex.def)             Requested size: 340.8013pt x 190.67787pt.
  [7 <./piramidanova.png>]
+LaTeX Font Info:    Trying to load font information for T1+DejaVuSansMono-TLF o
+n input line 230.
+
+(C:\Users\panap\AppData\Local\Programs\MiKTeX\tex/latex/dejavu\t1dejavusansmono
+-tlf.fd
+File: T1DejaVuSansMono-TLF.fd 2011/06/01 Font definitions for T1/DejaVuSansMono
+-TLF.
+)
+LaTeX Font Info:    Font shape `T1/DejaVuSansMono-TLF/m/n' will be
+(Font)              scaled to size 10.79993pt on input line 230.
+
 Overfull \hbox (17.62482pt too wide) in paragraph at lines 232--255
 []$[]$ 
  []
@@ -1196,12 +1207,12 @@ Overfull \hbox (17.62482pt too wide) in paragraph at lines 342--353
  []
 
 [15] [16] Excluding 'comment' comment. [17]
-<student-page.png, id=326, 961.09062pt x 477.28313pt>
+<student-page.png, id=327, 961.09062pt x 477.28313pt>
 File: student-page.png Graphic file (type png)
 <use student-page.png>
 Package pdftex.def Info: student-page.png  used on input line 405.
 (pdftex.def)             Requested size: 383.3974pt x 190.40007pt.
-<professor-page.png, id=329, 962.59625pt x 480.29437pt>
+<professor-page.png, id=330, 962.59625pt x 480.29437pt>
 File: professor-page.png Graphic file (type png)
 <use professor-page.png>
 Package pdftex.def Info: professor-page.png  used on input line 412.
@@ -1209,40 +1220,29 @@ Package pdftex.def Info: professor-page.png  used on input line 412.
  [18
 
 ] [19 <./student-page.png> <./professor-page.png>]
-<msnr-arch.png, id=351, 714.16812pt x 287.57437pt>
+<msnr-arch.png, id=352, 714.16812pt x 287.57437pt>
 File: msnr-arch.png Graphic file (type png)
 <use msnr-arch.png>
 Package pdftex.def Info: msnr-arch.png  used on input line 450.
 (pdftex.def)             Requested size: 383.3974pt x 154.38391pt.
  [20]
-<msnr-str.png, id=363, 316.93407pt x 587.94656pt>
+<msnr-str.png, id=364, 316.93407pt x 587.94656pt>
 File: msnr-str.png Graphic file (type png)
 <use msnr-str.png>
 Package pdftex.def Info: msnr-str.png  used on input line 459.
 (pdftex.def)             Requested size: 213.0pt x 395.15123pt.
  [21 <./msnr-arch.png>] [22 <./msnr-str.png>]
-<elmprog.png, id=387, 278.03876pt x 182.6825pt>
+<elmprog.png, id=388, 278.03876pt x 182.6825pt>
 File: elmprog.png Graphic file (type png)
 <use elmprog.png>
 Package pdftex.def Info: elmprog.png  used on input line 473.
 (pdftex.def)             Requested size: 213.0pt x 139.95235pt.
-<msnr-elm.png, id=391, 337.26pt x 395.22656pt>
+<msnr-elm.png, id=392, 337.26pt x 395.22656pt>
 File: msnr-elm.png Graphic file (type png)
 <use msnr-elm.png>
 Package pdftex.def Info: msnr-elm.png  used on input line 484.
 (pdftex.def)             Requested size: 255.6026pt x 299.53703pt.
  [23 <./elmprog.png>] [24 <./msnr-elm.png>] [25] [26]
-LaTeX Font Info:    Trying to load font information for T1+DejaVuSansMono-TLF o
-n input line 505.
-
-(C:\Users\panap\AppData\Local\Programs\MiKTeX\tex/latex/dejavu\t1dejavusansmono
--tlf.fd
-File: T1DejaVuSansMono-TLF.fd 2011/06/01 Font definitions for T1/DejaVuSansMono
--TLF.
-)
-LaTeX Font Info:    Font shape `T1/DejaVuSansMono-TLF/m/n' will be
-(Font)              scaled to size 10.79993pt on input line 505.
-
 Underfull \hbox (badness 10000) in paragraph at lines 510--511
 
  []
@@ -1817,7 +1817,7 @@ TeX/fonts/type1/public/lm/lmr8.pfb><C:/Users/panap/AppData/Local/Programs/MiKTe
 X/fonts/type1/public/lm/lmri10.pfb><C:/Users/panap/AppData/Local/Programs/MiKTe
 X/fonts/type1/public/lm/lmri12.pfb><C:/Users/panap/AppData/Local/Programs/MiKTe
 X/fonts/type1/public/lm/lmsy10.pfb>
-Output written on AnaPetrovicMasterRad.pdf (82 pages, 1017849 bytes).
+Output written on AnaPetrovicMasterRad.pdf (82 pages, 1017908 bytes).
 PDF statistics:
  1668 PDF objects out of 1728 (max. 8388607)
  799 named destinations out of 1000 (max. 500000)
