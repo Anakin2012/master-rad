@@ -1,6 +1,6 @@
 1. "U jeziku Elm napisani su testovi za klijentsku stranu veb portala koji služi za upravljanje aktivnostima na kursu Metodologija stručnog i naučnog rada" -> razjasniti da li je to urađeno u sklopu ovom master rada ili nezavisno do njega 
 --------------------------------------
-U okviru rada, napisani su testovi u jeziku Elm za klijentsku stranu veb portala koji služi za upravljanje aktivnostima...
+U okviru rada, napisani su testovi u jeziku Elm za klijentsku stranu veb portala koji služi za upravljanje aktivnostima na kursu Metodologija stručnog i naučnog rada. Za serveski deo ove aplikacije, korišćen je funkcionalni programski jezik Elixir, zajedno sa svojim razvojnim okvirom za veb aplikacije Phoenix. Upotrebom ugrađenog razvojnog okvira za testiranje u Elixir-u, napisani su testovi koji pokrivaju serversku stranu portala. Implementacija samog portala nije deo ovog rada.
 
 2. - odsustvo propratnih efekata, tj. da čista funkcija ne vrši nikakve izmene nad argumentima, kao ni nad promenljivima -> i malo šire od toga. Npr. ne ispisuje se ništa na ekran, ne upisuje se ništa u fajl/bazu, ..
 --------------------------------------

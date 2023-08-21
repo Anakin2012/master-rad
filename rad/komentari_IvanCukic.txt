@@ -37,8 +37,7 @@ Testiranjem se proverava kvalitet softvera
 
 jedinični testovi
 ------------------------------
-promenjeno na testovi jedinica koda na prvom mestu, da li je potrebno svuda?
-
+promenjeno na testovi jedinica koda.
 
 podstiče dozvoljavanje neuspeha (pada procesa), pre nego pokušavanje spašavanja svake moguće greške 
 -------------------------------------------------------------
