@@ -12,9 +12,7 @@ defmodule MsnrApi.Queries.ActivityTypesTest do
 
     test "success: returns a list of all activity types" do
       existing_activity_types = [
-        Factory.insert(:activity_type),
-        Factory.insert(:activity_type),
-     ]
+        Factory.insert(:activity_type)]
 
       assert retrieved_activity_types = ActivityTypes.list_activity_types()
       assert retrieved_activity_types == existing_activity_types

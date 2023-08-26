@@ -61,14 +61,15 @@ defmodule MsnrApiWeb.ActivityTypeControllerTest do
       conn = get(conn, Routes.activity_type_path(conn, :show, activity_type))
       assert %{"id" => id} = json_response(conn, 200)["data"]
 
+
       assert %{
         "id" => ^id,
         "content" => %{},
-        "description" => "some description",
+        "description" => "desc",
         "has_signup" => false,
         "is_group" => false,
-        "name" => "some name",
-        "code" => "topic"
+        "name" => "Grupe",
+        "code" => "group"
       } = json_response(conn, 200)["data"]
     end
   end

@@ -251,7 +251,10 @@ intToMonthTests =
         test "output is Dec when input is 12" <|
         \_ -> intToMonth 12
               |> Expect.equal (Just Dec),
-        fuzz (intRange -50 0) "output is Nothing if input < 1" <|
+        test "output is Nothing if input is 0" <|
+        \_ -> intToMonth 0 
+              |> Expect.equal Nothing,
+        fuzz (intRange -50 -1) "output is Nothing if input < 0" <|
         \month -> intToMonth month
               |> Expect.equal Nothing, 
         fuzz (intRange 13 50) "output is Nothing if input > 12" <|

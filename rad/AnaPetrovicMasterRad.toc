@@ -34,7 +34,7 @@
 \contentsline {subsubsection}{Fabrike za pripremu podataka}{40}{section*.22}%
 \contentsline {subsubsection}{Testiranje osnovnih CRUD operacija}{43}{section*.23}%
 \contentsline {section}{\numberline {4.3}Testiranje upravljača i pogleda}{47}{section.4.3}%
-\contentsline {subsection}{Priprema za testiranje}{49}{section*.24}%
+\contentsline {subsection}{Priprema za testiranje}{50}{section*.24}%
 \contentsline {subsection}{Testovi akcija upravljača}{51}{section*.25}%
 \contentsline {chapter}{\chapternumberline {5}Testiranje klijentskog dela aplikacije}{54}{chapter.5}%
 \contentsline {section}{\numberline {5.1}Uvod u testiranje Elm aplikacija}{54}{section.5.1}%
@@ -43,7 +43,7 @@
 \contentsline {section}{\numberline {5.2}Testiranje rada sa JSON podacima}{61}{section.5.2}%
 \contentsline {section}{\numberline {5.3}Testiranje arhitekture Elm}{64}{section.5.3}%
 \contentsline {subsection}{Testiranje promena stanja aplikacije}{65}{section*.28}%
-\contentsline {subsection}{Testiranje HTML sadržaja}{67}{section*.29}%
-\contentsline {subsubsection}{Testiranje interakcija sa korisnikom}{69}{section*.30}%
-\contentsline {chapter}{\chapternumberline {6}Zaključak}{71}{chapter.6}%
-\contentsline {chapter}{Bibliografija}{73}{chapter*.31}%
+\contentsline {subsection}{Testiranje HTML sadržaja}{66}{section*.29}%
+\contentsline {subsubsection}{Testiranje interakcija sa korisnikom}{68}{section*.30}%
+\contentsline {chapter}{\chapternumberline {6}Zaključak}{70}{chapter.6}%
+\contentsline {chapter}{Bibliografija}{72}{chapter*.31}%

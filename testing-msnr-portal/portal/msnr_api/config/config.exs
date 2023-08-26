@@ -44,7 +44,7 @@ config :logger, :console,
 config :phoenix, :json_library, Jason
 
 config :cors_plug,
-  origin: ["http://localhost:8000"],
+  origin: ["http://localhost:8080"],
   methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"]
 
 # Import environment specific config. This must remain at the bottom

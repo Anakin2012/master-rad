@@ -1,9 +1,7 @@
 defmodule MsnrApiWeb.StudentControllerTest do
   use MsnrApiWeb.ConnCase
-  alias MsnrApi.Students.Student
   import MsnrApi.SemestersFixtures
   import MsnrApi.UserFixtures
-  alias MsnrApi.Semesters.Semester
 
   setup %{conn: conn} do
     {:ok, conn: put_req_header(conn, "accept", "application/json")}
@@ -46,7 +44,7 @@ defmodule MsnrApiWeb.StudentControllerTest do
 
   defp create_user() do
     user = user_fixture()
-    {:ok, student} = MsnrApi.Students.create_student(user, %{"index_number" => "123455"})
+    {:ok, _} = MsnrApi.Students.create_student(user, %{"index_number" => "123455"})
   end
 
 end

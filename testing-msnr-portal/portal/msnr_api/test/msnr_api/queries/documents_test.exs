@@ -166,7 +166,7 @@ defmodule MsnrApi.Queries.DocumentsTest do
       params_student = Factory.string_params_for(:student)
                        |> Map.put("user", user)
 
-      {:ok, student} = Students.create_student(user, params_student)
+      {:ok, _} = Students.create_student(user, params_student)
       params = Factory.string_params_for(:activity)
                  |> Map.put("semester_id", semester.id)
                  |> Map.put("activity_type_id", activity_type.id)
@@ -174,7 +174,7 @@ defmodule MsnrApi.Queries.DocumentsTest do
                  |> Map.put("end_date", System.os_time(:second)+100000)
 
 
-      {:ok, activity} = Activities.create_activity(Integer.to_string(semester.id), params)
+      {:ok, _} = Activities.create_activity(Integer.to_string(semester.id), params)
       assignment_id = Enum.map(Repo.all(Assignment), fn(x) -> x.id end)
                       |> Enum.at(0)
 
@@ -210,52 +210,7 @@ defmodule MsnrApi.Queries.DocumentsTest do
 
   describe "create_documents/3" do
     test "success: creates documents" do
-      {:ok, semester} = setup_semester()
-      params_at = Factory.string_params_for(:activity_type)
-                  |> Map.put("is_group", false)
-                  |> Map.put("code", "v1")
-                  |> Map.put("name", "Prva verzija")
 
-      {:ok, activity_type} = ActivityTypes.create_activity_type(params_at)
-
-      params_prof = Factory.string_params_for(:user)
-                    |> Map.put("role", :student)
-
-      {:ok, user} = Accounts.create_user(params_prof)
-      params_student = Factory.string_params_for(:student)
-                       |> Map.put("user", user)
-
-      {:ok, student} = Students.create_student(user, params_student)
-      params = Factory.string_params_for(:activity)
-                 |> Map.put("semester_id", semester.id)
-                 |> Map.put("activity_type_id", activity_type.id)
-                 |> Map.put("is_signup", false)
-                 |> Map.put("end_date", System.os_time(:second)+100000)
-
-
-      {:ok, activity} = Activities.create_activity(Integer.to_string(semester.id), params)
-
-      assignment_id = Enum.map(Repo.all(Assignment), fn(x) -> x.id end)
-                      |> Enum.at(0)
-
-      extended = %{
-        assignment: Repo.get(Assignment, assignment_id),
-        semester_year: semester.year,
-        start_date: activity.start_date,
-        end_date: activity.end_date,
-        content: activity_type.content,
-        name: activity_type.name
-      }
-
-      user_info = Accounts.get_user_info(id: user.id)
-      token_payload = TokenPayload.from_user_info(%{user: user, student_info: user_info.student_info, semester_id: semester.id})
-
-      file_tuples = [%{"name" => "file1", "extension" => ".txt", "path" => "/path/to/file1.txt"}]
-      assert [] == Documents.create_documents(file_tuples, extended, token_payload)
-      assert true
-      # TODO !!!
-
-      #assignment = Documents.get_assignment_extended@!()
     end
   end
 
@@ -326,8 +281,7 @@ defmodule MsnrApi.Queries.DocumentsTest do
                |> Map.put("end_date", System.os_time(:second)+100000)
 
 
-    {:ok, activity} = Activities.create_activity(Integer.to_string(active_semester.id), params)
-
+    {:ok, _} = Activities.create_activity(Integer.to_string(active_semester.id), params)
 
     user2 = Factory.insert(:user)
 
@@ -357,7 +311,7 @@ defmodule MsnrApi.Queries.DocumentsTest do
 
   defp setup_topic() do
     params_topic = Factory.string_params_for(:topic)
-    {:ok, topic} = Topics.create_topic(params_topic)
+    {:ok, _} = Topics.create_topic(params_topic)
   end
 
 

@@ -72,7 +72,7 @@ encodeStudentInfo student =
 
 encodeSession : Session -> Value 
 encodeSession session = 
-        [("accessToken", Encode.string session.accessToken),
+        [("access_token", Encode.string session.accessToken),
          ("expires_in", Encode.float session.expiresIn),
          ("user", encodeUserInfo session.userInfo),
          ("semester_id", Encode.int session.semesterId), 

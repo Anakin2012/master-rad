@@ -19,5 +19,5 @@ import Time
 import RegistrationPage exposing (Msg(..))
 
 someTest = 
-    test "" <|
+    test "some test" <|
     \_ -> Expect.pass

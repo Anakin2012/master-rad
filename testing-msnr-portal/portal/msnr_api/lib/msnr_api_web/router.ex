@@ -19,7 +19,7 @@ defmodule MsnrApiWeb.Router do
 
     resources "/semesters", SemesterController, except: [:new, :edit] do
       resources "/registrations", StudentRegistrationController, only: [:index]
-      resources "/topics", TopicController, only: [:index, :create]
+      resources "/topics", TopicController, only: [:index, :create, :delete]
       resources "/groups", GroupController, only: [:index, :create]
       resources "/activities", ActivityController, only: [:index, :create]
       resources "/assignments", AssignmentController, only: [:index]
@@ -40,7 +40,7 @@ defmodule MsnrApiWeb.Router do
     resources "/documents", DocumentController, only: [:show, :update]
     resources "/activities", ActivityController, only: [:show, :update]
     resources "/assignments", AssignmentController, only: [:show, :update]
-    resources "/topics", TopicController, only: [:show, :update, :delete]
+    resources "/topics", TopicController, only: [:show, :update]
     resources "/groups", GroupController, only: [:show, :update]
     resources "/signups", SignupController, only: [:update]
   end

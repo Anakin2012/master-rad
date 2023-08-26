@@ -1,7 +1,7 @@
 defmodule MsnrApi.Queries.StudentsTest do
 
   use MsnrApi.Support.DataCase
-  alias MsnrApi.{Students, Students.Student, Students.StudentSemester, Semesters}
+  alias MsnrApi.{Students, Students.Student, Semesters}
   alias Ecto.Changeset
 
   setup do

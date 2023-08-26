@@ -115,7 +115,7 @@ defmodule MsnrApiWeb.StudentRegistrationControllerTest do
       assert response_map == json_response(conn, 200)["data"]
     end
 
-    test "cant render", %{conn: conn, student_registration: student_registration
+    test "cant render", %{conn: conn, student_registration: _
     } do
 
       {response, _, _} = assert_error_sent 404, fn ->
