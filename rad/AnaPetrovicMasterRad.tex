@@ -80,7 +80,7 @@
 % Ime kandidata na srpskom jeziku (u odabranom pismu)
 \autor{Ana Petrović}
 % Naslov teze na srpskom jeziku (u odabranom pismu)
-\naslov{Testiranje softvera u funkcionalnim programskim jezicima Elm i Elixir}
+\naslov{Testiranje funkcionalnih programa na primeru aplikacije koja koristi jezike Elm i Elixir}
 % Godina u kojoj je teza predana komisiji
 \godina{2023}
 % Ime i afilijacija mentora (u odabranom pismu)
@@ -166,7 +166,7 @@ Mogućnost prosleđivanja funkcija kao argumenata drugih funkcija je ključna za
 \item Transparentnost referenci 
 \item Imutabilnost 
 \end{itemize}
-\par  Koncept transparetnosti referenci se odnosi na to da je vrednost izraza jedinstveno određena. Izraz se može zameniti svojom vrednošću na bilo kom mestu u programu, bez promene u ponašanju programa. Slično može važiti i za funkcije, ako se pri pozivu funkcije sa istim vrednostima argumenata uvek proizvodi isti rezultat. Ponašanje takve funkcije je određeno njenim ulaznim vrednostima.
+\par  Koncept transparentnosti referenci se odnosi na to da je vrednost izraza jedinstveno određena. Izraz se može zameniti svojom vrednošću na bilo kom mestu u programu, bez promene u ponašanju programa. Slično može važiti i za funkcije, ako se pri pozivu funkcije sa istim vrednostima argumenata uvek proizvodi isti rezultat. Ponašanje takve funkcije je određeno njenim ulaznim vrednostima.
 
 \par Imutabilnost podrazumeva odsustvo propratnih efekata, tj. da čista funkcija ne generiše nikakve posledice u smislu izmena argumenata, promenljivih, ili stanja programa. To podrazumeva i prikazivanje izlaza na ekranu, ili trajno čuvanje podataka u bazi podataka ili datoteci. Jedini rezultat čiste funkcije jeste vrednost koju ona vrati. Kao posledica ovoga, funkcionalni programi su laki za debagovanje. Čiste funkcije takođe olakšavaju paralelizaciju i konkurentnost aplikacija. Na osnovu ovako napisanih programa, kompilator lako može da paralelizuje naredbe, sačeka da evaluira rezultate kada budu potrebni, i na kraju da zapamti rezultat, s obzirom na to da se on neće promeniti sve dok ulaz ostaje isti. K\^{o}d \ref{lst:pure} prikazuje primer jedne čiste funkcije u programskom jeziku \emph{Elixir}. \\
 
@@ -186,6 +186,8 @@ IO.puts Math.fibonacci(9)
 \subsection{Funkcije višeg reda}
 \par Funkcija višeg reda je funkcija koja kao argument uzima jednu ili više funkcija i/ili ima funkciju kao svoju povratnu vrednost. U funkcionalnom programiranju se intenzivno koriste ovakve funkcije, a po svojoj važnosti se posebno izdvajaju \textit{map}, \textit{filter} i \textit{reduce (fold)}.  Funkcija \textit{map} kao argumente prima funkciju i listu, i zatim primeni datu funkciju na svaki element liste i kao povratnu vrednost proizvodi novu listu. Upotrebom funkcije \textit{filter} mogu se eliminisati neželjeni elementi neke liste --- na osnovu prosleđene funkcije predikata i date liste, \textit{filter} vraća listu sa elementima koji ispunjavaju dati kriterijum. Funkcije \emph{map} i \emph{filter} se mogu implementirati i upotrebom funkcije \emph{fold}. \textit{Fold} prihvata tri argumenta: funkciju spajanja, početnu vrednost u kojoj će se akumulirati rezultat, i listu. Funkcija spajanja je binarna operacija koja se primenjuje redom na svaki element liste i trenutnu akumuliranu vrednost, sve dok se lista ne redukuje na jednu vrednost koja predstavlja krajnji rezultat. 
 \par Funkcije višeg reda dovode do sažetog i čistog koda. Takođe, pogodne su i za paralelizaciju. Primer koda \ref{lst:high} pokazuje upotrebu spomenutih funkcija u programskom jeziku \emph{Elm}.
+
+\vspace*{1\baselineskip}
 
 \begin{minipage}{\linewidth}
 \begin{lstlisting}[language=elm, basicstyle=\small, caption={Funkcije višeg reda},captionpos=b, label={lst:high}]
@@ -255,7 +257,7 @@ sumTest =
 
 \subsubsection{Integracioni testovi}
 \label{sec:integration}
-\par Jedan od ključnih koraka u razvoju softvera jeste pisanje integracionih testova. Oni utvrđuju da li različite komponente sistema rade zajedno na predviđen način. Pojedinačni moduli i komponente se kombinuju i testiraju kao jedna celina. Cilj integracionog testiranje jeste identifikacija i rešavanje problema koji mogu nastati nakon što se komponente softverskog sistema integrišu i krenu da međusobno komuniciraju. Svaka od njih pojedinačno možda radi kako treba, ali nakon što se to utvrdi testovima jedinica koda, potrebno je proveriti da li će njihova interakcija izazvati neželjeno ponašanje. 
+\par Jedan od ključnih koraka u razvoju softvera jeste pisanje integracionih testova. Oni utvrđuju da li različite komponente sistema rade zajedno na predviđen način. Pojedinačni moduli i komponente se kombinuju i testiraju kao jedna celina. Cilj integracionog testiranja jeste identifikacija i rešavanje problema koji mogu nastati nakon što se komponente softverskog sistema integrišu i krenu da međusobno komuniciraju. Svaka od njih pojedinačno možda radi kako treba, ali nakon što se to utvrdi testovima jedinica koda, potrebno je proveriti da li će njihova interakcija izazvati neželjeno ponašanje. 
 \par U zavisnosti od potreba konkretnog sistema, postoje različiti pristupi integracionom testiranju. Ako su komponente viših nivoa kritične za funkcionalnost sistema, ili od njih zavisi mnogo drugih komponenti, ima smisla prvo testirati njih, pa kasnije postepeno preći na komponente nižih nivoa. Ovakav pristup se naziva testiranje odozgo nadole (eng. \emph{top-down integration testing}). U suprotnom, ako su komponente nižih slojeva arhitekture kritičnije za celokupan sistem, predlaže se testiranje odozdo nagore (eng. \emph{bottom-up integration testing}). Hibridno integraciono testiranje (eng. \emph{hybrid integration testing}) podrazumeva kombinaciju prethodna dva --- započinje sa testovima komponenti najvišeg sloja, zatim se prelazi na testiranje najnižeg sloja, sve dok se postepeno ne stigne do središnjih. Kada je sistem relativno jednostavan i ne postoji veliki broj komponenti, može se primeniti pristup po principu ''velikog praska'' (eng. \emph{big-bang integration testing}), koji podrazumeva testiranje svih komponenti odjednom, kao jedne celine. 
 \par Ako se komponente nalaze u okviru istog sistema, gde postoji kontrola i neko očekivano ponašanje --- integracioni testovi su prilično jednostavni. Međutim, kada su u pitanju spoljašnje komponente i testiranje interakcije sistema sa njima, pisanje integracionih testova postaje malo komplikovanije. Mnoge aplikacije koriste baze podataka, druge servise ili API-je, sa kojima se testovi moraju uskladiti. U testovima se mogu koristiti pravi podaci, ili se umesto njih ubaciti takozvani dubleri (eng. \textit{test doubles}).
 \par Integraciono testiranje je neophodno da bi se obezbedio kvalitetan i pouzdan softver, i zahvaljujući njemu rano se uočavaju različiti problemi do kojih može doći i time značajno redukuje vreme i cena celokupnog razvoja. 
@@ -268,7 +270,7 @@ sumTest =
 \par Postoji mnogo vrsta sistemskog testiranja, i potrebno je doneti odluku koje od njih će biti sprovedene, u zavisnosti od zahteva, tipa aplikacije i raspoloživih resursa.  Neke od vrsta sistemskog testiranja koje se odnose na nefunkcionalne osobine softvera su: 
 \begin{itemize}
 \item Testiranje oporavka (eng. \emph{recovery testing}) --- nakon što se izazove pad sistema, proverava se da li se on vraća u prvobitno stanje na ispravan način.
-\item Testiranje perfomansi (eng. \emph{perfomance testing}) --- proverava se skalabilnost, pouzdanost, i vreme odgovora sistema.
+\item Testiranje performansi (eng. \emph{perfomance testing}) --- proverava se skalabilnost, pouzdanost, i vreme odgovora sistema.
 \item Testiranje sigurnosti (eng. \emph{security testing}) --- proverava se da li je sistem adekvatno zaštićen od upada ili gubitka podataka. 
 \item Regresiono testiranje (eng. \emph{regression testing}) --- proverava se da li su se pojavile neke naknadne greške pri dodavanju novih funkcionalnosti. 
 \item Testiranje kompatibilnosti (eng. \emph{compatibility testing}) --- proverava se da li sistem radi ispravno u različitim okruženjima, npr. kada se koristi na drugom hardveru ili operativnom sistemu.
@@ -650,6 +652,8 @@ defmodule MsnrApi.Assignments.Assignment do
 \end{lstlisting}
 \end{minipage}
 
+\vspace*{2\baselineskip}
+
 \subsection{Testiranje polja i tipova}
 \par Test koji proverava polja i tipove tabele \emph{assignments} dat je u kodu \ref{lst:testschema}. Ovo je primer jednostavnog testa koji proverava da li definisana shema ima tačna polja i odgovarajuće tipove. Unutar testa se prvo prolaskom kroz sva polja strukture \emph{Assignment} izvuku polje i njegov tip, i zatim se navodi ključna reč \texttt{assert}, kojom se proverava da li su prava polja i tipovi jednaki očekivanim. Lista \emph{@expected{\textunderscore}fields{\textunderscore}with{\textunderscore}types} definisana je kao lista parova polja i odgovarajućih tipova, kao što su navedeni u primeru \ref{lst:schema}. Unutar naredbe \texttt{assert}, i prava i očekivana lista pretvorene su u strukturu \emph{MapSet}, kako bi se redosledi polja poklapali sa obe strane. Slični testovi napisani su i za sve ostale entitete navedene u sekciji \ref{sec:entiteti}. \\
 
@@ -707,7 +711,7 @@ def project do [
 
 \subsubsection{Generisanje lažnih podataka}
 \par Za potrebe testiranja svih entiteta, biće neophodno obezbediti lažne podatke odgovarajućih tipova koji će odgovarati poljima u tabelama. Modul \emph{SchemaCase} je jedan od pomoćnih modula u kojem se nalaze funkcije koje će se pozivati u skoro svim testovima koji proveravaju sheme u okviru baze podataka. Sadrži dve funkcije, od kojih jedna konstruiše realistične podatke ispravnih tipova, a druga konstruiše podatke koji su pogrešnog tipa u odnosu na polje tabele. 
-\par Za generisanje nasumičnih realističnih podataka korišćena je biblioteka \emph{Faker} \cite{faker}. \emph{Faker} je potrebno uključiti u zavisnosti projekta, dodavanjem linije \texttt{\{:faker, ''$\sim$> 0.17'', only: :test\}}, u delu \texttt{deps} konfiguracione datoteke \emph{mix.exs}. Biblioteku nije potrebno koristiti u razvojnom i produkcionom okruženju, te se ovom linijom ograničava njena upotreba samo na testno okruženje. U tabeli \ref{tab:fake} prikazani su neki od modula biblioteke \emph{Faker} i njhove funkcije koje su korišćene prilikom generisanja podataka za testiranje.
+\par Za generisanje nasumičnih realističnih podataka korišćena je biblioteka \emph{Faker} \cite{faker}. \emph{Faker} je potrebno uključiti u zavisnosti projekta, dodavanjem linije \texttt{\{:faker, ''$\sim$> 0.17'', only: :test\}}, u delu \texttt{deps} konfiguracione datoteke \emph{mix.exs}. Biblioteku nije potrebno koristiti u razvojnom i produkcionom okruženju, te se ovom linijom ograničava njena upotreba samo na testno okruženje. U tabeli \ref{tab:fake} prikazani su neki od modula biblioteke \emph{Faker} i njihove funkcije koje su korišćene prilikom generisanja podataka za testiranje.
 
 \begin{table}[!htbp]
 \centering
@@ -737,6 +741,7 @@ def project do [
 
 
 \par Pomoćne funkcije \emph{valid{\textunderscore}params} i \emph{invalid{\textunderscore}params} iz modula \emph{SchemaCase} prikazane su u primeru koda \ref{lst:faker}. Ove funkcije kao povratnu vrednost imaju mapu koja sadrži niske naziva polja kao ključeve, i odgovarajuće generisane vrednosti koje njima odgovaraju. Prva funkcija generiše realistične podatke ispravnog tipa, i ona se poziva u testovima koji proveravaju ispravnu putanju. Druga funkcija generiše podatke neodgovarajućeg tipa i ona u testovima služi za sprovođenje neuspešne putanje izvršavanja. Na primer, za polja koja bi trebalo da budu niske, ova funkcija generiše podatak tipa \emph{DateTime}. \\
+\vspace*{1\baselineskip}
 
 \begin{minipage}{\linewidth}
 \begin{lstlisting}[language=elixir, basicstyle=\small, caption={Definicije pomoćnih funkcija \emph{valid{\textunderscore}params} i \emph{invalid{\textunderscore}params}},captionpos=b, label={lst:faker}]
@@ -756,9 +761,12 @@ def invalid_params(fields_with_types) do
 \end{lstlisting}
 \end{minipage}
 
+\vspace*{1\baselineskip}
+
 \subsubsection{Testiranje funkcija changeset}
 
 \par Funkcija \emph{changeset/2} iz primera koda \ref{lst:schema}, koja kao argumente prihvata strukturu \emph{Assignment} i listu atributa, ima ulogu da validira prisustvo dva polja u tabeli \emph{assignments} --- polja \emph{comment} i \emph{grade}. Test primer koji proverava uspešnu putanju izvršavanja funkcije \emph{changeset/2} prikazan je u primeru koda \ref{lst:changeset}. Funkciji se prosleđuju validni parametri, kreirani pomoću prethodno definisane funkcije \emph{valid{\textunderscore}params}. Nakon toga, proverava se da li je dobijeni skup promena validan, a onda se pojedinačno za svako neophodno polje proverava da li je ispravno. \\
+
 
 \begin{minipage}{\linewidth}
 \begin{lstlisting}[language=elixir, basicstyle=\small, caption={Test primer uspešne upotrebe funkcije \emph{changeset/2}},captionpos=b, label={lst:changeset}]
@@ -947,6 +955,8 @@ defmodule MsnrApi.Support.DataCase do
 \end{lstlisting}
 \end{minipage}
 
+
+
 \subsubsection{Testiranje osnovnih CRUD operacija}
 
 \par Datoteka \emph{MsnrApi.Accounts} sadrži osnovne operacije kreiranja, čitanja, ažuriranja i brisanja (eng. \emph{Create, Read/get, Update, Delete --- CRUD}) iz tabele. Testiranje ovih jednostavnih funkcija biće prikazano na primeru datoteke \emph{MsnrApi.Queries.AccountsTest}. U primeru koda \ref{lst:create} prikazani su testovi koji proveravaju ispravnost funkcije \emph{create{\textunderscore}user/1}. Prva linija unutar test primera uspešne putanje koristi funkciju fabrike. Funkcija \emph{string{\textunderscore}params{\textunderscore}for} uzima atom \emph{:user} i sama poziva funkciju \emph{user{\textunderscore}factory}. \emph{ExMachina} obezbeđuje da povratna vrednost ove funkcije bude mapa sa ključevima koji su niske i predstavljaju parametre, koji se zatim prosleđuju funkciji \emph{create{\textunderscore}user} u fazi delovanja. S obzirom na to da je pozivom te funkcije izvršen upis u bazu, u fazi provere neophodno je izvršiti čitanje iz baze. Test direktno poziva \emph{MsnrApi.Repo}, a ne koristi k\^{o}d iz same aplikacije. Nije poželjno da test zavisi od koda aplikacije, jer ako dođe do neke izmene koja može narušiti trenutnu funkcionalnost, mnogo testova ne bi više prolazilo, a bilo bi teško zaključiti zbog čega.  
@@ -979,6 +989,7 @@ end
 \end{lstlisting}
  \end{minipage}
  
+ \vspace*{1\baselineskip}
 \par Naredna testirana operacija je čitanje podataka iz baze. U modulu \emph{Accounts} tu operaciju izvršava funkcija \emph{get{\textunderscore}user/1}, tako što dohvata jedan red iz tabele na osnovu jedinstvenog identifikatora korisnika. Dva test primera koja proveravaju ovu funkciju prikazana su u primeru koda \ref{lst:get}. Za uspešan scenario, na početku testa se ubacuje jedan korisnik u bazu pomoću fabrike, kako bi nakon toga mogao biti dohvaćen. Prilikom navođenja naredbe \texttt{assert}, funkciji \emph{get{\textunderscore}user} prosleđuje se identifikator prethodno dodatog korisnika. Nakon toga, još jednom naredbom \texttt{assert} utvrđuje se da li je dohvaćeni korisnik jednak onom koji je ubačen u bazu podataka u fazi pripreme testa.
 \par Neuspešan scenario podrazumeva pokušaj dohvatanja korisnika sa nepostojećim identifikatorom -1, nakon čega se očekuje greška tipa \emph{Ecto.NoResultsError}. \\
  
@@ -1057,6 +1068,7 @@ test "success: it deletes the user" do
 end
 \end{lstlisting}
 \end{minipage}
+
 
 \section{Testiranje upravljača i pogleda}
 
@@ -1194,6 +1206,7 @@ end
 \end{lstlisting}
 \end{minipage}
 
+\vspace*{1\baselineskip}
 \par Naredne dve akcije koje se testiraju su akcije \emph{index} i \emph{show}. One imaju jednostavne uloge --- da prikažu listu svih semestara (\emph{index}) ili jednog konkretnog semestra na osnovu identifikatora (\emph{show}). Testovi koji proveravaju ove funkcije pozivaju funkciju \emph{get} iz modula \emph{Phoenix.ConnTest} i verifikuju ispravnost JSON odgovora, slično kao u prethodnom primeru. Implementirani su unutar datoteke \emph{msnr{\textunderscore}api{\textbackslash}test{\textbackslash}msnr{\textunderscore}api{\textunderscore}web{\textbackslash}controllers{\textbackslash}semester{\textunderscore}controller{\textunderscore}test.exs.}
 \par Testovi koji pokrivaju akcije \emph{update} i \emph{delete} prikazani su u primeru koda \ref{lst:updatedelete}. U oba slučaja potrebno je prvo kreirati jedan semestar na kome bi  mogle da se primene ove akcije upravljača. Kreiranje semestra obezbeđuje privatna funkcija koja koristi modul \emph{MsnrApi.SemestersFixtures}, u kome se poziva funkcija iz konteksta \emph{Semesters} koja kreira semestar u bazi, istestirana u prethodnoj sekciji.
 \par Akcija ažuriranja se jednostavno proverava, pozivanjem funkcije \emph{put}, i nakon toga verifikacijom ažuriranih podataka. Blok \texttt{describe} sadrži i test koji pokriva scenario u kom dolazi do greške i očekuje se  k\^{o}d 422. Akcija brisanja semestra treba da izazove prazan odgovor (koji ovoga puta nije JSON) sa kodom 204 --- \emph{no{\textunderscore}content}. Takođe, nakon što je semestar uspešno obrisan, očekuje se da on ne može biti dohvaćen i funkcija \emph{get} izaziva grešku tipa 404 --- \emph{not{\textunderscore}found}.
@@ -1249,7 +1262,7 @@ end
 \section{Uvod u testiranje Elm aplikacija}
 \label{sec:uvod-elm}
 
-\par \emph{Elm} dolazi sa ugrađenim razvojnim okruženjem za testiranje pod nazivom \emph{elm-test} \cite{elm-test}. Ovaj alat je ditribuiran kao NPM paket (eng. \emph{Node.js Package Manager}) \cite{npm}. Kako bi se instalirao \emph{elm-test}, neophodno je iz terminala pozicionirati se u direktorijum aplikacije i pokrenuti narednu komandu: 
+\par \emph{Elm} dolazi sa ugrađenim razvojnim okruženjem za testiranje pod nazivom \emph{elm-test} \cite{elm-test}. Ovaj alat je distribuiran kao NPM paket (eng. \emph{Node.js Package Manager}) \cite{npm}. Kako bi se instalirao \emph{elm-test}, neophodno je iz terminala pozicionirati se u direktorijum aplikacije i pokrenuti narednu komandu: 
 
 \begin{minipage}{\linewidth}
 \begin{lstlisting}[style=DOS]
@@ -1288,6 +1301,7 @@ toTwoDigitMonth month =
 \end{lstlisting}
 \end{minipage}
 
+\vspace*{1\baselineskip}
 \par Testovi za ovaj modul nalaziće se u datoteci \emph{msnr{\textunderscore}elm{\textbackslash}tests{\textbackslash}UtilTests.elm}, datoj u primeru koda \ref{lst:example}. Na početku, pri definiciji modula, potrebno je izložiti (eng. \emph{expose}) nazive grupa testova koji će se pokretati. Dalje, svaka od datoteka sa testovima importuje tri modula: 
 
 \begin{enumerate}
@@ -1369,6 +1383,7 @@ intToMonthTests =
 \end{lstlisting}
 \end{minipage}
 
+\vspace*{1\baselineskip}
 \par Pored fazera za osnovne tipove kao što su \emph{int}, \emph{string}, ili \emph{bool}, modul \emph{Fuzzer} omogućava i kreiranje specifičnih fazera za tipove koji su eksplicitno implementirani. Takvi fazeri se često generišu upotrebom kombinacije funkcija \emph{Fuzz.map} i \emph{Fuzz.oneOfValues}. Fazeri dolaze iz modula \emph{Fuzzer}, ali funkcija \emph{fuzz} potiče iz modula \emph{Test} \cite{testmodul}. U tabeli \ref{tab:fuzzer} prikazane su tri često korišćene faz funkcije iz ovog modula i njihovi opisi. \newpage
 
 \begin{table}[!htbp]
@@ -1416,6 +1431,7 @@ decodeSession =
 \end{lstlisting}
 \end{minipage}
 
+\vspace*{1\baselineskip}
 \par Unutar jednog dekodera mogu se pozivati i drugi dekoderi --- u ovom primeru to su \emph{decodeUser} i \emph{decodeStudentInfo}, čija je uloga u dekodiranju slogova koji predstavljaju korisnika i studenta. Sistem tipova u \emph{Elm-u} nije dovoljan u pronalaženju grešaka kada je u pitanju ispravnost dekodera. Pre pisanja samih faz testova, definisani su specifični fazeri, za svaki od slogova. Kako više datoteka sa testovima koristi iste fazere, svi oni su implementirani na jednom mestu --- u pomoćnoj datoteci \emph{tests{\textbackslash}FuzzerHelper.elm}. Svaka datoteka sa testovima uključiće ovu datoteku zajedno sa konkretnim neophodnim fazerima. Za kreiranje nasumičnih kombinacija polja sloga \emph{Session}, definisan je \emph{sessionFuzzer}, prikazan u primeru koda \ref{lst:sessionfuzzer}. Funkcija \emph{map5} će mapirati pet polja i za svako od njih kreirati odgovarajući fazer. Svaki od fazera kreiraće veliki broj različitih vrednosti. Na primer, \emph{Fuzz.string} će generisati nasumične niske, ali sa većom verovatnoćom one za koje se često očekuju greške --- prazne, jako dugačke ili kratke niske. Za slogove studenta i korisnika takođe su implementirani specifični fazeri. 
 
 \begin{minipage}{\linewidth}
@@ -1613,6 +1629,8 @@ test "Click on login button returns SubmittedForm message" <|
      |> Event.expect SubmittedForm
 \end{lstlisting}
 \end{minipage}
+
+\vspace*{1\baselineskip}
 
 \begin{minipage}{\linewidth}
 \begin{lstlisting}[language=elm, basicstyle=\small, caption={Simulacija događaja unosa teksta u testu funkcije \emph{view} modula \emph{LoginPage}},captionpos=b, label={lst:eventinputtest}]

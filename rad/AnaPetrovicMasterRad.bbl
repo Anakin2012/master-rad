@@ -1,13 +1,14 @@
 \begin{thebibliography}{10}
 
-\bibitem{test}
-on-line at: \url{ https://istqb-main-web-prod.s3.amazonaws.com/media/documents/
-  ISTQB-CTFL_Syllabus_2018_v3.1.1.pdf.}
-
 \bibitem{msnr-portal}
 Adresa sa implementacijom portala msnr.
-\newblock on-line at:
+\newblock url:
   \url{https://github.com/NemanjaSubotic/master-rad/tree/master/portal}.
+
+\bibitem{func}
+{Functional programming paradigm}.
+\newblock url:
+  \url{https://www.geeksforgeeks.org/functional-programming-paradigm/}.
 
 \bibitem{npm}
 {Node.js upravljač paketa}.
@@ -20,7 +21,7 @@ Adresa sa implementacijom portala msnr.
 
 \bibitem{rest}
 {REST architectural style}.
-\newblock on-line at:
+\newblock url:
   \url{https://www.ics.uci.edu/~fielding/pubs/dissertation/rest_arch_style.htm}.
 
 \bibitem{stlc}
@@ -35,31 +36,31 @@ Adresa sa implementacijom portala msnr.
 
 \bibitem{ecto}
 {Zvanična dokumentacija biblioteke Ecto}.
-\newblock on-line at: \url{https://hexdocs.pm/ecto/Ecto.html}.
+\newblock url: \url{https://hexdocs.pm/ecto/Ecto.html}.
 
 \bibitem{exmachina}
 {Zvanična dokumentacija biblioteke ExMachina}.
-\newblock on-line at: \url{https://hexdocs.pm/ex_machina/readme.html}.
+\newblock url: \url{https://hexdocs.pm/ex_machina/readme.html}.
 
 \bibitem{faker}
 {Zvanična dokumentacija biblioteke Faker}.
-\newblock on-line at: \url{https://hexdocs.pm/faker/readme.html}.
+\newblock url: \url{https://hexdocs.pm/faker/readme.html}.
 
 \bibitem{plug}
 {Zvanična dokumentacija biblioteke Plug}.
-\newblock on-line at: \url{https://hexdocs.pm/plug/readme.html}.
+\newblock url: \url{https://hexdocs.pm/plug/readme.html}.
 
 \bibitem{execto}
 {Zvanična dokumentacija modula ExMachina.Ecto}.
-\newblock on-line at: \url{https://hexdocs.pm/ex_machina/ExMachina.Ecto.html}.
+\newblock url: \url{https://hexdocs.pm/ex_machina/ExMachina.Ecto.html}.
 
 \bibitem{exunit}
 {Zvanična dokumentacija okruženja ExUnit}.
-\newblock on-line at: \url{https://hexdocs.pm/ex_unit/ExUnit.html}.
+\newblock url: \url{https://hexdocs.pm/ex_unit/ExUnit.html}.
 
 \bibitem{hexcontrol}
 {Zvanična dokumentacija Phoenix upravljača}.
-\newblock on-line at: \url{https://hexdocs.pm/phoenix/controllers.html}.
+\newblock url: \url{https://hexdocs.pm/phoenix/controllers.html}.
 
 \bibitem{elm-test}
 {Zvanična stranica alata elm-test}.
@@ -67,11 +68,11 @@ Adresa sa implementacijom portala msnr.
 
 \bibitem{hex}
 {Zvanična stranica alata Hex}.
-\newblock on-line at: \url{https://hex.pm/}.
+\newblock url: \url{https://hex.pm/}.
 
 \bibitem{postgre}
 {Zvanična stranica baze podataka PostgreSql}.
-\newblock on-line at: \url{https://www.postgresql.org}.
+\newblock url: \url{https://www.postgresql.org}.
 
 \bibitem{expect}
 {Zvanična stranica biblioteke Expect}.
@@ -85,7 +86,7 @@ Adresa sa implementacijom portala msnr.
 
 \bibitem{pbk}
 {Zvanična stranica biblioteke Pbkdf2}.
-\newblock on-line at: \url{https://hexdocs.pm/pbkdf2_elixir/Pbkdf2.html}.
+\newblock url: \url{https://hexdocs.pm/pbkdf2_elixir/Pbkdf2.html}.
 
 \bibitem{testmodul}
 {Zvanična stranica biblioteke Test}.
@@ -115,16 +116,16 @@ Adresa sa implementacijom portala msnr.
 
 \bibitem{phx}
 {Zvanična stranica razvojnog okruženja Phoenix}.
-\newblock on-line at: \url{https://www.phoenixframework.org}.
+\newblock url: \url{https://www.phoenixframework.org}.
 
 \bibitem{fabrike}
 Ulisses Almeida.
-\newblock An introduction to test factories and fixtures for elixir.
+\newblock {An Introduction to Test Factories and Fixtures for Elixir}.
 \newblock 2023.
 
 \bibitem{cohn}
 M.~Cohn.
-\newblock {\em Succeeding with Agile: Software Development Using Scrum}.
+\newblock {\em {Succeeding with Agile: Software Development Using Scrum}}.
 \newblock A Mike Cohen signature book. Addison-Wesley, 2010.
 
 \bibitem{est}
@@ -137,12 +138,6 @@ Richard Feldman.
 \newblock {\em {Elm in Action}}.
 \newblock Manning, 2020.
 
-\bibitem{func}
-GeeksForGeeks.
-\newblock {Functional programming paradigm}.
-\newblock on-line at:
-  \url{https://www.geeksforgeeks.org/functional-programming-paradigm/}.
-
 \bibitem{testingelixir}
 Andrea Leopardi and Jeffrey Matthias.
 \newblock {\em {Testing Elixir - Effective and Robust Testing for Elixir and
@@ -151,15 +146,23 @@ Andrea Leopardi and Jeffrey Matthias.
 
 \bibitem{4phase}
 Gerard Meszaros.
-\newblock {\em xUnit Test Patterns: Refactoring Test Code}.
+\newblock {\em {xUnit Test Patterns: Refactoring Test Code}}.
 \newblock Addison-Wesley, 2007.
 
 \bibitem{rad}
 {Nemanja Subotić}.
 \newblock {Programski jezici Elm i Elixir u razvoju studentskog veb portala},
   2022.
-\newblock on-line at:
+\newblock url:
   \url{http://elibrary.matf.bg.ac.rs/bitstream/handle/123456789/5482/MasterRadNemanjaSubotic.pdf?sequence=1}.
+
+\bibitem{test}
+Klaus Olsen, Meile Posthuma, and Stephanie Ulrich.
+\newblock {International Software Testing Certified Tester Foundation Level
+  (CTFL) Sylabus}.
+\newblock url: \url{
+  https://istqb-main-web-prod.s3.amazonaws.com/media/documents/
+  ISTQB-CTFL_Syllabus_2018_v3.1.1.pdf.}
 
 \bibitem{external}
 German Velasco.

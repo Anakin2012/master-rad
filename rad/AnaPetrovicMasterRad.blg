@@ -5,7 +5,7 @@ Reallocating 'name_of_file' (item size: 1) to 18 items.
 Reallocating 'name_of_file' (item size: 1) to 6 items.
 The style file: plain.bst
 Database file #1: matfmaster-primer.bib
-Warning--to sort, need author or key in test
+Warning--to sort, need author or key in func
 Warning--to sort, need author or key in elixir-lang-official
 Warning--to sort, need author or key in erlang
 Warning--to sort, need author or key in elm-lang-official
@@ -36,36 +36,36 @@ Warning--empty journal in fabrike
 Warning--empty journal in external
 You've used 36 entries,
             2118 wiz_defined-function locations,
-            616 strings with 7841 characters,
-and the built_in function-call counts, 6166 in all, are:
-= -- 549
-> -- 96
+            618 strings with 7870 characters,
+and the built_in function-call counts, 6243 in all, are:
+= -- 557
+> -- 107
 < -- 0
-+ -- 57
-- -- 20
-* -- 206
-:= -- 775
-add.period$ -- 80
++ -- 60
+- -- 24
+* -- 215
+:= -- 790
+add.period$ -- 81
 call.type$ -- 36
-change.case$ -- 113
+change.case$ -- 116
 chr.to.int$ -- 0
 cite$ -- 65
 duplicate$ -- 278
 empty$ -- 810
-format.name$ -- 20
-if$ -- 1457
+format.name$ -- 24
+if$ -- 1472
 int.to.chr$ -- 0
 int.to.str$ -- 36
 missing$ -- 10
-newline$ -- 154
+newline$ -- 155
 num.names$ -- 18
-pop$ -- 369
+pop$ -- 370
 preamble$ -- 1
-purify$ -- 82
+purify$ -- 84
 quote$ -- 0
-skip$ -- 224
+skip$ -- 223
 stack$ -- 0
-substring$ -- 181
+substring$ -- 180
 swap$ -- 34
 text.length$ -- 0
 text.prefix$ -- 0
@@ -74,5 +74,5 @@ type$ -- 136
 warning$ -- 29
 while$ -- 18
 width$ -- 38
-write$ -- 274
+write$ -- 276
 (There were 29 warnings)
